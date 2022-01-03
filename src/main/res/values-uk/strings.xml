@@ -784,7 +784,7 @@
     <string name="pref_accessibility_min_comment_height_none">Немає</string>
     <string name="pref_accessibility_min_comment_height_title">Найменша висота коментаря</string>
     <string name="action_not_handled_by_installed_app_toast">Не знайдено застосунок для обробки цієї дії</string>
-    <string name="button_view">Вигляд</string>
+    <string name="button_view">Огляд</string>
     <string name="button_dismiss">Відхилити</string>
     <string name="pref_menus_mainmenu_dev_announcements_title">Показати оголошення від розробника</string>
     <string name="pref_accessibility_separate_body_text_lines_summary">У коментарях і самостійно опублікованому основному тексті, зробити кожен рядок індивідуально сфокусованим, а не читати весь коментар відразу</string>
