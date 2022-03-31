@@ -710,4 +710,9 @@
     <string name="error_subreddit_info_permission_denied_message">Der eingeloggte Benutzer kann keine Informationen für dieses Subreddit abrufen.</string>
     <string name="restore_preferences_error_invalid_file_contents_message">Die ausgewählte Datei ist keine gültige Backup-Datei für die Einstellungen.</string>
     <string name="invalid_subreddit_name_message">Bitte gib einen gültigen Namen eines Subreddits ein.</string>
+    <string name="press_back_again">Erneut Zurück-Knopf drücken</string>
+    <string name="props_self_html">Textinhalt (HTML)</string>
+    <string name="action_search_posts">Suche Beiträge</string>
+    <string name="pref_appearance_post_show_comments_button_title">Zeige Kommentare-Knopf</string>
+    <string name="action_comments_with_count">Zeige Kommentare (%d)</string>
 </resources>
