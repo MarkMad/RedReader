@@ -630,7 +630,7 @@
     <string name="time_after_reply">antwortete %s später</string>
     <string name="time_after">nach %s</string>
     <string name="pref_behaviour_save_location_system_default">Benutze Systemstandard</string>
-    <string name="pref_behaviour_save_location_prompt_every_time">Jedes mal Fragen</string>
+    <string name="pref_behaviour_save_location_prompt_every_time">Jedes Mal Fragen</string>
     <string name="action_save_image_success_no_path">Bild erfolgreich gespeichert</string>
     <string name="dialog_continue">Weiter</string>
     <string name="reddit_login_browser_popup_use_external_browser">Benutze externen Webbrowser (empfohlen)</string>
@@ -710,7 +710,7 @@
     <string name="error_subreddit_info_permission_denied_message">Der eingeloggte Benutzer kann keine Informationen für dieses Subreddit abrufen.</string>
     <string name="restore_preferences_error_invalid_file_contents_message">Die ausgewählte Datei ist keine gültige Backup-Datei für die Einstellungen.</string>
     <string name="invalid_subreddit_name_message">Bitte gib einen gültigen Namen eines Subreddits ein.</string>
-    <string name="press_back_again">Erneut Zurück-Knopf drücken</string>
+    <string name="press_back_again">Erneut \"Zurück\" drücken</string>
     <string name="props_self_html">Textinhalt (HTML)</string>
     <string name="action_search_posts">Suche Beiträge</string>
     <string name="pref_appearance_post_show_comments_button_title">Zeige Kommentare-Knopf</string>
@@ -731,4 +731,20 @@
     <string name="pref_appearance_post_subtitle_items_domain">Domain</string>
     <string name="pref_appearance_post_subtitle_items_use_different_settings_title">Nutze andere Einstellungen für geöffnete Posts</string>
     <string name="pref_behaviour_user_postsort_title">Benutzer-Einträge (Standard)</string>
+    <string name="pref_behaviour_postlist_back_again">Drücke zweimal \"Zurück\", um die Beitragsliste zu verlassen</string>
+    <string name="pref_appearance_hide_toolbar_on_scroll_title">Werkzeugleiste beim Scrollen ausblenden</string>
+    <string name="pref_appearance_toolbar_header">Werkzeugleiste</string>
+    <string name="pref_behaviour_save_location_title">Speicherort</string>
+    <string name="pref_appearance_post_header_age_units_title">Präzision für Alter geöffneter Beiträge</string>
+    <string name="pref_appearance_post_age_units_title">Präzision Beitragsalter</string>
+    <string name="pref_appearance_comment_age_units_title">Präzision Kommentaralter</string>
+    <string name="pref_appearance_inbox_age_units_title">Präzision Alter der Poteingangseinträge</string>
+    <string name="pref_appearance_comment_age_mode_title">Modus Kommentaralter</string>
+    <string name="pref_appearance_comment_age_mode_absolute">Zeit seit Kommentar (vor x Minuten)</string>
+    <string name="pref_appearance_comment_age_mode_relative_post">Relativ zum Beitrag (nach x Minuten)</string>
+    <string name="pref_appearance_comment_age_mode_relative_parent">Relativ zum vorherigen Kommentar (x Minuten später geantwortet)</string>
+    <string name="pref_cache_clear_title">Zwischenspeicher löschen</string>
+    <string name="pref_menus_quick_account_switcher_title">Nutze schnellen Account-Wechsel</string>
+    <string name="pref_appearance_not_possible_in_tablet_mode">Im Tablet-Modus nicht möglich</string>
+    <string name="options_account_manager">Verwalte…</string>
 </resources>
