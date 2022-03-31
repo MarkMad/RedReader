@@ -654,8 +654,8 @@
     <string name="image_gallery_removed_message">Die Galerie wurde entfernt und ist nicht mehr verfügbar.</string>
     <string name="image_gallery_removed_title">Galerie entfernt</string>
     <string name="spoiler">Spoiler</string>
-    <string name="unsubscription_successful">Abgemeldet bei %s</string>
-    <string name="subscription_successful">Abonniert bei %s</string>
+    <string name="unsubscription_successful">%s nicht mehr abboniert</string>
+    <string name="subscription_successful">%s abboniert</string>
     <string name="pref_appearance_fontscale_use_global">Benutze globale Schriftgröße</string>
     <string name="pref_appearance_fontscale_global_title">Global</string>
     <string name="pref_appearance_fontscale_header">Schriftgröße</string>
@@ -715,4 +715,20 @@
     <string name="action_search_posts">Suche Beiträge</string>
     <string name="pref_appearance_post_show_comments_button_title">Zeige Kommentare-Knopf</string>
     <string name="action_comments_with_count">Zeige Kommentare (%d)</string>
+    <string name="bug_chooser_title">E-Mail Fehlerbericht</string>
+    <string name="pref_appearance_fontscale_comment_headers_title">Kopfzeile Kommentar/Posteingang</string>
+    <string name="pref_appearance_post_subtitle_items_sticky">Angeheftet-Markierung</string>
+    <string name="pref_appearance_post_subtitle_items_spoiler">Spoiler-Markierung</string>
+    <string name="error_nsfw_subreddits_disabled_title">Blockierter NSFW-Subreddit</string>
+    <string name="pref_appearance_fontscale_linkbuttons_title">Link-Button</string>
+    <string name="props_body_html">Body (HTML)</string>
+    <string name="prefs_category_menus_appbar_screen">Aktionsleisten-Eintrag</string>
+    <string name="pref_behaviour_multi_postsort_title">Multireddit-Beiträge (Standard)</string>
+    <string name="pref_behaviour_user_commentsort_title">Nutzer-Kommentare (Standard)</string>
+    <string name="pref_appearance_fontscale_post_header_titles_title">Überschrift geöffneter Posts</string>
+    <string name="pref_appearance_fontscale_post_header_subtitles_title">Untertitel geöffneter Posts</string>
+    <string name="pref_appearance_post_subtitle_items_nsfw">NSFW-Markierung</string>
+    <string name="pref_appearance_post_subtitle_items_domain">Domain</string>
+    <string name="pref_appearance_post_subtitle_items_use_different_settings_title">Nutze andere Einstellungen für geöffnete Posts</string>
+    <string name="pref_behaviour_user_postsort_title">Benutzer-Einträge (Standard)</string>
 </resources>
