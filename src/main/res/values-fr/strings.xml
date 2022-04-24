@@ -195,8 +195,8 @@
     <string name="bug_button_send">Envoyer un rapport d\'erreur par courriel</string>
     <string name="bug_button_ignore">Ne pas envoyer de rapport de bug</string>
     <!-- General errors -->
-    <string name="error_403_title">Utilisateur invalide</string>
-    <string name="error_403_message">L\'utilisateur que vous avez sélectionné n\'a pas les permissions nécessaires pour faire ça.</string>
+    <string name="error_403_title">Permission refusée</string>
+    <string name="error_403_message">L\'utilisateur que vous avez sélectionné n\'a pas les permissions nécessaires pour faire cela.</string>
     <string name="error_subreddit_required_title">Subreddit requis</string>
     <string name="error_subreddit_required_message">Vous devez préciser un subreddit.</string>
     <string name="error_bad_captcha_title">CAPTCHAA invalide</string>
@@ -417,7 +417,7 @@
     <string name="error_too_fast_message">Reddit considère que vous soumettez trop rapidement. Merci d\'attendre quelques minutes pour réessayer.</string>
     <!-- 2015-12-19 -->
     <string name="block_subreddit">Bloquer le subreddit</string>
-    <string name="block_done">Subreddit bloqué. Les futures visites de /r/all excluront ce subreddit.</string>
+    <string name="block_done">Subreddit bloqué. Les futures visites de /r/all et /r/popular excluront ce subreddit.</string>
     <!-- 2016-03-14-->
     <string name="pref_behaviour_comments_header">Commentaires</string>
     <string name="pref_behaviour_comment_min_title">Score minimal de commentaire</string>
@@ -562,7 +562,7 @@
     <string name="pref_behaviour_gifview_mode_internal_movie">Lecteur interne (Film, Android 4.0+)</string>
     <string name="time_3hr">3 heures</string>
     <string name="sort_pinned_subreddit_name">Par nom</string>
-    <string name="unblock_done">Le subreddit a été débloqué. Aux prochaines visites, /r/all va inclure ce subreddit.</string>
+    <string name="unblock_done">Le subreddit a été débloqué. Aux prochaines visites, /r/popular et /r/all vont inclure ce subreddit.</string>
     <string name="pref_menus_optionsmenu_items_title">Éléments du menu à trois points</string>
     <string name="time_year">année</string>
     <string name="pref_behaviour_videoview_mode_title">Lecteur de vidéos</string>
