@@ -678,4 +678,6 @@
     <string name="restore_preferences_error_invalid_file_version_message">Den valda filen skapades med en nyare version av RedReader och kan inte öppnas.</string>
     <string name="restore_preferences_error_version_warning_message">Den valda filen skapades med en nyare version av RedReader. Återställning av inställningar från denna fil kan leda till krascher och instabilitet.</string>
     <string name="button_restore_preferences">Återställ</string>
+    <string name="backup_preferences_success">Säkerhetskopieringen lyckades</string>
+    <string name="restore_preferences_success">Återställningen lyckades</string>
 </resources>
