@@ -667,4 +667,15 @@
     <string name="pref_appearance_navbar_color_option_white">Vit</string>
     <string name="pref_appearance_android_status_always_hide">Alltid</string>
     <string name="pref_appearance_android_status_never_hide">Aldrig</string>
+    <string name="prefs_category_backup_restore">Säkerhetskopiera/Återställ</string>
+    <string name="button_continue_anyway">Fortsätt ändå</string>
+    <string name="pref_item_backup_preferences_title">Säkerhetskopiera inställningar</string>
+    <string name="button_cancel">Avbryt</string>
+    <string name="pref_item_restore_preferences_title">Återställ inställningar (från fil)</string>
+    <string name="restore_preferences_error_invalid_file_title">Ogiltig fil</string>
+    <string name="restore_preferences_error_invalid_file_contents_message">Den valda filen är inte en giltig säkerhetskopia.</string>
+    <string name="restore_preferences_error_version_warning_title">Varning</string>
+    <string name="restore_preferences_error_invalid_file_version_message">Den valda filen skapades med en nyare version av RedReader och kan inte öppnas.</string>
+    <string name="restore_preferences_error_version_warning_message">Den valda filen skapades med en nyare version av RedReader. Återställning av inställningar från denna fil kan leda till krascher och instabilitet.</string>
+    <string name="button_restore_preferences">Återställ</string>
 </resources>
