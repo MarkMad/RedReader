@@ -263,7 +263,7 @@
     <string name="general_false">Falskt</string>
     <!-- 2013-05-17 Arrays -->
     <string name="pref_appearance_twopane_never">Aldrig</string>
-    <string name="pref_appearance_twopane_auto">Auto-detektera</string>
+    <string name="pref_appearance_twopane_auto">Upptäck automatiskt</string>
     <string name="pref_appearance_twopane_landscape">Endast landskap</string>
     <string name="pref_appearance_twopane_force">Alltid (kan se konstigt ut)</string>
     <string name="theme_name_red">Röd</string>
@@ -637,7 +637,7 @@
     <string name="options_account_manager">Hantera…</string>
     <string name="pref_appearance_toolbar_header">Verktygsfält</string>
     <string name="image_gallery_removed_title">Galleri borttaget</string>
-    <string name="pref_appearance_post_subtitle_items_title">inläggsdetaljer</string>
+    <string name="pref_appearance_post_subtitle_items_title">Inläggsdetaljer</string>
     <string name="pref_appearance_post_subtitle_items_sticky">Sticky-etikett</string>
     <string name="pref_appearance_post_subtitle_items_nsfw">NSFW-etikett</string>
     <string name="pref_appearance_post_subtitle_items_domain">Domän</string>
@@ -660,4 +660,11 @@
     <string name="pref_appearance_comment_header_items_controversiality">Kontroversiell-indikator (†)</string>
     <string name="pref_appearance_comment_age_mode_absolute">Tid sedan kommentering (x min sedan)</string>
     <string name="pref_appearance_inbox_age_units_title">Åldersprecision för meddelanden i inkorgen</string>
+    <string name="pref_appearance_age_units_2">Två enheter (x timmar, x minuter)</string>
+    <string name="pref_appearance_android_status_hide_on_media">Medans media visas</string>
+    <string name="pref_appearance_age_units_1">En enhet (x timmar)</string>
+    <string name="pref_appearance_age_units_3">Tre enheter (x timmar, x minuter, x sekunder)</string>
+    <string name="pref_appearance_navbar_color_option_white">Vit</string>
+    <string name="pref_appearance_android_status_always_hide">Alltid</string>
+    <string name="pref_appearance_android_status_never_hide">Aldrig</string>
 </resources>
