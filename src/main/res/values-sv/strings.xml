@@ -644,9 +644,9 @@
     <string name="pref_appearance_post_subtitle_items_use_different_settings_title">Använd andra inställningar för öppnade inlägg</string>
     <string name="pref_appearance_post_header_subtitle_items_title">Inläggsdetaljer för öppnade inlägg</string>
     <string name="image_gallery_removed_message">Detta galleri har tagits bort och är inte längre tillgängligt.</string>
-    <string name="pref_appearance_post_header_age_units_title">Inläggsåldersprecision för öppnade inlägg</string>
+    <string name="pref_appearance_post_header_age_units_title">Åldersprecision för öppnade inlägg</string>
     <string name="pref_menus_quick_account_switcher_title">Använd snabb kontobytning</string>
-    <string name="pref_appearance_comment_age_units_title">Precision för kommentarålder</string>
+    <string name="pref_appearance_comment_age_units_title">Åldersprecision för kommentarer</string>
     <string name="pref_appearance_comment_age_mode_title">Läge för kommentarålder</string>
     <string name="pref_appearance_comment_age_mode_relative_parent">Relativ till förälderkommentar (svarade x min senare)</string>
     <string name="pref_appearance_comment_age_mode_relative_post">Relativ till inlägg (efter x min)</string>
@@ -654,9 +654,10 @@
     <string name="pref_appearance_post_subtitle_items_spoiler">Spoiler-etikett</string>
     <string name="pref_appearance_post_subtitle_items_subreddit">Subreddit</string>
     <string name="pref_appearance_post_show_comments_button_title">Visa kommentarsknapp</string>
-    <string name="pref_appearance_post_age_units_title">Precision för inläggsålder</string>
+    <string name="pref_appearance_post_age_units_title">Åldersprecision för inlägg</string>
     <string name="prefs_category_accessibility">Tillgänglighet</string>
     <string name="pref_appearance_hide_toolbar_on_scroll_title">Dölj verktygsfältet vid skrollning</string>
     <string name="pref_appearance_comment_header_items_controversiality">Kontroversiell-indikator (†)</string>
     <string name="pref_appearance_comment_age_mode_absolute">Tid sedan kommentering (x min sedan)</string>
+    <string name="pref_appearance_inbox_age_units_title">Åldersprecision för meddelanden i inkorgen</string>
 </resources>
