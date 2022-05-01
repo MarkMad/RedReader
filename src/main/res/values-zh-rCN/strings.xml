@@ -820,7 +820,7 @@
     <string name="sort_posts_comments_year">评论数：今年</string>
     <string name="sort_posts_comments_all">评论数：所有时间</string>
     <string name="pref_appearance_android_status_always_hide">始终</string>
-    <string name="pref_appearance_comment_header_items_controversiality">争议性指标 (†)</string>
+    <string name="pref_appearance_comment_header_items_controversiality">争议性指示器 (†)</string>
     <string name="accessibility_subtitle_controversiality_withperiod">被票选为“有争议”。</string>
     <string name="search_listing_header_limit_location">限制到位置</string>
     <string name="search_results_query_and_location">在 %2$s 搜索“%1$s”</string>
