@@ -681,4 +681,14 @@
     <string name="backup_preferences_success">Säkerhetskopieringen lyckades</string>
     <string name="restore_preferences_success">Återställningen lyckades</string>
     <string name="image_gallery">Galleri</string>
+    <string name="image_gallery_no_data_present_message">Inget bildgalleri hittades på den specificerade länken. Det kan ha tagits bort.</string>
+    <string name="list_yes_no_or_wifi_wifionly">Endast över Wi-Fi</string>
+    <string name="copied_to_clipboard">Kopierat till urklipp</string>
+    <string name="image_gallery_no_data_present_title">Galleriet hittades inte</string>
+    <string name="image_gallery_no_image_present_title">Bilden hittades inte</string>
+    <string name="image_gallery_no_image_present_message">Den specificerade bilden kunde inte hittas. Den kan ha tagits bort.</string>
+    <string name="button_error_details">Detaljer</string>
+    <string name="link_does_not_exist">Denna länk existerar inte. Den kan ha tagits bort.</string>
+    <string name="error_inline_preview_failed_title">Nedladdningsfel</string>
+    <string name="error_inline_preview_failed_message">Kunde inte ladda ned bildförhandsvisning.</string>
 </resources>
