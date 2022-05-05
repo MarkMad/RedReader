@@ -680,4 +680,5 @@
     <string name="button_restore_preferences">Återställ</string>
     <string name="backup_preferences_success">Säkerhetskopieringen lyckades</string>
     <string name="restore_preferences_success">Återställningen lyckades</string>
+    <string name="image_gallery">Galleri</string>
 </resources>
