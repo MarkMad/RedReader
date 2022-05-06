@@ -31,7 +31,7 @@
     <string name="pref_appearance_comments_header">Kommentarer</string>
     <string name="pref_appearance_twopane_title">Surfplatteläge (två paneler)</string>
     <string name="pref_appearance_theme_title">Tema</string>
-    <string name="pref_appearance_fontscale_posts_title">Skalning av typsnittsstorlek för poster</string>
+    <string name="pref_appearance_fontscale_posts_title">Inläggstitlar</string>
     <string name="pref_appearance_thumbnails_show_title">Visa miniatyrbilder</string>
     <string name="pref_appearance_thumbnails_nsfw_show_title">Visa NSFW-miniatyrbilder</string>
     <string name="pref_appearance_thumbnails_wifionly_title">Miniatyrbilder endast över Wi-Fi</string>
@@ -691,4 +691,12 @@
     <string name="link_does_not_exist">Denna länk existerar inte. Den kan ha tagits bort.</string>
     <string name="error_inline_preview_failed_title">Nedladdningsfel</string>
     <string name="error_inline_preview_failed_message">Kunde inte ladda ned bildförhandsvisning.</string>
+    <string name="pref_appearance_fontscale_post_header_titles_title">Inläggstitlar för öppnade inlägg</string>
+    <string name="pref_appearance_fontscale_post_header_subtitles_title">Inläggsbeskrivningar för öppnade inlägg</string>
+    <string name="pref_appearance_fontscale_header">Fontstorlek</string>
+    <string name="pref_appearance_fontscale_global_title">Global</string>
+    <string name="pref_appearance_fontscale_use_global">Använd global fontstorlek</string>
+    <string name="pref_appearance_fontscale_linkbuttons_title">Länkknappar</string>
+    <string name="pref_appearance_fontscale_bodytext_title">Brödtext</string>
+    <string name="pref_appearance_fontscale_post_subtitles_title">Inläggsdetaljer</string>
 </resources>
