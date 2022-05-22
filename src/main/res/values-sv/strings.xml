@@ -125,7 +125,7 @@
     <string name="dialog_no">Nej</string>
     <string name="dialog_go">Gå till</string>
     <!-- Thing Actions -->
-    <string name="action_menu_post_title">Inläggshandlingar</string>
+    <string name="action_menu_post_title">Inläggsalternativ</string>
     <string name="action_upvote">Rösta upp</string>
     <string name="action_downvote">Rösta ned</string>
     <string name="action_vote_remove">Radera röst</string>
@@ -421,8 +421,8 @@
     <string name="options_close_all">Stäng alla</string>
     <string name="pref_menus_optionsmenu_items_title">Element på alternativmeny</string>
     <!-- 2015-07-05 -->
-    <string name="pref_behaviour_bezel_toolbar_header">Bezel-verktygsrad</string>
-    <string name="pref_behaviour_bezel_toolbar_swipezone_title">Storlek på svepzon på Bezel-verktysrad</string>
+    <string name="pref_behaviour_bezel_toolbar_header">Sidoverktygsrad för inlägg</string>
+    <string name="pref_behaviour_bezel_toolbar_swipezone_title">Storlek på svepzon på Sidoverktygsrad för inlägg</string>
     <string name="pref_behaviour_gifview_mode_title">GIF-visare</string>
     <string name="pref_behaviour_gifview_mode_internal_movie">Intern visare (Film, Android 4.0+)</string>
     <string name="pref_behaviour_gifview_mode_internal_legacy">Intern visare (legacy)</string>
