@@ -560,7 +560,8 @@
     <string name="pref_behaviour_sharing_share_dialog_title">Usare la finestra integrata per condividere</string>
     <string name="error_toast_no_share_app_installed">Non ci sono applicazioni adatte per condividere questo.</string>
     <plurals name="load_more_comments_button_reply_count">
-        <item quantity="other">Carica altri commenti (%d risp)</item>
+        <item quantity="one">Carica altri commenti (%d risposta)</item>
+        <item quantity="other">Carica altri commenti (%d risposte)</item>
     </plurals>
     <string name="pref_appearance_post_subtitle_items_subreddit">Subreddit</string>
     <string name="pref_appearance_post_subtitle_items_nsfw">Tag NSFW</string>
@@ -813,4 +814,25 @@
     <string name="sort_posts_new_month">Nuovo: Ultimo mese</string>
     <string name="sort_posts_new_year">Nuovo: Quest\'anno</string>
     <string name="sort_posts_new_all">Nuovo: Di sempre</string>
+    <string name="pref_appearance_android_status_never_hide">Mai</string>
+    <string name="pref_appearance_android_status_hide_on_media">Quando si visualizzano i media</string>
+    <string name="accessibility_subtitle_controversiality_withperiod">Votato come controverso.</string>
+    <string name="sort_posts_hot_hour">Popolare: Quest\'ora</string>
+    <string name="sort_posts_hot_today">Popolare: Oggi</string>
+    <string name="sort_posts_hot_week">Popolare: Questa Settimana</string>
+    <string name="sort_posts_hot_month">Popolare: Questo Mese</string>
+    <string name="sort_posts_hot_year">Popolare: Quest\'anno</string>
+    <string name="sort_posts_hot_all">Popolare: Sempre</string>
+    <string name="sort_posts_comments_hour">Commenti: Quest\'ora</string>
+    <string name="sort_posts_comments_today">Commenti: Oggi</string>
+    <string name="sort_posts_comments_week">Commenti: Questa Settimana</string>
+    <string name="sort_posts_comments_month">Commenti: Questo Mese</string>
+    <string name="sort_posts_comments_year">Commenti: Quest\'anno</string>
+    <string name="sort_posts_comments_all">Commenti: Sempre</string>
+    <string name="pref_appearance_android_status_always_hide">Sempre</string>
+    <string name="error_archived_reply">Questo è stato archiviato e non è più possibile rispondere.</string>
+    <string name="pref_appearance_comment_header_items_controversiality">Indicatore di controversie (†)</string>
+    <string name="search_listing_header_limit_location">Limita alla Posizione</string>
+    <string name="search_results_query_and_location">Cerca \"%1$s\" in %2$s</string>
+    <string name="search_results_location_only">Cerca in %s</string>
 </resources>
