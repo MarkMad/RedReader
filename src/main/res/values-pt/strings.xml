@@ -581,4 +581,7 @@
     <string name="pref_appearance_post_subtitle_items_use_different_settings_title">Use configurações diferentes para postagens abertas</string>
     <string name="error_nsfw_subreddits_disabled_message">O conteúdo NSFW está desativado nas configurações.</string>
     <string name="pref_network_tor_summary">Ao usar um navegador externo ou abas personalizadas, os links não serão abertos usando o Tor (a menos que seu navegador esteja configurado para usar o Tor)</string>
+    <string name="pref_menus_show_multireddit_main_menu_title">Mostrar multireddits</string>
+    <string name="pref_appearance_fontscale_header">Escala de fonte</string>
+    <string name="pref_appearance_fontscale_global_title">Global</string>
 </resources>
