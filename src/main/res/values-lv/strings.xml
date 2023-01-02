@@ -1,2 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="prefs_category_behaviour">Uzvedība</string>
+    <string name="pref_appearance_theme_header">Motīvs</string>
+    <string name="pref_appearance_thumbnails_header">Sīktēli</string>
+    <string name="pref_appearance_thumbnails_wifionly_title">Sīktēlus tikai Wi-Fi tīklā</string>
+    <string name="pref_behaviour_imagevideo_tap_close_summary">Neietekmē video, ja ir iespējotas atskaņošanas vadīklas</string>
+    <string name="pref_appearance_not_possible_in_tablet_mode">Nav iespējams planšetdatora režīmā</string>
+    <string name="firstrun_login_title">Autorizēties</string>
+    <string name="pref_accessibility_separate_body_text_lines_summary">Komentārā un pašpublicēšanas tekstā fokusējiet katru rindiņu atsevišķi, nevis lasiet visu komentāru uzreiz</string>
+    <string name="dialog_clear">Notīrīt</string>
+    <string name="pref_appearance_comments_header">Komentāri</string>
+    <string name="prefs_category_appearance">Izskats</string>
+    <string name="pref_behaviour_notifications_title">Paziņojumi</string>
+    <string name="firstrun_login_message">Jūs pašlaik neesat autorizējušies. Kontu sarakstam varat piekļūt, atlasot izvēlnē Konti.</string>
+    <string name="firstrun_login_button_now">Autorizēties tagad</string>
+    <string name="firstrun_login_button_later">Būt anonīms</string>
+    <string name="inline_preview_prompt_title">Attēlu priekšskatījumi</string>
+    <string name="pref_appearance_theme_title">Motīvs</string>
+    <string name="pref_appearance_fontscale_posts_title">Ierakstu virsraksti</string>
+    <string name="pref_appearance_comment_header_items_title">Komentāra galvene</string>
+    <string name="pref_appearance_thumbnails_show_title">Rādīt sīktēlus</string>
+    <string name="pref_behaviour_posts_header">Ieraksti</string>
+    <string name="prefs_category_cache">Kešatmiņa</string>
+    <string name="prefs_category_menus">Izvēlnes</string>
+    <string name="pref_appearance_twopane_title">Planšetdatora režīms (divi paneļi)</string>
+    <string name="pref_appearance_thumbnails_nsfw_show_title">Rādīt NSFW sīktēlus</string>
+    <string name="pref_behaviour_actions_post_header">Publicēšanas darbības</string>
+    <string name="pref_behaviour_actions_comment_header">Komentēšanas darbības</string>
+</resources>
