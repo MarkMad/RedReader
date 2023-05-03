@@ -321,7 +321,7 @@
     <string name="pref_menus_post_context_items_title">Menu da Publicação</string>
     <string name="pref_menus_optionsmenu_items_title">Opções do Menu</string>
     <string name="pref_menus_mainmenu_useritems_title">Itens do utilizador</string>
-    <string name="pref_menus_link_context_items_title">Menu do Link</string>
+    <string name="pref_menus_link_context_items_title">Ação do link nos itens do menu</string>
     <string name="pref_cache_rerequest_postlist_age_title">Atualizar posts se o cache for mais antigo que</string>
     <string name="pref_cache_pruning">Limpeza de Cache</string>
     <string name="pref_cache_precache_images_wifionly_title">Apenas com Wi-Fi</string>
@@ -398,8 +398,8 @@
     <string name="pref_appearance_link_text_clickable_title">Texto do Link Clicável</string>
     <string name="pref_appearance_langforce_title">Idioma</string>
     <string name="pref_appearance_indentlines_title">Mostrar as linhas de indentação</string>
-    <string name="pref_appearance_image_viewer_show_floating_toolbar_title">Mostrar botão de ferramentas flutuante sob imagens</string>
-    <string name="pref_appearance_hide_username_main_menu_title">Visualizador de Imagens</string>
+    <string name="pref_appearance_image_viewer_show_floating_toolbar_title">Mostrar botão de ferramentas flutuante sob imagens e vídeos</string>
+    <string name="pref_appearance_hide_username_main_menu_title">Esconder nome de usuário</string>
     <string name="pref_appearance_comment_header_items_upsdowns">Positivados / Negativados</string>
     <string name="pref_appearance_comment_header_items_flair">Flair</string>
     <string name="pm_send_hint_subject">Assunto</string>
@@ -584,4 +584,12 @@
     <string name="pref_menus_show_multireddit_main_menu_title">Mostrar multireddits</string>
     <string name="pref_appearance_fontscale_header">Escala de fonte</string>
     <string name="pref_appearance_fontscale_global_title">Global</string>
+    <string name="pref_appearance_fontscale_use_global">Usar fonte de escala global</string>
+    <string name="upgrade_message">Atualize para a versão %s</string>
+    <string name="bug_chooser_title">Reportar bug pelo email</string>
+    <string name="error_toast_no_email_apps">Sem aplicativos de email instalados!</string>
+    <string name="must_login_message">Você precisa estar logado em uma conta do reddit para fazer isso.</string>
+    <string name="pref_appearance_fontscale_linkbuttons_title">Botões de link</string>
+    <string name="error_toast_failed_open_external_browser">Falha em abrir o url no navegador externo</string>
+    <string name="subscription_successful">Inscrito em</string>
 </resources>
