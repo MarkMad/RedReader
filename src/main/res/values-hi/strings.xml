@@ -31,4 +31,15 @@
     <string name="pref_appearance_thumbnails_show_title">थंमनेल दिखाएँ</string>
     <string name="pref_appearance_thumbnails_wifionly_title">थंमनेल्स केवल वाई-फाई पर</string>
     <string name="pref_appearance_thumbnails_nsfw_show_title">असुरक्षित थंमनेल्स दिखाएँ</string>
+    <string name="pref_appearance_twopane_title">टैबलेट मोड (दो फलक)</string>
+    <string name="pref_appearance_comment_header_items_title">टिप्पणी हेडर प्रविष्टियाँ</string>
+    <string name="pref_behaviour_notifications_title">अधिसूचनाएं</string>
+    <string name="pref_behaviour_actions_post_header">पोस्ट क्रियाएँ</string>
+    <string name="pref_behaviour_actions_comment_header">टिप्पणी क्रियाएँ</string>
+    <string name="pref_behaviour_posts_header">पोस्ट</string>
+    <string name="pref_behaviour_nsfw_title">NSFW सामग्री दिखाएँ</string>
+    <string name="pref_behaviour_fling_post_left_title">बाईं ओर</string>
+    <string name="pref_behaviour_fling_post_right_title">दाहिनी ओर</string>
+    <string name="pref_cache_pruning">कैचे छंटाई</string>
+    <string name="pref_behaviour_actions_comment_tap_title">प्रेस</string>
 </resources>
