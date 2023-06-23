@@ -25,8 +25,8 @@
     <string name="pref_cache_maxage_thumb_title">ਇਸ ਤੋਂ ਬਾਅਦ ਕੈਸ਼ ਕੀਤੇ ਥੰਮਨੇਲ ਹਟਾਓ</string>
     <string name="pref_cache_maxage_image_title">ਇਸ ਤੋਂ ਬਾਅਦ ਕੈਸ਼ ਕੀਤੇ ਚਿੱਤਰਾਂ ਨੂੰ ਮਿਟਾਓ</string>
     <string name="pref_cache_maxage_entry_title">ਇਸ ਤੋਂ ਬਾਅਦ ਕੈਸ਼ ਕੀਤੇ ਫਲੈਗਾਂ (ਪੜ੍ਹੇ, ਅੱਪ ਵੋਟ, ਆਦਿ) ਨੂੰ ਮਿਟਾਓ</string>
-    <string name="pref_cache_precache_images_title">ਪ੍ਰੀ-ਕੈਸ਼ ਚਿੱਤਰ</string>
-    <string name="pref_cache_precache_images_header">ਪ੍ਰੀ-ਕੈਸ਼ ਚਿੱਤਰ</string>
+    <string name="pref_cache_precache_images_title">ਪ੍ਰੀ-ਕੈਸ਼ੇ ਚਿੱਤਰ</string>
+    <string name="pref_cache_precache_images_header">ਪ੍ਰੀ-ਕੈਸ਼ੇ ਚਿੱਤਰ</string>
     <string name="options_theme">ਥੀਮ</string>
     <string name="options_accounts_long">ਰੈਡਿਟ ਖ਼ਾਤਾ</string>
     <string name="options_accounts">ਖ਼ਾਤੇ</string>
