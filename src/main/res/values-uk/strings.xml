@@ -236,7 +236,7 @@
     <string name="notification_message_multiple">Нові повідомлення на Reddit</string>
     <string name="notification_message_action">Торкнутися для перегляду</string>
     <string name="general_true">Так</string>
-    <string name="general_false">Ні</string>
+    <string name="general_false">False</string>
     <string name="pref_appearance_twopane_never">Ніколи</string>
     <string name="pref_appearance_twopane_auto">Автовизначення</string>
     <string name="pref_appearance_twopane_landscape">Лише в альбомній орієнтації</string>
