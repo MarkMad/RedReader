@@ -365,7 +365,7 @@
     <string name="pref_behaviour_skiptofrontpage_title">跳至主页</string>
     <string name="error_archived_vote">本页已被封存，您不可投票。</string>
     <string name="pref_behaviour_screenorientation_title">屏幕方向</string>
-    <string name="screen_orientation_auto">自动侦测</string>
+    <string name="screen_orientation_auto">自动</string>
     <string name="screen_orientation_portrait">竖屏</string>
     <string name="screen_orientation_landscape">横屏</string>
     <string name="options_close_all">关闭全部</string>
@@ -441,7 +441,7 @@
     <string name="pm_send_hint_recipient">收件人</string>
     <string name="pm_send_hint_subject">标题</string>
     <string name="pm_send_hint_message_text">内容</string>
-    <string name="pm_send_done">已发送。</string>
+    <string name="pm_send_done">已发送消息。</string>
     <string name="userprofile_pm">发送信息</string>
     <string name="error_too_long_title">过长</string>
     <string name="error_too_long_message">Reddit认为您的信息过长。</string>
@@ -470,7 +470,7 @@
     <string name="time_every_time">每次刷新</string>
     <string name="action_share_image">分享图片</string>
     <string name="submit_pmreply_actionbar">回复</string>
-    <string name="pm_reply_done">已发送。</string>
+    <string name="pm_reply_done">已发送回复。</string>
     <string name="action_back">返回</string>
     <string name="mainmenu_toast_not_subscribed">您不是本版块的订阅者！</string>
     <string name="mainmenu_toast_subscribed">您已经是本版块的订阅者！</string>
