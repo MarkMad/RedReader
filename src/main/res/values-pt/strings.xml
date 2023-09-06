@@ -601,4 +601,7 @@
     <string name="spoiler">Spoiler</string>
     <string name="pref_menus_mainmenu_header">Menu Principal</string>
     <string name="props_body_html">Corpo (HTML)</string>
+    <string name="pref_appearance_hide_headertoolbar_postlist_title">Ocultar barra de ferramentas do cabeçalho da lista de postagens</string>
+    <string name="pref_appearance_hide_headertoolbar_commentlist_title">Ocultar barra de ferramentas do cabeçalho da lista de comentários</string>
+    <string name="post_link_copied_to_clipboard">Link da postagem copiado para área de transferência</string>
 </resources>
