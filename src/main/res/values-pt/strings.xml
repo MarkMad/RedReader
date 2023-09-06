@@ -592,4 +592,13 @@
     <string name="pref_appearance_fontscale_linkbuttons_title">Botões de link</string>
     <string name="error_toast_failed_open_external_browser">Falha em abrir o url no navegador externo</string>
     <string name="subscription_successful">Inscrito em</string>
+    <string name="unsubscription_successful">Não está mais inscrito em %s</string>
+    <string name="unpin_successful">Desafixou %s do menu principal</string>
+    <string name="pin_successful">Afixou %s ao menu principal</string>
+    <string name="pref_menus_posts_header">Posts</string>
+    <string name="error_message_malformed_html">Não foi possível processar o texto do corpo. Por favor reportar isso ao desenvolvedor do app.</string>
+    <string name="error_title_malformed_html">HTML malformado</string>
+    <string name="spoiler">Spoiler</string>
+    <string name="pref_menus_mainmenu_header">Menu Principal</string>
+    <string name="props_body_html">Corpo (HTML)</string>
 </resources>
