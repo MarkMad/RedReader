@@ -604,4 +604,5 @@
     <string name="pref_appearance_hide_headertoolbar_postlist_title">Ocultar barra de ferramentas do cabeçalho da lista de postagens</string>
     <string name="pref_appearance_hide_headertoolbar_commentlist_title">Ocultar barra de ferramentas do cabeçalho da lista de comentários</string>
     <string name="post_link_copied_to_clipboard">Link da postagem copiado para área de transferência</string>
+    <string name="link_copied_to_clipboard">Link copiado para área de transferência</string>
 </resources>
