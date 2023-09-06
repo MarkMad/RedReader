@@ -605,5 +605,5 @@
     <string name="pref_appearance_hide_headertoolbar_commentlist_title">Ocultar barra de ferramentas do cabeçalho da lista de comentários</string>
     <string name="post_link_copied_to_clipboard">Link da postagem copiado para a área de transferência</string>
     <string name="link_copied_to_clipboard">Link copiado para a área de transferência</string>
-    <string name="comment_link_copied_to_clipboard">Link do comentário copiado para área de transferência</string>
+    <string name="comment_link_copied_to_clipboard">Link do comentário copiado para a área de transferência</string>
 </resources>
