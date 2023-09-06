@@ -627,4 +627,13 @@
     <string name="button_error_send_report">Reportar</string>
     <string name="image_gallery_no_image_present_message">A imagem especificada não pode ser encontrada. pode ter sido deletada.</string>
     <string name="button_error_details">Detalhes</string>
+    <string name="link_does_not_exist">Este link não existe. Pode ter sido excluído.</string>
+    <string name="dialog_continue">Continuar</string>
+    <string name="reddit_login_browser_popup_use_internal_browser">Usar o navegador interno (recomendado)</string>
+    <string name="reddit_login_browser_popup_use_external_browser">Usar navegador externo (recomendado)</string>
+    <string name="reddit_login_browser_popup_line_2">Quando o login estiver completo você deve ser redirecionado de volta ao RedReader. Se o login falhar, você pode tentar um navegador diferente usando a caixa de seleção abaixo.</string>
+    <string name="action_save_image_success_no_path">Imagem salva com sucesso</string>
+    <string name="pref_behaviour_imagevideo_tap_close_title">Aperte para fechar imagens/vídeos</string>
+    <string name="reddit_login_browser_popup_line_1">Para fazer login, você será levado ao Reddit em um navegador da web.</string>
+    <string name="title_attribution">Atribuição</string>
 </resources>
