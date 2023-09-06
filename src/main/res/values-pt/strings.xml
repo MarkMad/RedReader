@@ -47,7 +47,7 @@
     <string name="action_report_sure">Tem certeza que deseja reportar isso?</string>
     <string name="action_save">Salvar</string>
     <string name="action_save_image">Salvar Imagem</string>
-    <string name="action_save_image_success">"Salvo na pasta de imagens como "</string>
+    <string name="action_save_image_success">Salvo na pasta de imagens como</string>
     <string name="action_search">Buscar</string>
     <string name="action_search_comments">Buscar Comentários</string>
     <string name="action_selftext_links">Links no Texto</string>
@@ -383,7 +383,7 @@
     <string name="pref_appearance_twopane_auto">Automático</string>
     <string name="pref_appearance_thumbnails_wifionly_title">Miniaturas apenas com Wi-Fi</string>
     <string name="pref_appearance_thumbnails_show_title">Mostrar Miniaturas</string>
-    <string name="pref_appearance_thumbnails_nsfw_show_title">"Mostrar Miniaturas NSFW "</string>
+    <string name="pref_appearance_thumbnails_nsfw_show_title">Mostrar Miniaturas NSFW</string>
     <string name="pref_appearance_thumbnails_header">Miniaturas</string>
     <string name="pref_appearance_theme_title">Tema</string>
     <string name="pref_appearance_theme_header">Tema</string>
@@ -608,7 +608,7 @@
     <string name="comment_link_copied_to_clipboard">Link do comentário copiado para a área de transferência</string>
     <string name="subreddit_link_copied_to_clipboard">Link do subreddit copiado para a área de transferência</string>
     <string name="comment_text_copied_to_clipboard">Texto do comentário copiado para a área de transferência</string>
-    <string name="copied_to_clipboard">Copiado para área de transferência</string>
+    <string name="copied_to_clipboard">Copiado para a área de transferência</string>
     <string name="pref_menus_appbar_items_never">Não mostrar</string>
     <string name="image_gallery_removed_title">Galeria removida</string>
     <string name="pref_menus_appbar_items_overflow_only">Mostrar apenas no menu de três pontos</string>
@@ -620,4 +620,6 @@
     <string name="pref_behaviour_user_postsort_title">Postagens do usuário</string>
     <string name="image_gallery_removed_message">Esta galeria foi removida e não está mais acessível.</string>
     <string name="image_gallery_no_data_present_title">Galeria não encontrada</string>
+    <string name="action_comments_with_count">Ver comentários (%d)</string>
+    <string name="pref_appearance_fontscale_bodytext_title">Texto do corpo</string>
 </resources>
