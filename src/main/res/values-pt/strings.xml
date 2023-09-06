@@ -529,7 +529,7 @@
     <plurals name="load_more_comments_button_reply_count">
         <item quantity="one">Carregar mais comentários (%d resposta)</item>
         <item quantity="many">Carregar mais comentários (%d respostas)</item>
-        <item quantity="other"></item>
+        <item quantity="other"/>
     </plurals>
     <string name="collapsed_self_post">Auto-post colapsado</string>
     <string name="pref_appearance_comments_show_floating_toolbar_title">Mostrar barra de ferramentas flutuante sobre comentários</string>
@@ -657,4 +657,15 @@
     <string name="pref_appearance_comment_age_mode_relative_parent">Relativo ao comentário dos pais (respondido x minutos depois)</string>
     <string name="pref_appearance_age_units_2">Duas unidades (x horas, x minutos)</string>
     <string name="pref_appearance_inbox_age_units_title">Precisão da hora da caixa de entrada</string>
+    <string name="cache_clear_dialog_listings_data">Listagens (%s)</string>
+    <string name="dialog_clear">Limpar</string>
+    <string name="cache_clear_dialog_flags">Bandeiras</string>
+    <string name="cache_clear_dialog_images_data">Imagens (%s)</string>
+    <string name="pref_cache_clear_title">Limpar cache</string>
+    <string name="pref_images_thumbnail_size_title">Tamanho da miniatura</string>
+    <string name="cache_clear_dialog_thumbnails">Miniaturas</string>
+    <string name="cache_clear_dialog_thumbnails_data">Miniaturas (%s)</string>
+    <string name="cache_clear_dialog_listings">Listagens</string>
+    <string name="three_dots_menu">Mais opções</string>
+    <string name="cache_clear_dialog_images">Imagens</string>
 </resources>
