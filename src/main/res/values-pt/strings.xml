@@ -646,4 +646,15 @@
     <string name="search_results_query_and_location">Pesquisar \"%1$s\" em %2$s</string>
     <string name="pref_appearance_android_status_never_hide">Nunca</string>
     <string name="accessibility_subtitle_controversiality_withperiod">Votado como polêmico.</string>
+    <string name="pref_appearance_age_units_1">Uma unidade (x horas)</string>
+    <string name="pref_appearance_comment_age_units_title">Precisão da idade dos comentários</string>
+    <string name="time_after_reply">Respondido %s depois</string>
+    <string name="pref_appearance_comment_age_mode_absolute">Tempo desde o comentário (x minutos atrás)</string>
+    <string name="pref_appearance_comment_age_mode_relative_post">Relativo à postagem (após x minutos)</string>
+    <string name="pref_appearance_age_units_3">Três unidades (x horas, x minutos, x segundos)</string>
+    <string name="pref_appearance_inbox_header">Caixa de entrada</string>
+    <string name="pref_appearance_post_age_units_title">Precisão da idade da postagem</string>
+    <string name="pref_appearance_comment_age_mode_relative_parent">Relativo ao comentário dos pais (respondido x minutos depois)</string>
+    <string name="pref_appearance_age_units_2">Duas unidades (x horas, x minutos)</string>
+    <string name="pref_appearance_inbox_age_units_title">Precisão da hora da caixa de entrada</string>
 </resources>
