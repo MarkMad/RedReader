@@ -654,7 +654,7 @@
     <string name="pref_appearance_age_units_3">Três unidades (x horas, x minutos, x segundos)</string>
     <string name="pref_appearance_inbox_header">Caixa de entrada</string>
     <string name="pref_appearance_post_age_units_title">Precisão da idade da postagem</string>
-    <string name="pref_appearance_comment_age_mode_relative_parent">Relativo ao comentário dos pais (respondido x minutos depois)</string>
+    <string name="pref_appearance_comment_age_mode_relative_parent">Relativo ao comentário-pai (respondido x minutos depois)</string>
     <string name="pref_appearance_age_units_2">Duas unidades (x horas, x minutos)</string>
     <string name="pref_appearance_inbox_age_units_title">Precisão da hora da caixa de entrada</string>
     <string name="cache_clear_dialog_listings_data">Listagens (%s)</string>
@@ -668,4 +668,6 @@
     <string name="cache_clear_dialog_listings">Listagens</string>
     <string name="three_dots_menu">Mais opções</string>
     <string name="cache_clear_dialog_images">Imagens</string>
+    <string name="pref_appearance_android_status_always_hide">Sempre</string>
+    <string name="pref_appearance_android_status_hide_on_media">Quando estiver visualizando mídia</string>
 </resources>
