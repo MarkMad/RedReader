@@ -606,4 +606,6 @@
     <string name="post_link_copied_to_clipboard">Link da postagem copiado para a área de transferência</string>
     <string name="link_copied_to_clipboard">Link copiado para a área de transferência</string>
     <string name="comment_link_copied_to_clipboard">Link do comentário copiado para a área de transferência</string>
+    <string name="subreddit_link_copied_to_clipboard">Link do subreddit copiado para área de transferência</string>
+    <string name="comment_text_copied_to_clipboard">Texto do comentário copiado para a área de transferência</string>
 </resources>
