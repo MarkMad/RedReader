@@ -609,4 +609,15 @@
     <string name="subreddit_link_copied_to_clipboard">Link do subreddit copiado para a área de transferência</string>
     <string name="comment_text_copied_to_clipboard">Texto do comentário copiado para a área de transferência</string>
     <string name="copied_to_clipboard">Copiado para área de transferência</string>
+    <string name="pref_menus_appbar_items_never">Não mostrar</string>
+    <string name="image_gallery_removed_title">Galeria removida</string>
+    <string name="pref_menus_appbar_items_overflow_only">Mostrar apenas no menu de três pontos</string>
+    <string name="pref_appearance_post_show_comments_button_title">Mostrar botão de comentários</string>
+    <string name="pref_menus_appbar_items_always">Sempre mostrar o botão</string>
+    <string name="action_search_posts">Pesquisar Postagens</string>
+    <string name="sort_comments_top_hour">Top: esta hora</string>
+    <string name="image_gallery">Galeria</string>
+    <string name="pref_behaviour_user_postsort_title">Postagens do usuário</string>
+    <string name="image_gallery_removed_message">Esta galeria foi removida e não está mais acessível.</string>
+    <string name="image_gallery_no_data_present_title">Galeria não encontrada</string>
 </resources>
