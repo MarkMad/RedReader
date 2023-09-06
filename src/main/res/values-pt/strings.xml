@@ -625,7 +625,7 @@
     <string name="image_gallery_no_data_present_message">Galeria de imagem não encontrada no link especificado. Pode ter sido deletada.</string>
     <string name="image_gallery_no_image_present_title">Imagem não encontrada</string>
     <string name="button_error_send_report">Reportar</string>
-    <string name="image_gallery_no_image_present_message">A imagem especificada não pode ser encontrada. pode ter sido deletada.</string>
+    <string name="image_gallery_no_image_present_message">A imagem especificada não pode ser encontrada. Ela pode ter sido deletada.</string>
     <string name="button_error_details">Detalhes</string>
     <string name="link_does_not_exist">Este link não existe. Pode ter sido excluído.</string>
     <string name="dialog_continue">Continuar</string>
