@@ -63,7 +63,9 @@
     <string name="block_subreddit">Bloquear Subreddit</string>
     <string name="bug_button_ignore">Não enviar relatório de erros</string>
     <string name="bug_button_send">Enviar relatório de erros por email</string>
-    <string name="bug_message">RedReader encontrou um erro. Gostaria de enviar um relatório de erros para o desenvolvedor? Se sim, um email será preenchido para você com todas as informações relevantes, e você pode inspecionar o conteúdo antes de enviar.</string>
+    <string name="bug_message">RedReader encontrou um erro.
+\n
+\nGostaria de enviar um relatório de erros para o desenvolvedor\? Se sim, um email será preenchido para você com todas as informações relevantes, e você poderá inspecionar o conteúdo antes de enviar.</string>
     <string name="bug_title">Aconteceu um erro.</string>
     <string name="button_browse">Navegar…</string>
     <string name="button_moredetail">Mais Detalhes</string>
@@ -522,10 +524,12 @@
     <string name="pref_menus_show_random_main_menu_title">Mostrar /r/random no menu principal</string>
     <string name="mainmenu_custom_empty_search_query">Pesquisa vazia.</string>
     <string name="search_listing_header_query">Pesquisa</string>
-    <string name="pref_behaviour_sharing_include_desc_title">"Incluir título/descrição ao compartilhar "</string>
+    <string name="pref_behaviour_sharing_include_desc_title">Incluir título/descrição ao compartilhar</string>
     <string name="pref_cache_maxage_entry_title">Limpar cache de flags (já lido, votado, etc)</string>
     <plurals name="load_more_comments_button_reply_count">
-        <item quantity="other">Carregar mais comentários (%d respostas)</item>
+        <item quantity="one">Carregar mais comentários (%d resposta)</item>
+        <item quantity="many">Carregar mais comentários (%d respostas)</item>
+        <item quantity="other"></item>
     </plurals>
     <string name="collapsed_self_post">Auto-post colapsado</string>
     <string name="pref_appearance_comments_show_floating_toolbar_title">Mostrar barra de ferramentas flutuante sobre comentários</string>
@@ -590,8 +594,8 @@
     <string name="error_toast_no_email_apps">Sem aplicativos de email instalados!</string>
     <string name="must_login_message">Você precisa estar logado em uma conta do reddit para fazer isso.</string>
     <string name="pref_appearance_fontscale_linkbuttons_title">Botões de link</string>
-    <string name="error_toast_failed_open_external_browser">Falha em abrir o url no navegador externo</string>
-    <string name="subscription_successful">Inscrito em</string>
+    <string name="error_toast_failed_open_external_browser">Falhou ao abrir a URL \"%s\" no navegador externo</string>
+    <string name="subscription_successful">Inscrito em %s</string>
     <string name="unsubscription_successful">Não está mais inscrito em %s</string>
     <string name="unpin_successful">Desafixou %s do menu principal</string>
     <string name="pin_successful">Afixou %s ao menu principal</string>
@@ -633,7 +637,13 @@
     <string name="reddit_login_browser_popup_use_external_browser">Usar navegador externo (recomendado)</string>
     <string name="reddit_login_browser_popup_line_2">Quando o login estiver completo você deve ser redirecionado de volta ao RedReader. Se o login falhar, você pode tentar um navegador diferente usando a caixa de seleção abaixo.</string>
     <string name="action_save_image_success_no_path">Imagem salva com sucesso</string>
-    <string name="pref_behaviour_imagevideo_tap_close_title">Aperte para fechar imagens/vídeos</string>
+    <string name="pref_behaviour_imagevideo_tap_close_title">Toque para fechar imagens/vídeos</string>
     <string name="reddit_login_browser_popup_line_1">Para fazer login, você será levado ao Reddit em um navegador da web.</string>
     <string name="title_attribution">Atribuição</string>
+    <string name="pref_appearance_comment_header_items_controversiality">Indicador de polêmico (†)</string>
+    <string name="error_archived_reply">Isto foi arquivado e não pode mais receber respostas.</string>
+    <string name="search_results_location_only">Pesquisar em %s</string>
+    <string name="search_results_query_and_location">Pesquisar \"%1$s\" em %2$s</string>
+    <string name="pref_appearance_android_status_never_hide">Nunca</string>
+    <string name="accessibility_subtitle_controversiality_withperiod">Votado como polêmico.</string>
 </resources>
