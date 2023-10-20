@@ -26,11 +26,11 @@
     <string name="prefs_category_cache">Caché</string>
     <string name="prefs_category_menus">Menús</string>
     <!-- Appearance Prefs -->
-    <string name="pref_appearance_theme_header">Tema</string>
-    <string name="pref_appearance_thumbnails_header">Miniaturas de imágenes</string>
+    <string name="pref_appearance_theme_header">Apariencia</string>
+    <string name="pref_appearance_thumbnails_header">Miniaturas</string>
     <string name="pref_appearance_comments_header">Comentarios</string>
     <string name="pref_appearance_twopane_title">Modo tableta (dos paneles)</string>
-    <string name="pref_appearance_theme_title">Tema</string>
+    <string name="pref_appearance_theme_title">Apariencia</string>
     <string name="pref_appearance_fontscale_posts_title">Títulos de publicaciones</string>
     <string name="pref_appearance_thumbnails_show_title">Mostrar miniaturas</string>
     <string name="pref_appearance_thumbnails_nsfw_show_title">Mostrar miniaturas NSFW</string>
