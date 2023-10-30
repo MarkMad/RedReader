@@ -411,7 +411,7 @@
     <string name="action_delete">حذف</string>
     <string name="delete_confirm">تأكد على الحذف؟</string>
     <string name="delete_success">تم الحذف بنجاح. سيظل العنصر مرئيًا حتى تقوم بالتحديث.</string>
-    <string name="pref_appearance_hide_username_main_menu_title">إخفاء اسم المستخدم في القائمة الرئيسية</string>
+    <string name="pref_appearance_hide_username_main_menu_title">إخفاء اسم المستخدم</string>
     <string name="mainmenu_useritems">عناصر المستخدم</string>
     <string name="selected_link_is_not_image">الرابط المختار ليس صورة.</string>
     <string name="imgur_album">ألبوم &lt;Imgur&gt;</string>
@@ -576,4 +576,8 @@
     <string name="pref_behaviour_sharing_include_desc_title">تضمين العنوان/الوصف عند النشر</string>
     <string name="share_comments_for">تعليقات ل%s</string>
     <string name="share_comment_by_on_reddit">التعليق من قبل %s في ريديت</string>
+    <string name="pref_appearance_left_handed_title">"وضع  ايسر"</string>
+    <string name="error_already_submitted_title">تم التقديم من قبل</string>
+    <string name="post_submit_mark_spoiler">وضع علاملة تحذير لحرق الأحداث</string>
+    <string name="title_license">رخصة</string>
 </resources>
