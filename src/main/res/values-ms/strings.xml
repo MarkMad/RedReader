@@ -119,4 +119,10 @@
     <string name="pref_appearance_thumbnails_nsfw_show_title">Tunjukkan NSFW thumbnails</string>
     <string name="comment_reply_preview">Pratonton</string>
     <string name="edittext_hint_comment_body_text">Teks Komen</string>
+    <string name="pref_appearance_thumbnails_wifionly_title">Gambar kecik hanya Wi-Fi sahaja</string>
+    <string name="pref_behaviour_actions_post_header">TIndakan Pos</string>
+    <string name="firstrun_login_button_later">Menjadi Penyamar</string>
+    <string name="pref_behaviour_actions_comment_header">TIndakan Komen</string>
+    <string name="pref_appearance_comment_header_items_title">Kepala komen entri</string>
+    <string name="pref_cache_pruning">Bersihkan Cache</string>
 </resources>
