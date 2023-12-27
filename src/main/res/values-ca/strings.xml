@@ -1,2 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="pref_appearance_comments_header">Comentaris</string>
+    <string name="pref_appearance_thumbnails_wifionly_title">Miniatures només amb Wi-Fi</string>
+    <string name="pref_appearance_theme_title">Tema</string>
+    <string name="pref_appearance_twopane_title">Mode tauleta (dos panells)</string>
+    <string name="pref_behaviour_actions_post_header">Accions sobre les publicacions</string>
+    <string name="firstrun_login_button_later">Sigues anònim</string>
+    <string name="pref_behaviour_notifications_title">Notificacions</string>
+    <string name="pref_appearance_thumbnails_header">Miniatures</string>
+    <string name="pref_appearance_thumbnails_show_title">Mostra les miniatures</string>
+    <string name="prefs_category_cache">Memòria cau</string>
+    <string name="firstrun_login_button_now">Inícia la sessió ara</string>
+    <string name="pref_appearance_comment_header_items_title">Entrades de capçalera de comentaris</string>
+    <string name="prefs_category_appearance">Aparença</string>
+    <string name="pref_appearance_theme_header">Tema</string>
+    <string name="firstrun_login_message">Actualment no heu iniciat sessió. Podeu accedir a la llista de comptes seleccionant Comptes al menú.</string>
+    <string name="pref_appearance_fontscale_posts_title">Títols de publicació</string>
+    <string name="prefs_category_menus">Menús</string>
+    <string name="firstrun_login_title">Iniciar la sessió</string>
+    <string name="prefs_category_behaviour">Comportament</string>
+    <string name="pref_appearance_thumbnails_nsfw_show_title">Mostra les miniatures NSFW</string>
+</resources>
