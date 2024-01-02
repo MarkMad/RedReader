@@ -56,7 +56,7 @@
     <string name="pref_cache_precache_images_wifionly_title">Nur im WLAN</string>
     <!-- Menu Prefs -->
     <string name="pref_menus_post_context_items_title">Aktionsmenü Einträge</string>
-    <string name="pref_menus_post_toolbar_items_title">Post-Toolbar</string>
+    <string name="pref_menus_post_toolbar_items_title">Seitenleiste Items</string>
     <!-- Options Menu -->
     <string name="options_accounts">Konten</string>
     <string name="options_accounts_long">Reddit-Accounts</string>
@@ -591,8 +591,8 @@
     <string name="pref_behaviour_video_mute_default_title">Videos standardmäßig stumm schalten</string>
     <string name="post_submit_mark_nsfw">Als NSFW markieren</string>
     <string name="error_already_submitted_message">Dieser Beitrag wurde bereits an diesen Subreddit gesendet.</string>
-    <string name="pref_behaviour_usecustomtabs_title">Benutzerdefinierte Tabs verwenden</string>
-    <string name="pref_behaviour_usecustomtabs_summary">Verwende benutzerdefinierte Tabs, wenn verfügbar</string>
+    <string name="pref_behaviour_usecustomtabs_title">Benutzerdefinierte Android-Tabs verwenden</string>
+    <string name="pref_behaviour_usecustomtabs_summary">Verwende benutzerdefinierte Android-Tabs, wenn verfügbar</string>
     <string name="pref_menus_mainmenu_shortcutitems_title">Kurzbefehle</string>
     <string name="pref_menus_show_multireddit_main_menu_title">Multireddits anzeigen</string>
     <string name="mainmenu_random_nsfw">Zufälliger NSFW-Subreddit</string>
@@ -747,4 +747,6 @@
     <string name="pref_menus_quick_account_switcher_title">Nutze schnellen Account-Wechsel</string>
     <string name="pref_appearance_not_possible_in_tablet_mode">Im Tablet-Modus nicht möglich</string>
     <string name="options_account_manager">Verwalte…</string>
+    <string name="pref_appearance_hide_headertoolbar_postlist_title">Symbolleiste der Beitragsliste ausblenden</string>
+    <string name="cache_clear_dialog_loaded">Größe genutzter Daten geladen</string>
 </resources>
