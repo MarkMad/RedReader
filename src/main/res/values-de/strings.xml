@@ -749,4 +749,5 @@
     <string name="options_account_manager">Verwalte…</string>
     <string name="pref_appearance_hide_headertoolbar_postlist_title">Symbolleiste der Beitragsliste ausblenden</string>
     <string name="cache_clear_dialog_loaded">Größe genutzter Daten geladen</string>
+    <string name="cache_clear_dialog_loading">Lade Größe genutzter Daten</string>
 </resources>
