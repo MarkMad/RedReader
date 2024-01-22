@@ -872,4 +872,11 @@
     <string name="accessibility_subtitle_author_submitter_moderator_withperiod">Autor: %s, Beitragsersteller und Moderator.</string>
     <string name="accessibility_subtitle_author_submitter_admin_withperiod">Autor: %s, Beitragsersteller und Admin.</string>
     <string name="search_listing_header_limit_location">Beschränkung auf den Standort</string>
+    <string name="restore_preferences_error_version_warning_message">Die ausgewählte Datei wurde von einer neueren Version von RedReader erstellt. Das Wiederherstellen kann zu Abstürzen und Instabilität führen.</string>
+    <string name="cache_clear_dialog_listings">Listen</string>
+    <string name="cache_clear_dialog_listings_data">Listen (%s)</string>
+    <string name="cache_clear_dialog_thumbnails">Vorschaubilder</string>
+    <string name="cache_clear_dialog_thumbnails_data">Vorschaubilder (%s)</string>
+    <string name="prefs_category_backup_restore">Sichern/Wiederherstellen</string>
+    <string name="pref_item_restore_preferences_title">Einstellungen wiederherstellen</string>
 </resources>
