@@ -87,11 +87,11 @@
     <string name="download_authorizing">Autenticando…</string>
     <string name="download_connecting">Conectando…</string>
     <string name="download_done">Feito.</string>
-    <string name="download_downloading">Baixando…</string>
+    <string name="download_downloading">A descarregar…</string>
     <string name="download_downloadstarting">A descarrega inicia…</string>
     <string name="download_failed">Falhou.</string>
     <string name="download_loading">Carregando…</string>
-    <string name="download_subreddits">Baixando subreddits…</string>
+    <string name="download_subreddits">A descarregar subreddits…</string>
     <string name="download_waiting">Esperando…</string>
     <string name="edit_comment_actionbar">Editar Comentário</string>
     <string name="error_403_title">Utilizador inválido</string>
@@ -478,9 +478,9 @@
     <string name="error_parse_imgur_title">Erro de Análise</string>
     <string name="error_parse_message">Reddit enviou alguns dados que eu não consegui entender.</string>
     <string name="error_parse_title">Erro de Análise</string>
-    <string name="error_postlist_cache_message">Você está vendo uma versão antiga desse conteúdo, e não há mais postagens desta sessão no cache. Atualize para baixar as últimas postagens ou selecione uma versão anterior no menu.</string>
+    <string name="error_postlist_cache_message">Vê uma versão antiga desse conteúdo e não há mais postagens desta sessão no cache. Atualize para descarregar as últimas postagens ou selecione uma versão anterior no menu.</string>
     <string name="error_postlist_cache_title">Fim dos dados em cache</string>
-    <string name="error_postlist_redditdown_message">O Reddit está tendo muitos acessos no momento. Atualize para baixar as últimas postagens ou selecione uma versão anterior no menu.</string>
+    <string name="error_postlist_redditdown_message">O Reddit tem muitos acessos no momento. Atualize para descarregar as últimas postagens ou selecione uma versão anterior no menu.</string>
     <string name="error_ratelimit_message">Bloqueado devido a muitas tentativas falhas de login neste IP. Reddit diz:</string>
     <string name="error_ratelimit_title">Muitas tentativas Inválidas.</string>
     <string name="error_redditdown_message">O Reddit está tendo muitos acessos no momento. Por favor tente novamente.</string>
@@ -492,7 +492,7 @@
     <string name="error_toast_no_urls_in_comment">Nenhuma URL encontrada neste comentário.</string>
     <string name="error_toast_no_urls_in_self">Nenhuma URL encontrada no texto.</string>
     <string name="error_toast_notloggedin">Você precisa estar logado para fazer isso.</string>
-    <string name="error_toast_parent_post_not_downloaded">O post pai ainda não foi baixado.</string>
+    <string name="error_toast_parent_post_not_downloaded">O post pai ainda não foi descarregado.</string>
     <string name="error_too_fast_message">Reddit diz que você está postando muito rapidamente. Por favor, aguarde alguns minutos antes de tentar novamente.</string>
     <string name="error_too_long_message">Reddit diz que o texto que você inseriu é muito longo.</string>
     <string name="error_tor_not_installed">O Tor não funcionará a menos que o Orbot esteja instalado. Instalar agora?</string>
