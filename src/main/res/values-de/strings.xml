@@ -591,8 +591,8 @@
     <string name="pref_behaviour_video_mute_default_title">Videos standardmäßig stumm schalten</string>
     <string name="post_submit_mark_nsfw">Als NSFW markieren</string>
     <string name="error_already_submitted_message">Dieser Beitrag wurde bereits an diesen Subreddit gesendet.</string>
-    <string name="pref_behaviour_usecustomtabs_title">Benutzerdefinierte Android-Tabs verwenden</string>
-    <string name="pref_behaviour_usecustomtabs_summary">Verwende benutzerdefinierte Android-Tabs, wenn verfügbar</string>
+    <string name="pref_behaviour_usecustomtabs_title">Benutzerdefinierte Android Tabs verwenden</string>
+    <string name="pref_behaviour_usecustomtabs_summary">Verwende benutzerdefinierte Android Tabs, falls verfügbar</string>
     <string name="pref_menus_mainmenu_shortcutitems_title">Kurzbefehle</string>
     <string name="pref_menus_show_multireddit_main_menu_title">Multireddits anzeigen</string>
     <string name="mainmenu_random_nsfw">Zufälliger NSFW-Subreddit</string>
