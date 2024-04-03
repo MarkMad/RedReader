@@ -609,5 +609,5 @@
     <string name="image_gallery">갤러리</string>
     <string name="pref_appearance_post_show_comments_button_title">댓글 버튼 보이기</string>
     <string name="action_comments_with_count">댓글 보기(%d)</string>
-    <string name="pref_behaviour_user_postsort_title">유저 포스트 (기본)</string>
+    <string name="pref_behaviour_user_postsort_title">유저 게시물(기본)</string>
 </resources>
