@@ -626,4 +626,19 @@
     <string name="button_error_details">세부정보</string>
     <string name="image_gallery_no_image_present_title">이미지를 찾을 수 없음</string>
     <string name="title_attribution">귀속</string>
+    <string name="reddit_login_browser_popup_line_1">로그인을 하기 위해, 웹브라우저에서 레딧으로 접속합니다.</string>
+    <string name="reddit_login_browser_popup_line_2">로그인이 완료되면, 다시 RedReader로 돌아오게 됩니다. 로그인 실패 시, 아래의 체크박스를 사용해서 다른 브라우저를 시도 해보세요.</string>
+    <string name="reddit_login_browser_popup_use_internal_browser">내장된 브라우저 사용 (권장됨)</string>
+    <string name="image_gallery_no_image_present_message">선택한 이미지를 찾을 수 없습니다. 삭제되었을 수 있습니다.</string>
+    <string name="reddit_login_browser_popup_use_external_browser">외부 브라우저 사용 (권장됨)</string>
+    <string name="dialog_continue">계속</string>
+    <string name="link_does_not_exist">없는 링크입니다. 삭제되었을 수 있습니다.</string>
+    <plurals name="load_more_comments_button_reply_count">
+        <item quantity="other">댓글 더 불러오기 (%d 개)</item>
+    </plurals>
+    <string name="action_save_image_success_no_path">이미지 저장 성공</string>
+    <string name="pref_behaviour_imagevideo_tap_close_title">탭해서 이미지/비디오 닫기</string>
+    <string name="pref_behaviour_imagevideo_tap_close_summary">재생컨트롤이 활성화 되어있으면 이 설정은 비디오에 영향을 주지 않습니다.</string>
+    <string name="press_back_again">뒤로가기를 다시 누르세요</string>
+    <string name="pref_behaviour_postlist_back_again">뒤로가기를 두 번 눌러서 포스트 목록에서 나갑니다.</string>
 </resources>
