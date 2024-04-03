@@ -641,4 +641,10 @@
     <string name="pref_behaviour_imagevideo_tap_close_summary">재생컨트롤이 활성화 되어있으면 이 설정은 비디오에 영향을 주지 않습니다.</string>
     <string name="press_back_again">뒤로가기를 다시 누르세요</string>
     <string name="pref_behaviour_postlist_back_again">뒤로가기를 두 번 눌러서 게시물 목록에서 나갑니다.</string>
+    <string name="pref_behaviour_back_button_title">뒤로가기 버튼</string>
+    <string name="pref_appearance_hide_toolbar_on_scroll_title">스크롤 중 툴바 숨기기</string>
+    <string name="pref_appearance_toolbar_header">툴바</string>
+    <string name="pref_behaviour_save_location_title">경로 저장</string>
+    <string name="pref_behaviour_save_location_prompt_every_time">항상 물어보기</string>
+    <string name="pref_behaviour_save_location_system_default">안드로이드 설정 사용</string>
 </resources>
