@@ -569,5 +569,5 @@
     <string name="pref_appearance_post_header_subtitle_items_title">열람중인 게시물의 세부정보 항목</string>
     <string name="list_yes_no_or_wifi_never">적용하지 않음</string>
     <string name="error_nsfw_subreddits_disabled_title">차단된 후방 서브레딧</string>
-    <string name="error_nsfw_subreddits_disabled_message">현재 후방 관련 내용들은 설정에서 비활성화 되어 있습니다.</string>
+    <string name="error_nsfw_subreddits_disabled_message">현재 후방 컨텐츠는 설정에서 비활성화 되어 있습니다.</string>
 </resources>
