@@ -597,4 +597,5 @@
     <string name="post_link_copied_to_clipboard">게시믈 링크가 클립보드로 복사됨</string>
     <string name="link_copied_to_clipboard">링크가 클립보드로 복사됨</string>
     <string name="comment_link_copied_to_clipboard">댓글 링크가 클립보드로 복사됨</string>
+    <string name="comment_text_copied_to_clipboard">댓글 내용을 클립보드로 복사했습니다.</string>
 </resources>
