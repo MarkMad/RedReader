@@ -649,5 +649,5 @@
     <string name="pref_behaviour_save_location_system_default">시스템 기본 사용</string>
     <string name="pref_appearance_not_possible_in_tablet_mode">태블릿 모드에서 사용 불가</string>
     <string name="pref_menus_quick_account_switcher_title">빠른 계정 전환 사용</string>
-    <string name="options_account_manager">관리하기</string>
+    <string name="options_account_manager">관리…</string>
 </resources>
