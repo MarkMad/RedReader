@@ -652,5 +652,5 @@
     <string name="options_account_manager">관리…</string>
     <string name="time_after">%s 후</string>
     <string name="time_after_reply">%s 후 달린 댓글</string>
-    <string name="pref_appearance_post_header_age_units_title">열람중인 포스트 시간포맷</string>
+    <string name="pref_appearance_post_header_age_units_title">열람중인 게시물 시간포맷</string>
 </resources>
