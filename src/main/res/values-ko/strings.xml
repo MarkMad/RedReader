@@ -559,4 +559,5 @@
     <string name="pref_behaviour_sharing_share_dialog_dialogtitle">공유할 앱 선택</string>
     <string name="pref_appearance_fontscale_comment_headers_title">댓글/수신함 헤더항목</string>
     <string name="pref_appearance_post_subtitle_items_title">포스트 세부정보 항목</string>
+    <string name="pref_appearance_posts_header">게시물</string>
 </resources>
