@@ -572,5 +572,6 @@
     <string name="error_nsfw_subreddits_disabled_message">현재 후방 컨텐츠는 설정에서 비활성화 되어 있습니다.</string>
     <string name="search_results_short">검색 결과</string>
     <string name="search_results_query_only">\"%s\" 검색</string>
-    <string name="pref_network_tor_summary">외부 브라우저 또는 사용자 지정 탭 사용 시, 해당 브라우저에 Tor 관련 설정이 되어있지 않은 경우, Tor 사용이 제한됩니다.</string>
+    <string name="pref_network_tor_summary">외부 브라우저 또는 사용자 지정 탭 사용 시(해당 브라우저에 Tor 관련 설정이 되어있지 않은 경우) Tor 사용이 제한됩니다</string>
+    <string name="prefs_category_fonts">글꼴</string>
 </resources>
