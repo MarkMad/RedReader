@@ -576,4 +576,7 @@
     <string name="prefs_category_fonts">글꼴</string>
     <string name="pref_appearance_fontscale_header">글꼴 배율</string>
     <string name="pref_appearance_fontscale_use_global">전역 글꼴 배율 사용</string>
+    <string name="pref_appearance_fontscale_linkbuttons_title">링크 버튼</string>
+    <string name="pref_appearance_fontscale_bodytext_title">본문</string>
+    <string name="must_login_message">Reddit에 로그인 한 후, 사용할 수 있습니다.</string>
 </resources>
