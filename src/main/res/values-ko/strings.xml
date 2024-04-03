@@ -561,5 +561,5 @@
     <string name="pref_appearance_post_subtitle_items_title">게시물 세부정보 항목</string>
     <string name="pref_appearance_posts_header">게시물</string>
     <string name="pref_appearance_post_subtitle_items_sticky">고정태그</string>
-    <string name="pref_appearance_post_subtitle_items_spoiler">스포일러태그</string>
+    <string name="pref_appearance_post_subtitle_items_spoiler">스포일러 태그</string>
 </resources>
