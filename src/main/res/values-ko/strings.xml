@@ -586,4 +586,9 @@
     <string name="unsubscription_successful">%s 구독을 취소했습니다</string>
     <string name="unpin_successful">메인 메뉴에서 %s 고정 해제 됨</string>
     <string name="pref_menus_posts_header">게시물</string>
+    <string name="pref_menus_mainmenu_header">메인 메뉴</string>
+    <string name="spoiler">스포일러</string>
+    <string name="error_title_malformed_html">잘못된 형식의 HTML</string>
+    <string name="error_message_malformed_html">본문을 읽는데 실패했습니다. 앱 개발자에게 리포트하시기 바랍니다.</string>
+    <string name="props_body_html">Body (HTML)</string>
 </resources>
