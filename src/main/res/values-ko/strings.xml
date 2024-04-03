@@ -620,4 +620,5 @@
     <string name="sort_comments_top_month">찬성 순: 이번달</string>
     <string name="sort_comments_top_year">찬성 순: 올해</string>
     <string name="image_gallery_removed_title">갤러리 제거</string>
+    <string name="image_gallery_removed_message">이 갤러리는 제거되었으며 더 이상 사용할 수 없습니다.</string>
 </resources>
