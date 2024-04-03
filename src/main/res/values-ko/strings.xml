@@ -591,5 +591,5 @@
     <string name="error_title_malformed_html">잘못된 형식의 HTML</string>
     <string name="error_message_malformed_html">본문을 읽는데 실패했습니다. 앱 개발자에게 리포트하시기 바랍니다.</string>
     <string name="props_body_html">본문(HTML)</string>
-    <string name="props_self_html">본문 (HTML)</string>
+    <string name="props_self_html">본문(HTML)</string>
 </resources>
