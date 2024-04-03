@@ -565,5 +565,5 @@
     <string name="pref_appearance_post_subtitle_items_nsfw">후방 태그</string>
     <string name="pref_appearance_post_subtitle_items_domain">도메인</string>
     <string name="pref_appearance_post_subtitle_items_subreddit">서브레딧</string>
-    <string name="pref_appearance_post_subtitle_items_use_different_settings_title">열람중인 포스트에 다른 설정 사용</string>
+    <string name="pref_appearance_post_subtitle_items_use_different_settings_title">열람중인 게시물에 다른 설정 사용</string>
 </resources>
