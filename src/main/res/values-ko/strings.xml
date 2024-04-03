@@ -653,4 +653,8 @@
     <string name="time_after">%s 후</string>
     <string name="time_after_reply">%s 후 달린 댓글</string>
     <string name="pref_appearance_post_header_age_units_title">열람중인 게시물 시간포맷</string>
+    <string name="pref_appearance_comment_age_units_title">댓글 시간포맷</string>
+    <string name="pref_appearance_inbox_header">수신함</string>
+    <string name="pref_appearance_inbox_age_units_title">수신함 항목 시간포맷</string>
+    <string name="pref_appearance_age_units_1">x 시간</string>
 </resources>
