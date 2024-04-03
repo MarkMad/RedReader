@@ -583,4 +583,5 @@
     <string name="error_toast_failed_open_external_browser">외부 브라우저에서 \"%s\"을 열지 못했습니다.</string>
     <string name="error_toast_no_email_apps">설치된 이메일 앱이 없습니다!</string>
     <string name="subscription_successful">%s를 구독했습니다</string>
+    <string name="unsubscription_successful">%s 구독을 취소했습니다</string>
 </resources>
