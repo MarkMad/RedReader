@@ -600,4 +600,9 @@
     <string name="comment_text_copied_to_clipboard">댓글 내용이 클립보드로 복사됨</string>
     <string name="subreddit_link_copied_to_clipboard">서브레딧 링크가 클립보드로 복사됨</string>
     <string name="copied_to_clipboard">클립보드로 복사했습니다.</string>
+    <string name="pref_menus_appbar_items_overflow_only">3점 메뉴에서만 보이기</string>
+    <string name="pref_menus_appbar_items_never">보이지 않기</string>
+    <string name="action_search_posts">포스트 검색</string>
+    <string name="pref_menus_appbar_items_always">항상 버튼 보이기</string>
+    <string name="pref_menus_appbar_items_if_room">공간이 될 때만 버튼 보이기</string>
 </resources>
