@@ -555,5 +555,8 @@
     <string name="pin_successful">%s를 메인 메뉴에 고정했습니다</string>
     <string name="bug_chooser_title">버그리포트 이메일 보내기</string>
     <string name="pref_appearance_comment_age_mode_title">댓글 시간 표시모드</string>
-    <string name="notification_channel_name_reddit_messages">수신되는 레딧 메시지</string>
+    <string name="notification_channel_name_reddit_messages">레딧 메시지 도착</string>
+    <string name="pref_behaviour_sharing_share_dialog_dialogtitle">공유할 앱 선택</string>
+    <string name="pref_appearance_fontscale_comment_headers_title">댓글/수신함 헤더항목</string>
+    <string name="pref_appearance_post_subtitle_items_title">포스트 세부정보 항목</string>
 </resources>
