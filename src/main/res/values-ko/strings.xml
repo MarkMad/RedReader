@@ -650,5 +650,5 @@
     <string name="pref_appearance_not_possible_in_tablet_mode">태블릿 모드에서 사용 불가</string>
     <string name="pref_menus_quick_account_switcher_title">빠른 계정 전환 사용</string>
     <string name="options_account_manager">관리…</string>
-    <string name="time_after">% 후</string>
+    <string name="time_after">%s 후</string>
 </resources>
