@@ -592,4 +592,5 @@
     <string name="error_message_malformed_html">본문을 읽는데 실패했습니다. 앱 개발자에게 리포트하시기 바랍니다.</string>
     <string name="props_body_html">본문(HTML)</string>
     <string name="props_self_html">본문(HTML)</string>
+    <string name="pref_appearance_hide_headertoolbar_postlist_title">포스트 목록에서 헤더의 툴바 숨기기</string>
 </resources>
