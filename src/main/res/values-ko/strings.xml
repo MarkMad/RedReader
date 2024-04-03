@@ -624,5 +624,6 @@
     <string name="image_gallery_no_data_present_title">갤러리 찾을 수 없음</string>
     <string name="image_gallery_no_data_present_message">이 링크에서 갤러리를 찾을 수 없습니다. 삭제되었을 수 있습니다.</string>
     <string name="button_error_details">세부정보</string>
-    <string name="image_gallery_no_image_present_title">이미지를 찾을 수 없습니다.</string>
+    <string name="image_gallery_no_image_present_title">이미지를 찾을 수 없음</string>
+    <string name="title_attribution">귀속</string>
 </resources>
