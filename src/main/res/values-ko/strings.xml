@@ -575,5 +575,5 @@
     <string name="pref_network_tor_summary">외부 브라우저 또는 사용자 지정 탭 사용 시(해당 브라우저에 Tor 관련 설정이 되어있지 않은 경우) Tor 사용이 제한됩니다</string>
     <string name="prefs_category_fonts">글꼴</string>
     <string name="pref_appearance_fontscale_header">글꼴 배율</string>
-    <string name="pref_appearance_fontscale_use_global">글로벌 폰트 배율 사용</string>
+    <string name="pref_appearance_fontscale_use_global">전역 글꼴 배율 사용</string>
 </resources>
