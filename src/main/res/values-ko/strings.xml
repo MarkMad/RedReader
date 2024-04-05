@@ -659,4 +659,6 @@
     <string name="pref_appearance_age_units_1">한 단위 (x시간)</string>
     <string name="pref_appearance_age_units_2">두 단위 (x시간, x분)</string>
     <string name="pref_appearance_age_units_3">세 단위 (x시간, x분, x초)</string>
+    <string name="pref_appearance_comment_age_mode_absolute">댓글작성 후 지난시간 (x분 전)</string>
+    <string name="pref_appearance_comment_age_mode_relative_parent">상위 댓글 작성 시간 기준 (x분 후 댓글 달림)</string>
 </resources>
