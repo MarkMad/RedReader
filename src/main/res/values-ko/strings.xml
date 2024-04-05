@@ -682,4 +682,5 @@
     <string name="accessibility_subtitle_flair_withperiod">Flair: %s.</string>
     <string name="accessibility_subtitle_points_withperiod">점수: %d.</string>
     <string name="accessibility_subtitle_gold_withperiod">받은 골드: %d.</string>
+    <string name="accessibility_subtitle_age_withperiod">작성 후 지난 시간: %s</string>
 </resources>
