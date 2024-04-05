@@ -681,4 +681,5 @@
     <string name="accessibility_subtitle_nsfw_withperiod">후방 게시물입니다.</string>
     <string name="accessibility_subtitle_flair_withperiod">Flair: %s.</string>
     <string name="accessibility_subtitle_points_withperiod">점수: %d.</string>
+    <string name="accessibility_subtitle_gold_withperiod">받은 골드: %d 개</string>
 </resources>
