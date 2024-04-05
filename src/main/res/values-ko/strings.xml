@@ -657,4 +657,6 @@
     <string name="pref_appearance_inbox_header">수신함</string>
     <string name="pref_appearance_inbox_age_units_title">수신함 항목 시간포맷</string>
     <string name="pref_appearance_age_units_1">한 단위 (x시간)</string>
+    <string name="pref_appearance_age_units_2">두 단위 (x시간, x분)</string>
+    <string name="pref_appearance_age_units_3">세 단위 (x시간, x분, x초)</string>
 </resources>
