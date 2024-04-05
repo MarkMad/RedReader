@@ -677,5 +677,5 @@
     <string name="accessibility_image_viewer_view_comments">댓글 보기</string>
     <string name="accessibility_image_viewer_go_back">뒤로 가기</string>
     <string name="accessibility_subtitle_spoiler_withperiod">스포일러가 포함되어 있습니다.</string>
-    <string name="accessibility_subtitle_sticky_withperiod">고정된 포스트입니다.</string>
+    <string name="accessibility_subtitle_sticky_withperiod">고정 게시물입니다.</string>
 </resources>
