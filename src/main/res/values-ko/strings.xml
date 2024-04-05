@@ -663,4 +663,19 @@
     <string name="pref_appearance_comment_age_mode_relative_parent">상위 댓글 작성 시간 기준 (x분 후 댓글)</string>
     <string name="cache_clear_dialog_loaded">로드된 데이터 사용량 크기</string>
     <string name="accessibility_image_viewer_title">이미지 표시</string>
+    <string name="pref_cache_clear_title">캐시 지우기</string>
+    <string name="dialog_clear">지우기</string>
+    <string name="cache_clear_dialog_listings">목록</string>
+    <string name="cache_clear_dialog_listings_data">목록 (%s)</string>
+    <string name="cache_clear_dialog_thumbnails">썸네일</string>
+    <string name="cache_clear_dialog_thumbnails_data">썸네일 (%s)</string>
+    <string name="cache_clear_dialog_images">이미지</string>
+    <string name="cache_clear_dialog_images_data">이미지 (%s)</string>
+    <string name="cache_clear_dialog_flags">플래그</string>
+    <string name="three_dots_menu">더 많은 옵션</string>
+    <string name="pref_images_thumbnail_size_title">썸네일 크기</string>
+    <string name="accessibility_image_viewer_view_comments">댓글 보기</string>
+    <string name="accessibility_image_viewer_go_back">뒤로 가기</string>
+    <string name="accessibility_subtitle_spoiler_withperiod">스포일러가 포함되어 있습니다.</string>
+    <string name="accessibility_subtitle_sticky_withperiod">고정된 포스트입니다.</string>
 </resources>
