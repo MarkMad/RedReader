@@ -680,5 +680,5 @@
     <string name="accessibility_subtitle_sticky_withperiod">고정 게시물입니다.</string>
     <string name="accessibility_subtitle_nsfw_withperiod">후방 게시물입니다.</string>
     <string name="accessibility_subtitle_flair_withperiod">Flair: %s.</string>
-    <string name="accessibility_subtitle_points_withperiod">점수: %d점</string>
+    <string name="accessibility_subtitle_points_withperiod">점수: %d.</string>
 </resources>
