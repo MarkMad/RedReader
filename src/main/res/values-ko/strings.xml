@@ -716,4 +716,22 @@
     <string name="button_dismiss">닫기</string>
     <string name="button_view">보기</string>
     <string name="action_not_handled_by_installed_app_toast">이 작업을 수행할 수 있는 앱을 찾을 수 없음</string>
+    <string name="pref_appearance_thumbnails_spoiler_show_title">스포 썸네일 보기</string>
+    <string name="pref_accessibility_min_comment_height_title">최소 댓글 높이</string>
+    <string name="pref_accessibility_min_comment_height_none">적용 안함</string>
+    <string name="pref_menus_comments_header">댓글</string>
+    <string name="pref_menus_comment_context_items_title">행동 메뉴 항목</string>
+    <string name="pref_behaviour_post_title_opens_comments_title">게시물 제목으로 댓글 열기</string>
+    <string name="mainmenu_sent_messages">보낸 메시지</string>
+    <string name="post_submit_flair_none_available">사용 가능한 Flair 없음</string>
+    <string name="post_submit_flair_none_selected">선택한 Flair 없음</string>
+    <string name="subreddit_selector_title">서브레딧 선택</string>
+    <string name="post_submit_heading">유저 %2$s로 %1$s에 게시물을 올립니다.</string>
+    <string name="error_subreddit_does_not_exist_title">유효하지 않은 서브레딧</string>
+    <string name="error_subreddit_does_not_exist_message">지정한 서브레딧이 존재하지 않습니다.</string>
+    <string name="error_subreddit_info_permission_denied_title">권한 거부됨</string>
+    <string name="error_subreddit_info_permission_denied_message">로그인된 유저는 해당 서브레딧 정보에 액세스할 수 없습니다.</string>
+    <string name="invalid_subreddit_name_message">유효한 서브레딧 이름을 입력하세요.</string>
+    <string name="accessibility_subtitle_recipient_withperiod">받는 사람: %s.</string>
+    <string name="pref_images_inline_image_previews_spoiler_title">스포 미리보기 표시</string>
 </resources>
