@@ -768,4 +768,6 @@
     <string name="error_tor_connection_title">Tor 오류</string>
     <string name="error_tor_connection_message">Tor에 접속할 수 없습니다. Orbot앱이 실행 중인지 확인하거나, 네트워크 설정에서 Tor을 비활성화하세요.</string>
     <string name="error_imgur_400_title">Imgur 오류</string>
+    <string name="error_imgur_400_message">Imgur에서 이미지 업로드를 거부했습니다. 허용량 제한 문제일 수 있습니다. 다른 이미지 호스트를 사용하거나, 나중에 다시 시도하세요.</string>
+    <string name="error_content_blocker_title">컨텐츠 차단 감지</string>
 </resources>
