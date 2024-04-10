@@ -765,5 +765,5 @@
     <string name="error_post_flair_required_title">Flair 필요</string>
     <string name="error_post_flair_required_message">이 서브레딧의 규칙 상 게시물에 Flair를 반드시 선택해야 합니다.</string>
     <string name="error_post_submit_title">게시물 전송 에러</string>
-    <string name="error_tor_connection_title">Tor 에러</string>
+    <string name="error_tor_connection_title">Tor 오류</string>
 </resources>
