@@ -783,4 +783,8 @@
     <string name="sort_posts_controversial_today">토론(논란)이 많은 순: 오늘</string>
     <string name="sort_posts_controversial_week">토론(논란)이 많은 순: 이번주</string>
     <string name="sort_posts_controversial_month">토론(논란)이 많은 순: 이번</string>
+    <string name="no_posts_yet">아직 포스트가 없습니다.</string>
+    <string name="sort_posts_controversial_year">토론(논란)이 많은 순: 올해</string>
+    <string name="sort_posts_controversial_all">토론(논란)이 많은 순: 전체</string>
+    <string name="no_posts_yet_hidden">설정때문에 표시할 포스트가 없습니다.</string>
 </resources>
