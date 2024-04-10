@@ -777,5 +777,5 @@
     <string name="accessibility_subtitle_author_submitter_withperiod">작성자:%s, 제출자.</string>
     <string name="accessibility_subtitle_author_moderator_withperiod">작성자:%s, 관리자(moderator).</string>
     <string name="accessibility_subtitle_author_admin_withperiod">작성자:%s, 관리자(admin).</string>
-    <string name="accessibility_subtitle_author_submitter_moderator_withperiod">작성자:%s, 전송자 및 관리자.</string>
+    <string name="accessibility_subtitle_author_submitter_moderator_withperiod">작성자:%s, 전송자 및 관리자(moderator).</string>
 </resources>
