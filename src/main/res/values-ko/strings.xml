@@ -762,5 +762,5 @@
     <string name="button_cancel">취소</string>
     <string name="backup_preferences_error_old_android_message">이 기능은 안드로이드 4.4 이상이 필요합니다.</string>
     <string name="error_no_file_manager_message">이 기기의 운영체제에서 안드로이드 파일엑세스 프레임워크에 호환가능한 파일관리 앱이 없습니다. 해당 앱이 있다면, 비활성화된 상태일 수 있습니다.</string>
-    <string name="error_post_flair_required_title">Flair 필수입력</string>
+    <string name="error_post_flair_required_title">Flair 필요</string>
 </resources>
