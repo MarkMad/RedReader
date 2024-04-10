@@ -352,7 +352,7 @@
     <string name="pref_behaviour_comments_header">댓글</string>
     <string name="pref_behaviour_comment_min_title">최소 댓글 점수</string>
     <string name="pref_behaviour_comment_min_dialog_title">아래 점수 밑으로 댓글 접기(모두 표시하려면 공백)</string>
-    <string name="open_with">열기</string>
+    <string name="open_with">다른 앱으로 열기</string>
     <string name="pref_network_tor_title">Tor 사용</string>
     <string name="error_tor_not_installed">Tor는 Orbot이 설치되어 있지 않으면 작동하지 않습니다. 지금 설치하시겠습니까?</string>
     <string name="error_tor_setting_failed">프록시를 설정할 수 없습니다.</string>
@@ -786,7 +786,7 @@
     <string name="no_posts_yet">아직 포스트가 없습니다.</string>
     <string name="sort_posts_controversial_year">토론(논란)이 많은 순: 올해</string>
     <string name="sort_posts_controversial_all">토론(논란)이 많은 순: 전체</string>
-    <string name="no_posts_yet_hidden">설정때문에 게시물이 표시되지 않습니다.</string>
+    <string name="no_posts_yet_hidden">설정때문에 표시할 게시물이 없습니다.</string>
     <string name="no_search_results_hidden">설정때문에 표시할 검색 결과가 없습니다.</string>
     <string name="pref_appearance_comment_header_items_controversiality">토론(논란)많음 표시 (†)</string>
     <string name="sort_posts_hot_week">인기 순: 이번주</string>
