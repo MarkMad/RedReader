@@ -775,6 +775,6 @@
     <string name="error_content_blocker_message">사용중인 네트워크가 DNS요청을 차단하는 것으로 보입니다. 안드로이드 네트워크 설정에서 VPN을 사용하거나 DNS over HTTPS로 전환하세요.</string>
     <string name="error_comment_submit_title">댓글 전송 오류</string>
     <string name="accessibility_subtitle_author_submitter_withperiod">작성자:%s, 제출자.</string>
-    <string name="accessibility_subtitle_author_moderator_withperiod">작성자:%s, 관리자.</string>
-    <string name="accessibility_subtitle_author_admin_withperiod">작성자:%s, admin.</string>
+    <string name="accessibility_subtitle_author_moderator_withperiod">작성자:%s, 관리자(moderator).</string>
+    <string name="accessibility_subtitle_author_admin_withperiod">작성자:%s, 관리자(admin).</string>
 </resources>
