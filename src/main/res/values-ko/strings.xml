@@ -737,7 +737,7 @@
     <string name="sort_posts_new_hour">최신: 한시간</string>
     <string name="error_archived_reply">아카이브된 포스트이므로 댓글을 추가할 수 없습니다.</string>
     <string name="error_no_file_manager_title">파일관리 앱이 없습니다.</string>
-    <string name="video_unmute">음소거해제</string>
+    <string name="video_unmute">음소거 해제</string>
     <string name="video_mute">음소거</string>
     <string name="video_restart">비디오 재시작</string>
     <string name="video_rewind">되감기</string>
