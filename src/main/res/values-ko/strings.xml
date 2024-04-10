@@ -773,5 +773,5 @@
     <string name="error_http_429_title">너무 많은 요청</string>
     <string name="error_http_429_message">너무 많은 요청으로 인해 서버에서 거부 중입니다. 조금 후 다시 시도하세요.</string>
     <string name="error_content_blocker_message">사용중인 네트워크가 DNS요청을 차단하는 것으로 보입니다. 안드로이드 네트워크 설정에서 VPN을 사용하거나 DNS over HTTPS로 전환하세요.</string>
-    <string name="error_comment_submit_title">댓글 전송 에러</string>
+    <string name="error_comment_submit_title">댓글 전송 오류</string>
 </resources>
