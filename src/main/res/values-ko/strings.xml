@@ -818,5 +818,5 @@
     <string name="search_listing_header_limit_location">검색위치</string>
     <string name="search_results_query_and_location">%2$s에서 \"%1$s\" 검색</string>
     <string name="search_results_location_only">%s에서 검색</string>
-    <string name="accessibility_subtitle_controversiality_withperiod">토론/논란성 내용 투표</string>
+    <string name="accessibility_subtitle_controversiality_withperiod">토론/논란성 내용 투표.</string>
 </resources>
