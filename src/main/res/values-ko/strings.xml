@@ -780,4 +780,7 @@
     <string name="accessibility_subtitle_author_submitter_moderator_withperiod">작성자:%s, 제출자 및 관리자(moderator).</string>
     <string name="accessibility_subtitle_author_submitter_admin_withperiod">작성자:%s, 제출자 및 관리자(admin).</string>
     <string name="sort_posts_controversial_hour">토론(논란)이 많은 순: 한시간</string>
+    <string name="sort_posts_controversial_today">토론(논란)이 많은 순: 오늘</string>
+    <string name="sort_posts_controversial_week">토론(논란)이 많은 순: 이번주</string>
+    <string name="sort_posts_controversial_month">토론(논란)이 많은 순: 이번</string>
 </resources>
