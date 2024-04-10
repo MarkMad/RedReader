@@ -767,5 +767,5 @@
     <string name="error_post_submit_title">게시물 전송 에러</string>
     <string name="error_tor_connection_title">Tor 오류</string>
     <string name="error_tor_connection_message">Tor에 접속할 수 없습니다. Orbot앱이 실행 중인지 확인하거나, 네트워크 설정에서 Tor을 비활성화하세요.</string>
-    <string name="error_imgur_400_title">Imgur 에러</string>
+    <string name="error_imgur_400_title">Imgur 오류</string>
 </resources>
