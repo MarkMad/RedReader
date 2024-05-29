@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="firstrun_login_button_now">Efetuar login agora</string>
+    <string name="prefs_category_appearance">Aparência</string>
+    <string name="firstrun_login_title">Fazer login</string>
+    <string name="firstrun_login_message">Você não está conectado no momento. Você pode acessar a lista de contas selecionando \"Contas\" no menu.</string>
+    <string name="firstrun_login_button_later">Ser anônimo</string>
+</resources>
