@@ -1,8 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="firstrun_login_button_now">Efetuar login agora</string>
+    <string name="firstrun_login_button_now">Logar agora</string>
     <string name="prefs_category_appearance">Aparência</string>
-    <string name="firstrun_login_title">Fazer login</string>
+    <string name="firstrun_login_title">Logar</string>
     <string name="firstrun_login_message">Você não está conectado no momento. Você pode acessar a lista de contas selecionando \"Contas\" no menu.</string>
-    <string name="firstrun_login_button_later">Ser anônimo</string>
+    <string name="firstrun_login_button_later">Continuar anônimo</string>
+    <string name="prefs_category_behaviour">Comportamento</string>
+    <string name="prefs_category_cache">Cache</string>
+    <string name="pref_appearance_theme_header">Tema</string>
+    <string name="pref_appearance_theme_title">Tema</string>
+    <string name="pref_appearance_comments_header">Comentários</string>
+    <string name="pref_appearance_thumbnails_show_title">Mostrar miniaturas</string>
+    <string name="pref_appearance_thumbnails_wifionly_title">Miniaturas apenas com Wi-Fi</string>
+    <string name="pref_appearance_thumbnails_nsfw_show_title">Mostrar miniaturas NSFW</string>
+    <string name="pref_behaviour_notifications_title">Notificações</string>
+    <string name="pref_behaviour_actions_comment_tap_title">Pressionar</string>
+    <string name="pref_appearance_twopane_never">Nunca</string>
+    <string name="pref_behaviour_comments_header">Comentários</string>
+    <string name="pref_behaviour_enable_swipe_refresh_title">Arraste para baixo para atualizar</string>
+    <string name="pref_behaviour_blocked_subredditsort">Subreddits bloqueados</string>
+    <string name="button_error_details">Detalhes</string>
+    <string name="button_error_send_report">Reportar</string>
+    <string name="reddit_login_browser_popup_use_internal_browser">Usar navegador interno (recomendado)</string>
+    <string name="reddit_login_browser_popup_use_external_browser">Usar navegador externo (recomendado)</string>
+    <string name="dialog_continue">Continuar</string>
+    <plurals name="load_more_comments_button_reply_count">
+        <item quantity="one">Carregar mais comentários (%d resposta)</item>
+        <item quantity="many">Carregar mais comentários (%d respostas)</item>
+        <item quantity="other"></item>
+    </plurals>
+    <string name="pref_behaviour_back_button_title">Botão de retornar</string>
+    <string name="three_dots_menu">Mais opções</string>
+    <string name="inline_preview_prompt_turn_off">Desligar</string>
+    <string name="inline_preview_prompt_keep_showing">Continuar mostrando</string>
+    <string name="button_dismiss">Dispensar</string>
+    <string name="button_view">Mostrar</string>
+    <string name="video_mute">Silenciar</string>
+    <string name="video_unmute">Reativar som</string>
+    <string name="video_rewind">Retroceder</string>
+    <string name="video_play">Reproduzir</string>
+    <string name="video_fast_forward">Avançar</string>
+    <string name="video_zoom_in">Ampliar</string>
+    <string name="video_zoom_out">Diminuir</string>
+    <string name="button_continue_anyway">Continuar mesmo assim</string>
+    <string name="button_cancel">Cancelar</string>
+    <string name="button_restore_preferences">Restaurar</string>
+    <string name="video_pause">Pausar</string>
+    <string name="video_restart">Recomeçar o vídeo</string>
 </resources>
