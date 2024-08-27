@@ -550,7 +550,7 @@
     <string name="pref_behaviour_sharing_share_dialog_title">RedReader의 공유화면 사용</string>
     <string name="list_yes_no_or_wifi_always">항상</string>
     <string name="list_yes_no_or_wifi_wifionly">Wi-Fi 사용 중에만</string>
-    <string name="pref_appearance_fontscale_post_header_titles_title">열려있는 포스트 제목</string>
+    <string name="pref_appearance_fontscale_post_header_titles_title">열람중인 포스트 제목</string>
     <string name="pref_appearance_fontscale_global_title">전체</string>
     <string name="pin_successful">%s를 메인 메뉴에 고정했습니다</string>
     <string name="bug_chooser_title">버그리포트 이메일 보내기</string>
