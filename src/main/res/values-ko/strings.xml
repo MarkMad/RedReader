@@ -15,7 +15,7 @@
     <string name="pref_appearance_thumbnails_wifionly_title">Wi-Fi 연결에서만 썸네일 보기</string>
     <string name="pref_appearance_comment_header_items_title">댓글 헤더 항목</string>
     <string name="pref_behaviour_notifications_title">알림</string>
-    <string name="pref_behaviour_actions_post_header">게시물 제어</string>
+    <string name="pref_behaviour_actions_post_header">게시물 행동</string>
     <string name="pref_behaviour_fling_post_right_title">오른쪽으로 밀기</string>
     <string name="pref_behaviour_actions_comment_tap_title">누르기</string>
     <string name="pref_behaviour_nsfw_title">후방 내용 보기</string>
@@ -550,7 +550,7 @@
     <string name="pref_behaviour_sharing_share_dialog_title">RedReader의 공유화면 사용</string>
     <string name="list_yes_no_or_wifi_always">항상</string>
     <string name="list_yes_no_or_wifi_wifionly">Wi-Fi 사용 중에만</string>
-    <string name="pref_appearance_fontscale_post_header_titles_title">열람중인 포스트 제목</string>
+    <string name="pref_appearance_fontscale_post_header_titles_title">열람중인 게시글 제목</string>
     <string name="pref_appearance_fontscale_global_title">전체</string>
     <string name="pin_successful">%s를 메인 메뉴에 고정했습니다</string>
     <string name="bug_chooser_title">버그리포트 이메일 보내기</string>
