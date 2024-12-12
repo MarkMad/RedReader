@@ -1,2 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="firstrun_login_button_later">Ανώνυμα</string>
+    <string name="prefs_category_appearance">Εμφάνιση</string>
+    <string name="prefs_category_behaviour">Συμπεριφορά</string>
+    <string name="prefs_category_cache">Κρυφή μνήμη</string>
+    <string name="prefs_category_menus">Διάφορα μενού</string>
+    <string name="pref_appearance_theme_header">Θέμα</string>
+    <string name="pref_appearance_thumbnails_header">Μικρογραφίες</string>
+    <string name="pref_appearance_comments_header">Σχόλια</string>
+    <string name="pref_appearance_thumbnails_show_title">Εμφάνιση μικρογραφιών</string>
+    <string name="pref_behaviour_notifications_title">Ειδοποιήσεις</string>
+    <string name="pref_behaviour_actions_post_header">Ενέργειες Ανάρτησης</string>
+    <string name="pref_behaviour_actions_comment_header">Ενέργειες Σχολίου</string>
+    <string name="pref_behaviour_posts_header">Αναρτήσεις</string>
+    <string name="pref_cache_pruning">Εκκαθάριση Κρυφής μνήμης</string>
+    <string name="options_accounts">Λογαριασμοί</string>
+    <string name="options_theme">Θέματα</string>
+    <string name="options_settings">Ρυθμίσεις</string>
+    <string name="options_sort">Ταξινόμηση</string>
+    <string name="options_sort_subreddits">Ταξινόμηση Subreddits</string>
+    <string name="options_sort_posts">Ταξινόμηση Αναρτήσεων</string>
+    <string name="mainmenu_frontpage">Αρχική Σελίδα</string>
+    <string name="mainmenu_all">Όλα τα Subreddits</string>
+    <string name="mainmenu_custom">Προσαρμοσμένο Subreddit</string>
+    <string name="mainmenu_custom_invalid_name">Μη έγκυρο όνομα subreddit.</string>
+    <string name="mainmenu_saved">Αποθηκευμένες Αναρτήσεις</string>
+    <string name="mainmenu_upvoted">Αναρτήσεις με Θετική ψήφο</string>
+    <string name="mainmenu_inbox">Εισερχόμενα</string>
+    <string name="mainmenu_profile">Το Προφίλ μου</string>
+    <string name="listing_cached">Εμφάνιση αντιγράφου κρυφής μνήμης από %s</string>
+    <string name="accounts_add">Προσθήκη Λογαριασμού Reddit</string>
+    <string name="accounts_reauth">Αυθεντικοποίηση ξανά</string>
+    <string name="accounts_delete">Διαγραφή</string>
+    <string name="accounts_loggingin">Σύνδεση…</string>
+    <string name="pref_appearance_twopane_title">Λειτουργία τάμπλετ (2 καρτέλες)</string>
+    <string name="pref_cache_precache_images_wifionly_title">Μόνο σε Wi-Fi</string>
+    <string name="firstrun_login_title">Σύνδεση</string>
+    <string name="pref_appearance_thumbnails_wifionly_title">Μικρογραφίες μόνο με Wi-Fi</string>
+    <string name="pref_appearance_theme_title">Θέμα</string>
+    <string name="options_sort_comments">Ταξινόμηση Σχολίων</string>
+    <string name="pref_appearance_fontscale_posts_title">Τίτλοι ανάρτησης</string>
+    <string name="firstrun_login_message">Δεν έχεις συνδεθεί αυτήν τη στιγμή. Μπορείς να αποκτήσεις πρόσβαση στη λίστα λογαριασμών επιλέγοντας Λογαριασμοί από το μενού.</string>
+    <string name="pref_appearance_thumbnails_nsfw_show_title">Εμφάνιση μικρογραφιών NSFW</string>
+    <string name="pref_behaviour_nsfw_title">Εμφάνιση περιεχομένου NSFW</string>
+    <string name="pref_menus_post_context_items_title">Αντικείμενα μενού ενέργειας</string>
+    <string name="accounts_setactive">Ορισμός ως Ενεργό</string>
+    <string name="pref_menus_post_toolbar_items_title">Αντικείμενα πλαϊνής εργαλειοθήκης</string>
+    <string name="options_accounts_long">Λογαριασμοί Reddit</string>
+    <string name="accounts_active">Ενεργός</string>
+    <string name="mainmenu_header_subreddits">Subreddits</string>
+    <string name="accounts_anon">Ανώνυμος</string>
+    <string name="firstrun_login_button_now">Σύνδεση τώρα</string>
+    <string name="mainmenu_hidden">Κρυμμένες Αναρτήσεις</string>
+</resources>
