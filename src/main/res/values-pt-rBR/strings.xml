@@ -354,4 +354,5 @@
     <string name="invalid_subreddit_name">Nome de subreddit inválido</string>
     <string name="web_view_clear_cache_success_toast">Cache, histórico, cookies e dados de formulário limpos.</string>
     <string name="action_comment_context">Contexto</string>
+    <string name="pref_cache_pruning">Poda de cache</string>
 </resources>
