@@ -575,6 +575,16 @@
     <string name="notification_channel_name_reddit_messages">Mensagens Reddit Recebidas</string>
     <string name="post_text_copied_to_clipboard">Texto da postagem copiado para área de transferência</string>
     <string name="action_copy_selftext">Copiar Texto</string>
-    <string name="pref_behaviour_sharing_share_dialog_dialogtitle">Selecione um app para compartilhamento</string>
+    <string name="pref_behaviour_sharing_share_dialog_dialogtitle">Selecionar um app para compartilhamento</string>
     <string name="pref_behaviour_sharing_share_dialog_title">Usar o diálogo de compartilhamento integrado</string>
+    <string name="error_toast_no_share_app_installed">Nenhum app adequado instalado para compartilhar isso.</string>
+    <string name="pref_appearance_fontscale_post_subtitles_title">Subtítulo da Postagem</string>
+    <string name="pref_appearance_fontscale_post_header_titles_title">Títulos de postagens abertas</string>
+    <string name="pref_appearance_fontscale_post_header_subtitles_title">Subtítulos de postagens abertas</string>
+    <string name="pref_appearance_fontscale_comment_headers_title">Cabeçalhos de Comentários/Caixa de Entrada</string>
+    <string name="pref_appearance_posts_header">Postagens</string>
+    <string name="pref_appearance_post_subtitle_items_title">Entradas de subtítulo de postagem</string>
+    <string name="pref_appearance_post_subtitle_items_sticky">Etiqueta fixa</string>
+    <string name="pref_appearance_post_subtitle_items_spoiler">Etiqueta de Spoiler</string>
+    <string name="pref_appearance_post_subtitle_items_nsfw">Etiqueta NSFW</string>
 </resources>
