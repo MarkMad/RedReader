@@ -356,4 +356,5 @@
     <string name="action_comment_context">Contexto</string>
     <string name="pref_cache_pruning">Limpeza de Cache</string>
     <string name="mainmenu_upvoted">Postagens Positivadas</string>
+    <string name="action_comment_links">Links em Comentário</string>
 </resources>
