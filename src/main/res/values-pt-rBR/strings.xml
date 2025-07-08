@@ -441,5 +441,20 @@
     <string name="error_upload_fail_imgur_message">O upload foi rejeitado pelo Imgur por algum motivo desconhecido.</string>
     <string name="upload_to_imgur">Enviar para Imgur</string>
     <string name="no_file_selected">Nenhum arquivo selecionado</string>
-    <string name="button_upload">Upload</string>
+    <string name="button_upload">Enviar</string>
+    <string name="button_browse">Navegar…</string>
+    <string name="error_file_too_big_title">Arquivo muito grande</string>
+    <string name="error_file_too_big_message">O tamanho do arquivo (%1$s) é maior do que o limite de upload (%2$s).</string>
+    <string name="error_file_open_failed_title">Não foi possível abrir arquivo</string>
+    <string name="error_file_open_failed_message">Um erro ocorreu enquanto tentava abrir o arquivo.</string>
+    <string name="image_selected_summary">Imagem selecionada: %1$dx%2$d, %3$s</string>
+    <string name="submit_post_specify_subreddit">Especifique o subreddit</string>
+    <string name="submit_post_title_empty">Título não pode estar vazio</string>
+    <string name="submit_post_url_empty">URL não pode estar vazia</string>
+    <string name="submit_post_self_text_hint">Texto</string>
+    <string name="submit_post_url_hint">URL</string>
+    <string name="save_image_permission_denied">Permissão negada: não foi possível salvar imagem.</string>
+    <string name="pref_behaviour_imageview_mode_title">Visualizador de imagem</string>
+    <string name="pref_behaviour_imageview_mode_internal_opengl">Visualizador interno (OpenGL)</string>
+    <string name="pref_behaviour_albumview_mode_title">Visualizador de imagem</string>
 </resources>
