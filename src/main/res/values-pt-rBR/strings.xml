@@ -626,6 +626,7 @@
     <string name="error_message_malformed_html">Não foi possível analisar o corpo de texto. Reporte ao desenvolvedor do app.</string>
     <string name="props_body_html">Corpo (HTML)</string>
     <string name="props_self_html">Texto (HTML)</string>
-    <string name="pref_appearance_hide_headertoolbar_postlist_title">Ocultar barra de ferramentas do cabeçado da lista postagem</string>
+    <string name="pref_appearance_hide_headertoolbar_postlist_title">Ocultar barra de ferramentas do cabeçado da lista de postagens</string>
     <string name="pref_appearance_hide_headertoolbar_commentlist_title">Ocultar barra de ferramentas do cabeçado da lista de comentários</string>
+    <string name="post_link_copied_to_clipboard">Link do post copiado para a área de transferência</string>
 </resources>
