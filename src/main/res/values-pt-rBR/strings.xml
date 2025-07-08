@@ -3,7 +3,7 @@
     <string name="firstrun_login_button_now">Logar agora</string>
     <string name="prefs_category_appearance">Aparência</string>
     <string name="firstrun_login_title">Logar</string>
-    <string name="firstrun_login_message">Você não está conectado no momento. Você pode acessar a lista de contas selecionando \"Contas\" no menu.</string>
+    <string name="firstrun_login_message">Você não está logado no momento. Você pode acessar a lista de contas selecionando \"Contas\" no menu.</string>
     <string name="firstrun_login_button_later">Continuar anônimo</string>
     <string name="prefs_category_behaviour">Comportamento</string>
     <string name="prefs_category_cache">Cache</string>
@@ -61,7 +61,7 @@
     <string name="pref_cache_maxage_listing_title">Excluir listagens em cache após</string>
     <string name="pref_cache_maxage_thumb_title">Excluir miniaturas em cache após</string>
     <string name="pref_cache_maxage_image_title">Excluir imagens em cache após</string>
-    <string name="pref_cache_maxage_entry_title">Excluir flags em cache (lido, votado positivamente, etc.) após</string>
+    <string name="pref_cache_maxage_entry_title">Excluir bandeiras em cache (lido, votado positivamente, etc.) após</string>
     <string name="pref_cache_precache_images_header">Pré-carregar Imagens</string>
     <string name="pref_cache_precache_images_title">Pré-carregar imagens</string>
     <string name="pref_cache_precache_images_wifionly_title">Apenas no Wi-Fi</string>
@@ -140,7 +140,7 @@
     <string name="accounts_reauth">Reautenticar</string>
     <string name="mainmenu_profile">Meu Perfil</string>
     <string name="sort_posts_top_today">Mais Votados: Hoje</string>
-    <string name="options_submit_post">Enviar postagem</string>
+    <string name="options_submit_post">Enviar Postagem</string>
     <string name="action_share">Compartilhar</string>
     <string name="action_share_comments">Compartilhar Comentários</string>
     <string name="action_copy">Copiar</string>
@@ -260,7 +260,7 @@
     <string name="error_ratelimit_title">Muitas tentativas inválidas.</string>
     <string name="general_success">Sucesso</string>
     <string name="message_nowloggedin">Agora você está logado.</string>
-    <string name="message_cannotlogin">Não foi possível entrar.</string>
+    <string name="message_cannotlogin">Não foi possível logar.</string>
     <string name="error_toast_no_urls_in_self">Nenhuma URL encontrada nesse texto.</string>
     <string name="error_toast_parent_post_not_downloaded">O post pai não foi baixado ainda.</string>
     <string name="download_subreddits">Baixando subreddits…</string>
@@ -308,7 +308,7 @@
     <string name="options_unsubscribe">Cancelar inscrição</string>
     <string name="options_unsubscribing">Cancelando inscrição…</string>
     <string name="options_sidebar">Mostrar Barra Lateral</string>
-    <string name="pref_menus_mainmenu_useritems_title">Itens do Usuário</string>
+    <string name="pref_menus_mainmenu_useritems_title">Itens do usuário</string>
     <string name="mainmenu_submitted">Postagens Submetidas</string>
     <string name="mainmenu_downvoted">Postagens Negativadas</string>
     <string name="mainmenu_modmail">Mensagens do Moderador</string>
@@ -699,7 +699,7 @@
     <string name="cache_clear_dialog_thumbnails_data">Miniaturas (%s)</string>
     <string name="cache_clear_dialog_images">Imagens</string>
     <string name="cache_clear_dialog_images_data">Imagens (%s)</string>
-    <string name="cache_clear_dialog_flags">Flags</string>
+    <string name="cache_clear_dialog_flags">Bandeiras</string>
     <string name="pref_images_thumbnail_size_title">Tamanho da miniatura</string>
     <string name="accessibility_image_viewer_title">Visualizando imagem</string>
     <string name="accessibility_image_viewer_view_comments">Visualizando comentários</string>
