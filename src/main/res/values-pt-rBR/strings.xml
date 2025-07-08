@@ -401,7 +401,7 @@
     <string name="pref_appearance_hide_username_main_menu_title">Ocultar nome de usuário</string>
     <string name="mainmenu_useritems">Itens do Usuário</string>
     <string name="selected_link_is_not_image">O link selecionado não é uma imagem.</string>
-    <string name="imgur_album">Álbum imgur</string>
+    <string name="imgur_album">Álbum Imgur</string>
     <string name="album_already_first_image">Já na primeira imagem no álbum.</string>
     <string name="album_already_last_image">Já na última imagem no álbum.</string>
     <string name="upgrade_v190_login_message">RedReader foi atualizado e agora usa OAuth para autenticação do Reddit. Se você estava logado em uma conta antes da atualização, você será deslogado agora.</string>
@@ -439,4 +439,7 @@
     <string name="error_parse_imgur_message">Imgur enviou alguns dados que eu não consegui entender.</string>
     <string name="error_upload_fail_imgur_title">Upload falhou</string>
     <string name="error_upload_fail_imgur_message">O upload foi rejeitado pelo Imgur por algum motivo desconhecido.</string>
+    <string name="upload_to_imgur">Enviar para Imgur</string>
+    <string name="no_file_selected">Nenhum arquivo selecionado</string>
+    <string name="button_upload">Upload</string>
 </resources>
