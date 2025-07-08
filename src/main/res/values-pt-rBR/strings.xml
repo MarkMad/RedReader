@@ -64,7 +64,7 @@
     <string name="pref_cache_maxage_entry_title">Excluir flags em cache (lido, votado positivamente, etc.) após</string>
     <string name="pref_cache_precache_images_header">Pré-carregar Imagens</string>
     <string name="pref_cache_precache_images_title">Pré-carregar imagens</string>
-    <string name="pref_cache_precache_images_wifionly_title">Apenas em Wi-Fi</string>
+    <string name="pref_cache_precache_images_wifionly_title">Apenas no Wi-Fi</string>
     <string name="pref_menus_post_context_items_title">Itens do menu de ação</string>
     <string name="pref_menus_post_toolbar_items_title">Itens da barra de ferramentas lateral</string>
     <string name="options_accounts">Contas</string>
@@ -268,7 +268,7 @@
     <string name="subtitle_by">por</string>
     <string name="subtitle_to">para</string>
     <string name="general_unknown">desconhecido</string>
-    <string name="action_search">Procurar</string>
+    <string name="action_search">Buscar</string>
     <string name="search_subreddit_restrict">Restringir busca a</string>
     <string name="title_changelog">Novidades</string>
     <string name="pref_behaviour_commentsort">Comentários (padrão)</string>
@@ -475,7 +475,7 @@
     <string name="pref_behaviour_fling_comment_right_title">Deslizar para direita</string>
     <string name="comment_header_search_thread_title">Você está visualizando resultados de busca para um tópico de comentário.</string>
     <string name="no_search_results">Nenhum resultado encontrado.</string>
-    <string name="action_search_comments">Procurar Comentários</string>
+    <string name="action_search_comments">Buscar Comentários</string>
     <string name="pref_appearance_navbar_color_title">Cor da barra de navegação e status</string>
     <string name="pref_appearance_navbar_color_option_black">Preto</string>
     <string name="pref_appearance_navbar_color_option_primary">Primária (claro)</string>
@@ -550,8 +550,8 @@
     <string name="disable_replies_to_infobox_failed">Não foi possível desligar respostas para caixa de entrada</string>
     <string name="mainmenu_random">Subreddit Aleatório</string>
     <string name="pref_menus_show_random_main_menu_title">Exibir /r/random no menu principal</string>
-    <string name="mainmenu_custom_empty_search_query">Pesquisa vazia.</string>
-    <string name="search_listing_header_query">Pesquisa</string>
+    <string name="mainmenu_custom_empty_search_query">Busca vazia.</string>
+    <string name="search_listing_header_query">Busca</string>
     <string name="pref_behaviour_sharing_header">Compartilhamento</string>
     <string name="pref_behaviour_sharing_include_desc_title">Incluir título/descrição ao compartilhar</string>
     <string name="share_comments_for">Comentários por %s</string>
@@ -586,5 +586,21 @@
     <string name="pref_appearance_post_subtitle_items_title">Entradas de subtítulo de postagem</string>
     <string name="pref_appearance_post_subtitle_items_sticky">Etiqueta fixa</string>
     <string name="pref_appearance_post_subtitle_items_spoiler">Etiqueta de Spoiler</string>
-    <string name="pref_appearance_post_subtitle_items_nsfw">Etiqueta NSFW</string>
+    <string name="pref_appearance_post_subtitle_items_nsfw">Etiqueta de NSFW</string>
+    <string name="pref_appearance_post_subtitle_items_subreddit">Subreddit</string>
+    <string name="pref_appearance_post_subtitle_items_domain">Domínio</string>
+    <string name="pref_appearance_post_subtitle_items_use_different_settings_title">Usar configurações diferentes para postagens abertas</string>
+    <string name="pref_appearance_post_header_subtitle_items_title">Entradas de subítulo de postagem aberta</string>
+    <string name="list_yes_no_or_wifi_always">Sempre</string>
+    <string name="list_yes_no_or_wifi_wifionly">Apenas no Wi-Fi</string>
+    <string name="list_yes_no_or_wifi_never">Nunca</string>
+    <string name="error_nsfw_subreddits_disabled_title">Bloquear Subreddit NSFW</string>
+    <string name="error_nsfw_subreddits_disabled_message">Conteúdo NSFW está desligado nas configurações.</string>
+    <string name="search_results_short">Resultados de Busca</string>
+    <string name="search_results_query_only">Buscar por \"%s\"</string>
+    <string name="action_search_posts">Buscar Postagens</string>
+    <string name="no_search_results_hidden">Nenhum resultado foi exibido devido a configurações.</string>
+    <string name="search_listing_header_limit_location">Limitar para Localização</string>
+    <string name="search_results_query_and_location">Buscar por \"%1$s\" em %2$s</string>
+    <string name="search_results_location_only">Buscar em %s</string>
 </resources>
