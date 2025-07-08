@@ -356,5 +356,17 @@
     <string name="action_comment_context">Contexto</string>
     <string name="pref_cache_pruning">Limpeza de Cache</string>
     <string name="mainmenu_upvoted">Postagens Positivadas</string>
-    <string name="action_comment_links">Links em Comentário</string>
+    <string name="action_comment_links">Links no Comentário</string>
+    <string name="action_selftext_links">Links no Texto da Postagem</string>
+    <string name="action_comments">Ver Comentários</string>
+    <string name="action_comments_switch">Mudar Para Comentários</string>
+    <string name="action_link_switch">Mudar Para Link</string>
+    <string name="action_collapse">Recolher</string>
+    <string name="session_active">Ativo</string>
+    <string name="props_body_markdown">Corpo (Markdown)</string>
+    <string name="props_self_markdown">Texto (Markdown)</string>
+    <string name="props_up">Acima</string>
+    <string name="props_down">Abaixo</string>
+    <string name="pref_appearance_comment_header_items_upsdowns">Positivados/negativados</string>
+    <string name="webview_https_already">A URL atual já está usando HTTPS.</string>
 </resources>
