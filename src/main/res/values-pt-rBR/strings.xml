@@ -349,7 +349,7 @@
     <string name="error_ratelimit_message">Bloqueado devido a muitas tentativas de login inválidas deste IP. Reddit diz:</string>
     <string name="error_already_submitted_title">Já submetido</string>
     <string name="header_subscriber_count">%s inscritos</string>
-    <string name="web_view_clear_cache">Limpar cache</string>
+    <string name="web_view_clear_cache">Limpar Cache</string>
     <string name="header_subscriber_count_unknown">Número de inscritos desconhecido</string>
     <string name="invalid_subreddit_name">Nome de subreddit inválido</string>
     <string name="web_view_clear_cache_success_toast">Cache, histórico, cookies e dados de formulário limpos.</string>
@@ -680,5 +680,17 @@
     <string name="time_after">após %s</string>
     <string name="time_after_reply">respondido %s depois</string>
     <string name="pref_appearance_post_age_units_title">Precisão da idade da postagem</string>
-    <string name="pref_appearance_post_header_age_units_title">Precisão da idade de abertura da publicação</string>
+    <string name="pref_appearance_post_header_age_units_title">Precisão da idade da publicação após aberta</string>
+    <string name="pref_appearance_inbox_age_units_title">Precisão da idade da entrada na Caixa de Entrada</string>
+    <string name="pref_appearance_age_units_1">Uma unidade (x horas)</string>
+    <string name="pref_appearance_age_units_2">Duas unidades (x horas, x mins)</string>
+    <string name="pref_appearance_age_units_3">Três unidades (x horas, x mins, x segs)</string>
+    <string name="pref_appearance_comment_age_mode_title">Modo de idade do comentário</string>
+    <string name="pref_appearance_comment_age_mode_absolute">Tempo desde o comentário (x mins atrás)</string>
+    <string name="pref_appearance_comment_age_mode_relative_post">Relativo à postagem (após x mins)</string>
+    <string name="pref_appearance_comment_age_mode_relative_parent">Relativo ao comentário pai (respondido x mins depois)</string>
+    <string name="pref_cache_clear_title">Limpar cache</string>
+    <string name="dialog_clear">Limpar</string>
+    <string name="cache_clear_dialog_loading">Carregando tamanhos de uso de dados</string>
+    <string name="cache_clear_dialog_loaded">Tamanhos de uso de dados carregado</string>
 </resources>
