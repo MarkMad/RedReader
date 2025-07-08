@@ -596,11 +596,16 @@
     <string name="list_yes_no_or_wifi_never">Nunca</string>
     <string name="error_nsfw_subreddits_disabled_title">Bloquear Subreddit NSFW</string>
     <string name="error_nsfw_subreddits_disabled_message">Conteúdo NSFW está desligado nas configurações.</string>
-    <string name="search_results_short">Resultados de Busca</string>
+    <string name="search_results_short">Resultados da Busca</string>
     <string name="search_results_query_only">Buscar por \"%s\"</string>
     <string name="action_search_posts">Buscar Postagens</string>
     <string name="no_search_results_hidden">Nenhum resultado foi exibido devido a configurações.</string>
     <string name="search_listing_header_limit_location">Limitar para Localização</string>
     <string name="search_results_query_and_location">Buscar por \"%1$s\" em %2$s</string>
     <string name="search_results_location_only">Buscar em %s</string>
+    <string name="pref_network_tor_summary">Quando estiver utilizando navegador externo ou Abas Personalizadas, os links não serão abertos utilizando Tor (a menos que o seu navegador esteja configurado para usar Tor)</string>
+    <string name="prefs_category_fonts">Fonte</string>
+    <string name="pref_appearance_fontscale_header">Escala da Fonte</string>
+    <string name="pref_appearance_fontscale_global_title">Global</string>
+    <string name="pref_appearance_fontscale_use_global">Usar escala de fonte global</string>
 </resources>
