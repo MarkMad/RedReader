@@ -2,7 +2,7 @@
 <resources>
     <string name="firstrun_login_button_now">Logar agora</string>
     <string name="prefs_category_appearance">Aparência</string>
-    <string name="firstrun_login_title">Logar</string>
+    <string name="firstrun_login_title">Login</string>
     <string name="firstrun_login_message">Você não está logado no momento. Você pode acessar a lista de contas selecionando \"Contas\" no menu.</string>
     <string name="firstrun_login_button_later">Continuar anônimo</string>
     <string name="prefs_category_behaviour">Comportamento</string>
@@ -52,8 +52,8 @@
     <string name="pref_appearance_twopane_title">Modo Tablet (dois painéis)</string>
     <string name="pref_appearance_fontscale_posts_title">Títulos de postagens</string>
     <string name="pref_appearance_comment_header_items_title">Entradas de cabeçalho de comentários</string>
-    <string name="pref_behaviour_actions_comment_header">Ações de comentários</string>
-    <string name="pref_behaviour_actions_post_header">Ações de postagens</string>
+    <string name="pref_behaviour_actions_comment_header">Ações de Comentários</string>
+    <string name="pref_behaviour_actions_post_header">Ações de Postagens</string>
     <string name="pref_behaviour_posts_header">Postagens</string>
     <string name="pref_behaviour_fling_post_left_title">Deslizar para a esquerda</string>
     <string name="pref_behaviour_fling_post_right_title">Deslizar para a direita</string>
@@ -61,7 +61,7 @@
     <string name="pref_cache_maxage_listing_title">Excluir listagens em cache após</string>
     <string name="pref_cache_maxage_thumb_title">Excluir miniaturas em cache após</string>
     <string name="pref_cache_maxage_image_title">Excluir imagens em cache após</string>
-    <string name="pref_cache_maxage_entry_title">Excluir bandeiras em cache (lido, votado positivamente, etc.) após</string>
+    <string name="pref_cache_maxage_entry_title">Excluir bandeiras em cache (lido, positivado, etc.) após</string>
     <string name="pref_cache_precache_images_header">Pré-carregar Imagens</string>
     <string name="pref_cache_precache_images_title">Pré-carregar imagens</string>
     <string name="pref_cache_precache_images_wifionly_title">Apenas no Wi-Fi</string>
@@ -79,13 +79,13 @@
     <string name="options_past_posts">Versões Anteriores da Lista de Postagens</string>
     <string name="options_past_comments">Versões Anteriores da Lista de Comentários</string>
     <string name="options_sort">Ordenar</string>
-    <string name="options_sort_comments">Ordernar Comentários</string>
+    <string name="options_sort_comments">Ordenar Comentários</string>
     <string name="mainmenu_frontpage">Página Inicial</string>
     <string name="mainmenu_all">Todos os Subreddits</string>
     <string name="mainmenu_custom">Subreddit Personalizado</string>
     <string name="mainmenu_custom_invalid_name">Nome inválido de subreddit.</string>
     <string name="mainmenu_saved">Postagens Salvas</string>
-    <string name="mainmenu_hidden">Postagens Ocultas</string>
+    <string name="mainmenu_hidden">Postagens Ocultadas</string>
     <string name="mainmenu_header_subreddits">Subreddits</string>
     <string name="listing_cached">Exibindo cópia em cache de %s</string>
     <string name="accounts_anon">Anônimo</string>
