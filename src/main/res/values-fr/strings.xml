@@ -16,9 +16,9 @@
   ~ along with RedReader.  If not, see <http://www.gnu.org/licenses/>.
   --><resources>
     <!-- First Run Dialog -->
-    <string name="firstrun_login_title">Connexion</string>
+    <string name="firstrun_login_title">Se connecter</string>
     <string name="firstrun_login_message">Vous n\'êtes pas encore connecté. Vous pouvez accéder à la liste des comptes en sélectionnant « Comptes » depuis le menu.</string>
-    <string name="firstrun_login_button_now">Se connecter</string>
+    <string name="firstrun_login_button_now">Se connecter maintenant</string>
     <string name="firstrun_login_button_later">Rester anonyme</string>
     <!-- Preference Headers -->
     <string name="prefs_category_appearance">Apparence</string>
@@ -34,7 +34,7 @@
     <string name="pref_appearance_fontscale_posts_title">Titres des posts</string>
     <string name="pref_appearance_thumbnails_show_title">Afficher les miniatures</string>
     <string name="pref_appearance_thumbnails_nsfw_show_title">Afficher les miniatures NSFW</string>
-    <string name="pref_appearance_thumbnails_wifionly_title">Afficher les miniatures en WiFi seulement</string>
+    <string name="pref_appearance_thumbnails_wifionly_title">Afficher les miniatures en Wi-Fi seulement</string>
     <string name="pref_appearance_comment_header_items_title">Entête des commentaires</string>
     <!-- Behaviour Prefs -->
     <string name="pref_behaviour_notifications_title">Notifications</string>
@@ -834,7 +834,7 @@
     <string name="accessibility_subtitle_sticky_withperiod">Épinglé</string>
     <string name="accessibility_subtitle_subreddit_withperiod">Sub-reddit : %s.</string>
     <string name="accessibility_subtitle_domain_withperiod">Domaine : %s.</string>
-    <string name="accessibility_subtitle_selfpost_withperiod">Contenu textuel</string>
+    <string name="accessibility_subtitle_selfpost_withperiod">Contenu textuel.</string>
     <string name="pref_images_high_res_thumbnails_title">Miniatures en haute résolution</string>
     <string name="accessibility_image_viewer_view_comments">Voir les commentaires</string>
     <string name="video_restart">Relancer la vidéo</string>
@@ -917,4 +917,42 @@
     <string name="sort_posts_hot_today">Tendances : Aujourd\'hui</string>
     <string name="sort_posts_comments_week">Commentaires : Cette Semaine</string>
     <string name="sort_posts_comments_year">Commentaires : Cette Année</string>
+    <string name="cache_clear_dialog_listings">Listes</string>
+    <string name="cache_clear_dialog_listings_data">Listes (%s)</string>
+    <string name="accessibility_image_viewer_title">Afficher l\'image</string>
+    <string name="accessibility_subtitle_flair_withperiod">Flair : %s</string>
+    <string name="accessibility_subtitle_gold_withperiod">Or décerné : %d.</string>
+    <string name="pref_header_inline_image_previews">Aperçus d\'images intégrées</string>
+    <string name="pref_images_inline_image_previews_title">Aperçus d\'images intégrées</string>
+    <string name="pref_images_inline_image_previews_nsfw_title">Afficher les aperçus de contenu sensible</string>
+    <string name="inline_preview_prompt_message">Continuer à afficher les aperçus d\'images intégrés comme celui ci-dessus ? Vous pouvez modifier cela à tout moment dans les paramètres.</string>
+    <string name="inline_preview_prompt_turn_off">Désactiver</string>
+    <string name="inline_preview_prompt_keep_showing">Continuer à montrer</string>
+    <string name="pref_behaviour_post_title_opens_comments_title">Le titre du post ouvre les commentaires</string>
+    <string name="post_submit_flair_none_available">Pas de flairs disponibles</string>
+    <string name="post_submit_flair_none_selected">Pas de flair sélectionné</string>
+    <string name="post_submit_heading">Soumettre le post à %1$s en tant qu\'utilisateur %2$s.</string>
+    <string name="accessibility_subtitle_recipient_withperiod">Destinataire : %s.</string>
+    <string name="pref_images_inline_image_previews_spoiler_title">Afficher les aperçus de spoilers</string>
+    <string name="error_post_flair_required_title">Flair requis</string>
+    <string name="error_post_flair_required_message">Les règles de ce subreddit exigent de définir un flair sur votre publication.</string>
+    <string name="error_post_submit_title">Erreur en soumettant la publication</string>
+    <string name="accessibility_subtitle_author_submitter_withperiod">Auteur : %s, contributeur.</string>
+    <string name="accessibility_subtitle_author_moderator_withperiod">Auteur : %s, modérateur.</string>
+    <string name="accessibility_subtitle_author_submitter_moderator_withperiod">Auteur : %s, contributeur et modérateur.</string>
+    <string name="accessibility_subtitle_author_submitter_admin_withperiod">Auteur : %s, contributeur et administrateur.</string>
+    <string name="sort_posts_controversial_hour">Controversé : Cette heure</string>
+    <string name="sort_posts_controversial_today">Controversé : Aujourd\'hui</string>
+    <string name="sort_posts_controversial_week">Controversé : Cette semaine</string>
+    <string name="sort_posts_controversial_month">Controversé : Ce mois</string>
+    <string name="sort_posts_controversial_year">Controversé : Cette année</string>
+    <string name="sort_posts_controversial_all">Controversé : De tous les temps</string>
+    <string name="sort_posts_relevance_hour">Pertinence : Cette heure</string>
+    <string name="sort_posts_relevance_today">Pertinence : Aujourd\'hui</string>
+    <string name="sort_posts_relevance_week">Pertinence : Cette semaine</string>
+    <string name="sort_posts_relevance_month">Pertinence : Ce mois</string>
+    <string name="sort_posts_relevance_year">Pertinence : Cette année</string>
+    <string name="sort_posts_relevance_all">Pertinence : De tous les temps</string>
+    <string name="accessibility_subtitle_controversiality_withperiod">Voté controversé.</string>
+    <string name="search_listing_header_limit_location">Limiter à la localisation</string>
 </resources>
