@@ -20,4 +20,12 @@
     <string name="firstrun_login_title">Iniciar la sessió</string>
     <string name="prefs_category_behaviour">Comportament</string>
     <string name="pref_appearance_thumbnails_nsfw_show_title">Mostra les miniatures NSFW</string>
+    <string name="pref_behaviour_actions_comment_header">Accions de comentaris</string>
+    <string name="pref_behaviour_posts_header">Publicacions</string>
+    <string name="pref_behaviour_actions_comment_tap_title">Acció en prémer</string>
+    <string name="pref_behaviour_nsfw_title">Mostra el contingut NSFW</string>
+    <string name="pref_cache_pruning">Neteja de memòria cau</string>
+    <string name="pref_cache_maxage_listing_title">Suprimeix les entrades de la memòria cau després de</string>
+    <string name="pref_cache_maxage_thumb_title">Suprimeix les miniatures en memòria cau després de</string>
+    <string name="pref_cache_maxage_image_title">Suprimeix les imatges de la memòria cau després de</string>
 </resources>
