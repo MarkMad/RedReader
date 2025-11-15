@@ -27,4 +27,26 @@
     <string name="pref_appearance_thumbnails_nsfw_show_title">Rādīt NSFW sīktēlus</string>
     <string name="pref_behaviour_actions_post_header">Publicēšanas darbības</string>
     <string name="pref_behaviour_actions_comment_header">Komentēšanas darbības</string>
+    <string name="pref_behaviour_actions_comment_tap_title">Noklikšķinot</string>
+    <string name="options_accounts">Konti</string>
+    <string name="options_theme">Motīvi</string>
+    <string name="options_settings">Iestatījumi</string>
+    <string name="options_refresh">Atsvaidzināt</string>
+    <string name="options_sort">Kārtot pēc</string>
+    <string name="mainmenu_inbox">Iesūtne</string>
+    <string name="mainmenu_header_subreddits">Subredditi</string>
+    <string name="accounts_anon">Anonīmais</string>
+    <string name="accounts_active">Aktīvs</string>
+    <string name="accounts_delete">Dzēst</string>
+    <string name="accounts_username">Lietotājvārds</string>
+    <string name="accounts_password">Parole</string>
+    <string name="sort_posts_hot">Karstiem</string>
+    <string name="sort_posts_new">Jauniem</string>
+    <string name="sort_posts_rising">Top populāri</string>
+    <string name="sort_posts_controversial">Ļoti strīdīgi apspriestiem</string>
+    <string name="sort_posts_top">Populārākajiem</string>
+    <string name="sort_comments_best">Vislabākajiem</string>
+    <string name="sort_comments_new">Jaunākajiem</string>
+    <string name="sort_comments_old">Vecākajiem</string>
+    <string name="sort_comments_controversial">Ļoti strīdīgi apspriestiem</string>
 </resources>
