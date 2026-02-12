@@ -38,12 +38,12 @@
     <string name="pref_appearance_thumbnails_show_title">Miniatűrök megjelenítése</string>
     <string name="pref_appearance_thumbnails_nsfw_show_title">NSFW miniatűrök megjelenítése</string>
     <string name="pref_appearance_thumbnails_wifionly_title">Miniatűrök csak Wi-Fi-n</string>
-    <string name="pref_appearance_comment_header_items_title">Hozzászólás fejléc</string>
+    <string name="pref_appearance_comment_header_items_title">Hozzászólásfejléc</string>
     <!-- Behaviour Prefs -->
 
     <string name="pref_behaviour_notifications_title">Értesítések</string>
-    <string name="pref_behaviour_actions_post_header">Bejegyzés Műveletek</string>
-    <string name="pref_behaviour_actions_comment_header">Hozzászólás Műveletek</string>
+    <string name="pref_behaviour_actions_post_header">Bejegyzésműveletek</string>
+    <string name="pref_behaviour_actions_comment_header">Hozzászólás-műveletek</string>
     <string name="pref_behaviour_posts_header">Bejegyzések</string>
     <string name="pref_behaviour_fling_post_left_title">Balra söprés</string>
     <string name="pref_behaviour_fling_post_right_title">Jobbra söprés</string>
@@ -51,32 +51,32 @@
     <string name="pref_behaviour_nsfw_title">NSFW tartalmak megjelenítése</string>
     <!-- Cache Prefs -->
 
-    <string name="pref_cache_pruning">Gyorsítótár Takarékosság</string>
+    <string name="pref_cache_pruning">Gyorsítótár-takarítás</string>
     <string name="pref_cache_maxage_listing_title">Tárolt listázások törlése idő elteltével</string>
-    <string name="pref_cache_maxage_thumb_title">Tárolt miniatűrök törlése idő elteltével</string>
-    <string name="pref_cache_maxage_image_title">Eltárolt képek törlése ennyi idő után</string>
+    <string name="pref_cache_maxage_thumb_title">Tárolt miniatűrök törlése ennyi idő után</string>
+    <string name="pref_cache_maxage_image_title">Tárolt képek törlése ennyi idő után</string>
     <string name="pref_cache_precache_images_header">Képek előre lehívása</string>
     <string name="pref_cache_precache_images_title">Képek előre lehívása</string>
     <string name="pref_cache_precache_images_wifionly_title">Kizárólag Wi-Fi-n</string>
     <!-- Menu Prefs -->
 
-    <string name="pref_menus_post_context_items_title">Menü elem műveletek</string>
-    <string name="pref_menus_post_toolbar_items_title">Oldalsó eszköztár elemek</string>
+    <string name="pref_menus_post_context_items_title">Menüelem-műveletek</string>
+    <string name="pref_menus_post_toolbar_items_title">Oldalsó eszköztár elemei</string>
     <!-- Options Menu -->
 
     <string name="options_accounts">Fiókok</string>
-    <string name="options_accounts_long">Reddit Fiókok</string>
+    <string name="options_accounts_long">Reddit-fiókok</string>
     <string name="options_theme">Témák</string>
     <string name="options_settings">Beállítások</string>
     <string name="options_submit_post">Bejegyzés készítése</string>
     <string name="options_refresh">Frissítés</string>
     <string name="options_refresh_subreddits">Al-redditek frissítése</string>
     <string name="options_refresh_posts">Bejegyzések frissítése</string>
-    <string name="options_refresh_comments">Hozzászólások Frissítése</string>
-    <string name="options_past">Előző Verziók</string>
+    <string name="options_refresh_comments">Hozzászólások frissítése</string>
+    <string name="options_past">Előző verziók</string>
     <string name="options_past_posts">Korábbi Bejegyzés Lista Verziók</string>
     <string name="options_past_comments">Korábbi Hozzászólás Lista Verziók</string>
-    <string name="options_sort">Rendez</string>
+    <string name="options_sort">Rendezés</string>
     <string name="options_sort_subreddits">Al-redditek rendezése</string>
     <string name="options_sort_posts">Bejegyzések rendezése</string>
     <string name="options_sort_comments">Hozzászólások rendezése</string>
@@ -94,14 +94,14 @@
     <string name="mainmenu_header_subreddits">Al-redditek</string>
     <!-- General Listing -->
 
-    <string name="listing_cached">%s gyorsító-tárolt másolata</string>
+    <string name="listing_cached">%s gyorsítótárazott másolata</string>
     <!-- Accounts Dialog -->
 
     <string name="accounts_anon">Anonim</string>
     <string name="accounts_active">Aktív</string>
     <string name="accounts_add">Reddit fiók hozzáadása</string>
     <string name="accounts_setactive">Aktívvá tétel</string>
-    <string name="accounts_reauth">Újra-hitelesítés</string>
+    <string name="accounts_reauth">Újrahitelesítés</string>
     <string name="accounts_delete">Törlés</string>
     <string name="accounts_loggingin">Bejelentkezés…</string>
     <string name="accounts_loggingin_msg">Egy pillanat…</string>
@@ -116,16 +116,16 @@
     <string name="sort_posts_rising">Feltörekvő</string>
     <string name="sort_posts_controversial">Ellentmondásos</string>
     <string name="sort_posts_top">Csúcs</string>
-    <string name="sort_posts_top_hour">Csúcs: Ebben az Órában</string>
-    <string name="sort_posts_top_today">Csúcs: A Mai Napon</string>
-    <string name="sort_posts_top_week">Csúcs: Ezen a Héten</string>
-    <string name="sort_posts_top_month">Csúcs: Ebben a Hónapban</string>
-    <string name="sort_posts_top_year">Csúcs: Ebben az Évben</string>
-    <string name="sort_posts_top_all">Csúcs: Minden Idők</string>
+    <string name="sort_posts_top_hour">Csúcs: ebben az órában</string>
+    <string name="sort_posts_top_today">Csúcs: ma</string>
+    <string name="sort_posts_top_week">Csúcs: ezen a héten</string>
+    <string name="sort_posts_top_month">Csúcs: ebben a hónapban</string>
+    <string name="sort_posts_top_year">Csúcs: idén</string>
+    <string name="sort_posts_top_all">Csúcs: minden idők</string>
     <!-- Comment Sorts -->
 
     <string name="sort_comments_best">Legjobb</string>
-    <string name="sort_comments_hot">Legnépszerű</string>
+    <string name="sort_comments_hot">Legnépszerűbb</string>
     <string name="sort_comments_new">Legújabb</string>
     <string name="sort_comments_old">Legrégibb</string>
     <string name="sort_comments_controversial">Legellentmondásosabb</string>
@@ -139,7 +139,7 @@
     <string name="dialog_go">Indulás</string>
     <!-- Thing Actions -->
 
-    <string name="action_menu_post_title">Bejegyzés műveletek</string>
+    <string name="action_menu_post_title">Bejegyzésműveletek</string>
     <string name="action_upvote">Felpontozás</string>
     <string name="action_downvote">Lepontozás</string>
     <string name="action_vote_remove">Szavazat eltávolítása</string>
@@ -147,8 +147,8 @@
     <string name="action_downvote_remove">Lepontozás eltávolítása</string>
     <string name="action_save">Mentés</string>
     <string name="action_hide">Elrejtés</string>
-    <string name="action_unsave">Mégsem érvénytelenítése</string>
-    <string name="action_unhide">Mégis mutatás</string>
+    <string name="action_unsave">Mentés visszavonása</string>
+    <string name="action_unhide">Megjelenítés mégis</string>
     <string name="action_external">Megtekintés külső böngészőben</string>
     <string name="action_external_short">Böngészőben</string>
     <string name="action_actionmenu_short">Műveletek</string>
@@ -169,7 +169,7 @@
     <string name="action_comments_short">Hozzászólások</string>
     <string name="action_link">Hivatkozás megnyitása</string>
     <string name="action_link_switch">Hivatkozásra váltás</string>
-    <string name="action_link_short">Link</string>
+    <string name="action_link_short">Hivatkozás</string>
     <string name="action_collapse">Összecsukás váltó</string>
     <string name="action_nothing">Semmit</string>
     <string name="action_report">Jelentés</string>
@@ -659,7 +659,7 @@
         <item quantity="one">"További hozzászólások betöltése (%d válasz)"</item>
         <item quantity="other">"További hozzászólások betöltése (%d válasz)"</item>
     </plurals>
-    <string name="pref_cache_maxage_entry_title">Eltárolt megjelölések (olvasott, felpontozott, stb.) törlése ennyi idő után</string>
+    <string name="pref_cache_maxage_entry_title">Tárolt megjelölések (olvasott, felpontozott stb.) törlése ennyi idő után</string>
     <string name="pref_images_high_res_thumbnails_title">Magas felbontású miniatűrök</string>
     <string name="pref_menus_subreddit_context_items_title">Al-reddit művelet menü elemek</string>
     <string name="subscription_successful">Feliratkozás %s-ra</string>
