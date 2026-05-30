@@ -529,7 +529,7 @@
     <plurals name="load_more_comments_button_reply_count">
         <item quantity="one">Carregar mais comentários (%d resposta)</item>
         <item quantity="many">Carregar mais comentários (%d respostas)</item>
-        <item quantity="other"></item>
+        <item quantity="other"/>
     </plurals>
     <string name="collapsed_self_post">Auto-post colapsado</string>
     <string name="pref_appearance_comments_show_floating_toolbar_title">Mostrar barra de ferramentas flutuante sobre comentários</string>
@@ -835,4 +835,5 @@
     <string name="sort_posts_comments_year">Comentários: Este Ano</string>
     <string name="sort_posts_comments_all">Comentários: Todos os Tempos</string>
     <string name="search_listing_header_limit_location">Limitar para Localização</string>
+    <string name="props_self_html">Auto texto (HTML)</string>
 </resources>
