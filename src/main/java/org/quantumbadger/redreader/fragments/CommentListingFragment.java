@@ -185,6 +185,19 @@ public class CommentListingFragment extends RRFragment
 		mRecyclerView.setAdapter(mCommentListingManager.getAdapter());
 		mListingView = recyclerViewManager.getOuterView();
 
+		mListingView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+			@Override
+			public void onViewAttachedToWindow(View v) {}
+
+			@Override
+			public void onViewDetachedFromWindow(View v) {
+				org.quantumbadger.redreader.audio.NativeTTSManager tts = org.quantumbadger.redreader.audio.NativeTTSManager.getInstance(context);
+				if (tts.isSpeaking()) {
+					tts.stop();
+				}
+			}
+		});
+
 		mRecyclerView.setItemAnimator(null);
 
 		if(!PrefsUtility.pref_appearance_comments_show_floating_toolbar()) {
@@ -263,6 +276,31 @@ public class CommentListingFragment extends RRFragment
 
 				nextButton.setOnLongClickListener(view -> {
 					General.quickToast(context, R.string.button_next_comment_parent);
+					return true;
+				});
+			}
+			{
+				final ImageButton ttsButton = (ImageButton)LayoutInflater.from(context)
+						.inflate(
+								R.layout.flat_image_button,
+								mFloatingToolbar,
+								false);
+
+				ttsButton.setPadding(
+						buttonHPadding,
+						buttonVPadding,
+						buttonHPadding,
+						buttonVPadding);
+				ttsButton.setImageResource(R.drawable.icon_play);
+				ttsButton.setContentDescription(getString(R.string.action_read_aloud));
+				mFloatingToolbar.addView(ttsButton);
+
+				ttsButton.setOnClickListener(view -> {
+					toggleReadAloud(ttsButton);
+				});
+
+				ttsButton.setOnLongClickListener(view -> {
+					General.quickToast(context, ttsButton.getContentDescription().toString());
 					return true;
 				});
 			}
@@ -480,7 +518,6 @@ public class CommentListingFragment extends RRFragment
 			final RedditPostHeaderView postHeader = new RedditPostHeaderView(
 					activity,
 					this.mPost);
-
 			mCommentListingManager.addPostHeader(postHeader);
 
 			final LinearLayoutManager layoutManager
@@ -776,5 +813,72 @@ public class CommentListingFragment extends RRFragment
 						null);
 			}
 		}, 800);
+	}
+
+	private void toggleReadAloud(ImageButton ttsButton) {
+		org.quantumbadger.redreader.audio.NativeTTSManager tts = org.quantumbadger.redreader.audio.NativeTTSManager.getInstance(getContext());
+		
+		tts.setListener(new org.quantumbadger.redreader.audio.NativeTTSManager.Listener() {
+			@Override
+			public void onTTSStateChanged(boolean isSpeaking) {
+				AndroidCommon.UI_THREAD_HANDLER.post(() -> {
+					if (!isSpeaking) {
+						ttsButton.setContentDescription(getString(R.string.action_read_aloud));
+						ttsButton.setImageResource(R.drawable.icon_play);
+					} else {
+						ttsButton.setContentDescription(getString(R.string.action_stop_reading));
+						ttsButton.setImageResource(R.drawable.icon_pause);
+					}
+				});
+			}
+
+			@Override
+			public void onUtteranceStarted(int position) {
+				AndroidCommon.UI_THREAD_HANDLER.post(() -> {
+					final LinearLayoutManager layoutManager = (LinearLayoutManager) mRecyclerView.getLayoutManager();
+					if (layoutManager != null) {
+						layoutManager.scrollToPositionWithOffset(position, 0);
+						setFocusDelayed(position);
+					}
+				});
+			}
+		});
+
+		if (tts.isSpeaking()) {
+			tts.stop();
+		} else {
+			java.util.List<org.quantumbadger.redreader.audio.NativeTTSManager.TTSItem> items = new java.util.ArrayList<>();
+			int startIndex = 0;
+			final LinearLayoutManager layoutManager = (LinearLayoutManager) mRecyclerView.getLayoutManager();
+			if (layoutManager != null) {
+				int firstVisible = layoutManager.findFirstVisibleItemPosition();
+				if (firstVisible != RecyclerView.NO_POSITION && firstVisible >= 0) {
+					startIndex = firstVisible;
+				}
+			}
+
+			if (mPost != null && mPost.src != null && startIndex == 0) {
+				if (mPost.src.getTitle() != null) items.add(new org.quantumbadger.redreader.audio.NativeTTSManager.TTSItem(mPost.src.getTitle(), 0));
+				if (mPost.src.getRawSelfTextMarkdown() != null) items.add(new org.quantumbadger.redreader.audio.NativeTTSManager.TTSItem(mPost.src.getRawSelfTextMarkdown(), 0));
+			}
+			
+			if (mCommentListingManager != null) {
+				RedditChangeDataManager changeDataManager = RedditChangeDataManager.getInstance(mUser);
+				for (int i = startIndex; i < mCommentListingManager.getAdapter().getItemCount(); i++) {
+					org.quantumbadger.redreader.adapters.GroupedRecyclerViewAdapter.Item item = mCommentListingManager.getItemAtPosition(i);
+					if (item instanceof RedditCommentListItem && ((RedditCommentListItem) item).isComment()) {
+						org.quantumbadger.redreader.reddit.prepared.RedditRenderableComment renderableComment = ((RedditCommentListItem) item).asComment();
+						if (!renderableComment.isCollapsed(changeDataManager)) {
+							org.quantumbadger.redreader.reddit.prepared.RedditParsedComment parsed = renderableComment.getParsedComment();
+							if (parsed != null && parsed.getRawComment() != null && parsed.getRawComment().getBody() != null) {
+								items.add(new org.quantumbadger.redreader.audio.NativeTTSManager.TTSItem(parsed.getRawComment().getBody().getDecoded(), i));
+							}
+						}
+					}
+				}
+			}
+			
+			tts.readAloud(items);
+		}
 	}
 }

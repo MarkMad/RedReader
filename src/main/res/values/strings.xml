@@ -1480,6 +1480,11 @@
 
 	<string name="video_mute">Mute</string>
 	<string name="video_unmute">Unmute</string>
+
+	<!-- TTS -->
+	<string name="action_read_aloud">Read Aloud</string>
+	<string name="action_stop_reading">Stop Reading</string>
+
 	<string name="video_restart">Restart video</string>
 	<string name="video_rewind">Rewind</string>
 	<string name="video_step_back">Step back</string>
