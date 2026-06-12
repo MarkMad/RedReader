@@ -30,6 +30,7 @@ Features
 * Support for Android 5.0+
 * Translations for multiple languages
 * Accessibility features and optimization for screen reader use
+* Native Text-to-Speech (TTS) engine support to listen to comments read aloud
 
 
 Downloading
