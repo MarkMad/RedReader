@@ -35,6 +35,9 @@
 			<action android:name="android.intent.action.PROCESS_TEXT" />
 			<data android:mimeType="text/plain" />
 		</intent>
+		<intent>
+			<action android:name="android.intent.action.TTS_SERVICE" />
+		</intent>
 	</queries>
 
     <application android:name="org.quantumbadger.redreader.RedReader"
@@ -221,7 +224,7 @@
 
 		<provider
 				android:name="org.quantumbadger.redreader.cache.CacheContentProvider"
-				android:authorities="org.quantumbadger.redreader.cacheprovider"
+				android:authorities="${applicationId}.cacheprovider"
 				android:exported="false"
 				android:grantUriPermissions="true" />
     </application>

@@ -24,7 +24,7 @@
 	<color name="actionbarSelectBackground">#44FFFFFF</color>
 	<color name="actionbarSelectBackgroundLight">#44000000</color>
 	<color name="listitemSelectBackground">#33888888</color>
-	<color name="redReaderRed">#C6001F</color>
+	<color name="redReaderBlue">#2196F3</color>
 	<color name="redReaderAlphaIconBackground">#E0E0E0</color>
 
 </resources>

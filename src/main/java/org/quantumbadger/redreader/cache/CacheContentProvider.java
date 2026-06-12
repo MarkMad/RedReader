@@ -34,6 +34,7 @@ import org.quantumbadger.redreader.common.FileUtils;
 import org.quantumbadger.redreader.common.General;
 import org.quantumbadger.redreader.common.Optional;
 import org.quantumbadger.redreader.common.StringUtils;
+import org.quantumbadger.redreader.BuildConfig;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -99,7 +100,7 @@ public class CacheContentProvider extends ContentProvider {
 
 		return new Uri.Builder()
 				.scheme("content")
-				.authority("org.quantumbadger.redreader.cacheprovider")
+				.authority(BuildConfig.APPLICATION_ID + ".cacheprovider")
 				.encodedPath(generateFilename(cacheId, mimetype, defaultExtension))
 				.build();
 	}

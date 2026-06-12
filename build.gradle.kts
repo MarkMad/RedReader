@@ -1,5 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
 	alias(libs.plugins.android.application)
 	alias(libs.plugins.kotlin.android)
@@ -78,7 +81,7 @@ android {
 	namespace = "org.quantumbadger.redreader"
 
 	defaultConfig {
-		applicationId = "org.quantumbadger.redreader"
+		applicationId = "org.quantumbadger.redreader.fork"
 		minSdk = libs.versions.sdk.min.get().toInt()
 		targetSdk = libs.versions.sdk.target.get().toInt()
 		versionCode = 117
@@ -93,8 +96,28 @@ android {
 		additionalParameters.add("--no-version-vectors")
 	}
 
+	val keystorePropertiesFile = rootProject.file("keystore.properties")
+	val keystoreProperties = Properties()
+	if (keystorePropertiesFile.exists()) {
+		keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+	}
+
+	if (keystorePropertiesFile.exists()) {
+		signingConfigs {
+			create("release") {
+				storeFile = file(keystoreProperties.getProperty("storeFile"))
+				storePassword = keystoreProperties.getProperty("storePassword")
+				keyAlias = keystoreProperties.getProperty("keyAlias")
+				keyPassword = keystoreProperties.getProperty("keyPassword")
+			}
+		}
+	}
+
 	buildTypes {
 		getByName("release") {
+			if (keystorePropertiesFile.exists()) {
+				signingConfig = signingConfigs.getByName("release")
+			}
 			isMinifyEnabled = true
 			isShrinkResources = false
 			proguardFiles(

@@ -17,7 +17,7 @@
   -->
 
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-	<background android:drawable="@color/redReaderRed" />
+	<background android:drawable="@color/redReaderBlue" />
 	<foreground android:drawable="@drawable/icon_foreground" />
 	<monochrome android:drawable="@drawable/icon_foreground" />
 </adaptive-icon>
