@@ -834,6 +834,7 @@ public class CommentListingFragment extends RRFragment
 
 			@Override
 			public void onUtteranceStarted(int position) {
+				if (position < 0) return;
 				AndroidCommon.UI_THREAD_HANDLER.post(() -> {
 					final LinearLayoutManager layoutManager = (LinearLayoutManager) mRecyclerView.getLayoutManager();
 					if (layoutManager != null) {
@@ -858,8 +859,8 @@ public class CommentListingFragment extends RRFragment
 			}
 
 			if (mPost != null && mPost.src != null && startIndex == 0) {
-				if (mPost.src.getTitle() != null) items.add(new org.quantumbadger.redreader.audio.NativeTTSManager.TTSItem(mPost.src.getTitle(), 0));
-				if (mPost.src.getRawSelfTextMarkdown() != null) items.add(new org.quantumbadger.redreader.audio.NativeTTSManager.TTSItem(mPost.src.getRawSelfTextMarkdown(), 0));
+				if (mPost.src.getTitle() != null) items.add(new org.quantumbadger.redreader.audio.NativeTTSManager.TTSItem(mPost.src.getTitle(), -1));
+				if (mPost.src.getRawSelfTextMarkdown() != null) items.add(new org.quantumbadger.redreader.audio.NativeTTSManager.TTSItem(mPost.src.getRawSelfTextMarkdown(), -1));
 			}
 			
 			if (mCommentListingManager != null) {
