@@ -1229,6 +1229,12 @@ object LinkHandler {
 	}
 
 	@JvmStatic
+	fun stripUrls(text: String): String {
+		val urlPattern = Pattern.compile("\\bhttps?://\\S+\\b")
+		return urlPattern.matcher(text).replaceAll("").replace("  ", " ").trim()
+	}
+
+	@JvmStatic
 	fun shareText(
 		activity: AppCompatActivity,
 		subject: String?,

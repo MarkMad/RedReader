@@ -55,6 +55,7 @@ import org.quantumbadger.redreader.cache.downloadstrategy.DownloadStrategyIfNotC
 import org.quantumbadger.redreader.cache.downloadstrategy.DownloadStrategyIfTimestampOutsideBounds;
 import org.quantumbadger.redreader.common.AndroidCommon;
 import org.quantumbadger.redreader.common.General;
+import org.quantumbadger.redreader.common.LinkHandler;
 import org.quantumbadger.redreader.common.PrefsUtility;
 import org.quantumbadger.redreader.common.RRError;
 import org.quantumbadger.redreader.common.RRThemeAttributes;
@@ -859,8 +860,8 @@ public class CommentListingFragment extends RRFragment
 			}
 
 			if (mPost != null && mPost.src != null && startIndex == 0) {
-				if (mPost.src.getTitle() != null) items.add(new org.quantumbadger.redreader.audio.NativeTTSManager.TTSItem(mPost.src.getTitle(), -1));
-				if (mPost.src.getRawSelfTextMarkdown() != null) items.add(new org.quantumbadger.redreader.audio.NativeTTSManager.TTSItem(mPost.src.getRawSelfTextMarkdown(), -1));
+				if (mPost.src.getTitle() != null) items.add(new org.quantumbadger.redreader.audio.NativeTTSManager.TTSItem(LinkHandler.stripUrls(mPost.src.getTitle()), -1));
+				if (mPost.src.getRawSelfTextMarkdown() != null) items.add(new org.quantumbadger.redreader.audio.NativeTTSManager.TTSItem(LinkHandler.stripUrls(mPost.src.getRawSelfTextMarkdown()), -1));
 			}
 			
 			if (mCommentListingManager != null) {
@@ -872,7 +873,7 @@ public class CommentListingFragment extends RRFragment
 						if (!renderableComment.isCollapsed(changeDataManager)) {
 							org.quantumbadger.redreader.reddit.prepared.RedditParsedComment parsed = renderableComment.getParsedComment();
 							if (parsed != null && parsed.getRawComment() != null && parsed.getRawComment().getBody() != null) {
-								items.add(new org.quantumbadger.redreader.audio.NativeTTSManager.TTSItem(parsed.getRawComment().getBody().getDecoded(), i));
+								items.add(new org.quantumbadger.redreader.audio.NativeTTSManager.TTSItem(LinkHandler.stripUrls(parsed.getRawComment().getBody().getDecoded()), i));
 							}
 						}
 					}
