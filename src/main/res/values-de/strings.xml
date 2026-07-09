@@ -56,7 +56,7 @@
     <string name="pref_cache_precache_images_wifionly_title">Nur im WLAN</string>
     <!-- Menu Prefs -->
     <string name="pref_menus_post_context_items_title">Aktionsmenü Einträge</string>
-    <string name="pref_menus_post_toolbar_items_title">Objekte der Seitentoolbar</string>
+    <string name="pref_menus_post_toolbar_items_title">Seiten-Toolbar Elemente</string>
     <!-- Options Menu -->
     <string name="options_accounts">Konten</string>
     <string name="options_accounts_long">Reddit-Accounts</string>
@@ -499,7 +499,7 @@
     <string name="pref_cache_precache_comments_wifionly_title">Nur im WLAN</string>
     <string name="pref_cache_rerequest_postlist_age_title">Beiträge neu laden falls Cache älter ist als</string>
     <string name="pref_menus_optionsmenu_items_title">Einträge des Dreipunktmenüs</string>
-    <string name="pref_menus_link_context_items_title">Link-Kontextmenü</string>
+    <string name="pref_menus_link_context_items_title">Link-Kontextmenü Elemente</string>
     <string name="pref_menus_subreddit_context_items_title">Subreddit Aktionsmenü</string>
     <string name="pref_network_tor_title">TOR benutzen</string>
     <string name="pref_not_supported_before_lollipop">Vor Android Lollipop nicht unterstützt</string>
