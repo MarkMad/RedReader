@@ -775,7 +775,7 @@
     <string name="cache_clear_dialog_images_data">Bilder (%s)</string>
     <string name="pref_appearance_post_subtitle_items_title">Beitrag-Untertitel Einträge</string>
     <string name="pref_appearance_post_header_subtitle_items_title">Untertitel-Einträge des geöffneten Beitrags</string>
-    <string name="accessibility_subtitle_domain_withperiod">Domäne: %s</string>
+    <string name="accessibility_subtitle_domain_withperiod">Domäne: %s.</string>
     <string name="accessibility_subtitle_edited_since_being_posted">Dieser Text wurde seit dem Posten verändert.</string>
     <string name="edittext_hint_comment_body_text">Kommentartext</string>
     <string name="accessibility_subtitle_selfpost_withperiod">Textbeitrag.</string>
@@ -797,7 +797,7 @@
     <string name="accessibility_image_viewer_view_comments">Zeige Kommentare</string>
     <string name="accessibility_image_viewer_go_back">Zurückgehen</string>
     <string name="accessibility_subtitle_author_withperiod">Autor: %s.</string>
-    <string name="accessibility_subtitle_subreddit_withperiod">Sub-reddit: %s</string>
+    <string name="accessibility_subtitle_subreddit_withperiod">Sub-reddit: %s.</string>
     <string name="accessibility_subtitle_flair_withperiod">Flair: %s.</string>
     <string name="accessibility_subtitle_points_withperiod">Upvoteanzahl: %d.</string>
     <string name="accessibility_subtitle_nsfw_withperiod">NSFW Inhalt.</string>
