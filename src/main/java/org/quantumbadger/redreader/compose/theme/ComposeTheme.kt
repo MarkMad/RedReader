@@ -116,8 +116,15 @@ interface ComposeTheme {
 	val reportFlow: ComposeThemeReportFlow
 }
 
+/**
+ * @param controlsStatusBar Whether to set the status bar appearance to match
+ * the theme. Only full-screen Compose activities should set this: Compose
+ * content hosted in a dialog shares the host activity's window, and would
+ * clobber the appearance chosen by the activity.
+ */
 @Composable
 fun RRComposeContextTheme(
+	controlsStatusBar: Boolean = false,
 	content: @Composable () -> Unit,
 ) {
 	val prefs = LocalComposePrefs.current
@@ -126,14 +133,11 @@ fun RRComposeContextTheme(
 	val theme = ComposeThemeImpl(prefs)
 
 	val view = LocalView.current
-	if (!view.isInEditMode) {
+	if (controlsStatusBar && !view.isInEditMode) {
 		SideEffect {
-			// When hosted inside a dialog, the view's context may not be an
-			// Activity, and the status bar is left alone
-			(view.context as? Activity)?.window?.let { window ->
-				WindowCompat.getInsetsController(window, view).apply {
-					isAppearanceLightStatusBars = themePref.lightness == ThemeLightness.Light
-				}
+			val window = (view.context as Activity).window
+			WindowCompat.getInsetsController(window, view).apply {
+				isAppearanceLightStatusBars = themePref.lightness == ThemeLightness.Light
 			}
 		}
 	}

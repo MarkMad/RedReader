@@ -46,9 +46,14 @@ import org.quantumbadger.redreader.fragments.ErrorPropertiesDialog
 import org.quantumbadger.redreader.image.AlbumInfo
 import org.quantumbadger.redreader.settings.SettingsActivity
 
+/**
+ * @param controlsStatusBar Whether to set the status bar appearance to match
+ * the theme -- see [RRComposeContextTheme].
+ */
 @Composable
 fun RRComposeContext(
 	activity: BaseActivity,
+	controlsStatusBar: Boolean = false,
 	content: @Composable () -> Unit
 ) {
 	val accountManager = remember { RedditAccountManager.getInstance(activity) }
@@ -140,7 +145,7 @@ fun RRComposeContext(
 			}
 		},
 	) {
-		RRComposeContextTheme {
+		RRComposeContextTheme(controlsStatusBar = controlsStatusBar) {
 			content()
 		}
 	}
