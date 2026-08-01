@@ -412,7 +412,7 @@
     <!-- 2014-04-26 -->
 
     <string name="web_view_clear_cache">Gyorsítótár ürítése</string>
-    <string name="web_view_clear_cache_success_toast">Gyorsítótár, előzmények, sütik, kitöltési adatok űrítése.</string>
+    <string name="web_view_clear_cache_success_toast">Gyorsítótár, előzmények, sütik és kitöltési adatok törölve.</string>
     <!-- 2014-09-21 -->
     <string name="gold">Arany</string>
     <string name="pref_appearance_comment_header_items_gold">Reddit arany</string>
@@ -457,7 +457,7 @@
     <string name="screen_orientation_landscape">Vízszintes</string>
     <!-- 2015-06-28 -->
     <string name="options_close_all">Összes bezárása</string>
-    <string name="pref_menus_optionsmenu_items_title">Három-pontos menü elemei</string>
+    <string name="pref_menus_optionsmenu_items_title">Hárompontos menü elemei</string>
     <!-- 2015-07-05 -->
     <string name="pref_behaviour_bezel_toolbar_header">Bejegyzések oldalsó eszköztára</string>
     <string name="pref_behaviour_bezel_toolbar_swipezone_title">Bejegyzések oldalsó eszköztárának söprési zónamérete</string>
@@ -586,7 +586,7 @@
     <string name="action_copy_link">Hivatkozás másolása</string>
     <string name="pref_behaviour_postsort">Bejegyzések (alapértelmezett)</string>
     <!-- 2016-08-06 -->
-	<string name="mainmenu_custom_destination">Egyéni helyzet</string>
+	<string name="mainmenu_custom_destination">Egyéni hely</string>
     <string name="mainmenu_custom_destination_subreddit">Alreddit</string>
     <string name="mainmenu_custom_destination_user">Felhasználó</string>
     <string name="mainmenu_custom_destination_url">Webcím</string>
@@ -674,14 +674,14 @@
     <string name="pref_behaviour_postlist_back_again">A Vissza gomb kétszeri nyomásával kiléphet a bejegyzésből</string>
     <string name="pref_appearance_hide_toolbar_on_scroll_title">Eszköztár elrejtése görgetésnél</string>
     <string name="pref_behaviour_save_location_prompt_every_time">Rákérdezés mindig</string>
-    <string name="pref_behaviour_save_location_title">Cél mentése</string>
+    <string name="pref_behaviour_save_location_title">Mentés helye</string>
     <string name="pref_behaviour_save_location_system_default">Rendszer alapbeállításának használata</string>
     <string name="pref_appearance_not_possible_in_tablet_mode">Nem lehetséges táblagép módban</string>
     <string name="pref_appearance_inbox_age_units_title">Postaládaelemek korának pontossága</string>
     <string name="pref_appearance_age_units_1">Egy egység (x óra)</string>
     <string name="pref_appearance_age_units_2">Két egység (x óra, x p)</string>
     <string name="cache_clear_dialog_loading">Adathasználat betöltése</string>
-    <string name="cache_clear_dialog_loaded">Adathasználat betöltése</string>
+    <string name="cache_clear_dialog_loaded">Adathasználat betöltve</string>
     <string name="cache_clear_dialog_listings">Listázások</string>
     <string name="cache_clear_dialog_listings_data">Listázások (%s)</string>
     <string name="cache_clear_dialog_thumbnails">Miniatűrök</string>
@@ -789,12 +789,12 @@
     <string name="pref_menus_link_context_items_title">Hivatkozások műveleti menüelemei</string>
     <string name="pref_appearance_bottom_toolbar_title">Eszköztár megjelenítése alul</string>
     <string name="pref_appearance_show_aspect_ratio_indicator_title">Képarányjelző megjelenítése</string>
-    <string name="pref_menus_show_subscribed_subreddits_main_menu_title">Felirakozott alredditek megjelenítése</string>
+    <string name="pref_menus_show_subscribed_subreddits_main_menu_title">Feliratkozott alredditek megjelenítése</string>
     <string name="mainmenu_random_nsfw">Véletlenszerű NSFW alreddit</string>
     <string name="pref_menus_show_multireddit_main_menu_title">Multiredditek megjelenítése</string>
     <string name="pref_menus_mainmenu_shortcutitems_title">Parancsikonok</string>
     <string name="pref_behaviour_hide_read_posts_title">Olvasott bejegyzések elrejtése</string>
-    <string name="error_already_submitted_message">Ez a bejegyzést már korábban beküldte az alredditre.</string>
+    <string name="error_already_submitted_message">Ezt a bejegyzést már korábban beküldte az alredditre.</string>
     <string name="comment_reply_done_norefresh">Válasz elküldve.</string>
     <string name="post_submit_mark_nsfw">Megjelölés NSFW-ként</string>
     <string name="post_submit_mark_spoiler">Megjelölés spoilerként</string>
@@ -864,7 +864,7 @@
     <string name="mainmenu_sent_messages">Elküldött üzenetek</string>
     <string name="post_submit_flair_none_available">Nincs elérhető flair</string>
     <string name="subreddit_selector_title">Alreddit kiválasztása</string>
-    <string name="post_submit_heading">Válasz erre: %1$s, %2$s felhasználóként.</string>
+    <string name="post_submit_heading">Bejegyzés beküldése ide: %1$s, %2$s felhasználóként.</string>
     <string name="error_subreddit_does_not_exist_title">Helytelen alreddit</string>
     <string name="error_subreddit_info_permission_denied_title">Engedély megtagadva</string>
     <string name="error_subreddit_info_permission_denied_message">A bejelentkezett felhasználó nem éri el az alreddit információit.</string>
@@ -931,7 +931,7 @@
     <string name="pref_appearance_android_status_never_hide">Soha</string>
     <string name="error_no_suitable_apps_available">Nincs megfelelő alkalmazás.</string>
     <string name="pref_menus_show_random_main_menu_title">Az /r/random megjelenítése a főmenüben</string>
-    <string name="pref_behaviour_usecustomtabs_summary">Egyéni Android lapok használta, ahol lehetséges</string>
+    <string name="pref_behaviour_usecustomtabs_summary">Egyéni Android lapok használata, ahol lehetséges</string>
     <string name="error_toast_failed_open_external_browser">Nem sikerült a hivatkozás külső böngészővel való megnyitása: „%s”</string>
     <string name="pref_appearance_inbox_header">Postaláda</string>
     <string name="prefs_category_images_video">Képek/videó</string>
@@ -941,7 +941,7 @@
     <string name="pref_appearance_age_units_3">Három egység (x óra, x p, x mp)</string>
     <string name="pref_accessibility_min_comment_height_none">Nincs</string>
     <string name="error_http_429_message">A kiszolgáló mennyiségi korlátozás miatt elutasította a kérést. Próbálja újra később.</string>
-    <string name="prefs_category_accessibility">Akadálymentesítése</string>
+    <string name="prefs_category_accessibility">Akadálymentesítés</string>
     <string name="pref_item_restore_preferences_title">Helyreállítási beállítások</string>
     <string name="error_http_429_title">Túl sok kérés</string>
     <string name="time_after_reply">válasz ennyivel később: %s</string>

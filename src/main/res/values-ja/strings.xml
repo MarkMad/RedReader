@@ -321,7 +321,7 @@
     <string name="pref_appearance_comment_header_items_upsdowns">プラス評価/マイナス評価</string>
     <string name="options_sidebar">サイドバーを表示</string>
     <string name="action_comment_go_to">コメントへ</string>
-    <string name="pref_behaviour_gifview_mode_internal_legacy">外部ブラウザ(レガシー)</string>
+    <string name="pref_behaviour_gifview_mode_internal_legacy">内部ビューア(レガシー)</string>
     <string name="pref_behaviour_view_mode_internal_browser">内部ブラウザ</string>
     <string name="pref_behaviour_view_mode_external_browser">外部ブラウザ</string>
     <string name="selected_link_is_not_image">選択したリンクは画像ではありません。</string>
@@ -415,7 +415,7 @@
     <string name="upload_to_imgur">Imgurにアップロード</string>
     <string name="no_file_selected">ファイルが選択されていません</string>
     <string name="button_upload">アップロード</string>
-    <string name="button_browse">ブラウザ…</string>
+    <string name="button_browse">参照…</string>
     <string name="error_file_too_big_title">ファイルが大きすぎます</string>
     <string name="error_file_too_big_message">ファイルサイズ(%1$s)はアップロード制限(%2$s)よりも大きいです。</string>
     <string name="error_file_open_failed_title">ファイルを開けませんでした</string>
@@ -531,7 +531,7 @@
     <string name="pref_behaviour_postcount_title">投稿カウントを制限</string>
     <string name="search_subreddit_restrict">検索を制限</string>
     <string name="pref_menus_post_context_items_title">アクションメニューアイテム</string>
-    <string name="error_toast_parent_post_not_downloaded">親投稿はまだダウンロードされません。</string>
+    <string name="error_toast_parent_post_not_downloaded">親投稿はまだダウンロードされていません。</string>
     <string name="error_ratelimit_title">無効な試行が多すぎます。</string>
     <string name="notification_message_action">タッチして表示</string>
     <string name="notification_message_multiple">Redditの新着メッセージ</string>
@@ -683,7 +683,7 @@
     <string name="send_replies_to_inbox">受信トレイに返信を送信</string>
     <string name="pref_menus_show_popular_main_menu_title">メインメニューで/r/popularを表示</string>
     <string name="pref_behaviour_video_playback_controls_title">動画再生コントロールを有効にする</string>
-    <string name="pref_menus_show_random_main_menu_title">メインメニューでr/randomを表示</string>
+    <string name="pref_menus_show_random_main_menu_title">メインメニューで/r/randomを表示</string>
     <string name="pref_behaviour_sharing_header">共有</string>
     <string name="pref_appearance_comment_header_items_title">コメントヘッダー項目</string>
     <string name="options_submit_post">投稿する</string>
@@ -702,12 +702,12 @@
     <string name="pref_appearance_comment_header_items_gold">Redditゴールド</string>
     <string name="error_too_long_message">Redditによると、テキストは長すぎます。</string>
     <string name="comment_header_search_thread_title">現在、コメントスレッドの検索結果を表示しています。</string>
-    <string name="load_more_comments_failed_unknown_url_type">よりコメントを読み込めません: 不明なURLタイプ。</string>
+    <string name="load_more_comments_failed_unknown_url_type">さらにコメントを読み込めません: 不明なURLタイプ。</string>
     <string name="pref_appearance_link_text_clickable_title">リンクテキストをクリックできるようにする</string>
     <string name="error_403_title_nonreddit">アクセス拒否</string>
     <string name="error_403_message_nonreddit">サーバーは、許可拒否エラーで応答しました。</string>
     <string name="error_no_suitable_apps_available">利用できるアプリはありません。</string>
-    <string name="collapsed_self_post">セルフポストが折りられました。</string>
+    <string name="collapsed_self_post">セルフポストが折りたたまれました。</string>
     <string name="disable_replies_to_infobox_failed">受信トレイへの返信をオフにすることができなかった</string>
     <string name="mainmenu_custom_empty_search_query">空の検索。</string>
     <string name="action_comment_context">コンテキスト</string>

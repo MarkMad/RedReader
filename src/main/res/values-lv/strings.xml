@@ -42,7 +42,7 @@
     <string name="accounts_password">Parole</string>
     <string name="sort_posts_hot">Karstiem</string>
     <string name="sort_posts_new">Jauniem</string>
-    <string name="sort_posts_rising">Top populāri</string>
+    <string name="sort_posts_rising">Augošie</string>
     <string name="sort_posts_controversial">Ļoti strīdīgi apspriestiem</string>
     <string name="sort_posts_top">Populārākajiem</string>
     <string name="sort_comments_best">Vislabākajiem</string>

@@ -395,8 +395,8 @@
     <string name="error_too_fast_message">Reddit говорит, что вы отправляете слишком часто. Пожалуйста, подождите несколько минут и попробуйте снова.</string>
     <string name="block_subreddit">Блокировать сабреддит</string>
     <string name="unblock_subreddit">Разблокировать сабреддит</string>
-    <string name="block_done">Сабреддит блокирован. Будущие посещения первой страницы, /r/популярной и /r/всех исключит этот сабреддит.</string>
-    <string name="unblock_done">Сабреддит разблокирован. Будущие посещения первой страницы,/r/популярной и /r/всех будет включать этот сабреддит.</string>
+    <string name="block_done">Сабреддит заблокирован. При последующих посещениях главной страницы, /r/popular и /r/all этот сабреддит будет исключён.</string>
+    <string name="unblock_done">Сабреддит разблокирован. При последующих посещениях главной страницы, /r/popular и /r/all этот сабреддит будет отображаться.</string>
     <string name="pref_behaviour_comments_header">Комментарии</string>
     <string name="pref_behaviour_comment_min_title">Минимальная оценка комментария</string>
     <string name="pref_behaviour_comment_min_dialog_title">Сворачивать комментарии с оценкой ниже (оставьте пустым, чтобы отображать все)</string>
@@ -802,9 +802,9 @@
     <string name="sort_posts_comments_month">Комментарии: в этом месяце</string>
     <string name="pref_appearance_android_status_hide_on_media">При просмотре медиа</string>
     <string name="sort_posts_comments_week">Комментарии: на этой неделе</string>
-    <string name="pref_appearance_comment_header_items_controversiality">Спорный индикатор (†)</string>
+    <string name="pref_appearance_comment_header_items_controversiality">Индикатор спорности (†)</string>
     <string name="sort_posts_comments_year">Комментарии: в этом году</string>
-    <string name="error_archived_reply">Было заархивировано и больше не может быть отвечено.</string>
+    <string name="error_archived_reply">Это заархивировано, и на это больше нельзя ответить.</string>
     <string name="sort_posts_comments_today">Комментарии: сегодня</string>
     <string name="accessibility_subtitle_author_moderator_withperiod">Автор: %s, модератор.</string>
     <string name="accessibility_subtitle_author_admin_withperiod">Автор: %s, админ.</string>
@@ -831,7 +831,7 @@
     <string name="sort_posts_hot_week">Горячее: на этой неделе</string>
     <string name="sort_posts_hot_year">Горячее: в этом году</string>
     <string name="sort_posts_hot_all">Горячее: все время</string>
-    <string name="sort_posts_comments_hour">Комментарии: в этом час</string>
+    <string name="sort_posts_comments_hour">Комментарии: в этом часу</string>
     <string name="accessibility_subtitle_controversiality_withperiod">Проголосовали спорно.</string>
     <string name="search_listing_header_limit_location">Ограничение местоположения</string>
     <string name="search_results_query_and_location">Поиск \"%1$s\" на %2$s</string>

@@ -65,7 +65,7 @@
     <string name="options_sort_posts">帖子排序</string>
     <string name="options_sort_comments">评论排序</string>
     <string name="mainmenu_frontpage">主页</string>
-    <string name="mainmenu_all">所有贴子</string>
+    <string name="mainmenu_all">所有版块</string>
     <string name="mainmenu_custom">自订子版</string>
     <string name="mainmenu_custom_invalid_name">子版名称无效。</string>
     <string name="mainmenu_saved">收藏的帖子</string>
@@ -297,7 +297,7 @@
     <string name="post_edit_done">您已经修改帖子，更改将在您刷新后显示。</string>
     <string name="collapsed_self_post">帖子已收起</string>
     <string name="pref_behaviour_self_post_tap_actions_title">轻触帖子文本后的操作</string>
-    <string name="pref_appearance_navbar_color_title">导航栏颜色</string>
+    <string name="pref_appearance_navbar_color_title">导航栏和状态栏颜色</string>
     <string name="pref_appearance_navbar_color_option_black">黑色</string>
     <string name="pref_appearance_navbar_color_option_primary">主色（光）</string>
     <string name="pref_appearance_navbar_color_option_primarydark">主色（暗）</string>
@@ -650,12 +650,12 @@
     <string name="accessibility_subtitle_domain_v_redd_it">Reddit 视频</string>
     <string name="accessibility_subtitle_domain_i_redd_it">Reddit 图片</string>
     <string name="accessibility_subtitle_comment_collapsed">已收起评论。</string>
-    <string name="accessibility_subtitle_edited_since_being_posted">已编辑.</string>
+    <string name="accessibility_subtitle_edited_since_being_posted">发布以来文本经过修改。</string>
     <string name="accessibility_subtitle_selfpost_withperiod">文本帖子。</string>
     <string name="accessibility_subtitle_domain_withperiod">域名: %s。</string>
     <string name="accessibility_subtitle_subreddit_withperiod">reddit子版:%s。</string>
     <string name="accessibility_subtitle_author_withperiod">作者: %s。</string>
-    <string name="accessibility_subtitle_age_withperiod">%s.</string>
+    <string name="accessibility_subtitle_age_withperiod">年龄: %s。</string>
     <string name="accessibility_subtitle_points_withperiod">得分: %d。</string>
     <string name="accessibility_subtitle_nsfw_withperiod">不适宜于工作场所。</string>
     <string name="accessibility_subtitle_sticky_withperiod">固定的。</string>

@@ -113,7 +113,7 @@
     <string name="bug_message">RedReader bir hata ile karşılaştı.
 \n
 \nYapımcıya hata raporu göndermek ister misiniz\? Öyleyse, gerekli kısımlar doldurulmuş bir email sizin için hazırlanacak, göndermeden önce içeriğine bakabilirsiniz.</string>
-    <string name="subreddit_selection_textbox_hint">Alt-reddit</string>
+    <string name="subreddit_selection_textbox_hint">Subreddit</string>
     <string name="comment_edit_done">Yorum düzenlendi. Yeniledikten sonra değişiklik gözükecek.</string>
     <string name="sort_comments_top_hour">En İyi: Bu Saat</string>
     <string name="sort_comments_top_month">En İyi: Bu Ay</string>
@@ -191,7 +191,7 @@
     <string name="delete_confirm">Bunu silmek istediğinizden emin misiniz\?</string>
     <string name="delete_success">Başarıyla silindi. Siz yenileyene kadar öğe görünür olmaya devam edecektir.</string>
     <string name="edit_comment_actionbar">Yorum Düzenle</string>
-    <string name="pref_behaviour_fling_comment_left_title">Sola kaçış</string>
+    <string name="pref_behaviour_fling_comment_left_title">Sola kaydırma</string>
     <string name="lang_auto">Otomatik</string>
     <string name="error_message_login_user_denied_permission">Hesaba erişim izni reddedildi. Lütfen tekrar deneyin.</string>
     <string name="error_archived_vote">Bu arşivlenmiştir ve artık oylanamaz.</string>
@@ -202,7 +202,7 @@
     <string name="pref_behaviour_videoview_mode_external_app_vlc">Harici Uygulama: VLC</string>
     <string name="screen_orientation_portrait">Portre</string>
     <string name="error_url_required_title">URL Gerekli</string>
-    <string name="pref_behaviour_fling_comment_right_title">Sağa kaçış</string>
+    <string name="pref_behaviour_fling_comment_right_title">Sağa kaydırma</string>
     <string name="send_replies_to_inbox">Yanıtları gelen kutuma gönder</string>
     <string name="disable_replies_to_infobox_failed">Gelen kutusuna verilen yanıtlar kapatılamadı</string>
     <string name="pref_appearance_inbox_age_units_title">Gelen kutusu giriş yaşı hassasiyeti</string>
@@ -216,7 +216,7 @@
     <string name="userprofile_viewcomments">Yorumları Görüntüle</string>
     <string name="userprofile_viewposts">Gönderileri Görüntüle</string>
     <string name="props_error_title">Hata Özellikleri</string>
-    <string name="props_author_flair">Yazar Yetenek Metni</string>
+    <string name="props_author_flair">Yazar Flair Metni</string>
     <string name="props_created">Oluşturuldu</string>
     <string name="props_edited">Düzenlendi</string>
     <string name="props_score">Puan</string>
@@ -270,7 +270,7 @@
     <string name="userprofile_pm">Mesaj Gönder</string>
     <string name="error_too_long_title">Çok uzun</string>
     <string name="submit_comment_actionbar">Yorum Gönder</string>
-    <string name="action_search_comments">Arama Yorumları</string>
+    <string name="action_search_comments">Yorumlarda Ara</string>
     <string name="pref_appearance_navbar_color_title">Gezinme ve durum çubuğu rengi</string>
     <string name="pref_appearance_navbar_color_option_black">Siyah</string>
     <string name="pref_not_supported_before_lollipop">Android Lollipop\'tan önce desteklenmez</string>
@@ -288,7 +288,7 @@
     <string name="action_link_switch">Bağlantıya Geç</string>
     <string name="error_cancelled_title">Operasyon İptal Edildi</string>
     <string name="error_parse_message">Reddit anlayamadığım bazı veriler gönderdi.</string>
-    <string name="error_unexpected_cache_title">Beklenmeyen Önbellek Iskalama Hatası</string>
+    <string name="error_unexpected_cache_title">Beklenmeyen Önbellek Hatası</string>
     <string name="error_connection_title">Bağlantı Hatası</string>
     <string name="action_comments_switch">Yorumlara Çevir</string>
     <string name="error_404_title">Bulunamadı (404)</string>
@@ -311,7 +311,7 @@
     <string name="time_ago">%s önce</string>
     <string name="error_unexpected_storage_message">Önbellek depolama alanıyla ilgili bilinmeyen bir dahili hata oluştu. Muhtemelen alanınız tükeniyor.</string>
     <string name="userprofile_created">Oluşturuldu</string>
-    <string name="props_post_title">Post Özellikleri</string>
+    <string name="props_post_title">Gönderi Özellikleri</string>
     <string name="props_title">Başlık</string>
     <string name="error_malformed_url_message">Geçersiz bir URL\'ye erişilmeye çalışıldı.</string>
     <string name="error_postlist_redditdown_title">Reddit Çöktü</string>
@@ -320,7 +320,7 @@
     <string name="props_comment_title">Yorum Özellikleri</string>
     <string name="props_author">Yazar</string>
     <string name="notification_comment">%s sana cevap verdi</string>
-    <string name="userprofile_isfriend">Arkadaşdır</string>
+    <string name="userprofile_isfriend">Arkadaştır</string>
     <string name="props_url">URL</string>
     <string name="props_body_markdown">Gövde (Ham İşaretleme)</string>
     <string name="props_up">Yukarı</string>
@@ -334,7 +334,7 @@
     <string name="notification_message">%s sana bir mesaj gönderdi</string>
     <string name="time_1month">1 ay</string>
     <string name="pref_appearance_comment_header_items_author">Yazar</string>
-    <string name="pref_appearance_comment_header_items_flair">Yetenek</string>
+    <string name="pref_appearance_comment_header_items_flair">Flair</string>
     <string name="pref_appearance_comment_header_items_score">Puan</string>
     <string name="notification_message_multiple">Reddit\'te yeni mesajlar</string>
     <string name="pref_appearance_twopane_landscape">Sadece Yatay</string>
@@ -344,7 +344,7 @@
     <string name="time_1week">1 hafta</string>
     <string name="error_ratelimit_title">Çok fazla geçersiz deneme var.</string>
     <string name="error_toast_no_urls_in_comment">Bu yorumda URL bulunamadı.</string>
-    <string name="error_toast_parent_post_not_downloaded">Ebeveyn gönderisi henüz indirilmedi.</string>
+    <string name="error_toast_parent_post_not_downloaded">Üst gönderi henüz indirilmedi.</string>
     <string name="download_subreddits">Subreddit\'ler indiriliyor…</string>
     <string name="subtitle_by">tarafından</string>
     <string name="pref_appearance_twopane_auto">Otomatik algılama</string>
@@ -398,14 +398,14 @@
     <string name="screen_orientation_landscape">Yatay</string>
     <string name="options_close_all">Tümünü Kapat</string>
     <string name="pref_menus_optionsmenu_items_title">Üç noktalı menü öğeleri</string>
-    <string name="pref_behaviour_bezel_toolbar_header">Yan Araç Çubuğu Gönder</string>
+    <string name="pref_behaviour_bezel_toolbar_header">Gönderi yan araç çubuğu</string>
     <string name="error_upload_fail_imgur_title">Yükleme başarısız</string>
     <string name="pref_behaviour_view_mode_internal_browser">Dahili tarayıcı</string>
     <string name="mainmenu_useritems">Kullanıcı Öğeleri</string>
     <string name="mainmenu_header_subreddits_subscribed">Abone Olunan Subredditler</string>
     <string name="unblock_subreddit">Subreddit engelini kaldır</string>
     <string name="selected_link_is_not_image">Seçilen bağlantı bir resim değil.</string>
-    <string name="pref_behaviour_bezel_toolbar_swipezone_title">Post yan-kol çubuğu kaydırma bölgesi boyutu</string>
+    <string name="pref_behaviour_bezel_toolbar_swipezone_title">Gönderi yan araç çubuğu kaydırma bölgesi boyutu</string>
     <string name="pref_appearance_hide_username_main_menu_title">Kullanıcı adını gizle</string>
     <string name="album_already_first_image">Zaten albümdeki ilk resim.</string>
     <string name="album_already_last_image">Zaten albümdeki son resim.</string>
@@ -426,10 +426,10 @@
     <string name="error_file_open_failed_title">Dosya açılamadı</string>
     <string name="inbox_unread_only">Yalnızca Okunmamış Mesajlar</string>
     <string name="pref_behaviour_actions_comment_longclick_title">Uzun basın</string>
-    <string name="pref_behaviour_comment_min_dialog_title">Aşağıda puan varsa yorumu daraltın (tümünü göstermek için boş bırakın)</string>
+    <string name="pref_behaviour_comment_min_dialog_title">Puanı bunun altındaysa yorumu daralt (tümünü göstermek için boş bırakın)</string>
     <string name="no_file_selected">Seçili dosya yok</string>
     <string name="open_with">Bununla aç</string>
-    <string name="error_tor_not_installed">Orbot yüklenmediği sürece Tor çalışmayacaktır. Şimdi mi yüklüyorsunuz\?</string>
+    <string name="error_tor_not_installed">Orbot yüklenmediği sürece Tor çalışmayacaktır. Şimdi yüklensin mi\?</string>
     <string name="error_parse_imgur_message">Imgur anlayamadığım bazı veriler gönderdi.</string>
     <string name="error_parse_imgur_title">Ayrıştırma Hatası</string>
     <string name="pref_behaviour_albumview_mode_internal_list">Dahili görüntüleyici (liste)</string>
@@ -441,7 +441,7 @@
     <string name="pm_send_actionbar">Mesaj Gönder</string>
     <string name="submit_post_actionbar">Gönderi Gönder</string>
     <string name="no_comments_yet">Henüz yorum yok.</string>
-    <string name="button_prev_comment_parent">Önceki Veli Yorumu</string>
+    <string name="button_prev_comment_parent">Önceki Üst Yorum</string>
     <string name="mainmenu_custom_empty_search_query">Boş arama sorgusu.</string>
     <string name="post_submit_mark_nsfw">NSFW olarak işaretle</string>
     <string name="error_cache_dir_does_not_exist_title">Önbellek dizini eksik</string>
@@ -451,7 +451,7 @@
     <string name="unpin_subreddit">Ana Menüden Sabitlemeyi Kaldır</string>
     <string name="pref_appearance_navbar_color_option_primarydark">Birincil (koyu)</string>
     <string name="mainmenu_toast_pinned">Bu subreddit zaten ana menüye sabitlendi!</string>
-    <string name="collapsed_self_post">Kendi gönderisi çöktü</string>
+    <string name="collapsed_self_post">Metin gönderisi daraltıldı</string>
     <string name="pref_behaviour_video_playback_controls_title">Video oynatma kontrollerini etkinleştirin</string>
     <string name="error_no_suitable_apps_available">Uygun uygulama mevcut değil.</string>
     <string name="action_copy_text">Metni Kopyala</string>
@@ -471,7 +471,7 @@
     <string name="error_cache_dir_does_not_exist_message">Önbellek dizinine erişilemedi. Lütfen önbellek ayarlarında farklı bir konum seçin.</string>
     <string name="time_3hr">3 saat</string>
     <string name="theme_name_night_lowcontrast">Gece (düşük kontrast)</string>
-    <string name="pref_menus_link_context_items_title">Eylem menüsü öğelerini bağla</string>
+    <string name="pref_menus_link_context_items_title">Bağlantı eylem menüsü öğeleri</string>
     <string name="sort_pinned_subreddit_date">Eklenme Tarihine Göre</string>
     <string name="action_block_subreddit">Subreddit\'i Engelle</string>
     <string name="pref_cache_rerequest_postlist_age_title">Önbellek daha eskiyse gönderileri yenileyin</string>
@@ -502,11 +502,11 @@
     <string name="mainmenu_toast_not_blocked">Bu subreddit engellenmedi!</string>
     <string name="action_subscribe_subreddit">Subreddit\'e abone olun</string>
     <string name="edit_post_actionbar">Gönderiyi Düzenle</string>
-    <string name="pref_behaviour_self_post_tap_actions_title">Kendi kendine gönderi dokunuşu</string>
+    <string name="pref_behaviour_self_post_tap_actions_title">Metin gönderisine dokunma</string>
     <string name="action_unblock_subreddit">Subreddit engelini kaldır</string>
     <string name="action_pin_subreddit">Subreddit\'i Ana Menüye Sabitle</string>
     <string name="action_unpin_subreddit">Subreddit\'i Ana Menüden Kaldır</string>
-    <string name="button_next_comment_parent">Sonraki Ebeveyn Yorumu</string>
+    <string name="button_next_comment_parent">Sonraki Üst Yorum</string>
     <string name="pref_menus_show_popular_main_menu_title">Ana menüde /r/popular\'ı göster</string>
     <string name="download_link_message">Bu bir indirme bağlantısıdır. Bunu harici bir tarayıcıya yüklemek ister misiniz\?</string>
     <string name="pref_behaviour_sharing_share_text_title">Yorum paylaşırken metin ekleyin</string>
@@ -517,12 +517,12 @@
     <string name="pref_appearance_show_aspect_ratio_indicator_summary">Mevcut olduğunda medya yükleme görselini gösterin</string>
     <string name="notification_channel_name_reddit_messages">Gelen Reddit Mesajları</string>
     <string name="pref_behaviour_sharing_share_dialog_dialogtitle">Paylaşım için bir uygulama seçin</string>
-    <string name="post_text_copied_to_clipboard">Panoya kopyalanan kendi metnini gönder</string>
-    <string name="action_copy_selftext">Kendi Metnini Kopyala</string>
+    <string name="post_text_copied_to_clipboard">Gönderi metni panoya kopyalandı</string>
+    <string name="action_copy_selftext">Gönderi metnini kopyala</string>
     <string name="pref_behaviour_sharing_share_dialog_title">Yerleşik paylaş iletişim kutusunu kullan</string>
     <string name="error_toast_no_share_app_installed">Bunu paylaşmak için uygun bir uygulama yüklü değil.</string>
-    <string name="pref_appearance_fontscale_post_header_subtitles_title">Açılan yazı altyazıları</string>
-    <string name="pref_appearance_post_subtitle_items_title">Altyazı girişlerini gönder</string>
+    <string name="pref_appearance_fontscale_post_header_subtitles_title">Açılan gönderi alt başlıkları</string>
+    <string name="pref_appearance_post_subtitle_items_title">Gönderi alt başlığı öğeleri</string>
     <string name="pref_appearance_post_subtitle_items_sticky">Yapışkan etiket</string>
     <string name="pref_appearance_fontscale_use_global">Global yazı tipi ölçeğini kullan</string>
     <string name="pref_appearance_fontscale_global_title">Global</string>
@@ -533,10 +533,10 @@
     <string name="must_login_message">Bunu yapmak için bir Reddit hesabına giriş yapmış olmanız gerekir.</string>
     <string name="time_after_reply">daha sonra %s yanıtladı</string>
     <string name="upgrade_message">%s sürümüne güncellendi</string>
-    <string name="subscription_successful">Abone olundu %s</string>
+    <string name="subscription_successful">%s aboneliği eklendi</string>
     <string name="pref_menus_mainmenu_header">Ana Menü</string>
     <string name="error_toast_failed_open_external_browser">\"%s\" url\'si harici tarayıcıda açılamadı</string>
-    <string name="unsubscription_successful">Abonelikten çıkıldı %s</string>
+    <string name="unsubscription_successful">%s aboneliği kaldırıldı</string>
     <string name="error_toast_no_email_apps">Yüklü e-posta uygulaması yok!</string>
     <string name="bug_chooser_title">E-posta hata raporu</string>
     <string name="props_self_html">Öz metin (HTML)</string>
@@ -560,22 +560,22 @@
     <string name="press_back_again">Tekrar geri bas</string>
     <string name="pref_behaviour_back_button_title">Geri Düğmesi</string>
     <string name="pref_appearance_toolbar_header">Araç Çubuğu</string>
-    <string name="pref_behaviour_save_location_title">Hedefi kaydet</string>
+    <string name="pref_behaviour_save_location_title">Kayıt konumu</string>
     <string name="pref_behaviour_save_location_prompt_every_time">Her seferinde sor</string>
     <string name="pref_appearance_not_possible_in_tablet_mode">Tablet modunda mümkün değil</string>
     <string name="pref_behaviour_save_location_system_default">Sistem varsayılanını kullan</string>
     <string name="pref_menus_quick_account_switcher_title">Hızlı hesap değiştirmeyi kullanın</string>
     <string name="options_account_manager">Yönet…</string>
     <string name="time_after">%s\'ten sonra</string>
-    <string name="pref_appearance_post_age_units_title">Yaş hassasiyeti sonrası</string>
-    <string name="pref_appearance_post_header_age_units_title">Yaş hassasiyeti sonrası açıldı</string>
+    <string name="pref_appearance_post_age_units_title">Gönderi yaşı hassasiyeti</string>
+    <string name="pref_appearance_post_header_age_units_title">Açılan gönderi yaşı hassasiyeti</string>
     <string name="pref_appearance_comment_age_units_title">Yorum yaşı hassasiyeti</string>
     <string name="pref_appearance_inbox_header">Gelen Kutusu</string>
     <string name="search_results_query_and_location">%2$s üzerinde \"%1$s\" ifadesini arayın</string>
     <string name="link_copied_to_clipboard">Bağlantı panoya kopyalandı</string>
     <string name="cache_clear_dialog_thumbnails">Küçük Resimler</string>
     <string name="accessibility_subtitle_age_withperiod">Yaş: %s.</string>
-    <string name="accessibility_subtitle_domain_withperiod">Etki alanı: %s.</string>
+    <string name="accessibility_subtitle_domain_withperiod">Alan adı: %s.</string>
     <string name="accessibility_subtitle_points_unknown_withperiod">Puan gizlendi.</string>
     <string name="pref_images_inline_image_previews_title">Satır içi görüntü önizlemeleri</string>
     <string name="accessibility_subtitle_author_withperiod">Yazar: %s.</string>
@@ -583,7 +583,7 @@
     <string name="accessibility_subtitle_gold_withperiod">Altın ödül: %d.</string>
     <string name="accessibility_subtitle_edited_since_being_posted">Metin yayınlandıktan sonra düzenlendi.</string>
     <string name="accessibility_subtitle_comment_collapsed">Yorum metni gizlendi.</string>
-    <string name="accessibility_subtitle_subreddit_withperiod">Alt-reddit: %s.</string>
+    <string name="accessibility_subtitle_subreddit_withperiod">Subreddit: %s.</string>
     <string name="cache_clear_dialog_images">Görüntüler</string>
     <string name="accessibility_image_viewer_view_comments">Yorumları görüntüle</string>
     <string name="pref_images_inline_image_previews_nsfw_title">NSFW önizlemelerini göster</string>
@@ -609,7 +609,7 @@
     <string name="pref_item_backup_preferences_title">Yedekleme tercihleri</string>
     <string name="restore_preferences_error_version_warning_title">Uyarı</string>
     <string name="sort_posts_controversial_all">Tartışmalı: Tüm Zamanlar</string>
-    <string name="mainmenu_header_multireddits">Çoklu-redditler</string>
+    <string name="mainmenu_header_multireddits">Multiredditler</string>
     <string name="pref_images_inline_image_previews_spoiler_title">Spoiler önizlemelerini göster</string>
     <string name="pref_appearance_thumbnails_spoiler_show_title">Spoiler küçük resimlerini göster</string>
     <string name="pref_item_restore_preferences_title">Tercihleri geri yükle</string>
@@ -619,9 +619,9 @@
     <string name="sort_posts_controversial_year">Tartışmalı: Bu Yıl</string>
     <string name="no_posts_yet">Henüz gönderi yok.</string>
     <string name="accessibility_subtitle_controversiality_withperiod">Tartışmalı olarak oylandı.</string>
-    <string name="error_post_flair_required_title">Yetenek gerekli</string>
+    <string name="error_post_flair_required_title">Flair gerekli</string>
     <string name="error_tor_connection_message">Tor\'a bağlanılamıyor. Lütfen Orbot uygulamasının çalıştığından emin olun veya ağ ayarlarında Tor\'u devre dışı bırakın.</string>
-    <string name="props_subreddit">Alt-reddit</string>
+    <string name="props_subreddit">Subreddit</string>
     <string name="no_posts_yet_hidden">Ayarlar nedeniyle hiçbir gönderi gösterilmiyor.</string>
     <string name="sort_posts_comments_year">Yorumlar: Bu Yıl</string>
     <string name="restore_preferences_success">Geri yükleme başarılı</string>
@@ -635,7 +635,7 @@
     <string name="sort_posts_comments_all">Yorumlar: Tüm Zamanlar</string>
     <string name="sort_posts_comments_today">Yorumlar: Bugün</string>
     <string name="pref_appearance_android_status_hide_on_media">Medyayı görüntülerken</string>
-    <string name="error_post_flair_required_message">Bu subreddit\'in kuralları, gönderinizde bir yetenek belirlemeyi gerektirir.</string>
+    <string name="error_post_flair_required_message">Bu subreddit\'in kuralları, gönderinizde bir flair belirlemeyi gerektirir.</string>
     <string name="error_no_file_manager_message">Bu cihazdaki işletim sisteminde Android Depolama Erişim Çerçevesi ile uyumlu bir dosya yöneticisi eksik. Bir dosya yöneticisi mevcutsa, devre dışı bırakılmış olabilir.</string>
     <string name="accessibility_subtitle_author_admin_withperiod">Yazar: %s, yönetici.</string>
     <string name="error_post_submit_title">Gönderi iletilirken hata oluştu</string>
@@ -657,7 +657,7 @@
     <string name="sort_posts_new_month">Yeni: Bu Ay</string>
     <string name="pref_appearance_android_status_never_hide">Asla</string>
     <string name="pref_appearance_comment_header_items_controversiality">Tartışmalı gösterge (†)</string>
-    <string name="pref_appearance_post_subtitle_items_subreddit">Alt-reddit</string>
+    <string name="pref_appearance_post_subtitle_items_subreddit">Subreddit</string>
     <string name="search_results_short">Arama Sonuçları</string>
     <string name="pref_menus_subreddit_context_items_title">Subreddit eylem menüsü öğeleri</string>
     <string name="submit_pmreply_actionbar">Yanıtla</string>
@@ -667,7 +667,7 @@
     <string name="pref_appearance_image_viewer_header">Resim Görüntüleyici</string>
     <string name="mainmenu_custom_destination_url">URL</string>
     <string name="mainmenu_custom_destination_user">Kullanıcı</string>
-    <string name="mainmenu_custom_destination_subreddit">Alt-reddit</string>
+    <string name="mainmenu_custom_destination_subreddit">Subreddit</string>
     <string name="pref_behaviour_postsort">Gönderiler (varsayılan)</string>
     <string name="comment_header_search_thread_title">Şu anda bir yorum başlığı için arama sonuçlarını görüntülüyorsunuz.</string>
     <string name="submit_post_title_empty">Başlık boş bırakılamaz</string>
@@ -700,13 +700,13 @@
     <string name="pref_behaviour_usecustomtabs_summary">Kullanılabilir olduğunda Android Özel Sekmelerini kullanın</string>
     <string name="pref_behaviour_hide_read_posts_title">Okunan gönderileri gizle</string>
     <string name="pref_menus_mainmenu_shortcutitems_title">Kısayollar</string>
-    <string name="pref_menus_show_multireddit_main_menu_title">Multireddits\'i göster</string>
+    <string name="pref_menus_show_multireddit_main_menu_title">Multiredditleri göster</string>
     <string name="pref_menus_show_subscribed_subreddits_main_menu_title">Abone olunan subredditleri göster</string>
     <string name="mainmenu_random_nsfw">Rastgele NSFW Subreddit</string>
     <string name="pref_appearance_show_aspect_ratio_indicator_title">En boy oranı göstergesini göster</string>
     <string name="pref_appearance_bottom_toolbar_title">Araç çubuğunu altta göster</string>
     <string name="pref_behaviour_video_mute_default_title">Videoları varsayılan olarak sessize al</string>
-    <string name="pref_appearance_fontscale_post_subtitles_title">Altyazı gönder</string>
+    <string name="pref_appearance_fontscale_post_subtitles_title">Gönderi alt başlıkları</string>
     <string name="pref_appearance_fontscale_post_header_titles_title">Açılan gönderi başlıkları</string>
     <string name="pref_appearance_fontscale_comment_headers_title">Yorum/Gelen kutusu başlıkları</string>
     <string name="pref_appearance_posts_header">Gönderiler</string>
@@ -714,7 +714,7 @@
     <string name="pref_appearance_post_subtitle_items_nsfw">NSFW etiketi</string>
     <string name="pref_appearance_post_subtitle_items_domain">Alan adı</string>
     <string name="pref_appearance_post_subtitle_items_use_different_settings_title">Açılan gönderiler için farklı ayarlar kullan</string>
-    <string name="pref_appearance_post_header_subtitle_items_title">Açılan gönderi altyazı girişleri</string>
+    <string name="pref_appearance_post_header_subtitle_items_title">Açılan gönderi alt başlığı öğeleri</string>
     <string name="list_yes_no_or_wifi_always">Her zaman</string>
     <string name="list_yes_no_or_wifi_wifionly">Sadece Wi-Fi\'da</string>
     <string name="list_yes_no_or_wifi_never">Asla</string>
@@ -727,8 +727,8 @@
     <string name="pref_appearance_fontscale_linkbuttons_title">Bağlantı düğmeleri</string>
     <string name="pref_appearance_fontscale_bodytext_title">Gövde metni</string>
     <string name="pin_successful">%s ana menüye sabitlendi</string>
-    <string name="unpin_successful">Ana menüden sabitlenmesi kaldırıldı %s</string>
-    <string name="pref_menus_posts_header">Mesajlar</string>
+    <string name="unpin_successful">%s ana menüden kaldırıldı</string>
+    <string name="pref_menus_posts_header">Gönderiler</string>
     <string name="spoiler">Spoiler</string>
     <string name="error_title_malformed_html">Hatalı biçimlendirilmiş HTML</string>
     <string name="error_message_malformed_html">Gövde metni ayrıştırılamadı. Lütfen bunu uygulama geliştiricisine bildirin.</string>
@@ -740,7 +740,7 @@
     <string name="pref_menus_appbar_items_if_room">Yer varsa düğmeyi göster</string>
     <string name="pref_menus_appbar_items_overflow_only">Yalnızca üç noktalı menüde göster</string>
     <string name="pref_menus_appbar_items_never">Gösterme</string>
-    <string name="action_search_posts">Mesajları Ara</string>
+    <string name="action_search_posts">Gönderileri Ara</string>
     <string name="image_gallery">Galeri</string>
     <string name="pref_appearance_post_show_comments_button_title">Yorum düğmesini göster</string>
     <string name="pref_behaviour_user_commentsort_title">Kullanıcı yorumları (varsayılan)</string>
@@ -760,7 +760,7 @@
     <string name="pref_appearance_comment_age_mode_title">Yorum yaşı modu</string>
     <string name="pref_appearance_comment_age_mode_absolute">Yorumdan bu yana geçen süre (x dakika önce)</string>
     <string name="pref_appearance_comment_age_mode_relative_post">Gönderiye göre (x dakika sonra)</string>
-    <string name="pref_appearance_comment_age_mode_relative_parent">Ebeveyn yorumuna göre (x dakika sonra yanıtlandı)</string>
+    <string name="pref_appearance_comment_age_mode_relative_parent">Üst yoruma göre (x dakika sonra yanıtlandı)</string>
     <string name="dialog_clear">Temizle</string>
     <string name="cache_clear_dialog_loading">Veri kullanım boyutları yükleniyor</string>
     <string name="cache_clear_dialog_loaded">Yüklenen veri kullanım boyutları</string>
@@ -770,7 +770,7 @@
     <string name="accessibility_image_viewer_go_back">Geri dön</string>
     <string name="accessibility_subtitle_spoiler_withperiod">Spoiler içerir.</string>
     <string name="accessibility_subtitle_sticky_withperiod">Yapışkan.</string>
-    <string name="accessibility_subtitle_flair_withperiod">Yetenek: %s.</string>
+    <string name="accessibility_subtitle_flair_withperiod">Flair: %s.</string>
     <string name="accessibility_subtitle_points_withperiod">Puan: %d.</string>
     <string name="accessibility_subtitle_selfpost_withperiod">Metin gönderisi.</string>
     <string name="inline_preview_prompt_message">Yukarıdaki gibi satır içi resim önizlemeleri göstermeye devam etmek istiyor musunuz\? Bunu istediğiniz zaman ayarlardan değiştirebilirsiniz.</string>
@@ -787,8 +787,8 @@
     <string name="pref_menus_comment_context_items_title">Eylem menüsü öğeleri</string>
     <string name="pref_behaviour_post_title_opens_comments_title">Gönderi başlığı yorumları açar</string>
     <string name="mainmenu_sent_messages">Gönderilen Mesajlar</string>
-    <string name="post_submit_flair_none_available">Hiçbir yetenek mevcut değil</string>
-    <string name="post_submit_flair_none_selected">Hiçbir yetenek seçilmedi</string>
+    <string name="post_submit_flair_none_available">Kullanılabilir flair yok</string>
+    <string name="post_submit_flair_none_selected">Flair seçilmedi</string>
     <string name="subreddit_selector_title">Subreddit seçin</string>
     <string name="error_subreddit_does_not_exist_title">Geçersiz subreddit</string>
     <string name="error_subreddit_does_not_exist_message">Belirtilen subreddit mevcut değil.</string>
@@ -819,5 +819,5 @@
     <string name="sort_posts_comments_week">Yorumlar: Bu Hafta</string>
     <string name="pref_appearance_android_status_always_hide">Her zaman</string>
     <string name="search_listing_header_limit_location">Konuma Sınırla</string>
-    <string name="search_results_location_only">Üzerinde ara %s</string>
+    <string name="search_results_location_only">%s içinde ara</string>
 </resources>

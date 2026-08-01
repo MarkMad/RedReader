@@ -422,7 +422,7 @@
     <string name="pref_menus_optionsmenu_items_title">Element på trepunktsmenyn</string>
     <!-- 2015-07-05 -->
     <string name="pref_behaviour_bezel_toolbar_header">Sidoverktygsrad för inlägg</string>
-    <string name="pref_behaviour_bezel_toolbar_swipezone_title">Storlek på svepzon på Sidoverktygsrad för inlägg</string>
+    <string name="pref_behaviour_bezel_toolbar_swipezone_title">Storlek på svepzonen för inläggens sidoverktygsrad</string>
     <string name="pref_behaviour_gifview_mode_title">GIF-visare</string>
     <string name="pref_behaviour_gifview_mode_internal_movie">Intern visare (Film, Android 4.0+)</string>
     <string name="pref_behaviour_gifview_mode_internal_legacy">Intern visare (legacy)</string>
@@ -661,7 +661,7 @@
     <string name="pref_appearance_comment_age_mode_absolute">Tid sedan kommentering (x min sedan)</string>
     <string name="pref_appearance_inbox_age_units_title">Åldersprecision för meddelanden i inkorgen</string>
     <string name="pref_appearance_age_units_2">Två enheter (x timmar, x minuter)</string>
-    <string name="pref_appearance_android_status_hide_on_media">Medans media visas</string>
+    <string name="pref_appearance_android_status_hide_on_media">Medan media visas</string>
     <string name="pref_appearance_age_units_1">En enhet (x timmar)</string>
     <string name="pref_appearance_age_units_3">Tre enheter (x timmar, x minuter, x sekunder)</string>
     <string name="pref_appearance_navbar_color_option_white">Vit</string>
@@ -706,30 +706,30 @@
     <string name="error_nsfw_subreddits_disabled_message">NSFW-innehåll är avstängt i inställningarna.</string>
     <string name="search_results_short">Sökresultat</string>
     <string name="search_results_query_only">Sökning efter \"%s\"</string>
-    <string name="pref_network_tor_summary">När extern webbläsare eller Androidanpassade flikar används kommer inte länkad att öppnas med Tor (förutom om din webbläsare är inställd att använda Tor)</string>
+    <string name="pref_network_tor_summary">När extern webbläsare eller Androidanpassade flikar används kommer inte länkar att öppnas med Tor (förutom om din webbläsare är inställd att använda Tor)</string>
     <string name="prefs_category_fonts">Typsnitt</string>
-    <string name="must_login_message">Du måste vara inloggad till ett Reddit konto för att göra detta.</string>
+    <string name="must_login_message">Du måste vara inloggad på ett Reddit-konto för att göra detta.</string>
     <string name="upgrade_message">Uppdaterad till version %s</string>
     <string name="error_toast_failed_open_external_browser">Misslyckades att öppna url \"%s\" i extern webbläsare</string>
     <string name="error_toast_no_email_apps">Inga mejlappar installerade!</string>
     <string name="bug_chooser_title">Mejla buggrapport</string>
     <string name="subscription_successful">Prenumererad till %s</string>
     <string name="unsubscription_successful">Avprenumererad från %s</string>
-    <string name="pin_successful">Fäste %s till startsidan</string>
-    <string name="unpin_successful">Lossade %s från startsidan</string>
-    <string name="pref_menus_mainmenu_header">Startsida</string>
+    <string name="pin_successful">Fäste %s till huvudmenyn</string>
+    <string name="unpin_successful">Lossade %s från huvudmenyn</string>
+    <string name="pref_menus_mainmenu_header">Huvudmeny</string>
     <string name="pref_menus_posts_header">Inlägg</string>
     <string name="spoiler">Spoiler</string>
     <string name="error_title_malformed_html">Felformaterad HTML</string>
     <string name="error_message_malformed_html">Kunde inte tolka brödtexten. Rapportera vänligen detta till apputvecklaren.</string>
-    <string name="props_body_html">Kropp (HTML)</string>
+    <string name="props_body_html">Brödtext (HTML)</string>
     <string name="props_self_html">Egentext (HTML)</string>
     <string name="pref_appearance_hide_headertoolbar_commentlist_title">Dölj kommentarslisthuvudets verktygsrad</string>
     <string name="post_link_copied_to_clipboard">Inläggslänk kopierad</string>
     <string name="link_copied_to_clipboard">Länk kopierad</string>
     <string name="comment_link_copied_to_clipboard">Kommentarslänk kopierad</string>
     <string name="comment_text_copied_to_clipboard">Kommentarstext kopierad</string>
-    <string name="subreddit_link_copied_to_clipboard">Subbreditens länk kopierad</string>
+    <string name="subreddit_link_copied_to_clipboard">Subredditens länk kopierad</string>
     <string name="pref_menus_appbar_items_always">Visa alltid knapp</string>
     <string name="pref_menus_appbar_items_if_room">Visa knapp vid tillräcklig plats</string>
     <string name="pref_menus_appbar_items_overflow_only">Visa endast i trepunktsmeny</string>
@@ -807,5 +807,5 @@
     <string name="album_image_default_text">Bild %d</string>
     <string name="imageview_image_info_failed">Kunde inte ladda ner bildmetadata. Försöker med webbläsare.</string>
     <string name="imageview_download_failed">Nedladdning var avbruten. Försöker med webbläsare.</string>
-    <string name="search_results_location_only">Sökning efter %s</string>
+    <string name="search_results_location_only">Sökning i %s</string>
 </resources>

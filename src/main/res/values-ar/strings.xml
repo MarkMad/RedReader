@@ -365,7 +365,7 @@
     <string name="sidebar_activity_title">شريط جانبي</string>
     <!-- 2014-04-20 -->
     <string name="header_subscriber_count">%s مشتركين</string>
-    <string name="header_subscriber_count_unknown">عدد الناس مجهول</string>
+    <string name="header_subscriber_count_unknown">عدد المشتركين غير معروف</string>
     <!-- 2014-04-21 -->
     <string name="invalid_subreddit_name">اسم المنتدى الفرعي غير صحيح</string>
     <!-- 2014-04-26 -->
@@ -390,7 +390,7 @@
     <string name="mark_all_as_read_success">كل الرسائل عُلِمة كمقروءة.</string>
     <string name="error_title_login_user_denied_permission">تم رفض الإذن</string>
     <string name="error_message_login_user_denied_permission">تم رفض الإذن بالوصول إلى الحساب. الرجاء المحاولة مره أخرى.</string>
-    <string name="error_title_login_unknown_reddit_error">خطأ رديت غير معروف:%s</string>
+    <string name="error_title_login_unknown_reddit_error">خطأ ريديت غير معروف: %s</string>
     <string name="imageview_invalid_video">الفيديو غير صالح. إعادة محاولة عرضه باستخدام المتصفح.</string>
     <string name="download_authorizing">مصادقه…</string>
     <string name="pref_behaviour_skiptofrontpage_title">انتقل إلى الصفحة الأولي</string>
@@ -411,17 +411,17 @@
     <string name="action_delete">حذف</string>
     <string name="delete_confirm">تأكد على الحذف؟</string>
     <string name="delete_success">تم الحذف بنجاح. سيظل العنصر مرئيًا حتى تقوم بالتحديث.</string>
-    <string name="pref_appearance_hide_username_main_menu_title">إخفاء إسم الحساب (الـ\"يوزرنيم\")</string>
+    <string name="pref_appearance_hide_username_main_menu_title">إخفاء اسم المستخدم في القائمة الرئيسية</string>
     <string name="mainmenu_useritems">عناصر المستخدم</string>
     <string name="selected_link_is_not_image">الرابط المختار ليس صورة.</string>
     <string name="imgur_album">ألبوم Imgur (إمجور)</string>
     <string name="album_already_first_image">لا توجد صورة قبل هذه أصلا.</string>
-    <string name="album_already_last_image">كانت تلك أخر صورة.</string>
-    <string name="upgrade_v190_login_message">تمت ترقيه ردريدر، صار يستخدم &lt;oAuth&gt; لمصادقة ريديت. إذا كنت قد سجلت قبل الترقية، عليك أن تسجل دخولا مرة أخرى</string>
+    <string name="album_already_last_image">كانت تلك آخر صورة.</string>
+    <string name="upgrade_v190_login_message">تمت ترقيه ردريدر، صار يستخدم &lt;oAuth&gt; لمصادقة ريديت. إذا كنت قد سجلت قبل الترقية، عليك أن تسجل دخولك مرة أخرى.</string>
     <string name="pref_behaviour_videoview_mode_title">عارض المرئية</string>
     <string name="pref_behaviour_videoview_mode_internal_videoview">عارض الفيديو الداخلي (منصوح به)</string>
     <string name="pref_behaviour_videoview_mode_external_app_vlc">التطبيق الخارجي: &lt;VLC&gt;</string>
-    <string name="videoview_mode_app_vlc_launch_failed">فشل &lt;VLC&gt;، نرجى ترقيته أو غيّر العارض</string>
+    <string name="videoview_mode_app_vlc_launch_failed">فشل تشغيل &lt;VLC&gt;. يُرجى ترقيته أو تغيير العارض.</string>
     <string name="error_url_required_title">مطلوب رابط</string>
     <string name="error_url_required_message">يجب تحديد رابط.</string>
     <string name="sort_comments_qa">سين سؤال وجيم جواب</string>
@@ -576,9 +576,9 @@
     <string name="pref_behaviour_sharing_include_desc_title">تضمين العنوان/الوصف عند النشر</string>
     <string name="share_comments_for">تعليقات ل%s</string>
     <string name="share_comment_by_on_reddit">التعليق من قبل %s في ريديت</string>
-    <string name="pref_appearance_left_handed_title">"وضع  ايسر"</string>
+    <string name="pref_appearance_left_handed_title">وضع أيسر</string>
     <string name="error_already_submitted_title">تم التقديم من قبل</string>
-    <string name="post_submit_mark_spoiler">وضع علاملة تحذير لحرق الأحداث</string>
+    <string name="post_submit_mark_spoiler">وضع علامة تحذير لحرق الأحداث</string>
     <string name="title_license">رخصة</string>
     <string name="post_submit_mark_nsfw">اعتباره كمحتوى مقيد</string>
     <string name="error_already_submitted_message">هذه المنشورة تم نشرها الى هذا المجتمع فعلا.</string>
@@ -599,10 +599,10 @@
     <string name="pref_behaviour_sharing_share_dialog_dialogtitle">اختر تطبيقاً للمشاركة</string>
     <string name="pref_behaviour_sharing_share_dialog_title">استخدم حوار المشاركة الداخلي</string>
     <string name="error_toast_no_share_app_installed">لا يوجد تطبيق مناسب لمشاركة هذا.</string>
-    <string name="pref_appearance_fontscale_post_subtitles_title">كلام/ترجمة النشرة</string>
-    <string name="pref_appearance_fontscale_post_header_titles_title">عناوين النشرات المفتوحة</string>
-    <string name="pref_appearance_fontscale_post_header_subtitles_title">كلام/ترجمة النشرة المفتوحة</string>
+    <string name="pref_appearance_fontscale_post_subtitles_title">العناوين الفرعية للمنشور</string>
+    <string name="pref_appearance_fontscale_post_header_titles_title">عناوين المنشورات المفتوحة</string>
+    <string name="pref_appearance_fontscale_post_header_subtitles_title">العناوين الفرعية للمنشور المفتوح</string>
     <string name="pref_appearance_fontscale_comment_headers_title">رؤوس التعليق/البريد</string>
-    <string name="pref_appearance_posts_header">النشرات</string>
+    <string name="pref_appearance_posts_header">المنشورات</string>
     <string name="pref_appearance_post_subtitle_items_subreddit">مجتمع</string>
 </resources>

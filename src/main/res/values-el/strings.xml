@@ -160,7 +160,7 @@
     <string name="bug_message">Προέκυψε σφάλμα στο RedReader.\n\nΘα ήθελες να στείλεις μια αναφορά σφάλματος στον προγραμματιστή; Αν ναι, ένα email θα συμπληρωθεί αυτόματα με όλες τις σχετικές πληροφορίες και μπορείς να ρίξεις μια ματιά στο περιεχόμενο πριν το στείλεις.</string>
     <string name="error_403_message">Το Reddit λέει ότι ο τρέχων χρήστης δεν έχει την άδεια για αυτή την ενέργεια.</string>
     <string name="bug_button_ignore">Να μην γίνει αποστολή αναφοράς σφάλματος</string>
-    <string name="error_bad_captcha_message">Το CAPTCHA που εισήγαγες είναι λαθος. Δοκίμασε ξανά.</string>
+    <string name="error_bad_captcha_message">Το CAPTCHA που εισήγαγες είναι λάθος. Δοκίμασε ξανά.</string>
     <string name="pref_cache_precache_images_header">Προφόρτωση Εικόνων</string>
     <string name="pref_cache_precache_images_title">Προφόρτωση εικόνων</string>
     <string name="action_share">Κοινοποίηση</string>

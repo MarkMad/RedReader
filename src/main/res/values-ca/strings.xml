@@ -10,7 +10,7 @@
     <string name="pref_appearance_thumbnails_header">Miniatures</string>
     <string name="pref_appearance_thumbnails_show_title">Mostra les miniatures</string>
     <string name="prefs_category_cache">Memòria cau</string>
-    <string name="firstrun_login_button_now">Inícia la sessió ara</string>
+    <string name="firstrun_login_button_now">Inicia la sessió ara</string>
     <string name="pref_appearance_comment_header_items_title">Entrades de capçalera de comentaris</string>
     <string name="prefs_category_appearance">Aparença</string>
     <string name="pref_appearance_theme_header">Tema</string>
@@ -108,7 +108,7 @@
     <string name="action_downvote_remove">Treure Vot Negatiu</string>
     <string name="action_save">Desa</string>
     <string name="action_hide">Amaga</string>
-    <string name="action_unsave">Borra dels Desats</string>
+    <string name="action_unsave">Esborra dels Desats</string>
     <string name="action_unhide">No Amaguis</string>
     <string name="action_external">Obre al Navegador Extern</string>
     <string name="action_external_short">Al Navegador</string>
@@ -461,10 +461,10 @@
     <string name="pref_appearance_link_text_clickable_title">Fes els enllaços interactius al text</string>
     <string name="pref_appearance_hide_android_status_title">Amaga la barra d\'estat</string>
     <string name="pref_behaviour_enable_swipe_refresh_title">Llisca cap avall per recarregar</string>
-    <string name="mainmenu_header_subreddits_blocked">Bloca subreddits</string>
+    <string name="mainmenu_header_subreddits_blocked">Subreddits blocats</string>
     <string name="pref_behaviour_blocked_subredditsort">Subreddits blocats</string>
     <string name="sort_blocked_subreddit_name">Pel nom</string>
-    <string name="sort_blocked_subreddit_date">Per la d\'ata d\'inclusió</string>
+    <string name="sort_blocked_subreddit_date">Per la data d\'inclusió</string>
     <string name="pref_appearance_show_blocked_subreddits_main_menu_title">Mostra els subreddits blocats</string>
     <string name="pref_cache_rerequest_postlist_age_title">Recarrega les publicacions si la memòria cau és més antiga que</string>
     <string name="time_2hr">2 hores</string>

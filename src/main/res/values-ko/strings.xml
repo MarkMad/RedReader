@@ -86,7 +86,7 @@
     <string name="sort_comments_top">찬성 순</string>
     <string name="dialog_close">닫기</string>
     <string name="dialog_no">아니요</string>
-    <string name="dialog_go">출발</string>
+    <string name="dialog_go">이동</string>
     <string name="action_menu_post_title">게시물 행동</string>
     <string name="action_upvote">찬성</string>
     <string name="action_downvote">반대</string>
@@ -208,7 +208,7 @@
     <string name="props_score">점수</string>
     <string name="props_num_comments">댓글 수</string>
     <string name="props_body_markdown">본문 (마크다운 원문)</string>
-    <string name="props_self_markdown">본문 (마크다운 원문)</string>
+    <string name="props_self_markdown">셀프 텍스트 (마크다운 원문)</string>
     <string name="props_never">편집하지 않음</string>
     <string name="props_down">아래로</string>
     <string name="props_up">위로</string>
@@ -248,8 +248,8 @@
     <string name="error_toast_parent_post_not_downloaded">상위 게시물이 아직 다운로드 되지 않았습니다.</string>
     <string name="download_subreddits">서브레딧 다운로드 중…</string>
     <string name="subtitle_points">포인트</string>
-    <string name="subtitle_to">to</string>
-    <string name="subtitle_by">by</string>
+    <string name="subtitle_to">받는 사람</string>
+    <string name="subtitle_by">작성자</string>
     <string name="general_unknown">알 수 없음</string>
     <string name="action_search">찾기</string>
     <string name="search_subreddit_restrict">검색을 다음으로 제한</string>
@@ -257,7 +257,7 @@
     <string name="pref_behaviour_commentsort">댓글(기본)</string>
     <string name="action_fling_disabled">비활성화</string>
     <string name="pref_about_version_title">버전</string>
-    <string name="prefs_category_about">About</string>
+    <string name="prefs_category_about">정보</string>
     <string name="pref_behaviour_sort_header">정렬</string>
     <string name="pref_appearance_indentlines_title">들여쓰기 줄 표시</string>
     <string name="load_more_posts">게시물 더 불러오기</string>
@@ -283,8 +283,8 @@
     <string name="options_subscribing">구독 중…</string>
     <string name="options_unsubscribing">구독 취소 중…</string>
     <string name="options_sidebar">사이드바 보기</string>
-    <string name="pref_appearance_locale_header">Locale</string>
-    <string name="pref_appearance_langforce_title">Language</string>
+    <string name="pref_appearance_locale_header">지역</string>
+    <string name="pref_appearance_langforce_title">언어</string>
     <string name="lang_auto">자동</string>
     <string name="prefs_category_network">네트워크</string>
     <string name="pref_network_https_title">HTTPS 사용</string>
@@ -308,7 +308,7 @@
     <string name="user_comments">댓글</string>
     <string name="comment_header_specific_thread_title">현재 특정 댓글 스레드를 보고 계십니다.</string>
     <string name="comment_header_specific_thread_message">이 게시물의 모든 댓글을 보려면 여기를 클릭하세요.</string>
-    <string name="action_comment_context">본문</string>
+    <string name="action_comment_context">문맥</string>
     <string name="action_comment_go_to">댓글로 이동</string>
     <string name="webview_https_already">현재 URL은 이미 HTTPS를 사용하고 있습니다.</string>
     <string name="webview_https_unknownprotocol">알 수 없는 프로토콜, \'http://\'를 기대했습니다</string>
@@ -371,7 +371,7 @@
     <string name="pin_subreddit">메인 메뉴에 고정</string>
     <string name="unpin_subreddit">메인 메뉴에서 고정 해제</string>
     <string name="props_image_title">이미지 정보</string>
-    <string name="props_caption">자막</string>
+    <string name="props_caption">설명</string>
     <string name="props_resolution">해상도</string>
     <string name="submit_post_title_empty">제목은 비워둘 수 없음</string>
     <string name="submit_post_url_empty">URL은 비워둘 수 없음</string>
@@ -494,8 +494,8 @@
     <string name="send_replies_to_inbox">내 수신함으로 답장 보내기</string>
     <string name="action_share_image">이미지 공유</string>
     <string name="error_403_message_nonreddit">서버가 권한 거부 오류로 응답했습니다.</string>
-    <string name="submit_pmreply_actionbar">댓글</string>
-    <string name="pm_reply_done">댓글이 전송되었습니다.</string>
+    <string name="submit_pmreply_actionbar">답장</string>
+    <string name="pm_reply_done">답장을 보냈습니다.</string>
     <string name="mainmenu_popular">인기 서브레딧</string>
     <string name="pref_menus_link_context_items_title">링크 행동 메뉴 항목</string>
     <string name="pref_menus_subreddit_context_items_title">서브레딧 행동 메뉴 항목</string>
@@ -591,10 +591,10 @@
     <string name="error_title_malformed_html">잘못된 형식의 HTML</string>
     <string name="error_message_malformed_html">본문을 읽는데 실패했습니다. 앱 개발자에게 리포트하시기 바랍니다.</string>
     <string name="props_body_html">본문(HTML)</string>
-    <string name="props_self_html">본문(HTML)</string>
+    <string name="props_self_html">셀프 텍스트(HTML)</string>
     <string name="pref_appearance_hide_headertoolbar_postlist_title">게시물 목록에서 상단 툴바 숨기기</string>
     <string name="pref_appearance_hide_headertoolbar_commentlist_title">댓글 목록에서 상단 툴바 숨기기</string>
-    <string name="post_link_copied_to_clipboard">게시믈 링크가 클립보드로 복사됨</string>
+    <string name="post_link_copied_to_clipboard">게시물 링크가 클립보드로 복사됨</string>
     <string name="link_copied_to_clipboard">링크가 클립보드로 복사됨</string>
     <string name="comment_link_copied_to_clipboard">댓글 링크가 클립보드로 복사됨</string>
     <string name="comment_text_copied_to_clipboard">댓글 내용이 클립보드로 복사됨</string>
@@ -644,7 +644,7 @@
     <string name="pref_behaviour_back_button_title">뒤로가기 버튼</string>
     <string name="pref_appearance_hide_toolbar_on_scroll_title">스크롤 중 툴바 숨기기</string>
     <string name="pref_appearance_toolbar_header">툴바</string>
-    <string name="pref_behaviour_save_location_title">경로 저장</string>
+    <string name="pref_behaviour_save_location_title">저장 위치</string>
     <string name="pref_behaviour_save_location_prompt_every_time">항상 물어보기</string>
     <string name="pref_behaviour_save_location_system_default">시스템 기본 사용</string>
     <string name="pref_appearance_not_possible_in_tablet_mode">태블릿 모드에서 사용 불가</string>

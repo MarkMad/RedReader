@@ -61,7 +61,7 @@
     <string name="pref_cache_maxage_listing_title">Excluir listagens em cache após</string>
     <string name="pref_cache_maxage_thumb_title">Excluir miniaturas em cache após</string>
     <string name="pref_cache_maxage_image_title">Excluir imagens em cache após</string>
-    <string name="pref_cache_maxage_entry_title">Excluir bandeiras em cache (lido, positivado, etc.) após</string>
+    <string name="pref_cache_maxage_entry_title">Excluir marcadores em cache (lido, positivado, etc.) após</string>
     <string name="pref_cache_precache_images_header">Pré-carregar Imagens</string>
     <string name="pref_cache_precache_images_title">Pré-carregar imagens</string>
     <string name="pref_cache_precache_images_wifionly_title">Apenas no Wi-Fi</string>
@@ -124,7 +124,7 @@
     <string name="action_downvote_remove">Remover Negativação</string>
     <string name="action_save">Salvar</string>
     <string name="action_hide">Ocultar</string>
-    <string name="action_unsave">Não salvar</string>
+    <string name="action_unsave">Remover dos salvos</string>
     <string name="action_unhide">Mostrar</string>
     <string name="action_external">Ver em Navegador Externo</string>
     <string name="action_external_short">No Navegador</string>
@@ -157,7 +157,7 @@
     <string name="action_report">Reportar</string>
     <string name="action_report_sure">Tem certeza que deseja reportar isso?</string>
     <string name="action_save_image">Salvar Imagem</string>
-    <string name="action_save_image_success">Salvar para pasta Imagens como</string>
+    <string name="action_save_image_success">Salvo na pasta Imagens como</string>
     <string name="download_connecting">Conectando…</string>
     <string name="download_waiting">Esperando…</string>
     <string name="download_downloading">Baixando…</string>
@@ -178,7 +178,7 @@
     <string name="post_captcha_title">CAPTCHA</string>
     <string name="post_captcha_submit_button">Submeter</string>
     <string name="bug_title">Ocorreu um erro.</string>
-    <string name="bug_message">RedReader encontrou um erro.\n\nGostaria de enviar um relatório de bug para o desenvolvedor? Se sim, um e-mail com todas as informações relevantes será preenchido por você, mas você pode inspecionar o conteúdo antes de enviar.</string>
+    <string name="bug_message">RedReader encontrou um erro.\n\nGostaria de enviar um relatório de bug para o desenvolvedor? Se sim, um e-mail com todas as informações relevantes será preenchido para você, e você pode inspecionar o conteúdo antes de enviar.</string>
     <string name="post_submit_done">Postagem submetida.</string>
     <string name="bug_button_ignore">Não enviar relatório de bug</string>
     <string name="error_bad_captcha_title">CAPTCHA inválido</string>
@@ -217,7 +217,7 @@
     <string name="props_error_title">Propriedades de Erros</string>
     <string name="props_title">Título</string>
     <string name="props_author">Autor</string>
-    <string name="props_author_flair">Flair do Autor do Texto</string>
+    <string name="props_author_flair">Texto do Flair do Autor</string>
     <string name="props_created">Criado</string>
     <string name="props_edited">Editado</string>
     <string name="props_score">Pontuação</string>
@@ -229,7 +229,7 @@
     <string name="notification_message">%s enviou uma mensagem para você</string>
     <string name="notification_message_multiple">Novas mensagens no Reddit</string>
     <string name="notification_message_action">Toque para ver</string>
-    <string name="general_true">Verdade</string>
+    <string name="general_true">Verdadeiro</string>
     <string name="general_false">Falso</string>
     <string name="pref_appearance_twopane_auto">Detecção automática</string>
     <string name="pref_appearance_twopane_landscape">Apenas Paisagem</string>
@@ -284,7 +284,7 @@
     <string name="web_view_open_browser">Ver no Navegador</string>
     <string name="pref_behaviour_useinternalbrowser_title">Usar navegador interno</string>
     <string name="pref_appearance_linkbuttons_title">Mostrar botões de link</string>
-    <string name="pref_appearance_indentlines_title">Mostrar linhas de identação</string>
+    <string name="pref_appearance_indentlines_title">Mostrar linhas de indentação</string>
     <string name="load_more_posts">Carregar mais postagens</string>
     <string name="pref_behaviour_postcount_title">Restringir número de postagens</string>
     <string name="pref_behaviour_postcount_items_all">Todos</string>
@@ -369,19 +369,19 @@
     <string name="props_down">Abaixo</string>
     <string name="pref_appearance_comment_header_items_upsdowns">Positivados/negativados</string>
     <string name="webview_https_already">A URL atual já utiliza HTTPS.</string>
-    <string name="webview_https_unknownprotocol">Protocolo desconhecido, era esperado \'https://\'</string>
+    <string name="webview_https_unknownprotocol">Protocolo desconhecido, era esperado \'http://\'</string>
     <string name="webview_use_https">Usar HTTPS</string>
     <string name="sort_posts_relevance">Relevância</string>
     <string name="sort_posts_comments">Comentários</string>
     <string name="mark_all_as_read">Marcar todas como lidas</string>
     <string name="mark_all_as_read_success">Todas as mensagens marcadas como lidas.</string>
     <string name="error_title_login_user_denied_permission">Permissão Negada</string>
-    <string name="error_message_login_user_denied_permission">Premissão para acessar a conta foi negada. Tente novamente.</string>
+    <string name="error_message_login_user_denied_permission">Permissão para acessar a conta foi negada. Tente novamente.</string>
     <string name="error_title_login_unknown_reddit_error">Erro Desconhecido do Reddit: %s</string>
-    <string name="imageview_invalid_video">Vídeo inválido. Tentando navegador interno.</string>
+    <string name="imageview_invalid_video">Vídeo inválido. Tentando navegador web.</string>
     <string name="download_authorizing">Autenticando…</string>
     <string name="pref_behaviour_skiptofrontpage_title">Pular para página inicial</string>
-    <string name="error_archived_vote">Isso foi arquivado e não pode ser votado.</string>
+    <string name="error_archived_vote">Isso foi arquivado e não pode mais ser votado.</string>
     <string name="pref_behaviour_screenorientation_title">Orientação da tela</string>
     <string name="screen_orientation_auto">Automático</string>
     <string name="screen_orientation_portrait">Retrato</string>
@@ -554,7 +554,7 @@
     <string name="search_listing_header_query">Busca</string>
     <string name="pref_behaviour_sharing_header">Compartilhamento</string>
     <string name="pref_behaviour_sharing_include_desc_title">Incluir título/descrição ao compartilhar</string>
-    <string name="share_comments_for">Comentários por %s</string>
+    <string name="share_comments_for">Comentários de %s</string>
     <string name="share_comment_by_on_reddit">Comentários por %s no Reddit</string>
     <string name="title_license">Licença</string>
     <string name="pref_appearance_left_handed_title">Modo canhoto</string>
@@ -590,11 +590,11 @@
     <string name="pref_appearance_post_subtitle_items_subreddit">Subreddit</string>
     <string name="pref_appearance_post_subtitle_items_domain">Domínio</string>
     <string name="pref_appearance_post_subtitle_items_use_different_settings_title">Usar configurações diferentes para postagens abertas</string>
-    <string name="pref_appearance_post_header_subtitle_items_title">Entradas de subítulo de postagem aberta</string>
+    <string name="pref_appearance_post_header_subtitle_items_title">Entradas de subtítulo de postagem aberta</string>
     <string name="list_yes_no_or_wifi_always">Sempre</string>
     <string name="list_yes_no_or_wifi_wifionly">Apenas no Wi-Fi</string>
     <string name="list_yes_no_or_wifi_never">Nunca</string>
-    <string name="error_nsfw_subreddits_disabled_title">Bloquear Subreddit NSFW</string>
+    <string name="error_nsfw_subreddits_disabled_title">Subreddit NSFW bloqueado</string>
     <string name="error_nsfw_subreddits_disabled_message">Conteúdo NSFW está desligado nas configurações.</string>
     <string name="search_results_short">Resultados da Busca</string>
     <string name="search_results_query_only">Buscar por \"%s\"</string>
@@ -626,8 +626,8 @@
     <string name="error_message_malformed_html">Não foi possível analisar o corpo de texto. Reporte ao desenvolvedor do app.</string>
     <string name="props_body_html">Corpo (HTML)</string>
     <string name="props_self_html">Texto (HTML)</string>
-    <string name="pref_appearance_hide_headertoolbar_postlist_title">Ocultar barra de ferramentas do cabeçado da lista de postagens</string>
-    <string name="pref_appearance_hide_headertoolbar_commentlist_title">Ocultar barra de ferramentas do cabeçado da lista de comentários</string>
+    <string name="pref_appearance_hide_headertoolbar_postlist_title">Ocultar barra de ferramentas do cabeçalho da lista de postagens</string>
+    <string name="pref_appearance_hide_headertoolbar_commentlist_title">Ocultar barra de ferramentas do cabeçalho da lista de comentários</string>
     <string name="post_link_copied_to_clipboard">Link da postagem copiado para a área de transferência</string>
     <string name="link_copied_to_clipboard">Link copiado para a área de transferência</string>
     <string name="comment_link_copied_to_clipboard">Link do comentário copiado para a área de transferência</string>
@@ -699,10 +699,10 @@
     <string name="cache_clear_dialog_thumbnails_data">Miniaturas (%s)</string>
     <string name="cache_clear_dialog_images">Imagens</string>
     <string name="cache_clear_dialog_images_data">Imagens (%s)</string>
-    <string name="cache_clear_dialog_flags">Bandeiras</string>
+    <string name="cache_clear_dialog_flags">Marcadores</string>
     <string name="pref_images_thumbnail_size_title">Tamanho da miniatura</string>
     <string name="accessibility_image_viewer_title">Visualizando imagem</string>
-    <string name="accessibility_image_viewer_view_comments">Visualizando comentários</string>
+    <string name="accessibility_image_viewer_view_comments">Ver comentários</string>
     <string name="accessibility_image_viewer_go_back">Voltar</string>
     <string name="accessibility_subtitle_spoiler_withperiod">Contém spoilers.</string>
     <string name="accessibility_subtitle_sticky_withperiod">Fixo.</string>
@@ -745,7 +745,7 @@
     <string name="pref_menus_comments_header">Comentários</string>
     <string name="pref_menus_comment_context_items_title">Itens do menu de ação</string>
     <string name="pref_behaviour_post_title_opens_comments_title">Título da postagem abre comentários</string>
-    <string name="mainmenu_sent_messages">Enviar Mensagens</string>
+    <string name="mainmenu_sent_messages">Mensagens Enviadas</string>
     <string name="subreddit_selector_title">Selecionar subreddit</string>
     <string name="error_subreddit_does_not_exist_title">Subreddit inválido</string>
     <string name="error_subreddit_does_not_exist_message">O subreddit especificado não existe.</string>
@@ -774,7 +774,7 @@
     <string name="error_tor_connection_title">Erro no Tor</string>
     <string name="error_tor_connection_message">Não foi possível conectar ao Tor. Certifique-se de que o app Orbot está em execução ou desative o Tor nas configurações de rede.</string>
     <string name="error_imgur_400_title">Erro no Imgur</string>
-    <string name="error_imgur_400_message">Imgur está rejeitando este upload de imagem, possivelmente devido à um limite de taxa. Use outro servidor de imagem ou tente novamente mais tarde.</string>
+    <string name="error_imgur_400_message">Imgur está rejeitando este upload de imagem, possivelmente devido a um limite de taxa. Use outro servidor de imagem ou tente novamente mais tarde.</string>
     <string name="error_content_blocker_title">Bloqueador de conteúdo detectado</string>
     <string name="error_content_blocker_message">A rede atual parece estar bloqueando essa solicitação usando DNS. Considere usar uma VPN ou habilitar DNS sobre HTTPS nas configurações de rede do Android.</string>
     <string name="error_http_429_title">Muitas solicitações</string>
@@ -818,5 +818,5 @@
     <string name="pref_appearance_android_status_never_hide">Nunca</string>
     <string name="error_archived_reply">Isto foi arquivado e não pode mais ser respondido.</string>
     <string name="pref_appearance_comment_header_items_controversiality">Indicador de polêmico (†)</string>
-    <string name="accessibility_subtitle_controversiality_withperiod">Votou polêmico.</string>
+    <string name="accessibility_subtitle_controversiality_withperiod">Votado como polêmico.</string>
 </resources>

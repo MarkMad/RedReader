@@ -26,11 +26,11 @@
     <string name="prefs_category_cache">Caché</string>
     <string name="prefs_category_menus">Menús</string>
     <!-- Appearance Prefs -->
-    <string name="pref_appearance_theme_header">Apariencia</string>
+    <string name="pref_appearance_theme_header">Tema</string>
     <string name="pref_appearance_thumbnails_header">Miniaturas</string>
     <string name="pref_appearance_comments_header">Comentarios</string>
     <string name="pref_appearance_twopane_title">Modo tableta (dos paneles)</string>
-    <string name="pref_appearance_theme_title">Apariencia</string>
+    <string name="pref_appearance_theme_title">Tema</string>
     <string name="pref_appearance_fontscale_posts_title">Títulos de publicaciones</string>
     <string name="pref_appearance_thumbnails_show_title">Mostrar miniaturas</string>
     <string name="pref_appearance_thumbnails_nsfw_show_title">Mostrar miniaturas NSFW</string>
@@ -503,7 +503,7 @@
     <string name="pref_behaviour_imageview_mode_internal_opengl">Visor interno (OpenGL)</string>
     <string name="pref_behaviour_albumview_mode_title">Visor de álbumes</string>
     <string name="pref_behaviour_albumview_mode_internal_list">Visor interno (lista)</string>
-    <string name="error_tor_start_failed">Orbot ha fallado al inicarse. Tor no funcionará correctamente.</string>
+    <string name="error_tor_start_failed">Orbot ha fallado al iniciarse. Tor no funcionará correctamente.</string>
     <!-- 2016-06-30 -->
     <string name="inbox_unread_only">Sólo mensajes sin leer</string>
     <!-- 2016-07-02 -->

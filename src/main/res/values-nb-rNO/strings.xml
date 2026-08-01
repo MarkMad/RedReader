@@ -680,7 +680,7 @@
     <string name="pref_accessibility_min_comment_height_none">Ingen</string>
     <string name="pref_item_backup_preferences_title">Sikkerhetskopiinnstillinger</string>
     <string name="pref_menus_comments_header">Kommentarer</string>
-    <string name="accessibility_subtitle_recipient_withperiod">Mottager: %s</string>
+    <string name="accessibility_subtitle_recipient_withperiod">Mottager: %s.</string>
     <string name="pref_images_inline_image_previews_spoiler_title">Vis avsløringsforhåndsvisninger</string>
     <string name="pref_appearance_fontscale_post_header_titles_title">Navn på åpnede poster</string>
     <string name="pref_appearance_fontscale_use_global">Bruk global skriftstørrelse</string>
@@ -710,7 +710,7 @@
     <string name="pref_appearance_comment_age_mode_title">Modus for kommentaralder</string>
     <string name="pref_menus_mainmenu_dev_announcements_title">Vis kunngjøringer fra utvikleren</string>
     <string name="pref_appearance_comment_age_mode_relative_post">Relativ til post (etter x min)</string>
-    <string name="accessibility_subtitle_nsfw_withperiod">Sensurerbart</string>
+    <string name="accessibility_subtitle_nsfw_withperiod">Sensurerbart.</string>
     <string name="pref_images_inline_image_previews_nsfw_title">Forhåndsvis sensurerbart innhold</string>
     <string name="edittext_hint_comment_body_text">Kommentartekst</string>
     <string name="prefs_category_accessibility">Tilgjengelighet</string>
@@ -762,7 +762,7 @@
     <string name="sort_posts_relevance_year">Relevans: Dette året</string>
     <string name="sort_posts_relevance_all">Relevans: Siden begynnelsen</string>
     <string name="sort_posts_new_today">Nye: I dag</string>
-    <string name="sort_posts_new_week">Nye. Denne uken</string>
+    <string name="sort_posts_new_week">Nye: Denne uken</string>
     <string name="sort_posts_new_month">Nye: Denne måneden</string>
     <string name="sort_posts_new_year">Nye: Dette året</string>
     <string name="sort_posts_new_all">Nye: Siden begynnelsen</string>

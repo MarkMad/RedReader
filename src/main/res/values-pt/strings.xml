@@ -399,7 +399,7 @@
     <string name="pref_appearance_langforce_title">Idioma</string>
     <string name="pref_appearance_indentlines_title">Mostrar as linhas de indentação</string>
     <string name="pref_appearance_image_viewer_show_floating_toolbar_title">Mostrar botão de ferramentas flutuante sob imagens e vídeos</string>
-    <string name="pref_appearance_hide_username_main_menu_title">Esconder nome de usuário</string>
+    <string name="pref_appearance_hide_username_main_menu_title">Esconder nome de utilizador</string>
     <string name="pref_appearance_comment_header_items_upsdowns">Positivados / Negativados</string>
     <string name="pref_appearance_comment_header_items_flair">Flair</string>
     <string name="pm_send_hint_subject">Assunto</string>
@@ -551,14 +551,14 @@
     <string name="pref_appearance_bottom_toolbar_title">Mostrar barra de ferramentas na parte inferior</string>
     <string name="prefs_category_images_video">Imagens/Vídeo</string>
     <string name="notification_channel_name_reddit_messages">Mensagens Reddit recebidas</string>
-    <string name="post_text_copied_to_clipboard">Postar autotexto copiado para a área de transferência</string>
+    <string name="post_text_copied_to_clipboard">Texto da publicação copiado para a área de transferência</string>
     <string name="action_copy_selftext">Copiar autotexto</string>
     <string name="pref_behaviour_sharing_share_dialog_dialogtitle">Selecione um aplicativo para compartilhamento</string>
     <string name="pref_behaviour_sharing_share_dialog_title">Use a caixa de diálogo de compartilhamento integrada</string>
-    <string name="pref_appearance_fontscale_post_subtitles_title">Postar legendas</string>
+    <string name="pref_appearance_fontscale_post_subtitles_title">Legendas das publicações</string>
     <string name="pref_appearance_fontscale_post_header_subtitles_title">Legendas do post aberto</string>
     <string name="pref_appearance_fontscale_comment_headers_title">Cabeçalhos de comentários/caixa de entrada</string>
-    <string name="pref_appearance_post_subtitle_items_title">Postar entradas de legendas</string>
+    <string name="pref_appearance_post_subtitle_items_title">Entradas de legenda da publicação</string>
     <string name="pref_appearance_post_subtitle_items_spoiler">Spoiler tag</string>
     <string name="pref_appearance_post_subtitle_items_nsfw">NSFW tag</string>
     <string name="pref_appearance_post_subtitle_items_subreddit">Subreddit</string>
@@ -578,8 +578,8 @@
     <string name="pref_behaviour_usecustomtabs_title">Usar guias personalizadas do Android</string>
     <string name="error_toast_no_share_app_installed">Nenhum aplicativo adequado instalado para compartilhar isso.</string>
     <string name="pref_appearance_fontscale_post_header_titles_title">Títulos de postagens abertas</string>
-    <string name="pref_appearance_post_subtitle_items_sticky">Etiqueta adesiva</string>
-    <string name="search_results_short">Procurar Resultados</string>
+    <string name="pref_appearance_post_subtitle_items_sticky">Etiqueta de fixado</string>
+    <string name="search_results_short">Resultados da Pesquisa</string>
     <string name="pref_appearance_post_subtitle_items_use_different_settings_title">Use configurações diferentes para postagens abertas</string>
     <string name="error_nsfw_subreddits_disabled_message">O conteúdo NSFW está desativado nas configurações.</string>
     <string name="pref_network_tor_summary">Ao usar um navegador externo ou abas personalizadas, os links não serão abertos usando o Tor (a menos que seu navegador esteja configurado para usar o Tor)</string>
@@ -587,7 +587,7 @@
     <string name="pref_appearance_fontscale_header">Escala de fonte</string>
     <string name="pref_appearance_fontscale_global_title">Global</string>
     <string name="pref_appearance_fontscale_use_global">Usar fonte de escala global</string>
-    <string name="upgrade_message">Atualize para a versão %s</string>
+    <string name="upgrade_message">Atualizado para a versão %s</string>
     <string name="bug_chooser_title">Reportar bug pelo email</string>
     <string name="error_toast_no_email_apps">Sem aplicativos de email instalados!</string>
     <string name="must_login_message">Você precisa estar logado em uma conta do reddit para fazer isso.</string>
@@ -619,7 +619,7 @@
     <string name="action_search_posts">Pesquisar Postagens</string>
     <string name="sort_comments_top_hour">Top: esta hora</string>
     <string name="image_gallery">Galeria</string>
-    <string name="pref_behaviour_user_postsort_title">Postagens do usuário</string>
+    <string name="pref_behaviour_user_postsort_title">Publicações do utilizador (padrão)</string>
     <string name="image_gallery_removed_message">Esta galeria foi removida e não está mais acessível.</string>
     <string name="image_gallery_no_data_present_title">Galeria não encontrada</string>
     <string name="action_comments_with_count">Ver comentários (%d)</string>
@@ -657,7 +657,7 @@
     <string name="pref_appearance_inbox_age_units_title">Precisão da hora da caixa de entrada</string>
     <string name="cache_clear_dialog_listings_data">Listagens (%s)</string>
     <string name="dialog_clear">Limpar</string>
-    <string name="cache_clear_dialog_flags">Bandeiras</string>
+    <string name="cache_clear_dialog_flags">Marcadores</string>
     <string name="cache_clear_dialog_images_data">Imagens (%s)</string>
     <string name="pref_cache_clear_title">Limpar cache</string>
     <string name="pref_images_thumbnail_size_title">Tamanho da miniatura</string>
@@ -684,7 +684,7 @@
     <string name="pref_behaviour_back_button_title">Botão de retornar</string>
     <string name="pref_appearance_hide_toolbar_on_scroll_title">Ocultar barra de ferramentas ao rolar</string>
     <string name="pref_appearance_toolbar_header">Barra de Ferramentas</string>
-    <string name="pref_behaviour_save_location_title">Destino de gravar</string>
+    <string name="pref_behaviour_save_location_title">Destino da gravação</string>
     <string name="pref_behaviour_save_location_prompt_every_time">Pergunte sempre</string>
     <string name="pref_behaviour_save_location_system_default">Usar padrão do sistema</string>
     <string name="pref_appearance_not_possible_in_tablet_mode">Não é possível no modo tablet</string>
@@ -696,7 +696,7 @@
     <string name="cache_clear_dialog_loading">A carregar tamanhos de uso de dados</string>
     <string name="cache_clear_dialog_loaded">Tamanhos de uso de dados carregados</string>
     <string name="accessibility_image_viewer_title">A visualizar imagem</string>
-    <string name="accessibility_image_viewer_view_comments">A visualizar comentários</string>
+    <string name="accessibility_image_viewer_view_comments">Ver comentários</string>
     <string name="accessibility_image_viewer_go_back">Voltar</string>
     <string name="accessibility_subtitle_spoiler_withperiod">Contém spoilers.</string>
     <string name="accessibility_subtitle_sticky_withperiod">Fixo.</string>
@@ -743,7 +743,7 @@
     <string name="pref_menus_comments_header">Comentários</string>
     <string name="pref_menus_comment_context_items_title">Elementos do menu de ação</string>
     <string name="pref_behaviour_post_title_opens_comments_title">Título da postagem abre comentários</string>
-    <string name="mainmenu_sent_messages">Enviar Mensagens</string>
+    <string name="mainmenu_sent_messages">Mensagens Enviadas</string>
     <string name="post_submit_flair_none_available">Nenhuma flair disponível</string>
     <string name="post_submit_flair_none_selected">Nenhuma flair selecionada</string>
     <string name="subreddit_selector_title">Selecionar subreddit</string>
@@ -788,7 +788,7 @@
     <string name="error_tor_connection_title">Erro no Tor</string>
     <string name="error_tor_connection_message">Não foi possível conectar ao Tor. Certifique-se de que a app Orbot está em execução ou desative o Tor nas configurações de rede.</string>
     <string name="error_imgur_400_title">Erro no Imgur</string>
-    <string name="error_imgur_400_message">Imgur rejeita este envio de imagem, possivelmente devido à um limite de taxa. Use outro servidor de imagem ou tente novamente mais tarde.</string>
+    <string name="error_imgur_400_message">Imgur rejeita este envio de imagem, possivelmente devido a um limite de taxa. Use outro servidor de imagem ou tente novamente mais tarde.</string>
     <string name="error_content_blocker_title">Bloqueador de conteúdo detetado</string>
     <string name="error_content_blocker_message">A rede atual parece estar bloqueando esta solicitação usando DNS. Considere usar uma VPN ou ativar DNS sobre HTTPS nas configurações de rede do Android.</string>
     <string name="error_http_429_title">Muitas solicitações</string>

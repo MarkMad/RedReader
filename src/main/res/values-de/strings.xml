@@ -56,7 +56,7 @@
     <string name="pref_cache_precache_images_wifionly_title">Nur im WLAN</string>
     <!-- Menu Prefs -->
     <string name="pref_menus_post_context_items_title">Aktionsmenü Einträge</string>
-    <string name="pref_menus_post_toolbar_items_title">Seiten-Toolbar Elemente</string>
+    <string name="pref_menus_post_toolbar_items_title">Elemente der Beitragsseitenleiste</string>
     <!-- Options Menu -->
     <string name="options_accounts">Konten</string>
     <string name="options_accounts_long">Reddit-Accounts</string>
@@ -394,7 +394,7 @@
     <string name="comment_header_specific_thread_message">Hier klicken, um alle Kommentare zu diesem Beitrag anzuzeigen.</string>
     <string name="comment_header_specific_thread_title">Du betrachtest gerade einen spezifischen Kommentarfaden.</string>
     <string name="delete_confirm">Bist du sicher, dass du das löschen möchtest?</string>
-    <string name="delete_success">"Erfolgreich entfernt. Das Element wird sichtbar bleiben bis  du neu lädst."</string>
+    <string name="delete_success">Erfolgreich entfernt. Das Element bleibt sichtbar, bis du neu lädst.</string>
     <string name="download_authorizing">Authentifizierung …</string>
     <string name="edit_comment_actionbar">Kommentar bearbeiten</string>
     <string name="error_403_message_nonreddit">Der Server hat mit einem \"Erlaubnis verweigert\"-Fehler geantwortet.</string>
@@ -691,7 +691,7 @@
     <string name="copied_to_clipboard">In die Zwischenablage kopiert</string>
     <string name="sort_comments_top_today">Bestbewertet: Heute</string>
     <string name="sort_comments_top_week">Bestbewertet: Diese Woche</string>
-    <string name="sort_comments_top_month">Bestbewertet: Dieses Monat</string>
+    <string name="sort_comments_top_month">Bestbewertet: Dieser Monat</string>
     <string name="sort_comments_top_year">Bestbewertet: Dieses Jahr</string>
     <string name="sort_comments_top_all">Bestbewertet: Aller Zeiten</string>
     <string name="image_gallery_no_data_present_message">Keine Bildgalerie unter den angegebenen Link gefunden. Möglicherweise wurde sie gelöscht.</string>
@@ -701,12 +701,12 @@
     <string name="pref_appearance_android_status_hide_on_media">Wenn Medieninhalte angeschaut werden</string>
     <string name="sort_posts_comments_all">Kommentare: Aller Zeiten</string>
     <string name="sort_posts_comments_year">Kommentare: Dieses Jahr</string>
-    <string name="sort_posts_comments_month">Kommentare: Dieses Monat</string>
+    <string name="sort_posts_comments_month">Kommentare: Dieser Monat</string>
     <string name="sort_posts_comments_week">Kommentare: Diese Woche</string>
     <string name="sort_posts_comments_today">Kommentare: Heute</string>
     <string name="sort_posts_comments_hour">Kommentare: Diese Stunde</string>
     <string name="search_results_query_and_location">Suche nach \"%1$s\" auf %2$s</string>
-    <string name="pref_appearance_comment_header_items_controversiality">Kontrovers Indikator (†)</string>
+    <string name="pref_appearance_comment_header_items_controversiality">Kontrovers-Indikator (†)</string>
     <string name="error_subreddit_info_permission_denied_message">Der eingeloggte Benutzer kann keine Informationen für dieses Subreddit abrufen.</string>
     <string name="restore_preferences_error_invalid_file_contents_message">Die ausgewählte Datei ist keine gültige Backup-Datei für die Einstellungen.</string>
     <string name="invalid_subreddit_name_message">Bitte gib einen gültigen Namen eines Subreddits ein.</string>
@@ -721,7 +721,7 @@
     <string name="pref_appearance_post_subtitle_items_spoiler">Spoiler-Markierung</string>
     <string name="error_nsfw_subreddits_disabled_title">Blockierter NSFW-Subreddit</string>
     <string name="pref_appearance_fontscale_linkbuttons_title">Link-Button</string>
-    <string name="props_body_html">Body (HTML)</string>
+    <string name="props_body_html">Textkörper (HTML)</string>
     <string name="prefs_category_menus_appbar_screen">Aktionsleisten-Eintrag</string>
     <string name="pref_behaviour_multi_postsort_title">Multireddit-Beiträge (Standard)</string>
     <string name="pref_behaviour_user_commentsort_title">Nutzer-Kommentare (Standard)</string>
@@ -797,7 +797,7 @@
     <string name="accessibility_image_viewer_view_comments">Zeige Kommentare</string>
     <string name="accessibility_image_viewer_go_back">Zurückgehen</string>
     <string name="accessibility_subtitle_author_withperiod">Autor: %s.</string>
-    <string name="accessibility_subtitle_subreddit_withperiod">Sub-reddit: %s.</string>
+    <string name="accessibility_subtitle_subreddit_withperiod">Subreddit: %s.</string>
     <string name="accessibility_subtitle_flair_withperiod">Flair: %s.</string>
     <string name="accessibility_subtitle_points_withperiod">Upvoteanzahl: %d.</string>
     <string name="accessibility_subtitle_nsfw_withperiod">NSFW Inhalt.</string>

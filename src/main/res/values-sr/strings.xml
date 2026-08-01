@@ -388,7 +388,7 @@
     <string name="pref_behaviour_comment_min_dialog_title">Скупи коментар ако је оцена испод (оставите празно за све)</string>
     <string name="open_with">Отвори програмом</string>
     <string name="pref_network_tor_title">Користи Тор</string>
-    <string name="error_tor_not_installed">Тор неће радити осим ако је Орбот инсталиран. Инсталирати сада?</string>
+    <string name="error_tor_not_installed">Тор неће радити осим ако Орбот није инсталиран. Инсталирати сада?</string>
     <string name="error_tor_setting_failed">Не могу да подесим посредника.</string>
     <string name="error_parse_imgur_title">Грешка у обради</string>
     <string name="error_parse_imgur_message">Imgur је послао податке које не могу да разумем.</string>
@@ -407,7 +407,7 @@
     <string name="submit_post_title_empty">Наслов не може бити празан</string>
     <string name="submit_post_url_empty">Адреса не може бити празна</string>
     <string name="submit_post_self_text_hint">Сопствени текст</string>
-    <string name="submit_post_url_hint">АДРЕСА</string>
+    <string name="submit_post_url_hint">Адреса</string>
     <string name="save_image_permission_denied">Овлашћење је одбијено: не могу да сачувам слику.</string>
     <string name="pref_behaviour_imageview_mode_title">Прегледач слика</string>
     <string name="pref_behaviour_imageview_mode_internal_opengl">Унутрашњи прегледач (OpenGL)</string>
@@ -427,7 +427,7 @@
     <string name="pm_send_actionbar">Пошаљи поруку</string>
     <string name="submit_post_actionbar">Пошаљи објаву</string>
     <string name="submit_comment_actionbar">Пошаљи коментар</string>
-    <string name="edit_comment_actionbar">Измените напомену</string>
+    <string name="edit_comment_actionbar">Уреди коментар</string>
     <string name="pref_behaviour_fling_comment_left_title">Брзо превуци улево</string>
     <string name="pref_behaviour_fling_comment_right_title">Брзо превуци удесно</string>
     <string name="comment_header_search_thread_title">Тренутно прегледате резултате претраге за нит коментара.</string>
@@ -442,7 +442,7 @@
     <string name="action_copy_link">Копирај везу</string>
     <string name="pref_behaviour_postsort">Објаве (подразумевано)</string>
     <string name="mainmenu_custom_destination">Произвољна путања</string>
-    <string name="mainmenu_custom_destination_subreddit">Сабредит</string>
+    <string name="mainmenu_custom_destination_subreddit">Подредит</string>
     <string name="mainmenu_custom_destination_user">Корисник</string>
     <string name="mainmenu_custom_destination_url">Адреса</string>
     <string name="mainmenu_custom_destination_search">Претрага</string>
@@ -534,7 +534,7 @@
     <string name="pref_appearance_show_aspect_ratio_indicator_title">Прикажи показатељ односа ширине и висине</string>
     <string name="pref_appearance_show_aspect_ratio_indicator_summary">Прикажи визуелни приказ учитавања медија када је доступан</string>
     <string name="pref_appearance_bottom_toolbar_title">Прикажи траку алата на дну</string>
-    <string name="pref_behaviour_video_mute_default_title">Пригуши видео снимке по задатку</string>
+    <string name="pref_behaviour_video_mute_default_title">Пригуши видео снимке подразумевано</string>
     <string name="prefs_category_images_video">Слике/Видео</string>
     <string name="notification_channel_name_reddit_messages">Долазне Редит поруке</string>
     <string name="post_text_copied_to_clipboard">Текст објаве је умножен у оставу</string>
@@ -591,7 +591,7 @@
     <string name="link_copied_to_clipboard">Веза је умножена у оставу</string>
     <string name="comment_link_copied_to_clipboard">Веза до коментара је умножена у оставу</string>
     <string name="comment_text_copied_to_clipboard">Текст коментара је умножен у оставу</string>
-    <string name="subreddit_link_copied_to_clipboard">Веза до сабредита је умножена у оставу</string>
+    <string name="subreddit_link_copied_to_clipboard">Веза до подредита је умножена у оставу</string>
     <string name="copied_to_clipboard">Умножено у оставу</string>
     <string name="prefs_category_menus_appbar_screen">Ставке траке радњи</string>
     <string name="pref_menus_appbar_items_always">Увек прикажи дугме</string>
@@ -684,7 +684,7 @@
     <string name="accessibility_subtitle_gold_withperiod">Додељено злато: %d.</string>
     <string name="accessibility_subtitle_age_withperiod">Старост: %s.</string>
     <string name="accessibility_subtitle_author_withperiod">Аутор: %s.</string>
-    <string name="accessibility_subtitle_subreddit_withperiod">Сабредит: %s.</string>
+    <string name="accessibility_subtitle_subreddit_withperiod">Подредит: %s.</string>
     <string name="accessibility_subtitle_domain_withperiod">Домен: %s.</string>
     <string name="accessibility_subtitle_selfpost_withperiod">Текстуална објава.</string>
     <string name="accessibility_subtitle_points_unknown_withperiod">Резултат је скривен.</string>
@@ -760,8 +760,8 @@
     <string name="backup_preferences_error_old_android_message">Ова функција захтева Android 4.4 или новији.</string>
     <string name="error_no_file_manager_title">Нема управника датотека</string>
     <string name="error_no_file_manager_message">Оперативном систему на овом уређају недостаје управник датотека који је усаглашен са Android-овим оквиром за приступ складишту (Storage Access Framework). Ако је управник датотека присутан, можда је онемогућен.</string>
-    <string name="error_post_flair_required_title">Потребан је стил</string>
-    <string name="error_post_flair_required_message">Правила овог подредита захтевају постављање стила на вашу објаву.</string>
+    <string name="error_post_flair_required_title">Потребна је ознака</string>
+    <string name="error_post_flair_required_message">Правила овог подредита захтевају постављање ознаке на вашу објаву.</string>
     <string name="error_post_submit_title">Грешка при слању објаве</string>
     <string name="error_tor_connection_title">Tor грешка</string>
     <string name="error_tor_connection_message">Није могуће повезивање са Tor-ом. Проверите да ли је апликација Orbot покренута или онемогућите Tor у поставкама мреже.</string>

@@ -15,12 +15,12 @@
     <string name="pref_appearance_fontscale_posts_title">Overskrift for postar</string>
     <string name="pref_appearance_thumbnails_show_title">Vis miniatyrbilete</string>
     <string name="pref_appearance_thumbnails_nsfw_show_title">Vis NSFW-miniatyrbilete</string>
-    <string name="pref_appearance_thumbnails_wifionly_title">Berre vis miniatyrbilete ved internettilkopling</string>
+    <string name="pref_appearance_thumbnails_wifionly_title">Berre vis miniatyrbilete på Wi-Fi</string>
     <string name="pref_behaviour_notifications_title">Varsel</string>
     <string name="pref_behaviour_posts_header">Innlegg</string>
     <string name="pref_behaviour_nsfw_title">Vis NSFW-innhald</string>
     <string name="pref_cache_pruning">Tømming av mellomlager</string>
-    <string name="pref_cache_precache_images_wifionly_title">Berre ved internettilkopling</string>
+    <string name="pref_cache_precache_images_wifionly_title">Berre på Wi-Fi</string>
     <string name="options_accounts">Kontoar</string>
     <string name="options_accounts_long">Reddit-kontoar</string>
     <string name="options_theme">Tema</string>
@@ -28,7 +28,7 @@
     <string name="options_submit_post">Publiser innlegg</string>
     <string name="options_refresh">Oppdater</string>
     <string name="options_refresh_posts">Oppdater innlegg</string>
-    <string name="options_refresh_comments">Oppdater kommentarer</string>
+    <string name="options_refresh_comments">Oppdater kommentarar</string>
     <string name="options_past">Tidlegare versjonar</string>
     <string name="options_sort">Sorter</string>
     <string name="options_sort_posts">Sorter innlegg</string>
@@ -66,7 +66,7 @@
     <string name="sort_comments_new">Nye</string>
     <string name="sort_comments_old">Eldre</string>
     <string name="sort_comments_controversial">Kontroversielle</string>
-    <string name="sort_comments_top">Toppe</string>
+    <string name="sort_comments_top">Topp</string>
     <string name="dialog_close">Lukk</string>
     <string name="dialog_cancel">Avbryt</string>
     <string name="dialog_yes">Ja</string>
@@ -103,7 +103,7 @@
     <string name="download_waiting">Ventar…</string>
     <string name="download_connecting">Koplar til…</string>
     <string name="download_downloadstarting">Starter nedlasting…</string>
-    <string name="download_downloading">Laster ned…</string>
+    <string name="download_downloading">Lastar ned…</string>
     <string name="download_loading">Lastar inn…</string>
     <string name="download_done">Ferdig.</string>
     <string name="download_failed">Feila.</string>
@@ -132,7 +132,7 @@
     <string name="error_subreddit_required_title">Nettsamfunn krevjast</string>
     <string name="error_subreddit_required_message">Du må oppgi eit nettsamfunn.</string>
     <string name="props_subreddit">Nettsamfunn</string>
-    <string name="download_subreddits">Laster ned nettsamfunn…</string>
+    <string name="download_subreddits">Lastar ned nettsamfunn…</string>
     <string name="search_subreddit_restrict">Avgrens søk til</string>
     <string name="invalid_subreddit_name">Ugyldig namn på nettsamfunn</string>
     <string name="mainmenu_header_subreddits_pinned">Festa nettsamfunn</string>
