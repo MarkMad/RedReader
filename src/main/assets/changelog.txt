@@ -6,6 +6,7 @@ New workaround for text field issue on Reddit's login page (caused by their cook
 Fix occasional setSpan crash when viewing comments with emote flairs
 Support for Android predictive back gesture
 Improve reliability of language setting, and integrate with the Android 13+ per-app language override
+Added link to the project's GitHub repository in Settings > About
 Added Brazilian Portuguese translation (thanks to OlliesGudh, Matheus Leal, and Asmodeus)
 Added Catalan translation (thanks to Enrip and Ricard Rodríguez)
 Added Korean translation (thanks to suriing and fosinsight)

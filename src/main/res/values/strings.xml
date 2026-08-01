@@ -1949,4 +1949,8 @@
 	<string name="lang_pt_rBR" translatable="false">Português (Brasil)</string>
 	<string name="lang_sr" translatable="false">српски</string>
 	<string name="lang_th" translatable="false">ไทย</string>
+
+	<string name="pref_about_github_key" translatable="false">pref_about_github</string>
+	<string name="pref_about_github_title">Source code</string>
+	<string name="pref_about_github_url" translatable="false">https://github.com/QuantumBadger/RedReader</string>
 </resources>

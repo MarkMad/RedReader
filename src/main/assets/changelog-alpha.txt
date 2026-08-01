@@ -4,6 +4,7 @@ Fix issue where notification bar text changed colour after report dialog closed
 New RedGIFs link handling also now applies to external browser
 Support for Android predictive back gesture
 Fix for press-back-twice-to-exit preference in previous alpha
+Added link to the project's GitHub repository in Settings > About
 Added Brazilian Portuguese translation (thanks to OlliesGudh, Matheus Leal, and Asmodeus)
 Added Catalan translation (thanks to Enrip and Ricard Rodríguez)
 Added Korean translation (thanks to suriing and fosinsight)
