@@ -240,8 +240,12 @@ object LinkHandler {
 		}
 
 		// Use a browser
+
+		// For RedGifs, use the compact embedded player rather than the full site
+		val browserUrl = getRedGifsEmbedUrl(normalUrlString) ?: normalUrlString
+
 		if (!PrefsUtility.pref_behaviour_useinternalbrowser()) {
-			if (openWebBrowser(activity, normalUrl, fromExternalIntent)) {
+			if (openWebBrowser(activity, browserUrl.toUri(), fromExternalIntent)) {
 				return
 			}
 		}
@@ -267,9 +271,6 @@ object LinkHandler {
 				return
 			}
 		}
-
-		// For RedGifs, use the compact embedded player rather than the full site
-		val browserUrl = getRedGifsEmbedUrl(normalUrlString) ?: normalUrlString
 
 		if (PrefsUtility.pref_behaviour_usecustomtabs()) {
 			openCustomTab(activity, browserUrl.toUri(), post, true)
