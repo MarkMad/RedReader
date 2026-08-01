@@ -10,7 +10,6 @@ Added Odia translation (thanks to Subham Jena)
 Added Persian translation (thanks to Mo)
 Added Punjabi translation (thanks to ShareASmile)
 Added Serbian translation (thanks to Марко М. Костић)
-Added Tamil translation (thanks to தமிழ்நேரம்)
 Added Thai translation (thanks to K. Njtk)
 Translation updates (thanks to Abdullah Gulabi, AbdulrahmanTabboush, AbsurdUsername, Allan Nordhøy, Ameen Al-izzi, Andrey F, Aprizotec, Arne Brücher, Artem, asdf asdf, Atilla Türkmen, ayeeeeeeee, Ayush Jain, Balázs Meskó, Ddhdg Sgsisoei, Eric, Gontzal Manuel Pujana Onaindia, H Tamás, Hogwai, iDazai, Ignas, Ihor Hordiichuk, Janne-Pekka Mustonen, Jimmy Young, JoC, Jonas Thudium, Kachelkaiser, Karthik Nallasivan, Laura Vasconcelos Pereira Felippe, lucanomax, Luiz-bro, Lukas, Lukman Nulhakim, Meiru, Nécron, Onder Nuray, Ramez Ehab, Renan Birck Pinheiro, Samuel, sas, Sebastian Maier, ShareASmile, ssantos, sss13, Sukii23, Thadah D. Denyse, thorin, Thung Yong Han, Vladislav Glinsky, zeritti, ɴᴇᴋᴏ, Λευτέρης Τ, 為什麼不加空格, and other anonymous contributors)
 
