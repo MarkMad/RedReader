@@ -1,3 +1,6 @@
+/Alpha 369 (2026-08-01)
+Fix issue with GitHub link
+
 /Alpha 368 (2026-08-01)
 Improve reliability of language setting, and integrate with the Android 13+ per-app language override
 Fix issue where notification bar text changed colour after report dialog closed
