@@ -4,6 +4,7 @@ Ability to specify reason when reporting
 RedGIFs links now open in the compact embedded player, instead of the full site
 New workaround for text field issue on Reddit's login page (caused by their cookie banner)
 Fix occasional setSpan crash when viewing comments with emote flairs
+Support for Android predictive back gesture
 Improve reliability of language setting, and integrate with the Android 13+ per-app language override
 Added Brazilian Portuguese translation (thanks to OlliesGudh, Matheus Leal, and Asmodeus)
 Added Catalan translation (thanks to Enrip and Ricard Rodríguez)
