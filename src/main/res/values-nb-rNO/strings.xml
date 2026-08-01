@@ -695,7 +695,7 @@
     <string name="sort_posts_controversial_week">Kontroversielt: Denne uken</string>
     <string name="sort_posts_controversial_year">Kontroversielt: Dette året</string>
     <string name="sort_posts_relevance_today">Relevans: I dag</string>
-    <string name="pref_appearance_android_status_hide_on_media">Ved visning av media</string>
+    <string name="pref_appearance_android_status_hide_on_media" tools:ignore="Typos">Ved visning av media</string>
     <string name="pref_appearance_inbox_age_units_title">Nøyaktighet for alder på innboksoppføring</string>
     <string name="pref_appearance_age_units_2">To enheter (x timer, x min.)</string>
     <string name="search_listing_header_limit_location">Begrens til sted</string>
