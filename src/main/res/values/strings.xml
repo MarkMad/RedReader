@@ -1934,4 +1934,20 @@
 	<string name="report_file_complaint">File a complaint</string>
 	<string name="report_success">Report submitted</string>
 	<string name="dialog_back">Back</string>
+
+	<!-- 2026-08-01 -->
+	<string name="lang_mr" translatable="false">मराठी</string>
+	<string name="lang_ms" translatable="false">Bahasa Melayu</string>
+	<string name="lang_tr" translatable="false">Türkçe</string>
+	<string name="lang_ca" translatable="false">Català</string>
+	<string name="lang_fa" translatable="false">فارسی</string>
+	<string name="lang_ko" translatable="false">한국어</string>
+	<string name="lang_lv" translatable="false">Latviešu</string>
+	<string name="lang_nn" translatable="false">Norsk nynorsk</string>
+	<string name="lang_or" translatable="false">ଓଡ଼ିଆ</string>
+	<string name="lang_pa" translatable="false">ਪੰਜਾਬੀ</string>
+	<string name="lang_pt_rBR" translatable="false">Português (Brasil)</string>
+	<string name="lang_sr" translatable="false">српски</string>
+	<string name="lang_ta" translatable="false">தமிழ்</string>
+	<string name="lang_th" translatable="false">ไทย</string>
 </resources>
