@@ -586,7 +586,7 @@ object RedditPostActions {
 				}
 			}
 
-			Action.BACK -> activity.onBackPressed()
+			Action.BACK -> activity.onBackPressedDispatcher.onBackPressed()
 			Action.PIN -> try {
 				PrefsUtility.pref_pinned_subreddits_add(
 					activity,

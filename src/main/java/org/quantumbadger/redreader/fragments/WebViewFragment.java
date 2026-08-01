@@ -233,7 +233,10 @@ public class WebViewFragment extends Fragment
 
 									try {
 										getContext().startActivity(i);
-										mActivity.onBackPressed(); //get back from internal browser
+
+										//get back from internal browser
+										mActivity.getOnBackPressedDispatcher()
+												.onBackPressed();
 
 									} catch(final ActivityNotFoundException e) {
 										General.quickToast(
@@ -244,7 +247,9 @@ public class WebViewFragment extends Fragment
 						.setNegativeButton(
 								android.R.string.no,
 								(dialog, which) -> {
-									mActivity.onBackPressed(); //get back from internal browser
+									//get back from internal browser
+									mActivity.getOnBackPressedDispatcher()
+											.onBackPressed();
 								})
 						.setIcon(android.R.drawable.ic_dialog_alert)
 						.show());

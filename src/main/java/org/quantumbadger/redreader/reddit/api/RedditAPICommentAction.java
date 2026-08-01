@@ -541,7 +541,7 @@ public class RedditAPICommentAction {
 				break;
 
 			case BACK:
-				activity.onBackPressed();
+				activity.getOnBackPressedDispatcher().onBackPressed();
 				break;
 		}
 	}

@@ -449,13 +449,6 @@ public final class InboxListingActivity extends ViewsBaseActivity {
 	}
 
 	@Override
-	public void onBackPressed() {
-		if(General.onBackPressed()) {
-			super.onBackPressed();
-		}
-	}
-
-	@Override
 	public boolean onCreateOptionsMenu(final Menu menu) {
 		if(inboxType == InboxType.SENT) {
 			return false;

@@ -574,13 +574,6 @@ public class ImageViewActivity extends ViewsBaseActivity
 				false);
 	}
 
-	@Override
-	public void onBackPressed() {
-		if(General.onBackPressed()) {
-			super.onBackPressed();
-		}
-	}
-
 	private void revertToWeb() {
 
 		Log.i(TAG, "Using internal browser", new RuntimeException());

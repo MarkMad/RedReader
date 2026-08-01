@@ -30,7 +30,6 @@ import org.quantumbadger.redreader.R;
 import org.quantumbadger.redreader.account.RedditAccountChangeListener;
 import org.quantumbadger.redreader.account.RedditAccountManager;
 import org.quantumbadger.redreader.common.DialogUtils;
-import org.quantumbadger.redreader.common.General;
 import org.quantumbadger.redreader.common.LinkHandler;
 import org.quantumbadger.redreader.common.PrefsUtility;
 import org.quantumbadger.redreader.common.time.TimestampUTC;
@@ -267,13 +266,6 @@ public class CommentListingActivity extends RefreshableActivity
 				this,
 				PostCommentListingURL.forPostId(post.src.getIdAlone()).toUriString(),
 				false);
-	}
-
-	@Override
-	public void onBackPressed() {
-		if(General.onBackPressed()) {
-			super.onBackPressed();
-		}
 	}
 
 	@Override

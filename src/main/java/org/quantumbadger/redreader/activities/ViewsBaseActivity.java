@@ -203,7 +203,7 @@ public abstract class ViewsBaseActivity extends BaseActivity {
 
 			configBackButton(
 					baseActivityIsActionBarBackEnabled(),
-					v -> onBackPressed());
+					v -> getOnBackPressedDispatcher().onBackPressed());
 
 		} else {
 			mContentListing = new FrameLayout(this);
