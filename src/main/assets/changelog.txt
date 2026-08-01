@@ -4,6 +4,7 @@ Ability to specify reason when reporting
 RedGIFs links now open in the compact embedded player, instead of the full site
 New workaround for text field issue on Reddit's login page (caused by their cookie banner)
 Fix occasional setSpan crash when viewing comments with emote flairs
+Improve reliability of language setting, and integrate with the Android 13+ per-app language override
 
 117/1.25.2
 Workaround for text field issue on Reddit's login page (caused by their cookie banner)

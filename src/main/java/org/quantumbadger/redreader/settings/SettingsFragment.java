@@ -109,6 +109,10 @@ public final class SettingsFragment extends PreferenceFragmentCompat {
 			throw new RuntimeException(e);
 		}
 
+		// On Android 13+ the user may have changed the app's language in the
+		// system settings, so sync the language preference before displaying it
+		PrefsUtility.applyLanguageSetting();
+
 		addPreferencesFromResource(resource);
 
 		final int[] listPrefsToUpdate = {

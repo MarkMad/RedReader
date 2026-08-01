@@ -17,16 +17,22 @@
 
 package org.quantumbadger.redreader.common;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.LocaleManager;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.util.DisplayMetrics;
+import android.os.Build;
+import android.os.LocaleList;
 import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.os.LocaleListCompat;
 
 import org.quantumbadger.redreader.R;
 import org.quantumbadger.redreader.activities.OptionsMenuUtility;
@@ -53,18 +59,34 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
 
 public final class PrefsUtility {
+
+	@NonNull public static final String PREF_LANGUAGE_SETTING_MIGRATED
+			= "pref_language_setting_migrated";
 
 	private static SharedPrefsWrapper sharedPrefs;
 	private static Resources mRes;
 
+	// Application context, so cannot leak
+	@SuppressLint("StaticFieldLeak")
+	private static Context appContext;
+
+	// The SharedPreferences implementation only holds weak references to
+	// listeners, so keep a strong reference here for the process lifetime.
+	private static final SharedPrefsWrapper.OnSharedPreferenceChangeListener
+			LANGUAGE_CHANGE_LISTENER = (prefs, key) -> {
+
+		if(getPrefKey(R.string.pref_appearance_langforce_key).equals(key)) {
+			setAppLocales(languagePrefToLocales(getString(
+					R.string.pref_appearance_langforce_key,
+					"auto")));
+		}
+	};
+
 	private static String getPrefKey(@StringRes final int prefKey) {
 		return mRes.getString(prefKey);
 	}
-
-	@NonNull private static final AtomicReference<Locale> mDefaultLocale = new AtomicReference<>();
 
 	@Nullable
 	public static String getString(
@@ -157,7 +179,6 @@ public final class PrefsUtility {
 		return context.getString(R.string.pref_appearance_twopane_key).equals(key)
 				|| context.getString(R.string.pref_appearance_theme_key).equals(key)
 				|| context.getString(R.string.pref_appearance_navbar_color_key).equals(key)
-				|| context.getString(R.string.pref_appearance_langforce_key).equals(key)
 				|| context.getString(R.string.pref_behaviour_bezel_toolbar_swipezone_key)
 						.equals(key)
 				|| context.getString(R.string.pref_appearance_hide_username_main_menu_key)
@@ -183,9 +204,18 @@ public final class PrefsUtility {
 				"GbEQgpSutsgJugRCPETQGRwkZrw1LJxR93RpgC1iO+G/hN9BaPU1c0Qt33SSMzHCqLzU66dpD/L0yC42" +
 				"GhcJF+GUAaRzCnk0BxPjN09aO2H5rQPnUGB1kurxxCExKzWy4gEyWokgYzGGNQwAA==");
 
+		if(sharedPrefs != null) {
+			sharedPrefs.unregisterOnSharedPreferenceChangeListener(LANGUAGE_CHANGE_LISTENER);
+		}
+
+		appContext = context.getApplicationContext();
 		sharedPrefs = General.getSharedPrefs(context);
 		mRes = Objects.requireNonNull(context.getResources());
 		General.initAppConfig(context);
+
+		// Applies the language setting whenever the preference changes, including
+		// when settings are restored from a backup.
+		sharedPrefs.registerOnSharedPreferenceChangeListener(LANGUAGE_CHANGE_LISTENER);
 	}
 
 	///////////////////////////////
@@ -271,58 +301,117 @@ public final class PrefsUtility {
 				activity.setTheme(R.style.RR_Dark_UltraBlack);
 				break;
 		}
-
-		applyLanguage(activity);
 	}
 
 	public static void applySettingsTheme(@NonNull final Activity activity) {
 		activity.setTheme(R.style.RR_Settings);
-		applyLanguage(activity);
 	}
 
-	private static void applyLanguage(final Activity activity) {
+	@NonNull
+	private static LocaleListCompat languagePrefToLocales(@Nullable final String value) {
 
-		synchronized(mDefaultLocale) {
-			if(mDefaultLocale.get() == null) {
-				mDefaultLocale.set(Locale.getDefault());
-			}
+		if(value == null || value.equals("auto")) {
+			return LocaleListCompat.getEmptyLocaleList();
 		}
 
-		final String lang = getString(
+		if(value.contains("-r")) {
+			final String[] split = value.split("-r");
+			return LocaleListCompat.create(new Locale(split[0], split[1]));
+		}
+
+		return LocaleListCompat.create(new Locale(value));
+	}
+
+	@NonNull
+	private static String localesToLanguagePref(@NonNull final LocaleListCompat locales) {
+
+		final Locale locale = locales.get(0);
+
+		if(locale == null) {
+			return "auto";
+		}
+
+		if(locale.getCountry().isEmpty()) {
+			return locale.getLanguage();
+		}
+
+		return locale.getLanguage() + "-r" + locale.getCountry();
+	}
+
+	// AppCompatDelegate.setApplicationLocales() can silently fail on Android 13+
+	// when no activity has been created yet, so use the platform LocaleManager
+	// directly there. Below Android 13, the AppCompat backport applies the
+	// locales to each activity as it is created.
+	private static void setAppLocales(@NonNull final LocaleListCompat locales) {
+
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+			Objects.requireNonNull(appContext.getSystemService(LocaleManager.class))
+					.setApplicationLocales((LocaleList)locales.unwrap());
+		} else {
+			AppCompatDelegate.setApplicationLocales(locales);
+		}
+	}
+
+	// Applies the language preference process-wide, and keeps it in sync with the
+	// Android 13+ per-app language setting. Must be called on app startup, before
+	// any activities are created.
+	public static void applyLanguageSetting() {
+
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+				&& sharedPrefs.getBoolean(PREF_LANGUAGE_SETTING_MIGRATED, false)) {
+
+			// The system's per-app language setting is authoritative here, as the
+			// user may have changed it while the app wasn't running.
+			final LocaleListCompat systemLocales = LocaleListCompat.wrap(
+					Objects.requireNonNull(
+									appContext.getSystemService(LocaleManager.class))
+							.getApplicationLocales());
+
+			final String systemValue = localesToLanguagePref(systemLocales);
+
+			if(!systemValue.equals(getString(
+					R.string.pref_appearance_langforce_key,
+					"auto"))) {
+
+				sharedPrefs.edit()
+						.putString(
+								getPrefKey(R.string.pref_appearance_langforce_key),
+								systemValue)
+						.apply();
+			}
+
+		} else {
+			sharedPrefs.edit().putBoolean(PREF_LANGUAGE_SETTING_MIGRATED, true).apply();
+
+			setAppLocales(languagePrefToLocales(getString(
+					R.string.pref_appearance_langforce_key,
+					"auto")));
+		}
+	}
+
+	// Below Android 13, AppCompat only applies the language setting to
+	// AppCompatActivity contexts. Use this for strings shown from background code
+	// (e.g. notifications).
+	@NonNull
+	public static Context getLocalisedContext(@NonNull final Context context) {
+
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+			return context;
+		}
+
+		final LocaleListCompat locales = languagePrefToLocales(getString(
 				R.string.pref_appearance_langforce_key,
-				"auto");
+				"auto"));
 
-		for(final Resources res : new Resources[] {
-				activity.getResources(),
-				activity.getApplication().getResources()}) {
-
-			final DisplayMetrics dm = res.getDisplayMetrics();
-			final android.content.res.Configuration conf = res.getConfiguration();
-
-			if(!lang.equals("auto")) {
-
-				if(lang.contains("-r")) {
-					final String[] split = lang.split("-r");
-					setLocaleOnConfiguration(conf, new Locale(split[0], split[1]));
-
-				} else {
-					setLocaleOnConfiguration(conf, new Locale(lang));
-				}
-
-			} else {
-				setLocaleOnConfiguration(conf, mDefaultLocale.get());
-			}
-
-			res.updateConfiguration(conf, dm);
+		if(locales.isEmpty()) {
+			return context;
 		}
-	}
 
-	private static void setLocaleOnConfiguration(
-			@NonNull final android.content.res.Configuration conf,
-			@NonNull final Locale locale) {
+		final Configuration conf
+				= new Configuration(context.getResources().getConfiguration());
+		conf.setLocale(locales.get(0));
 
-		Locale.setDefault(locale);
-		conf.setLocale(locale);
+		return context.createConfigurationContext(conf);
 	}
 
 	public static NeverAlwaysOrWifiOnly appearance_thumbnails_show() {
