@@ -63,9 +63,7 @@
     <string name="block_subreddit">Bloquear Subreddit</string>
     <string name="bug_button_ignore">Não enviar relatório de erros</string>
     <string name="bug_button_send">Enviar relatório de erros por email</string>
-    <string name="bug_message">RedReader encontrou um erro.
-\n
-\nGostaria de enviar um relatório de erros para o desenvolvedor\? Se sim, um email será preenchido para você com todas as informações relevantes, e você poderá inspecionar o conteúdo antes de enviar.</string>
+    <string name="bug_message">RedReader encontrou um erro.\n\nGostaria de enviar um relatório de erros para o desenvolvedor\? Se sim, um email será preenchido para você com todas as informações relevantes, e você poderá inspecionar o conteúdo antes de enviar.</string>
     <string name="bug_title">Aconteceu um erro.</string>
     <string name="button_browse">Navegar…</string>
     <string name="button_moredetail">Mais Detalhes</string>
@@ -529,7 +527,7 @@
     <plurals name="load_more_comments_button_reply_count">
         <item quantity="one">Carregar mais comentários (%d resposta)</item>
         <item quantity="many">Carregar mais comentários (%d respostas)</item>
-        <item quantity="other"/>
+        <item quantity="other">Carregar mais comentários (%d respostas)</item>
     </plurals>
     <string name="collapsed_self_post">Auto-post colapsado</string>
     <string name="pref_appearance_comments_show_floating_toolbar_title">Mostrar barra de ferramentas flutuante sobre comentários</string>

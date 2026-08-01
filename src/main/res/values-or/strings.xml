@@ -35,6 +35,6 @@
     <string name="accessibility_subtitle_author_submitter_admin_withperiod">ଲେଖକ: %s, ଦାଖଲକାରୀ ଏଵଂ ପ୍ରଶାସକ।</string>
     <string name="karma_comment">ମନ୍ତଵ୍ୟ କର୍ମ</string>
     <string name="karma_link">ଲିଙ୍କ୍ କର୍ମ</string>
-    <string name="pref_appearance_left_handed_title">ଡେବିରି-ହାତୀ ମୋଡ୍</string>
+    <string name="pref_appearance_left_handed_title">ବାମ ହାତ ମୋଡ୍</string>
     <string name="prefs_category_accessibility">ଅଭିଗମ୍ୟତା</string>
 </resources>

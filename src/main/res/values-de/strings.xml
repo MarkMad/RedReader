@@ -126,7 +126,7 @@
     <string name="dialog_no">Nein</string>
     <string name="dialog_go">Los</string>
     <!-- Thing Actions -->
-    <string name="action_menu_post_title">Beitragaktionen</string>
+    <string name="action_menu_post_title">Beitragsaktionen</string>
     <string name="action_upvote">Aufwerten</string>
     <string name="action_downvote">Abwerten</string>
     <string name="action_vote_remove">Wertung entfernen</string>
@@ -654,8 +654,8 @@
     <string name="image_gallery_removed_message">Die Galerie wurde entfernt und ist nicht mehr verfügbar.</string>
     <string name="image_gallery_removed_title">Galerie entfernt</string>
     <string name="spoiler">Spoiler</string>
-    <string name="unsubscription_successful">%s nicht mehr abboniert</string>
-    <string name="subscription_successful">%s abboniert</string>
+    <string name="unsubscription_successful">%s nicht mehr abonniert</string>
+    <string name="subscription_successful">%s abonniert</string>
     <string name="pref_appearance_fontscale_use_global">Globale Schriftgröße benutzen</string>
     <string name="pref_appearance_fontscale_global_title">Global</string>
     <string name="pref_appearance_fontscale_header">Schriftgröße</string>

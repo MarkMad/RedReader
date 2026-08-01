@@ -18,7 +18,7 @@
     <!-- First Run Dialog -->
 
     <string name="firstrun_login_title">Bejelentkezés</string>
-    <string name="firstrun_login_message">Jelenleg be van jelentkezve. A Fiókok menüből elérheti a fióklistát.</string>
+    <string name="firstrun_login_message">Jelenleg nincs bejelentkezve. A Fiókok menüből elérheti a fióklistát.</string>
     <string name="firstrun_login_button_now">Bejelentkezés most</string>
     <string name="firstrun_login_button_later">Anonim használat</string>
     <!-- Preference Headers -->

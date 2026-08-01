@@ -704,7 +704,7 @@
     <string name="comment_header_search_thread_title">現在、コメントスレッドの検索結果を表示しています。</string>
     <string name="load_more_comments_failed_unknown_url_type">よりコメントを読み込めません: 不明なURLタイプ。</string>
     <string name="pref_appearance_link_text_clickable_title">リンクテキストをクリックできるようにする</string>
-    <string name="error_403_title_nonreddit">許可不要</string>
+    <string name="error_403_title_nonreddit">アクセス拒否</string>
     <string name="error_403_message_nonreddit">サーバーは、許可拒否エラーで応答しました。</string>
     <string name="error_no_suitable_apps_available">利用できるアプリはありません。</string>
     <string name="collapsed_self_post">セルフポストが折りられました。</string>

@@ -66,7 +66,7 @@
     <string name="options_theme">Temalar</string>
     <string name="options_accounts_long">Reddit Hesapları</string>
     <string name="options_accounts">Hesaplar</string>
-    <string name="pref_cache_pruning">Önbelleği Temizle</string>
+    <string name="pref_cache_pruning">Önbellek Budama</string>
     <string name="sort_posts_top_week">En İyi: Bu Hafta</string>
     <string name="sort_posts_top_today">En İyi: Bugün</string>
     <string name="sort_posts_top_hour">En İyi: Bu Saat</string>
@@ -331,7 +331,7 @@
     <string name="error_toast_notloggedin">Bunu yapmak için oturum açmış olmanız gerekir.</string>
     <string name="pref_appearance_scale_normal">Normal</string>
     <string name="error_invalid_password_title">Geçersiz Şifre</string>
-    <string name="notification_message">%s sana bir mesaj gönderdim</string>
+    <string name="notification_message">%s sana bir mesaj gönderdi</string>
     <string name="time_1month">1 ay</string>
     <string name="pref_appearance_comment_header_items_author">Yazar</string>
     <string name="pref_appearance_comment_header_items_flair">Yetenek</string>
@@ -552,8 +552,8 @@
     <string name="pref_behaviour_imagevideo_tap_close_title">Görüntüleri/videoları kapatmak için dokun</string>
     <string name="link_does_not_exist">Bu bağlantı mevcut değil. Silinmiş olabilir.</string>
     <plurals name="load_more_comments_button_reply_count">
-        <item quantity="one">Daha fazla yorum yükle (%d reply)</item>
-        <item quantity="other">Daha çok yorum yükle (%d reply)</item>
+        <item quantity="one">Daha fazla yorum yükle (%d yanıt)</item>
+        <item quantity="other">Daha fazla yorum yükle (%d yanıt)</item>
     </plurals>
     <string name="pref_behaviour_postlist_back_again">Gönderi listesinden çıkmak için iki kez geri tuşuna bas</string>
     <string name="pref_appearance_hide_toolbar_on_scroll_title">Kaydırma sırasında araç çubuğunu gizle</string>
@@ -681,7 +681,7 @@
     <string name="web_view_clear_cache">Önbelleği Temizle</string>
     <string name="header_subscriber_count_unknown">Bilinmeyen abone sayısı</string>
     <string name="invalid_subreddit_name">Geçersiz subreddit adı</string>
-    <string name="mainmenu_modmail">Menü</string>
+    <string name="mainmenu_modmail">Modmail</string>
     <string name="time_sec">sn</string>
     <string name="pref_appearance_comment_header_items_age">Yaş</string>
     <string name="theme_name_night">Gece</string>

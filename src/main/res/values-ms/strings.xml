@@ -85,7 +85,7 @@
     <string name="imageview_image_info_failed">Tidak dapat memuat turun metadata imej. Akan menggunakan pelayar web.</string>
     <string name="button_cancel">Batal</string>
     <plurals name="load_more_comments_button_reply_count">
-        <item quantity="other">Muatkan lagi komen (%d balasan)\"</item>
+        <item quantity="other">Muatkan lagi komen (%d balasan)</item>
     </plurals>
     <string name="dialog_clear">Kosong</string>
     <string name="dialog_continue">Sambung</string>
@@ -121,7 +121,7 @@
     <string name="edittext_hint_comment_body_text">Teks Komen</string>
     <string name="pref_appearance_thumbnails_wifionly_title">Gambar kecik hanya Wi-Fi sahaja</string>
     <string name="pref_behaviour_actions_post_header">TIndakan Pos</string>
-    <string name="firstrun_login_button_later">Menjadi Penyamar</string>
+    <string name="firstrun_login_button_later">Kekal tanpa nama</string>
     <string name="pref_behaviour_actions_comment_header">TIndakan Komen</string>
     <string name="pref_appearance_comment_header_items_title">Kepala komen entri</string>
     <string name="pref_cache_pruning">Bersihkan Cache</string>

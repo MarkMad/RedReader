@@ -94,7 +94,7 @@
     <string name="action_user_profile">Προφίλ χρήστη</string>
     <string name="action_user_profile_short">Χρήστης</string>
     <string name="action_menu_post_title">Ενέργειες Ανάρτησης</string>
-    <string name="action_downvote">Αρητική ψήφος</string>
+    <string name="action_downvote">Αρνητική ψήφος</string>
     <string name="action_vote_remove">Αφαίρεση Ψήφου</string>
     <string name="action_upvote_remove">Αφαίρεση Θετικής ψήφου</string>
     <string name="action_downvote_remove">Αφαίρεση Αρνητικής ψήφου</string>

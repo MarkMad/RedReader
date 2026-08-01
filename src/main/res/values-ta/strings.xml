@@ -68,8 +68,8 @@
     <string name="action_downvote_remove">டவுன்வோட்டை அகற்று</string>
     <string name="action_save">சேமி</string>
     <string name="action_hide">மறை</string>
-    <string name="action_unsave">மன்னிப்பு</string>
-    <string name="action_unhide">இரக்கமற்றது</string>
+    <string name="action_unsave">சேமிப்பை நீக்கு</string>
+    <string name="action_unhide">மறைப்பை நீக்கு</string>
     <string name="action_external">வெளிப்புற உலாவியில் காண்க</string>
     <string name="action_external_short">உலாவியில்</string>
     <string name="action_actionmenu_short">செயல்கள்</string>
@@ -163,7 +163,7 @@
     <string name="pref_appearance_scale_normal">சாதாரண</string>
     <string name="error_ratelimit_title">பல தவறான முயற்சிகள்.</string>
     <string name="error_ratelimit_message">இந்த ஐபியிலிருந்து பல தவறான உள்நுழைவு முயற்சிகள் காரணமாக தடுக்கப்பட்டது. ரெடிட் கூறுகிறார்:</string>
-    <string name="general_success">செய்</string>
+    <string name="general_success">வெற்றி</string>
     <string name="error_toast_no_urls_in_comment">இந்த கருத்தில் முகவரி கள் எதுவும் காணப்படவில்லை.</string>
     <string name="error_toast_no_urls_in_self">இந்த தன்வய உரையில் எந்த முகவரி களும் காணப்படவில்லை.</string>
     <string name="action_search">தேடல்</string>
@@ -333,8 +333,8 @@
     <string name="error_toast_failed_open_external_browser">வெளிப்புற உலாவியில் முகவரி \"%s\" ஐ திறக்கத் தவறிவிட்டது</string>
     <string name="subscription_successful">%s க்கு குழுசேர்ந்தது</string>
     <string name="unsubscription_successful">%s இலிருந்து குழுவிலகப்பட்டது</string>
-    <string name="error_title_malformed_html">தவறாக உஉகுமொ</string>
-    <string name="spoiler">இறக்கைத்தடை</string>
+    <string name="error_title_malformed_html">தவறான HTML</string>
+    <string name="spoiler">ஸ்பாய்லர்</string>
     <string name="error_message_malformed_html">உடல் உரையை அலச முடியவில்லை. இதை பயன்பாட்டு டெவலப்பரிடம் புகாரளிக்கவும்.</string>
     <string name="props_body_html">உடல் (HTML)</string>
     <string name="props_self_html">தன்வய உரை (HTML)</string>
@@ -549,7 +549,7 @@
     <string name="notification_message_action">பார்க்கத் தொடவும்</string>
     <string name="general_true">உண்மை</string>
     <string name="error_invalid_password_title">தவறான கடவுச்சொல்</string>
-    <string name="pref_appearance_twopane_force">எப்போதும் (may look odd)</string>
+    <string name="pref_appearance_twopane_force">எப்போதும் (வித்தியாசமாகத் தோன்றலாம்)</string>
     <string name="theme_name_red">சிவப்பு</string>
     <string name="theme_name_night">இரவு</string>
     <string name="theme_name_green">பச்சை</string>
@@ -663,9 +663,9 @@
     <string name="edit_post_actionbar">இடுகையைத் திருத்து</string>
     <string name="post_edit_done">இடுகை திருத்தப்பட்டது. நீங்கள் புதுப்பித்த பிறகு மாற்றங்கள் தோன்றும்.</string>
     <string name="action_block_subreddit">தொகுதி சப்ரெடிட்</string>
-    <string name="action_unblock_subreddit">சப்ரெடிட்டைத் தடைசெய்க</string>
+    <string name="action_unblock_subreddit">சப்ரெடிட்டின் தடையை நீக்கு</string>
     <string name="action_pin_subreddit">முதன்மை மெனுவுக்கு முள் சப்ரெடிட்</string>
-    <string name="action_unpin_subreddit">முதன்மையான மெனுவிலிருந்து unpin subreddit</string>
+    <string name="action_unpin_subreddit">முதன்மை மெனுவிலிருந்து சப்ரெடிட்டை அகற்று</string>
     <string name="action_unsubscribe_subreddit">சப்ரெடிட்டிலிருந்து குழுவிலகவும்</string>
     <string name="collapsed_self_post">தன்வய இடுகை சரிந்தது</string>
     <string name="button_next_comment_parent">அடுத்த பெற்றோர் கருத்து</string>
@@ -714,7 +714,7 @@
     <string name="bug_chooser_title">மின்னஞ்சல் பிழை அறிக்கை</string>
     <string name="pin_successful">முதன்மை மெனுவுக்கு %s பொருத்தப்பட்டுள்ளன</string>
     <string name="unpin_successful">முதன்மையான மெனுவிலிருந்து இணைக்கப்படாத %s</string>
-    <string name="pref_menus_mainmenu_header">பட்டியல் விளையாடுங்கள்</string>
+    <string name="pref_menus_mainmenu_header">முதன்மை மெனு</string>
     <string name="pref_menus_posts_header">இடுகைகள்</string>
     <string name="pref_appearance_hide_headertoolbar_postlist_title">இடுகை பட்டியல் தலைப்பு கருவிப்பட்டியை மறைக்கவும்</string>
     <string name="post_link_copied_to_clipboard">இடைநிலைப்பலகைக்கு நகலெடுக்கப்பட்ட இணைப்பு</string>
