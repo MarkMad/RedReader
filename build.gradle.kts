@@ -5,7 +5,6 @@ import java.io.FileInputStream
 
 plugins {
 	alias(libs.plugins.android.application)
-	alias(libs.plugins.kotlin.android)
 	alias(libs.plugins.kotlin.serialization)
 	alias(libs.plugins.kotlin.parcelize)
 	alias(libs.plugins.compose.compiler)
@@ -58,6 +57,7 @@ dependencies {
 	}
 
 	implementation(platform(libs.androidx.compose.bom))
+	implementation(libs.androidx.activity.compose)
 	implementation(libs.androidx.compose.material3)
 	implementation(libs.androidx.compose.runtime)
 	implementation(libs.androidx.compose.ui)
@@ -84,8 +84,8 @@ android {
 		applicationId = "org.quantumbadger.redreader.fork"
 		minSdk = libs.versions.sdk.min.get().toInt()
 		targetSdk = libs.versions.sdk.target.get().toInt()
-		versionCode = 117
-		versionName = "1.25.2"
+		versionCode = 118
+		versionName = "1.26"
 
 		vectorDrawables.generatedDensities("mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi")
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -154,31 +154,24 @@ android {
 
 	testOptions {
 		animationsDisabled = true
-	}
-
-	kotlinOptions {
-		jvmTarget = libs.versions.java.get()
-
-		val buildDir = project.layout.buildDirectory.get().asFile.absolutePath
-
-		if (project.findProperty("composeCompilerReports") == "true") {
-			freeCompilerArgs += listOf(
-				"-P",
-				"plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=$buildDir/compose_compiler"
-			)
-		}
-
-		if (project.findProperty("composeCompilerMetrics") == "true") {
-			freeCompilerArgs += listOf(
-				"-P",
-				"plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=$buildDir/compose_compiler"
-			)
+		unitTests {
+			isIncludeAndroidResources = true
 		}
 	}
 
 	buildFeatures {
 		buildConfig = true
 		compose = true
+	}
+}
+
+composeCompiler {
+	if (project.findProperty("composeCompilerReports") == "true") {
+		reportsDestination = layout.buildDirectory.dir("compose_compiler")
+	}
+
+	if (project.findProperty("composeCompilerMetrics") == "true") {
+		metricsDestination = layout.buildDirectory.dir("compose_compiler")
 	}
 }
 

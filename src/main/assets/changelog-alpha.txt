@@ -1,3 +1,25 @@
+/Alpha 369 (2026-08-01)
+Fix issue with GitHub link
+
+/Alpha 368 (2026-08-01)
+Improve reliability of language setting, and integrate with the Android 13+ per-app language override
+Fix issue where notification bar text changed colour after report dialog closed
+New RedGIFs link handling also now applies to external browser
+Support for Android predictive back gesture
+Fix for press-back-twice-to-exit preference in previous alpha
+Fix for taps passing through the toolbar in the album viewer
+Added link to the project's GitHub repository in Settings > About
+Translation updates (thanks to Abdullah Gulabi, AbdulrahmanTabboush, AbsurdUsername, Allan Nordhøy, Ameen Al-izzi, Andrey F, Aprizotec, Arne Brücher, Artem, asdf asdf, Asmodeus, Atilla Türkmen, ayeeeeeeee, Ayush Jain, Balázs Meskó, Coool, Ddhdg Sgsisoei, Enrip, Eric, fosinsight, Gontzal Manuel Pujana Onaindia, H Tamás, Hogwai, iDazai, Ignas, Ihor Hordiichuk, Janne-Pekka Mustonen, Jimmy Young, JoC, Jonas Thudium, K. Njtk, Kachelkaiser, Karthik Nallasivan, Laura Vasconcelos Pereira Felippe, lucanomax, Luiz-bro, Lukas, Lukman Nulhakim, Matheus Leal, Meiru, Mo, Nécron, OlliesGudh, Onder Nuray, Ramez Ehab, Renan Birck Pinheiro, Ricard Rodríguez, Samuel, Sandyran, sas, Sebastian Maier, ShareASmile, ssantos, sss13, Subham Jena, Sukii23, suriing, Thadah D. Denyse, thorin, Thung Yong Han, Vladislav Glinsky, zeritti, ɴᴇᴋᴏ, Λευτέρης Τ, Марко М. Костић, 為什麼不加空格, and other anonymous contributors)
+
+/Alpha 367 (2026-07-19)
+Added pinch-to-zoom in video player
+Ability to specify reason when reporting
+RedGIFs links now open in the compact embedded player, instead of the full site
+
+/Alpha 366 (2026-07-19)
+New workaround for text field issue on Reddit's login page (caused by their cookie banner)
+Fix occasional setSpan crash when viewing comments with emote flairs
+
 /Alpha 365 (2026-04-02)
 Workaround for text field issue on Reddit's login page (caused by their cookie banner)
 

@@ -83,3 +83,6 @@ reddit_auth.txt
 # Keystore files
 *.keystore
 keystore.properties
+/*.txt
+*.log
+*.har

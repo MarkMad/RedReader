@@ -96,6 +96,7 @@ import org.quantumbadger.redreader.views.liststatus.ErrorView;
 import org.quantumbadger.redreader.views.video.ExoPlayerSeekableInputStreamDataSource;
 import org.quantumbadger.redreader.views.video.ExoPlayerSeekableInputStreamDataSourceFactory;
 import org.quantumbadger.redreader.views.video.ExoPlayerWrapperView;
+import org.quantumbadger.redreader.views.video.VideoGestureHandler;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -153,18 +154,19 @@ public class ImageViewActivity extends ViewsBaseActivity
 	}
 
 	@Override
+	protected int baseActivityNavigationBarColour() {
+		return Color.BLACK;
+	}
+
+	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 
 		if(PrefsUtility.pref_appearance_android_status()
 				== PrefsUtility.AppearanceStatusBarMode.HIDE_ON_MEDIA) {
-			getWindow().setFlags(
-					WindowManager.LayoutParams.FLAG_FULLSCREEN,
-					WindowManager.LayoutParams.FLAG_FULLSCREEN);
+			hideStatusBar();
 		}
-
-		getWindow().setNavigationBarColor(Color.BLACK);
 
 		setTitle(R.string.accessibility_image_viewer_title);
 
@@ -261,7 +263,8 @@ public class ImageViewActivity extends ViewsBaseActivity
 		mLayout = new FrameLayout(this);
 		mLayout.addView(progressLayout);
 
-		// No audio in the RedGIFs API
+		// The RedGIFs API no longer provides audio, so show the embedded web
+		// player instead (LinkHandler substitutes the embed URL for the link)
 		if (LinkHandler.isRedGifsImage(mUrl)) {
 			revertToWeb();
 			return;
@@ -569,13 +572,6 @@ public class ImageViewActivity extends ViewsBaseActivity
 						.generateJsonUri()
 						.toString()),
 				false);
-	}
-
-	@Override
-	public void onBackPressed() {
-		if(General.onBackPressed()) {
-			super.onBackPressed();
-		}
 	}
 
 	private void revertToWeb() {
@@ -1148,8 +1144,8 @@ public class ImageViewActivity extends ViewsBaseActivity
 			General.setLayoutMatchParent(layout);
 			General.setLayoutMatchParent(mVideoPlayerWrapper);
 
-			final BasicGestureHandler gestureHandler
-					= new BasicGestureHandler(this);
+			final VideoGestureHandler gestureHandler
+					= new VideoGestureHandler(this, mVideoPlayerWrapper);
 
 			//noinspection ClickableViewAccessibility
 			mVideoPlayerWrapper.setOnTouchListener(gestureHandler);

@@ -613,6 +613,7 @@ public class MainActivity extends RefreshableActivity
 				mRightPane = null;
 			}
 
+			invalidateBackPressedCallback();
 			invalidateOptionsMenu();
 			requestRefresh(RefreshableFragment.ALL, false);
 
@@ -663,15 +664,15 @@ public class MainActivity extends RefreshableActivity
 	}
 
 	@Override
-	public void onBackPressed() {
+	protected boolean baseActivityMustInterceptBack() {
+		return twoPane && !isMenuShown;
+	}
 
-		if(!General.onBackPressed()) {
-			return;
-		}
+	@Override
+	protected boolean baseActivityOnBackPressed() {
 
 		if(!twoPane || isMenuShown) {
-			super.onBackPressed();
-			return;
+			return false;
 		}
 
 		isMenuShown = true;
@@ -693,6 +694,7 @@ public class MainActivity extends RefreshableActivity
 
 		showBackButton(false);
 		invalidateOptionsMenu();
+		return true;
 	}
 
 	@Override
@@ -722,6 +724,7 @@ public class MainActivity extends RefreshableActivity
 
 				isMenuShown = false;
 
+				invalidateBackPressedCallback();
 				invalidateOptionsMenu();
 
 			} else {
@@ -1032,7 +1035,7 @@ public class MainActivity extends RefreshableActivity
 
 		switch(item.getItemId()) {
 			case android.R.id.home:
-				onBackPressed();
+				getOnBackPressedDispatcher().onBackPressed();
 				return true;
 			default:
 				return super.onOptionsItemSelected(item);
@@ -1109,7 +1112,7 @@ public class MainActivity extends RefreshableActivity
 	}
 
 	private void showBackButton(final boolean isVisible) {
-		configBackButton(isVisible, v -> onBackPressed());
+		configBackButton(isVisible, v -> getOnBackPressedDispatcher().onBackPressed());
 	}
 
 	@Override

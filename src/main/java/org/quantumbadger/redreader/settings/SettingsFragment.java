@@ -54,9 +54,11 @@ import org.quantumbadger.redreader.common.Constants;
 import org.quantumbadger.redreader.common.DialogUtils;
 import org.quantumbadger.redreader.common.FileUtils;
 import org.quantumbadger.redreader.common.General;
+import org.quantumbadger.redreader.common.LinkHandler;
 import org.quantumbadger.redreader.common.PrefsBackup;
 import org.quantumbadger.redreader.common.PrefsUtility;
 import org.quantumbadger.redreader.common.TorCommon;
+import org.quantumbadger.redreader.common.UriString;
 import org.quantumbadger.redreader.common.time.TimeDuration;
 import org.quantumbadger.redreader.common.time.TimestampUTC;
 import org.quantumbadger.redreader.receivers.NewMessageChecker;
@@ -108,6 +110,10 @@ public final class SettingsFragment extends PreferenceFragmentCompat {
 		} catch(final Exception e) {
 			throw new RuntimeException(e);
 		}
+
+		// On Android 13+ the user may have changed the app's language in the
+		// system settings, so sync the language preference before displaying it
+		PrefsUtility.applyLanguageSetting();
 
 		addPreferencesFromResource(resource);
 
@@ -272,6 +278,8 @@ public final class SettingsFragment extends PreferenceFragmentCompat {
 				findPreference(getString(R.string.pref_network_tor_key));
 		final Preference licensePref =
 				findPreference(getString(R.string.pref_about_license_key));
+		final Preference githubPref =
+				findPreference(getString(R.string.pref_about_github_key));
 		final Preference backupPreferencesPref =
 				findPreference(getString(R.string.pref_item_backup_preferences_key));
 		final Preference restorePreferencesPref =
@@ -305,6 +313,23 @@ public final class SettingsFragment extends PreferenceFragmentCompat {
 		if(licensePref != null) {
 			licensePref.setOnPreferenceClickListener(preference -> {
 				HtmlViewActivity.showAsset(context, "license.html");
+				return true;
+			});
+		}
+
+		if(githubPref != null) {
+			githubPref.setOnPreferenceClickListener(preference -> {
+
+				final BaseActivity activity = (BaseActivity)getActivity();
+
+				if(activity == null) {
+					return true;
+				}
+
+				LinkHandler.onLinkClicked(
+						activity,
+						new UriString(getString(R.string.pref_about_github_url)));
+
 				return true;
 			});
 		}

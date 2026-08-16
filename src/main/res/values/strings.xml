@@ -1929,4 +1929,33 @@
 
 	<!-- 2025-12-07 -->
 	<string name="no_messages_yet">No messages yet.</string>
+
+	<!-- 2026-07-19 -->
+	<string name="report_prompt_why">Why are you reporting this?</string>
+	<string name="report_reason_other">Other</string>
+	<string name="report_other_reason_hint">Reason</string>
+	<string name="report_additional_info_hint">Additional information (optional)</string>
+	<string name="report_username_hint">Username</string>
+	<string name="report_file_complaint">File a complaint</string>
+	<string name="report_success">Report submitted</string>
+	<string name="dialog_back">Back</string>
+
+	<!-- 2026-08-01 -->
+	<string name="lang_mr" translatable="false">मराठी</string>
+	<string name="lang_ms" translatable="false">Bahasa Melayu</string>
+	<string name="lang_tr" translatable="false">Türkçe</string>
+	<string name="lang_ca" translatable="false">Català</string>
+	<string name="lang_fa" translatable="false">فارسی</string>
+	<string name="lang_ko" translatable="false">한국어</string>
+	<string name="lang_lv" translatable="false">Latviešu</string>
+	<string name="lang_nn" translatable="false">Norsk nynorsk</string>
+	<string name="lang_or" translatable="false">ଓଡ଼ିଆ</string>
+	<string name="lang_pa" translatable="false">ਪੰਜਾਬੀ</string>
+	<string name="lang_pt_rBR" translatable="false">Português (Brasil)</string>
+	<string name="lang_sr" translatable="false">српски</string>
+	<string name="lang_th" translatable="false">ไทย</string>
+
+	<string name="pref_about_github_key" translatable="false">pref_about_github</string>
+	<string name="pref_about_github_title">Source code</string>
+	<string name="pref_about_github_url" translatable="false">https://github.com/QuantumBadger/RedReader</string>
 </resources>

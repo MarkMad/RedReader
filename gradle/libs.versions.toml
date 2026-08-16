@@ -1,14 +1,15 @@
 [versions]
-agp = "9.2.1"
+agp = "9.3.0"
 kotlin = "2.2.21"
 java = "11"
 
 robolectric = "4.16"
-sdk-compile = "35"
+sdk-compile = "36"
 sdk-min = "21"
-sdk-target = "35"
+sdk-target = "36"
 ndk = "27.3.13750724"
 
+androidx-activity-compose = "1.10.1"
 androidx-annotation = "1.8.0"
 androidx-appcompat = "1.7.0"
 androidx-constraintlayout = "2.1.4"
@@ -44,6 +45,7 @@ compose-bom = "2025.11.00"
 androidx-compose-constraintlayout = "1.1.1"
 
 [libraries]
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "androidx-annotation" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx-constraintlayout" }
@@ -88,7 +90,6 @@ androidx-compose-constraintlayout = { module = "androidx.constraintlayout:constr
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }

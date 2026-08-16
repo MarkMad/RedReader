@@ -38,6 +38,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.os.BundleCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -191,32 +194,28 @@ public class WebViewFragment extends Fragment
 		chromeClient.setOnToggledFullscreen(fullscreen -> {
 			// Your code to handle the full-screen change, for example showing
 			// and hiding the title bar. Example:
+			final WindowInsetsControllerCompat insetsController
+					= WindowCompat.getInsetsController(
+							mActivity.getWindow(),
+							mActivity.getWindow().getDecorView());
+
 			if(fullscreen) {
-				final WindowManager.LayoutParams attrs = mActivity.getWindow()
-						.getAttributes();
-				attrs.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
-				attrs.flags |= WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
-				mActivity.getWindow().setAttributes(attrs);
+				mActivity.getWindow().addFlags(
+						WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 				mActivity.getSupportActionBar().hide();
-				//noinspection all
-				mActivity.getWindow()
-						.getDecorView()
-						.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
+				insetsController.setSystemBarsBehavior(
+						WindowInsetsControllerCompat
+								.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+				insetsController.hide(WindowInsetsCompat.Type.statusBars());
 			} else {
-				final WindowManager.LayoutParams attrs = mActivity.getWindow()
-						.getAttributes();
 				//only re-enable status bar if there is no contradicting preference set
 				if(PrefsUtility.pref_appearance_android_status()
 						== PrefsUtility.AppearanceStatusBarMode.NEVER_HIDE) {
-					attrs.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
+					insetsController.show(WindowInsetsCompat.Type.statusBars());
 				}
-				attrs.flags &= ~WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
-				mActivity.getWindow().setAttributes(attrs);
+				mActivity.getWindow().clearFlags(
+						WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 				mActivity.getSupportActionBar().show();
-				//noinspection all
-				mActivity.getWindow()
-						.getDecorView()
-						.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
 			}
 
 		});
@@ -234,7 +233,10 @@ public class WebViewFragment extends Fragment
 
 									try {
 										getContext().startActivity(i);
-										mActivity.onBackPressed(); //get back from internal browser
+
+										//get back from internal browser
+										mActivity.getOnBackPressedDispatcher()
+												.onBackPressed();
 
 									} catch(final ActivityNotFoundException e) {
 										General.quickToast(
@@ -245,7 +247,9 @@ public class WebViewFragment extends Fragment
 						.setNegativeButton(
 								android.R.string.no,
 								(dialog, which) -> {
-									mActivity.onBackPressed(); //get back from internal browser
+									//get back from internal browser
+									mActivity.getOnBackPressedDispatcher()
+											.onBackPressed();
 								})
 						.setIcon(android.R.drawable.ic_dialog_alert)
 						.show());
@@ -261,6 +265,10 @@ public class WebViewFragment extends Fragment
 		settings.setLoadWithOverviewMode(true);
 		settings.setDomStorageEnabled(true);
 		settings.setDisplayZoomControls(false);
+
+		// Allow the RedGifs embedded player to start playback without a tap
+		settings.setMediaPlaybackRequiresUserGesture(
+				mUrl == null || !LinkHandler.isRedGifsImage(mUrl));
 
 		// TODO handle long clicks
 
@@ -525,6 +533,7 @@ public class WebViewFragment extends Fragment
 
 		final CookieManager cookieManager = CookieManager.getInstance();
 		cookieManager.removeAllCookies(null);
+		cookieManager.flush();
 
 		super.onDestroyView();
 	}
