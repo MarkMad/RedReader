@@ -49,6 +49,7 @@ import org.quantumbadger.redreader.activities.BaseActivity;
 import org.quantumbadger.redreader.activities.OptionsMenuUtility;
 import org.quantumbadger.redreader.adapters.FilteredCommentListingManager;
 import org.quantumbadger.redreader.adapters.GroupedRecyclerViewAdapter;
+import org.quantumbadger.redreader.audio.NativeTTSManager;
 import org.quantumbadger.redreader.cache.downloadstrategy.DownloadStrategy;
 import org.quantumbadger.redreader.cache.downloadstrategy.DownloadStrategyAlways;
 import org.quantumbadger.redreader.cache.downloadstrategy.DownloadStrategyIfNotCached;
@@ -67,6 +68,7 @@ import org.quantumbadger.redreader.reddit.RedditCommentListItem;
 import org.quantumbadger.redreader.reddit.api.RedditAPICommentAction;
 import org.quantumbadger.redreader.reddit.api.RedditPostActions;
 import org.quantumbadger.redreader.reddit.prepared.RedditChangeDataManager;
+import org.quantumbadger.redreader.reddit.prepared.RedditParsedComment;
 import org.quantumbadger.redreader.reddit.prepared.RedditPreparedPost;
 import org.quantumbadger.redreader.reddit.prepared.RedditRenderableComment;
 import org.quantumbadger.redreader.reddit.url.RedditURLParser;
@@ -82,6 +84,7 @@ import org.quantumbadger.redreader.views.liststatus.ErrorView;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -188,11 +191,11 @@ public class CommentListingFragment extends RRFragment
 
 		mListingView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
 			@Override
-			public void onViewAttachedToWindow(View v) {}
+			public void onViewAttachedToWindow(final View v) {}
 
 			@Override
-			public void onViewDetachedFromWindow(View v) {
-				org.quantumbadger.redreader.audio.NativeTTSManager tts = org.quantumbadger.redreader.audio.NativeTTSManager.getInstance(context);
+			public void onViewDetachedFromWindow(final View v) {
+				final NativeTTSManager tts = NativeTTSManager.getInstance(context);
 				if (tts.isSpeaking()) {
 					tts.stop();
 				}
@@ -816,12 +819,12 @@ public class CommentListingFragment extends RRFragment
 		}, 800);
 	}
 
-	private void toggleReadAloud(ImageButton ttsButton) {
-		org.quantumbadger.redreader.audio.NativeTTSManager tts = org.quantumbadger.redreader.audio.NativeTTSManager.getInstance(getContext());
+	private void toggleReadAloud(final ImageButton ttsButton) {
+		final NativeTTSManager tts = NativeTTSManager.getInstance(getContext());
 		
-		tts.setListener(new org.quantumbadger.redreader.audio.NativeTTSManager.Listener() {
+		tts.setListener(new NativeTTSManager.Listener() {
 			@Override
-			public void onTTSStateChanged(boolean isSpeaking) {
+			public void onTTSStateChanged(final boolean isSpeaking) {
 				AndroidCommon.UI_THREAD_HANDLER.post(() -> {
 					if (!isSpeaking) {
 						ttsButton.setContentDescription(getString(R.string.action_read_aloud));
@@ -834,10 +837,13 @@ public class CommentListingFragment extends RRFragment
 			}
 
 			@Override
-			public void onUtteranceStarted(int position) {
-				if (position < 0) return;
+			public void onUtteranceStarted(final int position) {
+				if (position < 0) {
+					return;
+				}
 				AndroidCommon.UI_THREAD_HANDLER.post(() -> {
-					final LinearLayoutManager layoutManager = (LinearLayoutManager) mRecyclerView.getLayoutManager();
+					final LinearLayoutManager layoutManager
+							= (LinearLayoutManager) mRecyclerView.getLayoutManager();
 					if (layoutManager != null) {
 						layoutManager.scrollToPositionWithOffset(position, 0);
 						setFocusDelayed(position);
@@ -849,31 +855,47 @@ public class CommentListingFragment extends RRFragment
 		if (tts.isSpeaking()) {
 			tts.stop();
 		} else {
-			java.util.List<org.quantumbadger.redreader.audio.NativeTTSManager.TTSItem> items = new java.util.ArrayList<>();
+			final List<NativeTTSManager.TTSItem> items = new ArrayList<>();
 			int startIndex = 0;
-			final LinearLayoutManager layoutManager = (LinearLayoutManager) mRecyclerView.getLayoutManager();
+			final LinearLayoutManager layoutManager
+					= (LinearLayoutManager) mRecyclerView.getLayoutManager();
 			if (layoutManager != null) {
-				int firstVisible = layoutManager.findFirstVisibleItemPosition();
+				final int firstVisible = layoutManager.findFirstVisibleItemPosition();
 				if (firstVisible != RecyclerView.NO_POSITION && firstVisible >= 0) {
 					startIndex = firstVisible;
 				}
 			}
 
 			if (mPost != null && mPost.src != null && startIndex == 0) {
-				if (mPost.src.getTitle() != null) items.add(new org.quantumbadger.redreader.audio.NativeTTSManager.TTSItem(LinkHandler.stripUrls(mPost.src.getTitle()), -1));
-				if (mPost.src.getRawSelfTextMarkdown() != null) items.add(new org.quantumbadger.redreader.audio.NativeTTSManager.TTSItem(LinkHandler.stripUrls(mPost.src.getRawSelfTextMarkdown()), -1));
+				if (mPost.src.getTitle() != null) {
+					items.add(new NativeTTSManager.TTSItem(
+							LinkHandler.stripUrls(mPost.src.getTitle()), -1));
+				}
+				if (mPost.src.getRawSelfTextMarkdown() != null) {
+					items.add(new NativeTTSManager.TTSItem(
+							LinkHandler.stripUrls(mPost.src.getRawSelfTextMarkdown()), -1));
+				}
 			}
 			
 			if (mCommentListingManager != null) {
-				RedditChangeDataManager changeDataManager = RedditChangeDataManager.getInstance(mUser);
-				for (int i = startIndex; i < mCommentListingManager.getAdapter().getItemCount(); i++) {
-					org.quantumbadger.redreader.adapters.GroupedRecyclerViewAdapter.Item item = mCommentListingManager.getItemAtPosition(i);
-					if (item instanceof RedditCommentListItem && ((RedditCommentListItem) item).isComment()) {
-						org.quantumbadger.redreader.reddit.prepared.RedditRenderableComment renderableComment = ((RedditCommentListItem) item).asComment();
+				final RedditChangeDataManager changeDataManager
+						= RedditChangeDataManager.getInstance(mUser);
+				final int itemCount = mCommentListingManager.getAdapter().getItemCount();
+				for (int i = startIndex; i < itemCount; i++) {
+					final GroupedRecyclerViewAdapter.Item item
+							= mCommentListingManager.getItemAtPosition(i);
+					if (item instanceof RedditCommentListItem
+							&& ((RedditCommentListItem) item).isComment()) {
+						final RedditRenderableComment renderableComment
+								= ((RedditCommentListItem) item).asComment();
 						if (!renderableComment.isCollapsed(changeDataManager)) {
-							org.quantumbadger.redreader.reddit.prepared.RedditParsedComment parsed = renderableComment.getParsedComment();
-							if (parsed != null && parsed.getRawComment() != null && parsed.getRawComment().getBody() != null) {
-								items.add(new org.quantumbadger.redreader.audio.NativeTTSManager.TTSItem(LinkHandler.stripUrls(parsed.getRawComment().getBody().getDecoded()), i));
+							final RedditParsedComment parsed = renderableComment.getParsedComment();
+							if (parsed != null
+									&& parsed.getRawComment() != null
+									&& parsed.getRawComment().getBody() != null) {
+								final String body = parsed.getRawComment().getBody().getDecoded();
+								items.add(new NativeTTSManager.TTSItem(
+										LinkHandler.stripUrls(body), i));
 							}
 						}
 					}
