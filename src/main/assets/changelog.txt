@@ -1,3 +1,7 @@
+120/1.26.2
+Added daily and manual update checks from GitHub
+Added release APK download and install with Android confirmation
+
 119/1.26.1
 Fix long text handling in native text-to-speech
 Improve text-to-speech stop/restart reliability and listener cleanup

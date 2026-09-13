@@ -24,6 +24,7 @@
     <uses-feature android:glEsVersion="0x00020000" android:required="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -76,6 +77,10 @@
 
         <activity android:name=".settings.SettingsActivity"
                   android:configChanges="orientation|screenSize|keyboardHidden" />
+
+		<activity android:name=".updates.UpdateActivity"
+				android:exported="false"
+				android:configChanges="orientation|screenSize|keyboardHidden" />
 
         <activity android:name=".activities.LinkDispatchActivity"
 				  android:exported="true">
@@ -222,6 +227,14 @@
         <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H" android:resource="@dimen/app_defaultsize_h" />
         <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W" android:resource="@dimen/app_minimumsize_w" />
         <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H" android:resource="@dimen/app_minimumsize_h" />
+
+		<provider android:name="androidx.core.content.FileProvider"
+				android:authorities="${applicationId}.updates"
+				android:exported="false"
+				android:grantUriPermissions="true">
+			<meta-data android:name="android.support.FILE_PROVIDER_PATHS"
+					android:resource="@xml/update_paths" />
+		</provider>
 
 		<provider
 				android:name="org.quantumbadger.redreader.cache.CacheContentProvider"

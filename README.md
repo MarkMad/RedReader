@@ -36,6 +36,17 @@ Features
 Downloading
 -----------
 
+This fork checks stable GitHub releases from `MarkMad/RedReader` once a day while
+the app is open. Use **Settings > About > Check for updates** to check manually,
+or disable automatic checks in the same screen. Available APKs can be downloaded
+and handed to Android's installer after confirmation. Android may first ask you
+to allow installations from this app.
+
+Updates must have a newer version code, the same application ID, and the same
+signing key as the installed app. Debug installations therefore cannot install
+release-signed updates in place. Checks and downloads pause while Tor is enabled.
+Install a build containing this updater manually once to enable future updates.
+
 RedReader is available for free on the Google Play store:
 
 https://play.google.com/store/apps/details?id=org.quantumbadger.redreader

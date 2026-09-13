@@ -23,6 +23,14 @@
         android:key="@string/pref_about_version_key"
         android:title="@string/pref_about_version_title" />
 
+	<Preference android:key="github_updates_check"
+			android:title="@string/update_check"
+			android:summary="@string/update_source" />
+	<CheckBoxPreference android:key="github_updates_enabled"
+			android:title="@string/update_auto"
+			android:summary="@string/update_auto_summary"
+			android:defaultValue="true" />
+
     <Preference
         android:key="@string/pref_about_changelog_key"
         android:title="@string/title_changelog" />

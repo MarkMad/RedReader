@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is part of RedReader, licensed under GNU GPL version 3 or later.
+See LICENSE.txt for the full license.
+-->
+<resources>
+	<string name="update_title">App updates</string>
+	<string name="update_check">Check for updates</string>
+	<string name="update_source">Stable releases from MarkMad/RedReader on GitHub</string>
+	<string name="update_auto">Check for updates automatically</string>
+	<string name="update_auto_summary">Check GitHub once a day while the app is open</string>
+	<string name="update_checking">Checking GitHub for updates…</string>
+	<string name="update_available">Version %1$s is available from GitHub.</string>
+	<string name="update_view">View update</string>
+	<string name="update_current">No newer compatible release APK is available.</string>
+	<string name="update_download">Download and install</string>
+	<string name="update_downloading">Downloading update…</string>
+	<string name="update_ready">Update downloaded. Android will ask you to confirm installation.</string>
+	<string name="update_install">Install update</string>
+	<string name="update_permission">Allow RedReader to install apps on the next screen, then return here to install the update.</string>
+	<string name="update_allow">Allow installation</string>
+	<string name="update_retry">Try again</string>
+	<string name="update_error">Could not complete the update. Check your connection and try again. The APK must be newer and signed with the same key as this installation.</string>
+	<string name="update_tor">Update checks and downloads are paused while Tor is enabled.</string>
+</resources>

@@ -43,6 +43,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.quantumbadger.redreader.BuildConfig;
 import org.quantumbadger.redreader.R;
+import org.quantumbadger.redreader.updates.UpdateActivity;
 import org.quantumbadger.redreader.RedReader;
 import org.quantumbadger.redreader.activities.BaseActivity;
 import org.quantumbadger.redreader.activities.BugReportActivity;
@@ -300,6 +301,14 @@ public final class SettingsFragment extends PreferenceFragmentCompat {
 		if(versionPref != null) {
 			versionPref.setSummary(
 					RedReader.getInstance(context).getPackageInfo().getVersionName());
+		}
+
+		final Preference updatePref = findPreference("github_updates_check");
+		if (updatePref != null) {
+			updatePref.setOnPreferenceClickListener(preference -> {
+				context.startActivity(new Intent(context, UpdateActivity.class));
+				return true;
+			});
 		}
 
 		if(changelogPref != null) {
