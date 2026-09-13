@@ -103,6 +103,8 @@ public class CommentListingFragment extends RRFragment
 	private final DownloadStrategy mDownloadStrategy;
 
 	private RedditPreparedPost mPost = null;
+	private NativeTTSManager mTTSManager;
+	private NativeTTSManager.Listener mTTSListener;
 
 	private boolean mSelfTextVisible = true;
 
@@ -195,10 +197,7 @@ public class CommentListingFragment extends RRFragment
 
 			@Override
 			public void onViewDetachedFromWindow(final View v) {
-				final NativeTTSManager tts = NativeTTSManager.getInstance(context);
-				if (tts.isSpeaking()) {
-					tts.stop();
-				}
+				releaseTTSListener();
 			}
 		});
 
@@ -805,7 +804,11 @@ public class CommentListingFragment extends RRFragment
 
 	@SuppressLint("AccessibilityFocus")
 	private void setFocusDelayed(final int pos) {
+		final RecyclerView recyclerView = mRecyclerView;
 		AndroidCommon.UI_THREAD_HANDLER.postDelayed(() -> {
+			if (!recyclerView.isAttachedToWindow()) {
+				return;
+			}
 			final RecyclerView.ViewHolder view
 					= mRecyclerView.findViewHolderForAdapterPosition(pos);
 			if (view != null) {
@@ -819,38 +822,53 @@ public class CommentListingFragment extends RRFragment
 		}, 800);
 	}
 
+	private void releaseTTSListener() {
+		if (mTTSManager != null && mTTSListener != null) {
+			mTTSManager.clearListener(mTTSListener);
+		}
+		mTTSListener = null;
+		mTTSManager = null;
+	}
+
 	private void toggleReadAloud(final ImageButton ttsButton) {
 		final NativeTTSManager tts = NativeTTSManager.getInstance(getContext());
-		
-		tts.setListener(new NativeTTSManager.Listener() {
+		mTTSManager = tts;
+		mTTSListener = new NativeTTSManager.Listener() {
 			@Override
 			public void onTTSStateChanged(final boolean isSpeaking) {
-				AndroidCommon.UI_THREAD_HANDLER.post(() -> {
-					if (!isSpeaking) {
-						ttsButton.setContentDescription(getString(R.string.action_read_aloud));
-						ttsButton.setImageResource(R.drawable.icon_play);
-					} else {
-						ttsButton.setContentDescription(getString(R.string.action_stop_reading));
-						ttsButton.setImageResource(R.drawable.icon_pause);
-					}
-				});
+				if (!ttsButton.isAttachedToWindow()) {
+					return;
+				}
+				if (!isSpeaking) {
+					ttsButton.setContentDescription(getString(R.string.action_read_aloud));
+					ttsButton.setImageResource(R.drawable.icon_play);
+				} else {
+					ttsButton.setContentDescription(getString(R.string.action_stop_reading));
+					ttsButton.setImageResource(R.drawable.icon_pause);
+				}
 			}
 
 			@Override
 			public void onUtteranceStarted(final int position) {
-				if (position < 0) {
+				if (position < 0 || !ttsButton.isAttachedToWindow()) {
 					return;
 				}
-				AndroidCommon.UI_THREAD_HANDLER.post(() -> {
-					final LinearLayoutManager layoutManager
-							= (LinearLayoutManager) mRecyclerView.getLayoutManager();
-					if (layoutManager != null) {
-						layoutManager.scrollToPositionWithOffset(position, 0);
-						setFocusDelayed(position);
-					}
-				});
+				final LinearLayoutManager layoutManager
+						= (LinearLayoutManager) mRecyclerView.getLayoutManager();
+				if (layoutManager != null && position < layoutManager.getItemCount()) {
+					layoutManager.scrollToPositionWithOffset(position, 0);
+					setFocusDelayed(position);
+				}
 			}
-		});
+
+			@Override
+			public void onTTSError() {
+				if (ttsButton.isAttachedToWindow()) {
+					General.quickToast(getContext(), getString(R.string.tts_error));
+				}
+			}
+		};
+		tts.setListener(mTTSListener);
 
 		if (tts.isSpeaking()) {
 			tts.stop();

@@ -1483,6 +1483,7 @@
 
 	<!-- TTS -->
 	<string name="action_read_aloud">Read Aloud</string>
+	<string name="tts_error">Unable to read aloud. Check your device’s text-to-speech settings and try again.</string>
 	<string name="action_stop_reading">Stop Reading</string>
 
 	<string name="video_restart">Restart video</string>
