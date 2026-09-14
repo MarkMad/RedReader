@@ -18,6 +18,8 @@
 package org.quantumbadger.redreader.test.audio;
 
 import android.content.Context;
+import android.content.res.AssetFileDescriptor;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Looper;
 import android.speech.tts.TextToSpeech;
@@ -28,6 +30,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.quantumbadger.redreader.audio.NativeTTSManager;
+import org.quantumbadger.redreader.audio.TTSEarconPlayer;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.Shadows;
@@ -41,9 +44,11 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.time.Duration;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(sdk = 35, shadows = NativeTTSManagerTest.TestTTS.class)
+@Config(sdk = 35, shadows = {NativeTTSManagerTest.TestTTS.class,
+		NativeTTSManagerTest.TestSoundPool.class})
 @LooperMode(LooperMode.Mode.PAUSED)
 public class NativeTTSManagerTest {
 
@@ -53,6 +58,7 @@ public class NativeTTSManagerTest {
 	@Before
 	public void setUp() throws Exception {
 		TestTTS.reset();
+		TestSoundPool.reset();
 		final Field singleton = NativeTTSManager.class.getDeclaredField("sInstance");
 		singleton.setAccessible(true);
 		singleton.set(null, null);
@@ -101,6 +107,17 @@ public class NativeTTSManagerTest {
 		Assert.assertEquals(Arrays.asList("one", "two"), TestTTS.spoken);
 		Assert.assertFalse(manager.isSpeaking());
 		Assert.assertEquals(2, listener.errors);
+	}
+
+	@Test
+	public void manyRejectedSpeaksAdvanceWithoutGrowingStack() {
+		TestTTS.speakResult = TextToSpeech.ERROR;
+		final String[] texts = new String[10000];
+		Arrays.fill(texts, "rejected");
+		read(texts);
+		TestTTS.init(TextToSpeech.SUCCESS);
+		Assert.assertFalse(manager.isSpeaking());
+		Assert.assertEquals(texts.length, TestTTS.spoken.size());
 	}
 
 	@Test
@@ -200,6 +217,128 @@ public class NativeTTSManagerTest {
 		Assert.assertEquals(0, listener.starts);
 		Assert.assertEquals(notifications, listener.states);
 		Assert.assertFalse(manager.isSpeaking());
+	}
+
+	@Test
+	public void selectsEarconFromCommentDepthTransition() {
+		Assert.assertEquals(
+				TTSEarconPlayer.Earcon.SYNTH_TICK,
+				NativeTTSManager.selectEarconForComment(-1, 0));
+		Assert.assertEquals(
+				TTSEarconPlayer.Earcon.MUTED_MARIMBA,
+				NativeTTSManager.selectEarconForComment(-1, 2));
+		Assert.assertEquals(
+				TTSEarconPlayer.Earcon.MUTED_MARIMBA,
+				NativeTTSManager.selectEarconForComment(1, 2));
+		Assert.assertEquals(
+				TTSEarconPlayer.Earcon.DIGITAL_POP,
+				NativeTTSManager.selectEarconForComment(2, 2));
+		Assert.assertEquals(
+				TTSEarconPlayer.Earcon.DESCENDING_CHIME,
+				NativeTTSManager.selectEarconForComment(3, 1));
+		Assert.assertEquals(
+				TTSEarconPlayer.Earcon.SYNTH_TICK,
+				NativeTTSManager.selectEarconForComment(3, 0));
+	}
+
+	@Test
+	public void stoppingDuringEarconCancelsSpeech() {
+		readComment("cancel");
+		TestSoundPool.completeLoads(0);
+		idle();
+		Assert.assertEquals(1, TestSoundPool.plays);
+		Assert.assertTrue(TestTTS.spoken.isEmpty());
+		manager.stop();
+		Shadows.shadowOf(Looper.getMainLooper()).idleFor(Duration.ofSeconds(1));
+		Assert.assertEquals(1, TestSoundPool.stops);
+		Assert.assertTrue(TestTTS.spoken.isEmpty());
+		Assert.assertFalse(manager.isSpeaking());
+	}
+
+	@Test
+	public void restartingDuringEarconIgnoresOldCompletion() {
+		readComment("old");
+		TestSoundPool.completeLoads(0);
+		idle();
+		Shadows.shadowOf(Looper.getMainLooper()).idleFor(Duration.ofMillis(50));
+		manager.readAloud(Arrays.asList(new NativeTTSManager.TTSItem("new", 1, 0)));
+		idle();
+		Shadows.shadowOf(Looper.getMainLooper()).idleFor(Duration.ofMillis(50));
+		Assert.assertTrue(TestTTS.spoken.isEmpty());
+		Shadows.shadowOf(Looper.getMainLooper()).idleFor(Duration.ofMillis(50));
+		Assert.assertEquals(Arrays.asList("new"), TestTTS.spoken);
+	}
+
+	@Test
+	public void failedEarconLoadsStillAllowNarration() {
+		readComment("hello");
+		TestSoundPool.completeLoads(1);
+		Shadows.shadowOf(Looper.getMainLooper()).idleFor(Duration.ofSeconds(1));
+		Assert.assertEquals(0, TestSoundPool.plays);
+		Assert.assertEquals(Arrays.asList("hello"), TestTTS.spoken);
+	}
+
+	@Test
+	public void longCommentOnlyPlaysOneSeparator() {
+		final String text = "a".repeat(4500);
+		readComment(text);
+		TestSoundPool.completeLoads(0);
+		Shadows.shadowOf(Looper.getMainLooper()).idleFor(Duration.ofSeconds(1));
+		Assert.assertEquals(1, TestSoundPool.plays);
+		Assert.assertEquals(1, TestTTS.spoken.size());
+		TestTTS.progress.onDone(TestTTS.ids.get(0));
+		idle();
+		Assert.assertEquals(1, TestSoundPool.plays);
+		Assert.assertEquals(text, String.join("", TestTTS.spoken));
+		Assert.assertEquals(2, TestTTS.spoken.size());
+	}
+
+	private void readComment(final String text) {
+		manager.readAloud(Arrays.asList(new NativeTTSManager.TTSItem(text, 0, 0)));
+		TestTTS.init(TextToSpeech.SUCCESS);
+	}
+
+	@Implements(value = SoundPool.class, callThroughByDefault = false)
+	public static class TestSoundPool {
+		static SoundPool.OnLoadCompleteListener loadListener;
+		static int samples;
+		static int plays;
+		static int stops;
+
+		static void reset() {
+			loadListener = null;
+			samples = 0;
+			plays = 0;
+			stops = 0;
+		}
+
+		static void completeLoads(final int status) {
+			Assert.assertEquals(5, samples);
+			for (int id = 1; id <= samples; id++) {
+				loadListener.onLoadComplete(null, id, status);
+			}
+		}
+
+		@Implementation
+		protected void setOnLoadCompleteListener(final SoundPool.OnLoadCompleteListener listener) {
+			loadListener = listener;
+		}
+
+		@Implementation
+		protected int load(final AssetFileDescriptor descriptor, final int priority) {
+			return ++samples;
+		}
+
+		@Implementation
+		protected int play(final int sample, final float left, final float right,
+				final int priority, final int loop, final float rate) {
+			return ++plays;
+		}
+
+		@Implementation
+		protected void stop(final int stream) {
+			stops++;
+		}
 	}
 
 	private static class RecordingListener implements NativeTTSManager.Listener {

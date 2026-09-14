@@ -913,7 +913,9 @@ public class CommentListingFragment extends RRFragment
 									&& parsed.getRawComment().getBody() != null) {
 								final String body = parsed.getRawComment().getBody().getDecoded();
 								items.add(new NativeTTSManager.TTSItem(
-										LinkHandler.stripUrls(body), i));
+										LinkHandler.stripUrls(body),
+										i,
+										((RedditCommentListItem) item).getIndent()));
 							}
 						}
 					}

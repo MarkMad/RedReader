@@ -20,6 +20,7 @@ package org.quantumbadger.redreader.audio;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+import android.media.AudioAttributes;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
 import android.util.Log;
@@ -32,26 +33,36 @@ import java.util.Queue;
 public class NativeTTSManager {
 
 	private static final String TAG = "NativeTTSManager";
+	public static final int NO_COMMENT_INDENT = -1;
 	private static NativeTTSManager sInstance;
 
 	private final Context mContext;
 	private final Handler mHandler = new Handler(Looper.getMainLooper());
+	private TTSEarconPlayer mEarconPlayer;
 	private TextToSpeech mTTS;
 	private boolean mIsInitialized;
 	private boolean mIsSpeaking;
 	private long mEngineGeneration;
 	private long mNextUtterance;
 	private String mActiveUtterance;
+	private long mEarconToken;
+	private int mPreviousCommentIndent = NO_COMMENT_INDENT;
 	private final Queue<TTSItem> mTextQueue = new ArrayDeque<>();
 	private Listener mListener;
 
 	public static class TTSItem {
 		public final String text;
 		public final int position;
+		public final int commentIndent;
 
 		public TTSItem(final String text, final int position) {
+			this(text, position, NO_COMMENT_INDENT);
+		}
+
+		public TTSItem(final String text, final int position, final int commentIndent) {
 			this.text = text;
 			this.position = position;
+			this.commentIndent = commentIndent;
 		}
 	}
 
@@ -77,6 +88,10 @@ public class NativeTTSManager {
 		// Defer even a synchronous constructor failure until mTTS has been assigned.
 		mTTS = new TextToSpeech(mContext,
 				status -> mHandler.post(() -> onInitialized(generation, status)));
+		mTTS.setAudioAttributes(new AudioAttributes.Builder()
+				.setUsage(AudioAttributes.USAGE_MEDIA)
+				.setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
+				.build());
 		mTTS.setOnUtteranceProgressListener(new UtteranceProgressListener() {
 			@Override
 			public void onStart(final String utteranceId) {
@@ -158,6 +173,7 @@ public class NativeTTSManager {
 
 	public synchronized void readAloud(final List<TTSItem> items) {
 		stop();
+		mPreviousCommentIndent = NO_COMMENT_INDENT;
 		if (items == null) {
 			return;
 		}
@@ -174,8 +190,10 @@ public class NativeTTSManager {
 						&& Character.isHighSurrogate(item.text.charAt(end - 1))) {
 					end--;
 				}
-				mTextQueue.add(new TTSItem(item.text.substring(start, end),
-						start == 0 ? item.position : -1));
+				mTextQueue.add(new TTSItem(
+						item.text.substring(start, end),
+						start == 0 ? item.position : -1,
+						start == 0 ? item.commentIndent : NO_COMMENT_INDENT));
 				start = end;
 			}
 		}
@@ -193,25 +211,79 @@ public class NativeTTSManager {
 	}
 
 	private void playNext() {
-		while (!mTextQueue.isEmpty()) {
-			final TTSItem item = mTextQueue.element();
-			mActiveUtterance = Long.toString(++mNextUtterance);
-			if (mTTS.speak(item.text, TextToSpeech.QUEUE_FLUSH, null, mActiveUtterance)
-					== TextToSpeech.SUCCESS) {
+		while (true) {
+			if (mTextQueue.isEmpty()) {
+				mIsSpeaking = false;
+				notifyListener();
 				return;
 			}
-			// Rejected requests need not produce a callback.
-			mActiveUtterance = null;
-			mTextQueue.poll();
-			reportError();
+			final TTSItem item = mTextQueue.element();
+			if (item.commentIndent != NO_COMMENT_INDENT) {
+				final TTSEarconPlayer.Earcon earcon = selectEarconForComment(
+						mPreviousCommentIndent, item.commentIndent);
+				mPreviousCommentIndent = item.commentIndent;
+				final long token = ++mEarconToken;
+				getEarconPlayer().play(earcon,
+						() -> mHandler.post(() -> onEarconFinished(token, item)));
+				return;
+			}
+			if (speak(item)) {
+				return;
+			}
 		}
-		mIsSpeaking = false;
-		notifyListener();
+	}
+
+	private synchronized void onEarconFinished(final long token, final TTSItem item) {
+		if (token != mEarconToken || mTextQueue.peek() != item || mActiveUtterance != null) {
+			return;
+		}
+		if (!speak(item)) {
+			playNext();
+		}
+	}
+
+	private boolean speak(final TTSItem item) {
+		mActiveUtterance = Long.toString(++mNextUtterance);
+		if (mTTS.speak(item.text, TextToSpeech.QUEUE_FLUSH, null, mActiveUtterance)
+					== TextToSpeech.SUCCESS) {
+			return true;
+		}
+		// Rejected requests need not produce a callback.
+		mActiveUtterance = null;
+		mTextQueue.poll();
+		reportError();
+		return false;
+	}
+
+	public static TTSEarconPlayer.Earcon selectEarconForComment(
+			final int previousIndent,
+			final int currentIndent) {
+
+		if (currentIndent == 0) {
+			return TTSEarconPlayer.Earcon.SYNTH_TICK;
+		} else if (previousIndent == NO_COMMENT_INDENT || currentIndent > previousIndent) {
+			return TTSEarconPlayer.Earcon.MUTED_MARIMBA;
+		} else if (currentIndent < previousIndent) {
+			return TTSEarconPlayer.Earcon.DESCENDING_CHIME;
+		} else {
+			return TTSEarconPlayer.Earcon.DIGITAL_POP;
+		}
+	}
+
+	private TTSEarconPlayer getEarconPlayer() {
+		if (mEarconPlayer == null) {
+			mEarconPlayer = new TTSEarconPlayer(mContext);
+		}
+		return mEarconPlayer;
 	}
 
 	public synchronized void stop() {
 		// Invalidate callbacks before stopping the engine or replacing the queue.
 		mActiveUtterance = null;
+		mEarconToken++;
+		if (mEarconPlayer != null) {
+			mEarconPlayer.stop();
+		}
 		mTextQueue.clear();
 		if (mTTS != null) {
 			mTTS.stop();
