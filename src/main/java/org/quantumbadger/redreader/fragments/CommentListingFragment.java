@@ -732,6 +732,15 @@ public class CommentListingFragment extends RRFragment
 				&& item.getTitle()
 				.equals(getActivity().getString(R.string.action_reply))) {
 
+			// The reply menu item is added as soon as the fragment is created, but the
+			// post itself is only available once the listing has downloaded.
+			if(mPost == null) {
+				General.quickToast(
+						getActivity(),
+						R.string.error_toast_parent_post_not_downloaded);
+				return true;
+			}
+
 			RedditPostActions.INSTANCE.onActionMenuItemSelected(
 					mPost,
 					(BaseActivity)getActivity(),
@@ -771,12 +780,14 @@ public class CommentListingFragment extends RRFragment
 			) {
 				layoutManager.scrollToPositionWithOffset(pos, 0);
 				setFocusDelayed(pos);
+				restartReadAloudAt(pos);
 				return;
 			}
 		}
 
 		layoutManager.scrollToPositionWithOffset(0, 0);
 		setFocusDelayed(0);
+		restartReadAloudAt(0);
 	}
 
 	public void onNextParent() {
@@ -797,6 +808,7 @@ public class CommentListingFragment extends RRFragment
 			) {
 				layoutManager.scrollToPositionWithOffset(pos, 0);
 				setFocusDelayed(pos);
+				restartReadAloudAt(pos);
 				break;
 			}
 		}
@@ -873,7 +885,6 @@ public class CommentListingFragment extends RRFragment
 		if (tts.isSpeaking()) {
 			tts.stop();
 		} else {
-			final List<NativeTTSManager.TTSItem> items = new ArrayList<>();
 			int startIndex = 0;
 			final LinearLayoutManager layoutManager
 					= (LinearLayoutManager) mRecyclerView.getLayoutManager();
@@ -884,45 +895,57 @@ public class CommentListingFragment extends RRFragment
 				}
 			}
 
-			if (mPost != null && mPost.src != null && startIndex == 0) {
-				if (mPost.src.getTitle() != null) {
-					items.add(new NativeTTSManager.TTSItem(
-							LinkHandler.stripUrls(mPost.src.getTitle()), -1));
-				}
-				if (mPost.src.getRawSelfTextMarkdown() != null) {
-					items.add(new NativeTTSManager.TTSItem(
-							LinkHandler.stripUrls(mPost.src.getRawSelfTextMarkdown()), -1));
-				}
+			tts.readAloud(getReadAloudItems(startIndex));
+		}
+	}
+
+	private void restartReadAloudAt(final int startIndex) {
+		if (mTTSManager != null && mTTSManager.isSpeaking()) {
+			mTTSManager.readAloud(getReadAloudItems(startIndex));
+		}
+	}
+
+	private List<NativeTTSManager.TTSItem> getReadAloudItems(final int startIndex) {
+		final List<NativeTTSManager.TTSItem> items = new ArrayList<>();
+
+		if (mPost != null && mPost.src != null && startIndex == 0) {
+			if (mPost.src.getTitle() != null) {
+				items.add(new NativeTTSManager.TTSItem(
+						LinkHandler.stripUrls(mPost.src.getTitle()), -1));
 			}
-			
-			if (mCommentListingManager != null) {
-				final RedditChangeDataManager changeDataManager
-						= RedditChangeDataManager.getInstance(mUser);
-				final int itemCount = mCommentListingManager.getAdapter().getItemCount();
-				for (int i = startIndex; i < itemCount; i++) {
-					final GroupedRecyclerViewAdapter.Item item
-							= mCommentListingManager.getItemAtPosition(i);
-					if (item instanceof RedditCommentListItem
-							&& ((RedditCommentListItem) item).isComment()) {
-						final RedditRenderableComment renderableComment
-								= ((RedditCommentListItem) item).asComment();
-						if (!renderableComment.isCollapsed(changeDataManager)) {
-							final RedditParsedComment parsed = renderableComment.getParsedComment();
-							if (parsed != null
-									&& parsed.getRawComment() != null
-									&& parsed.getRawComment().getBody() != null) {
-								final String body = parsed.getRawComment().getBody().getDecoded();
-								items.add(new NativeTTSManager.TTSItem(
-										LinkHandler.stripUrls(body),
-										i,
-										((RedditCommentListItem) item).getIndent()));
-							}
+			if (mPost.src.getRawSelfTextMarkdown() != null) {
+				items.add(new NativeTTSManager.TTSItem(
+						LinkHandler.stripUrls(mPost.src.getRawSelfTextMarkdown()), -1));
+			}
+		}
+
+		if (mCommentListingManager != null) {
+			final RedditChangeDataManager changeDataManager
+					= RedditChangeDataManager.getInstance(mUser);
+			final int itemCount = mCommentListingManager.getAdapter().getItemCount();
+			for (int i = startIndex; i < itemCount; i++) {
+				final GroupedRecyclerViewAdapter.Item item
+						= mCommentListingManager.getItemAtPosition(i);
+				if (item instanceof RedditCommentListItem
+						&& ((RedditCommentListItem) item).isComment()) {
+					final RedditRenderableComment renderableComment
+							= ((RedditCommentListItem) item).asComment();
+					if (!renderableComment.isCollapsed(changeDataManager)) {
+						final RedditParsedComment parsed = renderableComment.getParsedComment();
+						if (parsed != null
+								&& parsed.getRawComment() != null
+								&& parsed.getRawComment().getBody() != null) {
+							final String body = parsed.getRawComment().getBody().getDecoded();
+							items.add(new NativeTTSManager.TTSItem(
+									LinkHandler.stripUrls(body),
+									i,
+									((RedditCommentListItem) item).getIndent()));
 						}
 					}
 				}
 			}
-			
-			tts.readAloud(items);
 		}
+
+		return items;
 	}
 }

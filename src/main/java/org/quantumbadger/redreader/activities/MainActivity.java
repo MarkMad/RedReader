@@ -167,6 +167,11 @@ public class MainActivity extends RefreshableActivity
 		setTitle(R.string.app_name);
 
 		RedditAccountManager.getInstance(this).addUpdateListener(this);
+		recreateSubscriptionListener();
+
+		// Preference migrations can trigger a refresh synchronously. Set up the
+		// panes first so that refresh has valid containers in two-pane mode.
+		doRefresh(RefreshableFragment.MAIN_RELAYOUT, false, null);
 
 		final AndroidCommon.PackageInfo pInfo = RedReader.getInstance(this).getPackageInfo();
 
@@ -212,10 +217,6 @@ public class MainActivity extends RefreshableActivity
 		} else {
 			AndroidCommon.promptForNotificationPermission(this, null);
 		}
-
-		recreateSubscriptionListener();
-
-		doRefresh(RefreshableFragment.MAIN_RELAYOUT, false, null);
 
 		if(savedInstanceState == null
 				&& PrefsUtility.pref_behaviour_skiptofrontpage()) {
@@ -625,12 +626,16 @@ public class MainActivity extends RefreshableActivity
 
 			final FrameLayout postContainer = isMenuShown ? mRightPane : mLeftPane;
 
-			if(isMenuShown && (which == RefreshableFragment.ALL
-					|| which == RefreshableFragment.MAIN)) {
-				mainMenuFragment = new MainMenuFragment(this, null, force);
-				mainMenuView = mainMenuFragment.createCombinedListingAndOverlayView();
-				mLeftPane.removeAllViews();
-				mLeftPane.addView(mainMenuView);
+			if(which == RefreshableFragment.ALL || which == RefreshableFragment.MAIN) {
+				if(isMenuShown) {
+					mainMenuFragment = new MainMenuFragment(this, null, force);
+					mainMenuView = mainMenuFragment.createCombinedListingAndOverlayView();
+					mLeftPane.removeAllViews();
+					mLeftPane.addView(mainMenuView);
+				} else {
+					mainMenuFragment = null;
+					mainMenuView = null;
+				}
 			}
 
 			if(postListingController != null && (which == RefreshableFragment.ALL
@@ -678,11 +683,10 @@ public class MainActivity extends RefreshableActivity
 
 		isMenuShown = true;
 
-		mainMenuFragment = new MainMenuFragment(
-				this,
-				null,
-				false); // TODO preserve position
-		mainMenuView = mainMenuFragment.createCombinedListingAndOverlayView();
+		if(mainMenuFragment == null || mainMenuView == null) {
+			mainMenuFragment = new MainMenuFragment(this, null, false);
+			mainMenuView = mainMenuFragment.createCombinedListingAndOverlayView();
+		}
 
 		commentListingFragment = null;
 		commentListingView = null;
@@ -719,9 +723,6 @@ public class MainActivity extends RefreshableActivity
 
 				mLeftPane.addView(postListingView);
 				mRightPane.addView(commentListingView);
-
-				mainMenuFragment = null;
-				mainMenuView = null;
 
 				isMenuShown = false;
 
