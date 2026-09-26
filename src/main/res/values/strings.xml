@@ -975,7 +975,9 @@
 
 	<!-- 2017-05-08 -->
 	<string name="button_next_comment_parent">Next Parent Comment</string>
+	<string name="button_next_comment">Next Comment</string>
 	<string name="button_prev_comment_parent">Previous Parent Comment</string>
+	<string name="button_prev_comment">Previous Comment</string>
 
 	<string name="pref_appearance_comments_show_floating_toolbar_title">Show navigation buttons over comments</string>
 	<string name="pref_appearance_comments_show_floating_toolbar_key" translatable="false">pref_appearance_comments_show_floating_toolbar</string>

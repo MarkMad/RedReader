@@ -244,15 +244,15 @@ public class CommentListingFragment extends RRFragment
 						buttonVPadding);
 				previousButton.setImageResource(R.drawable.ic_ff_up_dark);
 				previousButton.setContentDescription(
-						getString(R.string.button_prev_comment_parent));
+						getString(R.string.button_prev_comment));
 				mFloatingToolbar.addView(previousButton);
 
 				previousButton.setOnClickListener(view -> {
-					onPreviousParent();
+					onPreviousComment();
 				});
 
 				previousButton.setOnLongClickListener(view -> {
-					General.quickToast(context, R.string.button_prev_comment_parent);
+					General.quickToast(context, R.string.button_prev_comment);
 					return true;
 				});
 			}
@@ -270,15 +270,15 @@ public class CommentListingFragment extends RRFragment
 						buttonHPadding,
 						buttonVPadding);
 				nextButton.setImageResource(R.drawable.ic_ff_down_dark);
-				nextButton.setContentDescription(getString(R.string.button_next_comment_parent));
+				nextButton.setContentDescription(getString(R.string.button_next_comment));
 				mFloatingToolbar.addView(nextButton);
 
 				nextButton.setOnClickListener(view -> {
-					onNextParent();
+					onNextComment();
 				});
 
 				nextButton.setOnLongClickListener(view -> {
-					General.quickToast(context, R.string.button_next_comment_parent);
+					General.quickToast(context, R.string.button_next_comment);
 					return true;
 				});
 			}
@@ -790,6 +790,28 @@ public class CommentListingFragment extends RRFragment
 		restartReadAloudAt(0);
 	}
 
+	private void onPreviousComment() {
+		final LinearLayoutManager layoutManager = (LinearLayoutManager)
+				mRecyclerView.getLayoutManager();
+
+		for(
+				int pos = layoutManager.findFirstVisibleItemPosition() - 1;
+				pos >= 0;
+				pos--
+		) {
+			final GroupedRecyclerViewAdapter.Item item = mCommentListingManager.getItemAtPosition(
+					pos
+			);
+			if(item instanceof RedditCommentListItem
+					&& ((RedditCommentListItem)item).isComment()) {
+				layoutManager.scrollToPositionWithOffset(pos, 0);
+				setFocusDelayed(pos);
+				restartReadAloudAt(pos, true);
+				return;
+			}
+		}
+	}
+
 	public void onNextParent() {
 		final LinearLayoutManager layoutManager = (LinearLayoutManager)
 			mRecyclerView.getLayoutManager();
@@ -810,6 +832,28 @@ public class CommentListingFragment extends RRFragment
 				setFocusDelayed(pos);
 				restartReadAloudAt(pos);
 				break;
+			}
+		}
+	}
+
+	private void onNextComment() {
+		final LinearLayoutManager layoutManager = (LinearLayoutManager)
+				mRecyclerView.getLayoutManager();
+
+		for(
+				int pos = layoutManager.findFirstVisibleItemPosition() + 1;
+				pos < layoutManager.getItemCount();
+				pos++
+		) {
+			final GroupedRecyclerViewAdapter.Item item = mCommentListingManager.getItemAtPosition(
+					pos
+			);
+			if(item instanceof RedditCommentListItem
+					&& ((RedditCommentListItem)item).isComment()) {
+				layoutManager.scrollToPositionWithOffset(pos, 0);
+				setFocusDelayed(pos);
+				restartReadAloudAt(pos, true);
+				return;
 			}
 		}
 	}
@@ -900,12 +944,22 @@ public class CommentListingFragment extends RRFragment
 	}
 
 	private void restartReadAloudAt(final int startIndex) {
+		restartReadAloudAt(startIndex, false);
+	}
+
+	private void restartReadAloudAt(final int startIndex, final boolean includeCollapsedStart) {
 		if (mTTSManager != null && mTTSManager.isSpeaking()) {
-			mTTSManager.readAloud(getReadAloudItems(startIndex));
+			mTTSManager.readAloud(getReadAloudItems(startIndex, includeCollapsedStart));
 		}
 	}
 
 	private List<NativeTTSManager.TTSItem> getReadAloudItems(final int startIndex) {
+		return getReadAloudItems(startIndex, false);
+	}
+
+	private List<NativeTTSManager.TTSItem> getReadAloudItems(
+			final int startIndex,
+			final boolean includeCollapsedStart) {
 		final List<NativeTTSManager.TTSItem> items = new ArrayList<>();
 
 		if (mPost != null && mPost.src != null && startIndex == 0) {
@@ -930,7 +984,8 @@ public class CommentListingFragment extends RRFragment
 						&& ((RedditCommentListItem) item).isComment()) {
 					final RedditRenderableComment renderableComment
 							= ((RedditCommentListItem) item).asComment();
-					if (!renderableComment.isCollapsed(changeDataManager)) {
+					if (!renderableComment.isCollapsed(changeDataManager)
+							|| (includeCollapsedStart && i == startIndex)) {
 						final RedditParsedComment parsed = renderableComment.getParsedComment();
 						if (parsed != null
 								&& parsed.getRawComment() != null
