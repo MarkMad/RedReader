@@ -1226,8 +1226,131 @@ object LinkHandler {
 
 	@JvmStatic
 	fun stripUrls(text: String): String {
-		val urlPattern = Pattern.compile("\\bhttps?://\\S+\\b")
-		return urlPattern.matcher(text).replaceAll("").replace("  ", " ").trim()
+		val urlStartPattern = Regex("(?i)(?<![A-Za-z0-9_])https?://")
+		val urlOnlyPattern = Regex("(?i)https?://\\S+")
+
+		fun findClosingDelimiter(start: Int, open: Char, close: Char): Int {
+			var depth = 0
+			var escaped = false
+			for (index in start until text.length) {
+				val character = text[index]
+				if (escaped) {
+					escaped = false
+					continue
+				}
+				if (character == '\\') {
+					escaped = true
+				} else if (character == open) {
+					depth++
+				} else if (character == close) {
+					depth--
+					if (depth == 0) {
+						return index
+					}
+				}
+			}
+			return -1
+		}
+
+		val withoutMarkdownLinks = StringBuilder(text.length)
+		var index = 0
+		while (index < text.length) {
+			val isImage = text[index] == '!' && index + 1 < text.length
+					&& text[index + 1] == '['
+			val labelStart = when {
+				isImage -> index + 1
+				text[index] == '[' -> index
+				else -> -1
+			}
+			if (labelStart >= 0) {
+				val labelEnd = findClosingDelimiter(labelStart, '[', ']')
+				if (labelEnd < 0) {
+					withoutMarkdownLinks.append(text, index, text.length)
+					break
+				}
+				val destinationStart = labelEnd + 1
+				if (destinationStart >= text.length || text[destinationStart] != '(') {
+					withoutMarkdownLinks.append(text, index, destinationStart)
+					index = destinationStart
+					continue
+				} else {
+					val destinationEnd = findClosingDelimiter(destinationStart, '(', ')')
+					if (destinationEnd < 0) {
+						withoutMarkdownLinks.append(text, index, text.length)
+						break
+					}
+					val destination = text.substring(
+						destinationStart + 1,
+						destinationEnd
+					).trim().removePrefix("<")
+					if (destination.startsWith("http://", ignoreCase = true)
+							|| destination.startsWith("https://", ignoreCase = true)
+					) {
+						val label = text.substring(labelStart + 1, labelEnd)
+						val normalizedLabel = label.trim().removeSurrounding("<", ">")
+						if (!urlOnlyPattern.matches(normalizedLabel)) {
+							withoutMarkdownLinks.append(label)
+						}
+						index = destinationEnd + 1
+						continue
+					}
+					withoutMarkdownLinks.append(text, index, destinationEnd + 1)
+					index = destinationEnd + 1
+					continue
+				}
+			}
+			withoutMarkdownLinks.append(text[index])
+			index++
+		}
+
+		val markdownStripped = withoutMarkdownLinks.toString()
+			.replace(Regex("(?i)<https?://[^<>\\s]+>"), "")
+		val result = StringBuilder(markdownStripped.length)
+		var copiedUntil = 0
+		var searchFrom = 0
+		while (true) {
+			val match = urlStartPattern.find(markdownStripped, searchFrom) ?: break
+			var urlEnd = match.range.last + 1
+			var parenthesisDepth = 0
+			while (urlEnd < markdownStripped.length) {
+				val character = markdownStripped[urlEnd]
+				if (character.isWhitespace() || character in "<>[]`\""
+						|| character.code > 127 && !character.isLetterOrDigit()
+				) {
+					break
+				}
+				if (character == '(') {
+					parenthesisDepth++
+				} else if (character == ')') {
+					if (parenthesisDepth == 0) {
+						break
+					}
+					parenthesisDepth--
+				}
+				urlEnd++
+			}
+
+			if (urlEnd == match.range.last + 1) {
+				searchFrom = urlEnd
+				continue
+			}
+
+			var strippedEnd = urlEnd
+			while (strippedEnd > match.range.last + 1
+					&& markdownStripped[strippedEnd - 1] in ".,!?;:'"
+			) {
+				strippedEnd--
+			}
+			result.append(markdownStripped, copiedUntil, match.range.first)
+			copiedUntil = strippedEnd
+			searchFrom = urlEnd
+		}
+		result.append(markdownStripped, copiedUntil, markdownStripped.length)
+
+		return result.toString()
+			.replace(Regex(" {2,}"), " ")
+			.replace(Regex(" +([.,!?;:])"), "$1")
+			.trim()
 	}
 
 	@JvmStatic

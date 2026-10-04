@@ -19,6 +19,11 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+	<CheckBoxPreference android:title="@string/pref_tts_lookahead_title"
+						android:summary="@string/pref_tts_lookahead_summary"
+						android:key="pref_tts_lookahead"
+						android:defaultValue="true"/>
+
 	<CheckBoxPreference android:title="@string/pref_accessibility_separate_body_text_lines_title"
 						android:summary="@string/pref_accessibility_separate_body_text_lines_summary"
 						android:key="@string/pref_accessibility_separate_body_text_lines_key"

@@ -25,6 +25,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
+import org.quantumbadger.redreader.R;
+
 import java.io.IOException;
 import java.util.EnumMap;
 import java.util.HashSet;
@@ -35,18 +37,28 @@ public final class TTSEarconPlayer {
 	private static final String TAG = "TTSEarconPlayer";
 
 	public enum Earcon {
-		WOODEN_CLICK("Sounds/wooden_click.wav", 120),
-		DESCENDING_CHIME("Sounds/descending_chime.wav", 240),
-		DIGITAL_POP("Sounds/digital_pop.wav", 140),
-		MUTED_MARIMBA("Sounds/muted_marimba.wav", 220),
-		SYNTH_TICK("Sounds/synth_tick.wav", 100);
+		WOODEN_CLICK("Sounds/wooden_click.wav", 120, R.raw.tts_wooden_click),
+		DESCENDING_CHIME("Sounds/descending_chime.wav", 240, R.raw.tts_descending_chime),
+		DIGITAL_POP("Sounds/digital_pop.wav", 140, R.raw.tts_digital_pop),
+		MUTED_MARIMBA("Sounds/muted_marimba.wav", 220, R.raw.tts_muted_marimba),
+		SYNTH_TICK("Sounds/synth_tick.wav", 100, R.raw.tts_synth_tick);
 
 		private final String mAssetPath;
 		private final int mDurationMs;
+		private final int mRawResourceId;
 
-		Earcon(final String assetPath, final int durationMs) {
+		Earcon(final String assetPath, final int durationMs, final int rawResourceId) {
 			mAssetPath = assetPath;
 			mDurationMs = durationMs;
+			mRawResourceId = rawResourceId;
+		}
+
+		String getTtsName() {
+			return "redreader_" + name().toLowerCase(java.util.Locale.US);
+		}
+
+		int getRawResourceId() {
+			return mRawResourceId;
 		}
 	}
 

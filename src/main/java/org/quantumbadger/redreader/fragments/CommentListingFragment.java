@@ -105,6 +105,7 @@ public class CommentListingFragment extends RRFragment
 	private RedditPreparedPost mPost = null;
 	private NativeTTSManager mTTSManager;
 	private NativeTTSManager.Listener mTTSListener;
+	private long mFocusGeneration;
 
 	private boolean mSelfTextVisible = true;
 
@@ -861,8 +862,9 @@ public class CommentListingFragment extends RRFragment
 	@SuppressLint("AccessibilityFocus")
 	private void setFocusDelayed(final int pos) {
 		final RecyclerView recyclerView = mRecyclerView;
+		final long generation = ++mFocusGeneration;
 		AndroidCommon.UI_THREAD_HANDLER.postDelayed(() -> {
-			if (!recyclerView.isAttachedToWindow()) {
+			if (generation != mFocusGeneration || !recyclerView.isAttachedToWindow()) {
 				return;
 			}
 			final RecyclerView.ViewHolder view
@@ -879,6 +881,7 @@ public class CommentListingFragment extends RRFragment
 	}
 
 	private void releaseTTSListener() {
+		++mFocusGeneration;
 		if (mTTSManager != null && mTTSListener != null) {
 			mTTSManager.clearListener(mTTSListener);
 		}
@@ -896,6 +899,7 @@ public class CommentListingFragment extends RRFragment
 					return;
 				}
 				if (!isSpeaking) {
+					++mFocusGeneration;
 					ttsButton.setContentDescription(getString(R.string.action_read_aloud));
 					ttsButton.setImageResource(R.drawable.icon_play);
 				} else {

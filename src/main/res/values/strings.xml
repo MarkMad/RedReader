@@ -1486,6 +1486,8 @@
 	<!-- TTS -->
 	<string name="action_read_aloud">Read Aloud</string>
 	<string name="tts_error">Unable to read aloud. Check your device’s text-to-speech settings and try again.</string>
+	<string name="pref_tts_lookahead_title">Read aloud lookahead</string>
+	<string name="pref_tts_lookahead_summary">Queue one upcoming speech segment to reduce pauses. Turn off to submit each segment only after the previous one finishes. Applies to the next reading session.</string>
 	<string name="action_stop_reading">Stop Reading</string>
 
 	<string name="video_restart">Restart video</string>

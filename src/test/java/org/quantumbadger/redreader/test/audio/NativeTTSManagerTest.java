@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
+import android.speech.tts.Voice;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -31,6 +32,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.quantumbadger.redreader.audio.NativeTTSManager;
 import org.quantumbadger.redreader.audio.TTSEarconPlayer;
+import org.quantumbadger.redreader.common.General;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.Shadows;
@@ -44,6 +46,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Collections;
 import java.time.Duration;
 
 @RunWith(RobolectricTestRunner.class)
@@ -63,6 +66,7 @@ public class NativeTTSManagerTest {
 		singleton.setAccessible(true);
 		singleton.set(null, null);
 		manager = NativeTTSManager.getInstance(RuntimeEnvironment.getApplication());
+		setLookahead(true);
 		listener = new RecordingListener();
 		manager.setListener(listener);
 	}
@@ -85,7 +89,7 @@ public class NativeTTSManagerTest {
 				+ "\uD83D\uDE00" + "ending";
 		read(text);
 		TestTTS.init(TextToSpeech.SUCCESS);
-		Assert.assertEquals(1, TestTTS.spoken.size());
+		Assert.assertEquals(2, TestTTS.spoken.size());
 		TestTTS.progress.onDone(TestTTS.ids.get(0));
 		idle();
 		Assert.assertEquals(2, TestTTS.spoken.size());
@@ -100,24 +104,24 @@ public class NativeTTSManagerTest {
 	}
 
 	@Test
-	public void rejectedSpeakAdvancesAndClearsPlaying() {
+	public void rejectedSpeakStopsPlaybackWithOneError() {
 		TestTTS.speakResult = TextToSpeech.ERROR;
 		read("one", "two");
 		TestTTS.init(TextToSpeech.SUCCESS);
-		Assert.assertEquals(Arrays.asList("one", "two"), TestTTS.spoken);
+		Assert.assertEquals(Arrays.asList("one"), TestTTS.spoken);
 		Assert.assertFalse(manager.isSpeaking());
-		Assert.assertEquals(2, listener.errors);
+		Assert.assertEquals(1, listener.errors);
 	}
 
 	@Test
-	public void manyRejectedSpeaksAdvanceWithoutGrowingStack() {
+	public void manyRejectedSpeaksStopAfterFirstSubmission() {
 		TestTTS.speakResult = TextToSpeech.ERROR;
 		final String[] texts = new String[10000];
 		Arrays.fill(texts, "rejected");
 		read(texts);
 		TestTTS.init(TextToSpeech.SUCCESS);
 		Assert.assertFalse(manager.isSpeaking());
-		Assert.assertEquals(texts.length, TestTTS.spoken.size());
+		Assert.assertEquals(1, TestTTS.spoken.size());
 	}
 
 	@Test
@@ -135,13 +139,13 @@ public class NativeTTSManagerTest {
 		callbackThread.start();
 		callbackThread.join();
 		idle();
-		Assert.assertEquals(Arrays.asList("old", "new first"), TestTTS.spoken);
+		Assert.assertEquals(Arrays.asList("old", "new first", "new second"), TestTTS.spoken);
 		Assert.assertTrue(manager.isSpeaking());
 		Assert.assertEquals(0, listener.errors);
 		Assert.assertEquals(0, listener.starts);
 		TestTTS.progress.onDone(TestTTS.ids.get(1));
 		idle();
-		Assert.assertEquals("new second", TestTTS.spoken.get(2));
+		Assert.assertEquals(3, TestTTS.spoken.size());
 	}
 
 	@Test
@@ -200,6 +204,7 @@ public class NativeTTSManagerTest {
 		manager.clearListener(listener);
 		Assert.assertTrue(manager.isSpeaking());
 		TestTTS.progress.onStart(TestTTS.ids.get(0));
+		TestTTS.progress.onAudioAvailable(TestTTS.ids.get(0), new byte[] {1});
 		idle();
 		Assert.assertEquals(1, replacement.starts);
 		Assert.assertEquals(0, listener.starts);
@@ -244,58 +249,274 @@ public class NativeTTSManagerTest {
 	@Test
 	public void stoppingDuringEarconCancelsSpeech() {
 		readComment("cancel");
-		TestSoundPool.completeLoads(0);
-		idle();
-		Assert.assertEquals(1, TestSoundPool.plays);
-		Assert.assertTrue(TestTTS.spoken.isEmpty());
+		Assert.assertEquals(1, TestTTS.earcons.size());
+		Assert.assertEquals(Arrays.asList("cancel"), TestTTS.spoken);
 		manager.stop();
-		Shadows.shadowOf(Looper.getMainLooper()).idleFor(Duration.ofSeconds(1));
-		Assert.assertEquals(1, TestSoundPool.stops);
-		Assert.assertTrue(TestTTS.spoken.isEmpty());
+		Assert.assertTrue(TestTTS.stops > 0);
 		Assert.assertFalse(manager.isSpeaking());
 	}
 
 	@Test
 	public void restartingDuringEarconIgnoresOldCompletion() {
 		readComment("old");
-		TestSoundPool.completeLoads(0);
-		idle();
-		Shadows.shadowOf(Looper.getMainLooper()).idleFor(Duration.ofMillis(50));
+		final String oldEarcon = TestTTS.earconIds.get(0);
 		manager.readAloud(Arrays.asList(new NativeTTSManager.TTSItem("new", 1, 0)));
+		TestTTS.progress.onError(oldEarcon, TextToSpeech.ERROR_OUTPUT);
 		idle();
-		Shadows.shadowOf(Looper.getMainLooper()).idleFor(Duration.ofMillis(50));
-		Assert.assertTrue(TestTTS.spoken.isEmpty());
-		Shadows.shadowOf(Looper.getMainLooper()).idleFor(Duration.ofMillis(50));
-		Assert.assertEquals(Arrays.asList("new"), TestTTS.spoken);
+		Assert.assertEquals(Arrays.asList("old", "new"), TestTTS.spoken);
+		Assert.assertEquals(0, listener.errors);
 	}
 
 	@Test
-	public void failedEarconLoadsStillAllowNarration() {
+	public void rejectedSeparatorStopsReadingWithOneError() {
+		TestTTS.earconResult = TextToSpeech.ERROR;
 		readComment("hello");
-		TestSoundPool.completeLoads(1);
-		Shadows.shadowOf(Looper.getMainLooper()).idleFor(Duration.ofSeconds(1));
-		Assert.assertEquals(0, TestSoundPool.plays);
-		Assert.assertEquals(Arrays.asList("hello"), TestTTS.spoken);
+		Assert.assertTrue(TestTTS.spoken.isEmpty());
+		Assert.assertEquals(1, listener.errors);
+		Assert.assertFalse(manager.isSpeaking());
 	}
 
 	@Test
 	public void longCommentOnlyPlaysOneSeparator() {
 		final String text = "a".repeat(4500);
 		readComment(text);
-		TestSoundPool.completeLoads(0);
-		Shadows.shadowOf(Looper.getMainLooper()).idleFor(Duration.ofSeconds(1));
-		Assert.assertEquals(1, TestSoundPool.plays);
-		Assert.assertEquals(1, TestTTS.spoken.size());
+		Assert.assertEquals(1, TestTTS.earcons.size());
+		Assert.assertEquals(2, TestTTS.spoken.size());
 		TestTTS.progress.onDone(TestTTS.ids.get(0));
 		idle();
-		Assert.assertEquals(1, TestSoundPool.plays);
+		Assert.assertEquals(1, TestTTS.earcons.size());
 		Assert.assertEquals(text, String.join("", TestTTS.spoken));
 		Assert.assertEquals(2, TestTTS.spoken.size());
+	}
+
+	@Test
+	public void lookaheadKeepsAtMostTwoSpeechRequestsSubmitted() {
+		read("one", "two", "three", "four");
+		TestTTS.init(TextToSpeech.SUCCESS);
+		Assert.assertEquals(Arrays.asList("one", "two"), TestTTS.spoken);
+		Assert.assertEquals(Arrays.asList(
+				TextToSpeech.QUEUE_FLUSH, TextToSpeech.QUEUE_ADD), TestTTS.queueModes);
+		TestTTS.progress.onDone(TestTTS.ids.get(0));
+		idle();
+		Assert.assertEquals(Arrays.asList("one", "two", "three"), TestTTS.spoken);
+		Assert.assertEquals(TextToSpeech.QUEUE_ADD,
+				(int) TestTTS.queueModes.get(TestTTS.queueModes.size() - 1));
+	}
+
+	@Test
+	public void sequentialModeSubmitsOnlyAfterCompletion() {
+		setLookahead(false);
+		read("one", "two", "three");
+		TestTTS.init(TextToSpeech.SUCCESS);
+		Assert.assertEquals(Arrays.asList("one"), TestTTS.spoken);
+		TestTTS.progress.onDone(TestTTS.ids.get(0));
+		idle();
+		Assert.assertEquals(Arrays.asList("one", "two"), TestTTS.spoken);
+		Assert.assertEquals(Arrays.asList(
+				TextToSpeech.QUEUE_FLUSH, TextToSpeech.QUEUE_ADD), TestTTS.queueModes);
+	}
+
+	@Test
+	public void highlightingWaitsForSpeechStartInBothModes() {
+		boolean needsInitialization = true;
+		for (final boolean lookahead : new boolean[] {true, false}) {
+			setLookahead(lookahead);
+			final int firstIndex = TestTTS.ids.size();
+			read("one", "two");
+			if (needsInitialization) {
+				TestTTS.init(TextToSpeech.SUCCESS);
+				needsInitialization = false;
+			}
+			Assert.assertTrue(listener.positions.isEmpty());
+			final String firstId = TestTTS.ids.get(firstIndex);
+			TestTTS.progress.onStart(firstId);
+			idle();
+			Assert.assertTrue(listener.positions.isEmpty());
+			TestTTS.progress.onAudioAvailable(firstId, new byte[] {1});
+			idle();
+			Assert.assertEquals(Arrays.asList(0), listener.positions);
+			manager.stop();
+			listener.positions.clear();
+		}
+	}
+
+	@Test
+	public void codedCallbackErrorStopsSequentialPlaybackOnce() {
+		setLookahead(false);
+		read("one", "two");
+		TestTTS.init(TextToSpeech.SUCCESS);
+		TestTTS.progress.onError(TestTTS.ids.get(0), TextToSpeech.ERROR_OUTPUT);
+		idle();
+		Assert.assertFalse(manager.isSpeaking());
+		Assert.assertEquals(1, listener.errors);
+		Assert.assertEquals(Arrays.asList("one"), TestTTS.spoken);
+		TestTTS.progress.onError(TestTTS.ids.get(0), TextToSpeech.ERROR_OUTPUT);
+		idle();
+		Assert.assertEquals(1, listener.errors);
+	}
+
+	@Test
+	public void cancellationHasNoErrorInBothModes() {
+		boolean needsInitialization = true;
+		for (final boolean lookahead : new boolean[] {true, false}) {
+			setLookahead(lookahead);
+			read("one", "two");
+			if (needsInitialization) {
+				TestTTS.init(TextToSpeech.SUCCESS);
+				needsInitialization = false;
+			}
+			final String active = TestTTS.ids.get(TestTTS.ids.size() - 1);
+			manager.stop();
+			TestTTS.progress.onStop(active, true);
+			idle();
+			Assert.assertFalse(manager.isSpeaking());
+			Assert.assertEquals(0, listener.errors);
+		}
+	}
+
+	@Test
+	public void earconsAndSpeechShareOneOrderedQueue() {
+		manager.readAloud(Arrays.asList(
+				new NativeTTSManager.TTSItem("parent", 0, 0),
+				new NativeTTSManager.TTSItem("child", 1, 1)));
+		TestTTS.init(TextToSpeech.SUCCESS);
+		Assert.assertEquals(2, TestTTS.earcons.size());
+		Assert.assertEquals(Arrays.asList(
+				TextToSpeech.QUEUE_FLUSH,
+				TextToSpeech.QUEUE_ADD,
+				TextToSpeech.QUEUE_ADD,
+				TextToSpeech.QUEUE_ADD), TestTTS.queueModes);
+		Assert.assertEquals(Arrays.asList(
+				"earcon:redreader_synth_tick",
+				"speech:parent",
+				"earcon:redreader_muted_marimba",
+				"speech:child"), TestTTS.events);
+	}
+
+	@Test
+	public void speedSetBeforeInitializationIsApplied() {
+		manager.setSpeed(1.25f);
+		read("hello");
+		TestTTS.init(TextToSpeech.SUCCESS);
+		Assert.assertEquals(1.25f, TestTTS.speechRate, 0f);
+	}
+
+	@Test
+	public void audioBeforeStartHighlightsOnlyAfterStartAndOnlyOnce() {
+		read("one", "two");
+		TestTTS.init(TextToSpeech.SUCCESS);
+		final String first = TestTTS.ids.get(0);
+		final String second = TestTTS.ids.get(1);
+		TestTTS.progress.onAudioAvailable(first, new byte[] {1});
+		TestTTS.progress.onBeginSynthesis(second, 24000, 2, 1);
+		idle();
+		Assert.assertTrue(listener.positions.isEmpty());
+		TestTTS.progress.onStart(first);
+		TestTTS.progress.onStart(first);
+		TestTTS.progress.onAudioAvailable(first, new byte[] {2});
+		idle();
+		Assert.assertEquals(Arrays.asList(0), listener.positions);
+		manager.stop();
+		TestTTS.progress.onStart(second);
+		TestTTS.progress.onAudioAvailable(second, new byte[] {3});
+		idle();
+		Assert.assertEquals(Arrays.asList(0), listener.positions);
+	}
+
+	@Test
+	public void rejectedUpcomingSubmissionStopsCurrentAndPending() {
+		TestTTS.rejectSpeechNumber = 2;
+		read("one", "two", "three");
+		TestTTS.init(TextToSpeech.SUCCESS);
+		Assert.assertEquals(Arrays.asList("one", "two"), TestTTS.spoken);
+		Assert.assertFalse(manager.isSpeaking());
+		Assert.assertEquals(1, listener.errors);
+		Assert.assertTrue(TestTTS.stops > 0);
+	}
+
+	@Test
+	public void upcomingCallbackErrorStopsWithoutSubmittingLaterSpeech() {
+		read("one", "two", "three");
+		TestTTS.init(TextToSpeech.SUCCESS);
+		TestTTS.progress.onError(TestTTS.ids.get(1), TextToSpeech.ERROR_SYNTHESIS);
+		idle();
+		Assert.assertEquals(Arrays.asList("one", "two"), TestTTS.spoken);
+		Assert.assertEquals(1, listener.errors);
+		Assert.assertFalse(manager.isSpeaking());
+	}
+
+	@Test
+	public void earconCallbackErrorStopsOnce() {
+		readComment("comment");
+		TestTTS.progress.onError(TestTTS.earconIds.get(0), TextToSpeech.ERROR_OUTPUT);
+		idle();
+		Assert.assertEquals(1, listener.errors);
+		Assert.assertFalse(manager.isSpeaking());
+		TestTTS.progress.onError(TestTTS.earconIds.get(0), TextToSpeech.ERROR_OUTPUT);
+		idle();
+		Assert.assertEquals(1, listener.errors);
+	}
+
+	@Test
+	public void selectedVoiceIsPreservedDuringInitialization() {
+		TestTTS.selectedVoice = new Voice("chosen", Locale.US,
+				Voice.QUALITY_NORMAL, Voice.LATENCY_NORMAL, false, Collections.emptySet());
+		read("hello");
+		TestTTS.init(TextToSpeech.SUCCESS);
+		Assert.assertEquals(0, TestTTS.languageCalls);
+		Assert.assertEquals(Arrays.asList("hello"), TestTTS.spoken);
+	}
+
+	private static void setLookahead(final boolean enabled) {
+		General.getSharedPrefs(RuntimeEnvironment.getApplication()).edit()
+				.putBoolean("pref_tts_lookahead", enabled).apply();
 	}
 
 	private void readComment(final String text) {
 		manager.readAloud(Arrays.asList(new NativeTTSManager.TTSItem(text, 0, 0)));
 		TestTTS.init(TextToSpeech.SUCCESS);
+	}
+
+	@Test
+	@Config(sdk = 23)
+	public void olderAndroidHighlightsFromPlaybackStartWithoutAudioCallbacks() {
+		read("one", "two");
+		TestTTS.init(TextToSpeech.SUCCESS);
+		Assert.assertTrue(listener.positions.isEmpty());
+		TestTTS.progress.onStart(TestTTS.ids.get(0));
+		idle();
+		Assert.assertEquals(Arrays.asList(0), listener.positions);
+	}
+
+	@Test
+	public void completedSeparatorCannotFailCurrentSpeechWhenCallbacksAreMissing() {
+		readComment("comment");
+		final String speech = TestTTS.ids.get(0);
+		final String separator = TestTTS.earconIds.get(0);
+		TestTTS.progress.onStart(speech);
+		TestTTS.progress.onAudioAvailable(speech, new byte[] {1});
+		idle();
+		TestTTS.progress.onError(separator, TextToSpeech.ERROR_OUTPUT);
+		idle();
+		Assert.assertTrue(manager.isSpeaking());
+		Assert.assertEquals(0, listener.errors);
+		Assert.assertEquals(Arrays.asList(0), listener.positions);
+	}
+
+	@Test
+	public void outOfOrderCompletionDoesNotStallOrSubmitBeyondLookahead() {
+		read("one", "two", "three", "four");
+		TestTTS.init(TextToSpeech.SUCCESS);
+		TestTTS.progress.onDone(TestTTS.ids.get(1));
+		idle();
+		Assert.assertEquals(2, TestTTS.spoken.size());
+		TestTTS.progress.onDone(TestTTS.ids.get(0));
+		idle();
+		Assert.assertEquals(Arrays.asList("one", "two", "three", "four"), TestTTS.spoken);
+		TestTTS.progress.onDone(TestTTS.ids.get(2));
+		TestTTS.progress.onDone(TestTTS.ids.get(3));
+		idle();
+		Assert.assertFalse(manager.isSpeaking());
 	}
 
 	@Implements(value = SoundPool.class, callThroughByDefault = false)
@@ -345,6 +566,7 @@ public class NativeTTSManagerTest {
 		int starts;
 		int errors;
 		int states;
+		final List<Integer> positions = new ArrayList<>();
 
 		@Override
 		public void onTTSStateChanged(final boolean speaking) {
@@ -354,6 +576,7 @@ public class NativeTTSManagerTest {
 		@Override
 		public void onUtteranceStarted(final int position) {
 			starts++;
+			positions.add(position);
 		}
 
 		@Override
@@ -367,10 +590,21 @@ public class NativeTTSManagerTest {
 		static TextToSpeech.OnInitListener initListener;
 		static int language;
 		static int speakResult;
+		static int earconResult;
 		static int shutdowns;
+		static int stops;
+		static float speechRate;
+		static int languageCalls;
+		static int speakCalls;
+		static int rejectSpeechNumber;
+		static Voice selectedVoice;
 		static UtteranceProgressListener progress;
 		static final List<String> spoken = new ArrayList<>();
 		static final List<String> ids = new ArrayList<>();
+		static final List<String> earcons = new ArrayList<>();
+		static final List<String> earconIds = new ArrayList<>();
+		static final List<Integer> queueModes = new ArrayList<>();
+		static final List<String> events = new ArrayList<>();
 
 		@Implementation
 		protected void __constructor__(final Context context,
@@ -383,9 +617,20 @@ public class NativeTTSManagerTest {
 			progress = null;
 			spoken.clear();
 			ids.clear();
+			earcons.clear();
+			earconIds.clear();
+			queueModes.clear();
+			events.clear();
 			speakResult = TextToSpeech.SUCCESS;
+			earconResult = TextToSpeech.SUCCESS;
 			language = TextToSpeech.LANG_AVAILABLE;
 			shutdowns = 0;
+			stops = 0;
+			speechRate = 0;
+			languageCalls = 0;
+			speakCalls = 0;
+			rejectSpeechNumber = -1;
+			selectedVoice = null;
 		}
 
 		static void init(final int status) {
@@ -400,7 +645,29 @@ public class NativeTTSManagerTest {
 
 		@Implementation
 		protected int setLanguage(final Locale locale) {
+			languageCalls++;
 			return language;
+		}
+
+		@Implementation
+		protected Voice getVoice() {
+			return selectedVoice;
+		}
+
+		@Implementation
+		protected int addEarcon(final String earcon, final String packageName,
+				final int resourceId) {
+			return TextToSpeech.SUCCESS;
+		}
+
+		@Implementation
+		protected int playEarcon(final String earcon, final int queueMode,
+				final Bundle params, final String id) {
+			earcons.add(earcon);
+			earconIds.add(id);
+			events.add("earcon:" + earcon);
+			queueModes.add(queueMode);
+			return earconResult;
 		}
 
 		@Implementation
@@ -408,11 +675,21 @@ public class NativeTTSManagerTest {
 				final Bundle params, final String id) {
 			spoken.add(text.toString());
 			ids.add(id);
-			return speakResult;
+			events.add("speech:" + text);
+			queueModes.add(queueMode);
+			speakCalls++;
+			return speakCalls == rejectSpeechNumber ? TextToSpeech.ERROR : speakResult;
 		}
 
 		@Implementation
 		protected int stop() {
+			stops++;
+			return TextToSpeech.SUCCESS;
+		}
+
+		@Implementation
+		protected int setSpeechRate(final float rate) {
+			speechRate = rate;
 			return TextToSpeech.SUCCESS;
 		}
 
