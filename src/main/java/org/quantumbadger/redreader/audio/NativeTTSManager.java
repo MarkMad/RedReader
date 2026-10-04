@@ -18,7 +18,9 @@
 package org.quantumbadger.redreader.audio;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioAttributes;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
@@ -29,9 +31,15 @@ import android.speech.tts.Voice;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.FileProvider;
 
 import org.quantumbadger.redreader.common.General;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayDeque;
 import java.util.HashSet;
 import java.util.List;
@@ -43,6 +51,8 @@ public class NativeTTSManager {
 
 	private static final String TAG = "NativeTTSManager";
 	private static final String PREF_TTS_LOOKAHEAD = "pref_tts_lookahead";
+	private static final String EARCON_PROVIDER_SUFFIX = ".ttsearcons";
+	private static final String EARCON_CACHE_DIRECTORY = "tts-earcons";
 	public static final int NO_COMMENT_INDENT = -1;
 	private static NativeTTSManager sInstance;
 
@@ -203,37 +213,73 @@ public class NativeTTSManager {
 		if (status != TextToSpeech.SUCCESS
 				|| (selectedVoice == null && mTTS.setLanguage(Locale.getDefault()) < 0)) {
 			Log.e(TAG, "TTS initialization or language setup failed (status " + status + ")");
-			final boolean reportFailure = mIsSpeaking;
-			cancelPlayback();
-			mTTS.shutdown();
-			mTTS = null;
-			mIsInitialized = false;
-			++mEngineGeneration;
-			if (reportFailure) {
-				reportError();
-			}
+			failInitialization();
 			return;
 		}
 		mTTS.setSpeechRate(mSpeechRate);
-		for (final TTSEarconPlayer.Earcon earcon : TTSEarconPlayer.Earcon.values()) {
-			final int result = mTTS.addEarcon(
-					earcon.getTtsName(), mContext.getPackageName(), earcon.getRawResourceId());
-			if (result != TextToSpeech.SUCCESS) {
-				Log.e(TAG, "TTS earcon registration failed (code " + result + ")");
-				final boolean reportFailure = mIsSpeaking;
-				cancelPlayback();
-				mTTS.shutdown();
-				mTTS = null;
-				mIsInitialized = false;
-				++mEngineGeneration;
-				if (reportFailure) {
-					reportError();
-				}
+		try {
+			if (!registerEarcons()) {
+				failInitialization();
 				return;
 			}
+		} catch (final IOException | RuntimeException e) {
+			Log.e(TAG, "TTS earcon preparation failed", e);
+			failInitialization();
+			return;
 		}
 		mIsInitialized = true;
 		fillSpeechQueue();
+	}
+
+	private boolean registerEarcons() throws IOException {
+		final String enginePackage = mEnginePackage != null
+				? mEnginePackage
+				: mTTS.getDefaultEngine();
+		if (enginePackage == null) {
+			Log.e(TAG, "TTS earcon registration failed because no engine is selected");
+			return false;
+		}
+		final File earconDirectory = new File(mContext.getCacheDir(), EARCON_CACHE_DIRECTORY);
+		if (!earconDirectory.isDirectory() && !earconDirectory.mkdirs()) {
+			throw new IOException("Unable to create the TTS earcon cache directory");
+		}
+		for (final TTSEarconPlayer.Earcon earcon : TTSEarconPlayer.Earcon.values()) {
+			final File earconFile = new File(earconDirectory, earcon.getTtsName() + ".wav");
+			try (InputStream input = mContext.getResources()
+					.openRawResource(earcon.getRawResourceId());
+					OutputStream output = new FileOutputStream(earconFile)) {
+				final byte[] buffer = new byte[8192];
+				int count;
+				while ((count = input.read(buffer)) != -1) {
+					output.write(buffer, 0, count);
+				}
+			}
+			final Uri uri = FileProvider.getUriForFile(mContext,
+					mContext.getPackageName() + EARCON_PROVIDER_SUFFIX, earconFile);
+			mContext.grantUriPermission(enginePackage, uri,
+					Intent.FLAG_GRANT_READ_URI_PERMISSION);
+			final int result = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+					? mTTS.addEarcon(earcon.getTtsName(), uri)
+					: mTTS.addEarcon(earcon.getTtsName(), mContext.getPackageName(),
+							earcon.getRawResourceId());
+			if (result != TextToSpeech.SUCCESS) {
+				Log.e(TAG, "TTS earcon registration failed (code " + result + ")");
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private void failInitialization() {
+		final boolean reportFailure = mIsSpeaking;
+		cancelPlayback();
+		mTTS.shutdown();
+		mTTS = null;
+		mIsInitialized = false;
+		++mEngineGeneration;
+		if (reportFailure) {
+			reportError();
+		}
 	}
 
 	private synchronized void onStarted(final String utteranceId) {

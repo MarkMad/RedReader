@@ -59,7 +59,9 @@ ordered audio events, not extra speech slots.
 Android's [TextToSpeech API](https://developer.android.com/reference/android/speech/tts/TextToSpeech)
 accepts speech and earcons asynchronously. QUEUE_ADD preserves requested order;
 it does not promise synthesis/playback concurrency. Packaged WAV earcons use
-`addEarcon`/`playEarcon`, so separator playback shares the ordered Android queue
+`addEarcon`/`playEarcon` with explicit read grants to the selected TTS engine.
+Android 12+ registers content URIs; earlier versions retain resource registration
+after the grant makes RedReader visible to the engine. Separator playback shares the ordered Android queue
 without waiting in RedReader before submitting speech.
 
 [UtteranceProgressListener](https://developer.android.com/reference/android/speech/tts/UtteranceProgressListener)
@@ -188,3 +190,31 @@ passed, along with lint, PMD, Checkstyle and the signed release build.
 Version 1.26.6 (124) validation: all 133 JVM tests across 20 suites passed,
 with no failures or errors. Android lint, PMD, Checkstyle and `assembleRelease`
 passed. The signed APK is `build/outputs/apk/release/RedReader-master-release.apk`.
+
+## Missing earcons investigation, 5 October 2026
+
+During user-triggered Cedar streaming playback on the Motorola device, speech
+continued but each separator failed in Local TTS's Android MediaPlayer queue.
+Filtered diagnostics showed `FileNotFoundException: No package found for authority`
+for RedReader's `android.resource://` earcon URI. This is a resource access failure;
+the reproduction does not establish that streaming itself causes the failure.
+
+Earcons now use cached copies of the packaged WAV files exposed through a dedicated,
+non-exported FileProvider limited to `cache/tts-earcons/`. Registration grants the
+selected TTS engine read access to each content URI. Android 12+ registers these
+URIs directly; older versions retain resource URIs after the grant establishes
+package visibility. Speech and separator ordering,
+lookahead depth and selected voice behavior are unchanged. Physical-device audible
+confirmation for this change is recorded below.
+
+Local validation passed: `test lint pmd checkstyle assembleRelease`, with all 138
+JVM tests passing, including 35 native TTS regressions. Windows Robolectric uses
+a test-only URI mapping because AndroidX FileProvider assumes Android path
+separators. Tests check the cached WAV bytes, URI read grants and narrow provider
+XML; they do not establish actual cross-process provider playback. The rebuilt
+signed release APK is `build/outputs/apk/release/RedReader-master-release.apk`.
+
+The rebuilt signed release update installed successfully on the Motorola device
+on 5 October 2026 using `adb install -r`, preserving application data. Installed
+version: 1.26.6 (124). The user confirmed that earcons are audible again with Cedar
+streaming after installing this update.

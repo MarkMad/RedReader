@@ -236,6 +236,14 @@
 					android:resource="@xml/update_paths" />
 		</provider>
 
+		<provider android:name=".audio.TTSEarconProvider"
+				android:authorities="${applicationId}.ttsearcons"
+				android:exported="false"
+				android:grantUriPermissions="true">
+			<meta-data android:name="android.support.FILE_PROVIDER_PATHS"
+					android:resource="@xml/tts_earcon_paths" />
+		</provider>
+
 		<provider
 				android:name="org.quantumbadger.redreader.cache.CacheContentProvider"
 				android:authorities="${applicationId}.cacheprovider"

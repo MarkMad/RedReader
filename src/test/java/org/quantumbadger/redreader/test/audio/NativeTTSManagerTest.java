@@ -18,18 +18,27 @@
 package org.quantumbadger.redreader.test.audio;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.AssetFileDescriptor;
+import android.content.res.XmlResourceParser;
 import android.media.SoundPool;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Looper;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
 import android.speech.tts.Voice;
 
+import androidx.core.content.FileProvider;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.quantumbadger.redreader.R;
 import org.quantumbadger.redreader.audio.NativeTTSManager;
 import org.quantumbadger.redreader.audio.TTSEarconPlayer;
 import org.quantumbadger.redreader.common.General;
@@ -40,7 +49,10 @@ import org.robolectric.annotation.Config;
 import org.robolectric.annotation.Implementation;
 import org.robolectric.annotation.Implements;
 import org.robolectric.annotation.LooperMode;
+import org.xmlpull.v1.XmlPullParser;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -51,7 +63,8 @@ import java.time.Duration;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(sdk = 35, shadows = {NativeTTSManagerTest.TestTTS.class,
-		NativeTTSManagerTest.TestSoundPool.class})
+		NativeTTSManagerTest.TestSoundPool.class,
+		NativeTTSManagerTest.TestFileProvider.class})
 @LooperMode(LooperMode.Mode.PAUSED)
 public class NativeTTSManagerTest {
 
@@ -62,6 +75,12 @@ public class NativeTTSManagerTest {
 	public void setUp() throws Exception {
 		TestTTS.reset();
 		TestSoundPool.reset();
+		final PackageInfo engine = new PackageInfo();
+		engine.packageName = "com.localtts";
+		engine.applicationInfo = new ApplicationInfo();
+		engine.applicationInfo.packageName = engine.packageName;
+		Shadows.shadowOf(RuntimeEnvironment.getApplication().getPackageManager())
+				.installPackage(engine);
 		final Field singleton = NativeTTSManager.class.getDeclaredField("sInstance");
 		singleton.setAccessible(true);
 		singleton.set(null, null);
@@ -180,6 +199,104 @@ public class NativeTTSManagerTest {
 		read("retry");
 		TestTTS.init(TextToSpeech.SUCCESS);
 		Assert.assertEquals(Arrays.asList("retry"), TestTTS.spoken);
+	}
+
+	@Test
+	public void registersReadableEarconsAndGrantsDefaultEngineAccess() throws Exception {
+		read("hello");
+		TestTTS.init(TextToSpeech.SUCCESS);
+		final Context context = RuntimeEnvironment.getApplication();
+		Assert.assertEquals(TTSEarconPlayer.Earcon.values().length,
+				TestTTS.registeredEarcons.size());
+		final int engineUid = context.getPackageManager()
+				.getApplicationInfo("com.localtts", 0).uid;
+		final File earconDirectory = new File(context.getCacheDir(), "tts-earcons");
+		for (int i = 0; i < TestTTS.registeredUris.size(); i++) {
+			final Uri uri = TestTTS.registeredUris.get(i);
+			Assert.assertEquals("content", uri.getScheme());
+			Assert.assertEquals(context.getPackageName() + ".ttsearcons",
+					uri.getAuthority());
+			Assert.assertTrue(uri.getPath().startsWith("/tts_earcons/"));
+			Assert.assertEquals(PackageManager.PERMISSION_GRANTED,
+					context.checkUriPermission(uri, -1, engineUid,
+							Intent.FLAG_GRANT_READ_URI_PERMISSION));
+			final File earconFile = new File(earconDirectory, uri.getLastPathSegment());
+			Assert.assertEquals(earconDirectory.getCanonicalPath(),
+					earconFile.getCanonicalFile().getParent());
+			try (FileInputStream input = new FileInputStream(earconFile)) {
+				Assert.assertTrue(input.read() >= 0);
+			}
+		}
+	}
+
+	@Test
+	public void earconProviderExposesOnlyDedicatedCacheDirectory() throws Exception {
+		final Context context = RuntimeEnvironment.getApplication();
+		int pathCount = 0;
+		try (XmlResourceParser parser = context.getResources().getXml(R.xml.tts_earcon_paths)) {
+			int event;
+			while ((event = parser.next()) != XmlPullParser.END_DOCUMENT) {
+				if (event == XmlPullParser.START_TAG && "cache-path".equals(parser.getName())) {
+					pathCount++;
+					Assert.assertEquals("tts_earcons", parser.getAttributeValue(null, "name"));
+					Assert.assertEquals("tts-earcons/", parser.getAttributeValue(null, "path"));
+				}
+			}
+		}
+		Assert.assertEquals(1, pathCount);
+	}
+
+	@Test
+	@Config(sdk = 30)
+	public void olderAndroidGrantsAccessBeforeLegacyRegistration() throws Exception {
+		read("hello");
+		TestTTS.init(TextToSpeech.SUCCESS);
+		final Context context = RuntimeEnvironment.getApplication();
+		final int engineUid = context.getPackageManager()
+				.getApplicationInfo("com.localtts", 0).uid;
+		final File earconDirectory = new File(context.getCacheDir(), "tts-earcons");
+		final File[] earconFiles = earconDirectory.listFiles();
+		Assert.assertNotNull(earconFiles);
+		Assert.assertEquals(TTSEarconPlayer.Earcon.values().length, earconFiles.length);
+		for (final File earconFile : earconFiles) {
+			final Uri uri = FileProvider.getUriForFile(context,
+					context.getPackageName() + ".ttsearcons", earconFile);
+			Assert.assertEquals(PackageManager.PERMISSION_GRANTED,
+					context.checkUriPermission(uri, -1, engineUid,
+							Intent.FLAG_GRANT_READ_URI_PERMISSION));
+		}
+		Assert.assertTrue(TestTTS.registeredUris.isEmpty());
+		Assert.assertEquals(TTSEarconPlayer.Earcon.values().length,
+				TestTTS.registeredPackages.size());
+		for (final String packageName : TestTTS.registeredPackages) {
+			Assert.assertEquals(context.getPackageName(), packageName);
+		}
+		for (final int resourceId : TestTTS.registeredResources) {
+			Assert.assertTrue(resourceId != 0);
+		}
+	}
+
+	@Test
+	public void earconRegistrationFailureStopsInitializationOnce() {
+		TestTTS.registrationFailureNumber = 3;
+		read("hello");
+		TestTTS.init(TextToSpeech.SUCCESS);
+		Assert.assertFalse(manager.isSpeaking());
+		Assert.assertTrue(TestTTS.spoken.isEmpty());
+		Assert.assertEquals(3, TestTTS.registrationCalls);
+		Assert.assertEquals(1, TestTTS.shutdowns);
+		Assert.assertEquals(1, listener.errors);
+	}
+
+	@Test
+	public void missingDefaultEngineStopsInitializationOnce() {
+		TestTTS.defaultEngine = null;
+		read("hello");
+		TestTTS.init(TextToSpeech.SUCCESS);
+		Assert.assertFalse(manager.isSpeaking());
+		Assert.assertTrue(TestTTS.registeredUris.isEmpty());
+		Assert.assertEquals(1, TestTTS.shutdowns);
+		Assert.assertEquals(1, listener.errors);
 	}
 
 	@Test
@@ -585,6 +702,20 @@ public class NativeTTSManagerTest {
 		}
 	}
 
+	@Implements(value = FileProvider.class, callThroughByDefault = true)
+	public static class TestFileProvider {
+		@Implementation
+		protected static Uri getUriForFile(final Context context, final String authority,
+				final File file) {
+			return new Uri.Builder()
+					.scheme("content")
+					.authority(authority)
+					.appendPath("tts_earcons")
+					.appendPath(file.getName())
+					.build();
+		}
+	}
+
 	@Implements(value = TextToSpeech.class, callThroughByDefault = false)
 	public static class TestTTS {
 		static TextToSpeech.OnInitListener initListener;
@@ -597,11 +728,18 @@ public class NativeTTSManagerTest {
 		static int languageCalls;
 		static int speakCalls;
 		static int rejectSpeechNumber;
+		static int registrationCalls;
+		static int registrationFailureNumber;
+		static String defaultEngine;
 		static Voice selectedVoice;
 		static UtteranceProgressListener progress;
 		static final List<String> spoken = new ArrayList<>();
 		static final List<String> ids = new ArrayList<>();
 		static final List<String> earcons = new ArrayList<>();
+		static final List<String> registeredEarcons = new ArrayList<>();
+		static final List<Uri> registeredUris = new ArrayList<>();
+		static final List<String> registeredPackages = new ArrayList<>();
+		static final List<Integer> registeredResources = new ArrayList<>();
 		static final List<String> earconIds = new ArrayList<>();
 		static final List<Integer> queueModes = new ArrayList<>();
 		static final List<String> events = new ArrayList<>();
@@ -618,6 +756,10 @@ public class NativeTTSManagerTest {
 			spoken.clear();
 			ids.clear();
 			earcons.clear();
+			registeredEarcons.clear();
+			registeredUris.clear();
+			registeredPackages.clear();
+			registeredResources.clear();
 			earconIds.clear();
 			queueModes.clear();
 			events.clear();
@@ -630,6 +772,9 @@ public class NativeTTSManagerTest {
 			languageCalls = 0;
 			speakCalls = 0;
 			rejectSpeechNumber = -1;
+			registrationCalls = 0;
+			registrationFailureNumber = -1;
+			defaultEngine = "com.localtts";
 			selectedVoice = null;
 		}
 
@@ -655,9 +800,30 @@ public class NativeTTSManagerTest {
 		}
 
 		@Implementation
+		protected String getDefaultEngine() {
+			return defaultEngine;
+		}
+
+		@Implementation
+		protected int addEarcon(final String earcon, final Uri uri) {
+			registeredEarcons.add(earcon);
+			registeredUris.add(uri);
+			registrationCalls++;
+			return registrationCalls == registrationFailureNumber
+					? TextToSpeech.ERROR
+					: TextToSpeech.SUCCESS;
+		}
+
+		@Implementation
 		protected int addEarcon(final String earcon, final String packageName,
 				final int resourceId) {
-			return TextToSpeech.SUCCESS;
+			registeredEarcons.add(earcon);
+			registeredPackages.add(packageName);
+			registeredResources.add(resourceId);
+			registrationCalls++;
+			return registrationCalls == registrationFailureNumber
+					? TextToSpeech.ERROR
+					: TextToSpeech.SUCCESS;
 		}
 
 		@Implementation
