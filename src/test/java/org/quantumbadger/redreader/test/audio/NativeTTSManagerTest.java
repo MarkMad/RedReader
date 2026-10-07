@@ -516,6 +516,16 @@ public class NativeTTSManagerTest {
 		read("hello");
 		TestTTS.init(TextToSpeech.SUCCESS);
 		Assert.assertEquals(1.25f, TestTTS.speechRate, 0f);
+		Assert.assertEquals(1, TestTTS.speechRateCalls);
+	}
+
+	@Test
+	public void initializationPreservesConfiguredEngineSpeechRate() {
+		TestTTS.speechRate = 1.75f;
+		read("hello");
+		TestTTS.init(TextToSpeech.SUCCESS);
+		Assert.assertEquals(1.75f, TestTTS.speechRate, 0f);
+		Assert.assertEquals(0, TestTTS.speechRateCalls);
 	}
 
 	@Test
@@ -725,6 +735,7 @@ public class NativeTTSManagerTest {
 		static int shutdowns;
 		static int stops;
 		static float speechRate;
+		static int speechRateCalls;
 		static int languageCalls;
 		static int speakCalls;
 		static int rejectSpeechNumber;
@@ -769,6 +780,7 @@ public class NativeTTSManagerTest {
 			shutdowns = 0;
 			stops = 0;
 			speechRate = 0;
+			speechRateCalls = 0;
 			languageCalls = 0;
 			speakCalls = 0;
 			rejectSpeechNumber = -1;
@@ -855,6 +867,7 @@ public class NativeTTSManagerTest {
 
 		@Implementation
 		protected int setSpeechRate(final float rate) {
+			speechRateCalls++;
 			speechRate = rate;
 			return TextToSpeech.SUCCESS;
 		}

@@ -75,7 +75,8 @@ public class NativeTTSManager {
 	private long mEngineGeneration;
 	private long mPlaybackGeneration;
 	private long mNextUtterance;
-	private float mSpeechRate = 1f;
+	private float mSpeechRate;
+	private boolean mSpeechRateSet;
 	private int mPreviousCommentIndent = NO_COMMENT_INDENT;
 	private SpeechRequest mCurrentSpeech;
 	private SpeechRequest mUpcomingSpeech;
@@ -216,7 +217,9 @@ public class NativeTTSManager {
 			failInitialization();
 			return;
 		}
-		mTTS.setSpeechRate(mSpeechRate);
+		if (mSpeechRateSet) {
+			mTTS.setSpeechRate(mSpeechRate);
+		}
 		try {
 			if (!registerEarcons()) {
 				failInitialization();
@@ -591,6 +594,7 @@ public class NativeTTSManager {
 
 	public synchronized void setSpeed(final float speed) {
 		mSpeechRate = speed;
+		mSpeechRateSet = true;
 		if (mTTS != null) {
 			mTTS.setSpeechRate(speed);
 		}
