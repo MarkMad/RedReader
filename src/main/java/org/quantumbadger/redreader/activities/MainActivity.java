@@ -136,6 +136,11 @@ public class MainActivity extends RefreshableActivity
 	}
 
 	@Override
+	protected boolean baseActivityContentExtendsBehindNavigationBar() {
+		return true;
+	}
+
+	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
 
 		PrefsUtility.applyTheme(this);
@@ -171,6 +176,15 @@ public class MainActivity extends RefreshableActivity
 
 		// Preference migrations can trigger a refresh synchronously. Set up the
 		// panes first so that refresh has valid containers in two-pane mode.
+		doRefresh(RefreshableFragment.MAIN_RELAYOUT, false, null);
+
+		recreateSubscriptionListener();
+
+		// Inflate the layout before running any preference migrations below.
+		// Those migrations write to shared preferences, and the resulting
+		// change notification is delivered synchronously on the main thread,
+		// which triggers doRefresh(ALL). In two-pane mode that dereferences
+		// mLeftPane/mRightPane, which are only assigned by MAIN_RELAYOUT.
 		doRefresh(RefreshableFragment.MAIN_RELAYOUT, false, null);
 
 		final AndroidCommon.PackageInfo pInfo = RedReader.getInstance(this).getPackageInfo();
@@ -632,7 +646,11 @@ public class MainActivity extends RefreshableActivity
 					mainMenuView = mainMenuFragment.createCombinedListingAndOverlayView();
 					mLeftPane.removeAllViews();
 					mLeftPane.addView(mainMenuView);
+
 				} else {
+					// The menu is hidden behind the post/comment panes. Discard the
+					// retained instance so that it is rebuilt fresh when the user
+					// presses back, rather than reappearing with stale contents.
 					mainMenuFragment = null;
 					mainMenuView = null;
 				}
@@ -683,6 +701,8 @@ public class MainActivity extends RefreshableActivity
 
 		isMenuShown = true;
 
+		// Reuse the retained menu (preserving its scroll position and list
+		// contents) if we still have it, otherwise build a new one.
 		if(mainMenuFragment == null || mainMenuView == null) {
 			mainMenuFragment = new MainMenuFragment(this, null, false);
 			mainMenuView = mainMenuFragment.createCombinedListingAndOverlayView();
@@ -723,6 +743,9 @@ public class MainActivity extends RefreshableActivity
 
 				mLeftPane.addView(postListingView);
 				mRightPane.addView(commentListingView);
+
+				// mainMenuFragment and mainMenuView are intentionally retained
+				// (detached from mLeftPane) so their state can be restored on back.
 
 				isMenuShown = false;
 

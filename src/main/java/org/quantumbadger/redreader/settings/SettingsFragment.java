@@ -25,9 +25,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.FragmentActivity;
@@ -85,6 +88,52 @@ public final class SettingsFragment extends PreferenceFragmentCompat {
 
 		if(activity != null) {
 			activity.setTitle(mTitle);
+		}
+	}
+
+	@Override
+	public void onViewCreated(
+			@NonNull final View view,
+			@Nullable final Bundle savedInstanceState) {
+
+		super.onViewCreated(view, savedInstanceState);
+
+		// The preference list extends behind the navigation bar (see
+		// SettingsActivity), so keep the last preference clear of it
+		General.applySystemBarPadding(getListView());
+
+		final ListPreference swipeZonePref = findPreference(getString(
+				R.string.pref_behaviour_bezel_toolbar_swipezone_key));
+
+		if(swipeZonePref == null) {
+			return;
+		}
+
+		// The system gesture insets are only available once the view is
+		// attached to a window
+		final Runnable update = () -> {
+			if(General.isGestureNavigationEnabled(view)) {
+				swipeZonePref.setEnabled(false);
+				swipeZonePref.setSummary(
+						R.string.pref_behaviour_bezel_toolbar_swipezone_gesture_nav_summary);
+			}
+		};
+
+		if(view.isAttachedToWindow()) {
+			update.run();
+
+		} else {
+			view.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+				@Override
+				public void onViewAttachedToWindow(@NonNull final View v) {
+					update.run();
+				}
+
+				@Override
+				public void onViewDetachedFromWindow(@NonNull final View v) {
+					// Nothing to do
+				}
+			});
 		}
 	}
 

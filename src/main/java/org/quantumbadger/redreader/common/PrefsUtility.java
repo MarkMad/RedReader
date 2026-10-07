@@ -136,6 +136,8 @@ public final class PrefsUtility {
 				|| key.equals(context.getString(R.string.pref_behaviour_fling_post_right_key))
 				|| key.equals(context.getString(R.string.pref_behaviour_nsfw_key))
 				|| key.equals(context.getString(R.string.pref_behaviour_postcount_key))
+				|| key.equals(context.getString(
+						R.string.pref_behaviour_mark_posts_as_read_on_scroll_key))
 				|| key.equals(context.getString(R.string.pref_behaviour_comment_min_key))
 				|| key.equals(context.getString(R.string.pref_behaviour_pinned_subredditsort_key))
 				|| key.equals(context.getString(
@@ -573,6 +575,12 @@ public final class PrefsUtility {
 				true);
 	}
 
+	public static boolean pref_appearance_inbox_collapse_long_messages() {
+		return getBoolean(
+				R.string.pref_appearance_inbox_collapse_long_messages_key,
+				true);
+	}
+
 	public enum AppearanceStatusBarMode {
 		ALWAYS_HIDE, HIDE_ON_MEDIA, NEVER_HIDE
 	}
@@ -680,7 +688,8 @@ public final class PrefsUtility {
 		SPOILER,
 		NSFW,
 		UPVOTE_RATIO,
-		COMMENTS
+		COMMENTS,
+		LOCKED
 	}
 
 	public static EnumSet<AppearancePostSubtitleItem> appearance_post_subtitle_items() {
@@ -1258,6 +1267,12 @@ public final class PrefsUtility {
 		return getBoolean(
 				R.string.pref_behaviour_mark_posts_as_read_key,
 				true);
+	}
+
+	public static boolean pref_behaviour_mark_posts_as_read_on_scroll() {
+		return getBoolean(
+				R.string.pref_behaviour_mark_posts_as_read_on_scroll_key,
+				false);
 	}
 
 	public enum SharingDomain {

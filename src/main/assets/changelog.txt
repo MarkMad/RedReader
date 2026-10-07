@@ -1,3 +1,26 @@
+125/1.27
+Inbox improvements and ability to mark messages as read
+Option to mark posts as read when scrolling past
+Show "Locked" tag for locked posts (thanks to folkemat)
+Disable the bezel swipe toolbar when Android gesture navigation is enabled
+Extend content to the bottom of the screen under the nav bar
+Accessibility announcements for collapsing/expanding comments, and voting (thanks to codeofdusk)
+Fix accessibility focus when moving between parent comments (thanks to codeofdusk)
+Fix custom accessibility actions intermittently disappearing from comments (thanks to codeofdusk)
+Fix for back button causing a main menu reload in two-column mode
+Disable Google Safe Browsing in the in-app browser for increased privacy (thanks to jim-daf)
+Fixes for inline image preview size in landscape mode
+Improved memory usage for inline image previews
+Fix for notification prompt being shown twice when logging in
+Fix for rare database crash when managing accounts
+Fixed crashes caused by system config changes while dialog is open
+Fixed crash when clicking reply too soon on a post
+Fixed crash when launching after an update on a tablet
+Fix for popup menu theme not matching the rest of the app
+Workaround for most recent Reddit login page issues
+Dependency updates
+Native text-to-speech with comment navigation, URL-cleaned narration, and comment earcons
+
 120/1.26.2
 Added daily and manual update checks from GitHub
 Added release APK download and install with Android confirmation
@@ -796,4 +819,3 @@ Reformats invalid youtube.com links provided by reddit
 Massively sped up cache pruning (no more freezing on startup)
 Fixed a bug - everyone should now be able to edit their own comments
 Moved the subreddit loading bar
-

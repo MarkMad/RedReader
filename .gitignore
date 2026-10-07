@@ -79,10 +79,12 @@ build/
 reddit_auth.txt
 /release/**
 /releases/**/**
+/*releases/
 
 # Keystore files
 *.keystore
 keystore.properties
+/*.sh
 /*.txt
 *.log
 *.har

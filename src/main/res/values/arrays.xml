@@ -902,6 +902,7 @@
 		<item>@string/pref_appearance_post_subtitle_items_spoiler</item>
 		<item>@string/pref_appearance_post_subtitle_items_nsfw</item>
 		<item>@string/pref_appearance_post_subtitle_items_crosspost</item>
+		<item>@string/pref_appearance_post_subtitle_items_locked</item>
 	</string-array>
 
 	<!-- Constants. Do not change. -->
@@ -919,6 +920,7 @@
 		<item>spoiler</item>
 		<item>nsfw</item>
 		<item>crosspost</item>
+		<item>locked</item>
 	</string-array>
 
 	<!-- Constants. Do not change. -->
@@ -934,6 +936,7 @@
 		<item>spoiler</item>
 		<item>nsfw</item>
 		<item>crosspost</item>
+		<item>locked</item>
 	</string-array>
 
 	<!-- 2020-02-05 -->

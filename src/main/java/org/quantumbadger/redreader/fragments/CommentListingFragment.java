@@ -39,6 +39,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.OneShotPreDrawListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -123,6 +124,7 @@ public class CommentListingFragment extends RRFragment
 	private TimestampUTC mCachedTimestamp = null;
 
 	private Integer mPreviousFirstVisibleItemPosition;
+	private int mParentJumpCount = 0;
 
 	public CommentListingFragment(
 			final AppCompatActivity parent,
@@ -219,6 +221,10 @@ public class CommentListingFragment extends RRFragment
 				toolBarParams.gravity = Gravity.START | Gravity.BOTTOM;
 				mFloatingToolbar.setLayoutParams(toolBarParams);
 			}
+
+			// The overlay extends behind the navigation bar, so keep the
+			// toolbar clear of it
+			General.applySystemBarMargin(mFloatingToolbar);
 
 			// We need a container so that setVisible() doesn't mess with the Z-order
 			final FrameLayout floatingToolbarContainer = new FrameLayout(context);
@@ -363,11 +369,12 @@ public class CommentListingFragment extends RRFragment
 
 		if(item.isComment()) {
 			final RedditRenderableComment comment = item.asComment();
+			final boolean nowCollapsed = !comment.isCollapsed(changeDataManager);
 
 			changeDataManager.markHidden(
 					TimestampUTC.now(),
 					comment.getIdAndType(),
-					!comment.isCollapsed(changeDataManager));
+					nowCollapsed);
 
 			mCommentListingManager.updateHiddenStatus();
 
@@ -378,6 +385,12 @@ public class CommentListingFragment extends RRFragment
 			if(position == layoutManager.findFirstVisibleItemPosition()) {
 				layoutManager.scrollToPositionWithOffset(position, 0);
 			}
+
+			General.announceForAccessibility(
+					view,
+					nowCollapsed
+							? R.string.accessibility_announcement_comment_collapsed
+							: R.string.accessibility_announcement_comment_expanded);
 		}
 	}
 
@@ -763,31 +776,30 @@ public class CommentListingFragment extends RRFragment
 	}
 
 	public void onPreviousParent() {
-		final LinearLayoutManager layoutManager = (LinearLayoutManager)
-			mRecyclerView.getLayoutManager();
+		jumpToPreviousParent(getFirstVisiblePosition());
+	}
 
-		for(
-			int pos = layoutManager.findFirstVisibleItemPosition() - 1;
-			pos > 0;
-			pos--
-		) {
-			final GroupedRecyclerViewAdapter.Item item = mCommentListingManager.getItemAtPosition(
-				pos
-			);
-			if(
-				item instanceof RedditCommentListItem
-				&& ((RedditCommentListItem)item).isComment()
-				&& ((RedditCommentListItem)item).getIndent() == 0
-			) {
-				layoutManager.scrollToPositionWithOffset(pos, 0);
-				setFocusDelayed(pos);
+	public void onNextParent() {
+		jumpToNextParent(getFirstVisiblePosition());
+	}
+
+	private int getFirstVisiblePosition() {
+		final LinearLayoutManager layoutManager
+				= (LinearLayoutManager)mRecyclerView.getLayoutManager();
+
+		return layoutManager.findFirstVisibleItemPosition();
+	}
+
+	private void jumpToPreviousParent(final int startingPosition) {
+		for(int pos = startingPosition - 1; pos > 0; pos--) {
+			if(isTopLevelComment(pos)) {
+				jumpToPosition(pos);
 				restartReadAloudAt(pos);
 				return;
 			}
 		}
 
-		layoutManager.scrollToPositionWithOffset(0, 0);
-		setFocusDelayed(0);
+		jumpToPosition(0);
 		restartReadAloudAt(0);
 	}
 
@@ -795,14 +807,9 @@ public class CommentListingFragment extends RRFragment
 		final LinearLayoutManager layoutManager = (LinearLayoutManager)
 				mRecyclerView.getLayoutManager();
 
-		for(
-				int pos = layoutManager.findFirstVisibleItemPosition() - 1;
-				pos >= 0;
-				pos--
-		) {
-			final GroupedRecyclerViewAdapter.Item item = mCommentListingManager.getItemAtPosition(
-					pos
-			);
+		for(int pos = layoutManager.findFirstVisibleItemPosition() - 1; pos >= 0; pos--) {
+			final GroupedRecyclerViewAdapter.Item item
+					= mCommentListingManager.getItemAtPosition(pos);
 			if(item instanceof RedditCommentListItem
 					&& ((RedditCommentListItem)item).isComment()) {
 				layoutManager.scrollToPositionWithOffset(pos, 0);
@@ -813,26 +820,15 @@ public class CommentListingFragment extends RRFragment
 		}
 	}
 
-	public void onNextParent() {
-		final LinearLayoutManager layoutManager = (LinearLayoutManager)
-			mRecyclerView.getLayoutManager();
-		for(
-			int pos = layoutManager.findFirstVisibleItemPosition() + 1;
-			pos < layoutManager.getItemCount();
-			pos++
-		) {
-			final GroupedRecyclerViewAdapter.Item item = mCommentListingManager.getItemAtPosition(
-				pos
-			);
-			if(
-				item instanceof RedditCommentListItem
-				&& ((RedditCommentListItem)item).isComment()
-				&& ((RedditCommentListItem)item).getIndent() == 0
-			) {
-				layoutManager.scrollToPositionWithOffset(pos, 0);
-				setFocusDelayed(pos);
+	private void jumpToNextParent(final int startingPosition) {
+		final LinearLayoutManager layoutManager
+				= (LinearLayoutManager)mRecyclerView.getLayoutManager();
+
+		for(int pos = startingPosition + 1; pos < layoutManager.getItemCount(); pos++) {
+			if(isTopLevelComment(pos)) {
+				jumpToPosition(pos);
 				restartReadAloudAt(pos);
-				break;
+				return;
 			}
 		}
 	}
@@ -841,14 +837,11 @@ public class CommentListingFragment extends RRFragment
 		final LinearLayoutManager layoutManager = (LinearLayoutManager)
 				mRecyclerView.getLayoutManager();
 
-		for(
-				int pos = layoutManager.findFirstVisibleItemPosition() + 1;
+		for(int pos = layoutManager.findFirstVisibleItemPosition() + 1;
 				pos < layoutManager.getItemCount();
-				pos++
-		) {
-			final GroupedRecyclerViewAdapter.Item item = mCommentListingManager.getItemAtPosition(
-					pos
-			);
+				pos++) {
+			final GroupedRecyclerViewAdapter.Item item
+					= mCommentListingManager.getItemAtPosition(pos);
 			if(item instanceof RedditCommentListItem
 					&& ((RedditCommentListItem)item).isComment()) {
 				layoutManager.scrollToPositionWithOffset(pos, 0);
@@ -859,17 +852,35 @@ public class CommentListingFragment extends RRFragment
 		}
 	}
 
+	private boolean isTopLevelComment(final int position) {
+		final GroupedRecyclerViewAdapter.Item item
+				= mCommentListingManager.getItemAtPosition(position);
+
+		return item instanceof RedditCommentListItem
+				&& ((RedditCommentListItem)item).isComment()
+				&& ((RedditCommentListItem)item).getIndent() == 0;
+	}
+
+	private void jumpToPosition(final int position) {
+		final LinearLayoutManager layoutManager
+				= (LinearLayoutManager)mRecyclerView.getLayoutManager();
+
+		mParentJumpCount++;
+		layoutManager.scrollToPositionWithOffset(position, 0);
+		setAccessibilityFocusAfterLayout(position, true);
+	}
+
 	@SuppressLint("AccessibilityFocus")
 	private void setFocusDelayed(final int pos) {
 		final RecyclerView recyclerView = mRecyclerView;
 		final long generation = ++mFocusGeneration;
 		AndroidCommon.UI_THREAD_HANDLER.postDelayed(() -> {
-			if (generation != mFocusGeneration || !recyclerView.isAttachedToWindow()) {
+			if(generation != mFocusGeneration || !recyclerView.isAttachedToWindow()) {
 				return;
 			}
 			final RecyclerView.ViewHolder view
 					= mRecyclerView.findViewHolderForAdapterPosition(pos);
-			if (view != null) {
+			if(view != null) {
 				final View item = view.itemView;
 				item.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED);
 				item.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_SELECTED);
@@ -878,6 +889,33 @@ public class CommentListingFragment extends RRFragment
 						null);
 			}
 		}, 800);
+	}
+
+	@SuppressLint("AccessibilityFocus")
+	private void setAccessibilityFocusAfterLayout(
+			final int position,
+			final boolean allowRetry) {
+
+		final int jumpCount = mParentJumpCount;
+
+		OneShotPreDrawListener.add(mRecyclerView, () -> {
+
+			if(jumpCount != mParentJumpCount) {
+				return;
+			}
+
+			final RecyclerView.ViewHolder holder
+					= mRecyclerView.findViewHolderForAdapterPosition(position);
+
+			if(holder != null) {
+				holder.itemView.performAccessibilityAction(
+						AccessibilityNodeInfo.ACTION_ACCESSIBILITY_FOCUS,
+						null);
+
+			} else if(allowRetry && mRecyclerView.hasPendingAdapterUpdates()) {
+				setAccessibilityFocusAfterLayout(position, false);
+			}
+		});
 	}
 
 	private void releaseTTSListener() {

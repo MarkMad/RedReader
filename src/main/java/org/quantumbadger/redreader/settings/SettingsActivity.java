@@ -49,6 +49,11 @@ public class SettingsActivity extends ViewsBaseActivity {
 	}
 
 	@Override
+	protected boolean baseActivityContentExtendsBehindNavigationBar() {
+		return true;
+	}
+
+	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
 
 		PrefsUtility.applySettingsTheme(this);
