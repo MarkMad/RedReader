@@ -2000,4 +2000,14 @@
 	<!-- 2026-09-16 -->
 	<!-- Translators: shown under the side-toolbar swipe zone setting when it is disabled because Android's gesture navigation is in use -->
 	<string name="pref_behaviour_bezel_toolbar_swipezone_gesture_nav_summary">Not available with Android gesture navigation</string>
+	<string name="tts_notification_channel">Read aloud</string>
+	<string name="tts_notification_title">Read aloud</string>
+	<string name="tts_notification_playing">Playing</string>
+	<string name="tts_notification_paused">Paused</string>
+	<string name="tts_notification_pause">Pause</string>
+	<string name="tts_notification_resume">Resume</string>
+	<string name="tts_notification_previous">Previous comment</string>
+	<string name="tts_notification_next">Next comment</string>
+	<string name="tts_notification_stop">Stop</string>
+	<string name="tts_notification_permission_denied">Read aloud will continue, but lock-screen controls are unavailable without notification permission.</string>
 </resources>

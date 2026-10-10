@@ -59,6 +59,7 @@ public class NativeTTSManager {
 	private final Context mContext;
 	private final Handler mHandler = new Handler(Looper.getMainLooper());
 	private final Queue<TTSItem> mPendingItems = new ArrayDeque<>();
+		private final List<TTSItem> mOriginalItems = new java.util.ArrayList<>();
 	private final Set<String> mOutstandingEarcons = new HashSet<>();
 	private final Set<String> mStartedSpeech = new HashSet<>();
 	private final Set<String> mStartReceived = new HashSet<>();
@@ -78,6 +79,9 @@ public class NativeTTSManager {
 	private float mSpeechRate;
 	private boolean mSpeechRateSet;
 	private int mPreviousCommentIndent = NO_COMMENT_INDENT;
+		private int mCurrentCommentPosition = -1;
+		private int mPausedPosition = -1;
+		private boolean mIsPaused;
 	private SpeechRequest mCurrentSpeech;
 	private SpeechRequest mUpcomingSpeech;
 	private Listener mListener;
@@ -275,6 +279,7 @@ public class NativeTTSManager {
 
 	private void failInitialization() {
 		final boolean reportFailure = mIsSpeaking;
+		clearPlaybackSource();
 		cancelPlayback();
 		mTTS.shutdown();
 		mTTS = null;
@@ -345,7 +350,14 @@ public class NativeTTSManager {
 			mCurrentSpeech = mUpcomingSpeech;
 			mUpcomingSpeech = null;
 		} while (mCurrentSpeech != null && mCompletedSpeech.remove(mCurrentSpeech.mId));
+		updateCurrentCommentPosition();
 		fillSpeechQueue();
+	}
+
+	private void updateCurrentCommentPosition() {
+		if (mCurrentSpeech != null && mCurrentSpeech.mItem.position >= 0) {
+			mCurrentCommentPosition = mCurrentSpeech.mItem.position;
+		}
 	}
 
 	private synchronized void onFailed(final String utteranceId, final int errorCode) {
@@ -356,6 +368,7 @@ public class NativeTTSManager {
 
 	private synchronized void onStopped(final String utteranceId) {
 		if (isActiveId(utteranceId)) {
+			clearPlaybackSource();
 			cancelPlayback();
 			if (mTTS != null) {
 				mTTS.stop();
@@ -417,15 +430,35 @@ public class NativeTTSManager {
 	}
 
 	public synchronized void readAloud(@Nullable final List<TTSItem> items) {
-		stop();
-		mPreviousCommentIndent = NO_COMMENT_INDENT;
-		mLookaheadEnabled = General.getSharedPrefs(mContext)
-				.getBoolean(PREF_TTS_LOOKAHEAD, true);
 		if (items == null) {
+			stop();
 			return;
 		}
+		mOriginalItems.clear();
+		mLookaheadEnabled = General.getSharedPrefs(mContext)
+				.getBoolean(PREF_TTS_LOOKAHEAD, true);
+		mOriginalItems.addAll(items);
+		startPlaybackFromSourceIndex(0);
+	}
+
+	private void startPlaybackFromSourceIndex(final int sourceIndex) {
+		cancelPlayback(false);
+		if (mTTS != null) {
+			mTTS.stop();
+		}
+		mIsPaused = false;
+		mPausedPosition = -1;
+		mCurrentCommentPosition = -1;
+		mPreviousCommentIndent = NO_COMMENT_INDENT;
+		for (int i = 0; i < sourceIndex; i++) {
+			final TTSItem item = mOriginalItems.get(i);
+			if (item != null && item.commentIndent != NO_COMMENT_INDENT) {
+				mPreviousCommentIndent = item.commentIndent;
+			}
+		}
 		final int limit = TextToSpeech.getMaxSpeechInputLength();
-		for (final TTSItem item : items) {
+		for (int i = sourceIndex; i < mOriginalItems.size(); i++) {
+			final TTSItem item = mOriginalItems.get(i);
 			if (item == null || item.text == null || item.text.trim().isEmpty()) {
 				continue;
 			}
@@ -444,6 +477,8 @@ public class NativeTTSManager {
 			}
 		}
 		if (mPendingItems.isEmpty()) {
+			clearPlaybackSource();
+			notifyListener();
 			return;
 		}
 		mIsSpeaking = true;
@@ -461,6 +496,7 @@ public class NativeTTSManager {
 			if (mCurrentSpeech == null) {
 				return;
 			}
+			updateCurrentCommentPosition();
 			logEvent(mCurrentSpeech.mId, "submitted", 0);
 		}
 		if (mLookaheadEnabled && mUpcomingSpeech == null && !mPendingItems.isEmpty()) {
@@ -472,6 +508,7 @@ public class NativeTTSManager {
 		}
 		if (mCurrentSpeech == null && mPendingItems.isEmpty()) {
 			mIsSpeaking = false;
+			clearPlaybackSource();
 			notifyListener();
 		}
 	}
@@ -516,6 +553,7 @@ public class NativeTTSManager {
 
 	private void failPlayback(final String id, final String event, final int errorCode) {
 		logEvent(id, event, errorCode);
+		clearPlaybackSource();
 		cancelPlayback();
 		if (mTTS != null) {
 			mTTS.stop();
@@ -551,13 +589,88 @@ public class NativeTTSManager {
 	}
 
 	public synchronized void stop() {
+		clearPlaybackSource();
 		cancelPlayback();
 		if (mTTS != null) {
 			mTTS.stop();
 		}
 	}
 
+	public synchronized void pause() {
+		if (!mIsSpeaking) {
+			return;
+		}
+		mPausedPosition = mCurrentCommentPosition;
+		mIsPaused = true;
+		cancelPlayback();
+		if (mTTS != null) {
+			mTTS.stop();
+		}
+	}
+
+	public synchronized void resume() {
+		if (!mIsPaused || mOriginalItems.isEmpty()) {
+			return;
+		}
+		final int sourceIndex = mPausedPosition < 0
+				? 0
+				: findSourceIndexForPosition(mPausedPosition);
+		startPlaybackFromSourceIndex(Math.max(0, sourceIndex));
+	}
+
+	public synchronized boolean skipToNextComment() {
+		return skipComment(true);
+	}
+
+	public synchronized boolean skipToPreviousComment() {
+		return skipComment(false);
+	}
+
+	private boolean skipComment(final boolean forward) {
+		if (mOriginalItems.isEmpty()) {
+			return false;
+		}
+		final int currentPosition = mIsPaused ? mPausedPosition : mCurrentCommentPosition;
+		int targetPosition = -1;
+		for (final TTSItem item : mOriginalItems) {
+			if (item == null || item.position < 0) {
+				continue;
+			}
+			if (forward && (currentPosition < 0 || item.position > currentPosition)) {
+				targetPosition = item.position;
+				break;
+			}
+			if (!forward && item.position < currentPosition) {
+				targetPosition = item.position;
+			}
+		}
+		if (targetPosition < 0) {
+			return false;
+		}
+		if (mIsPaused) {
+			mPausedPosition = targetPosition;
+			mCurrentCommentPosition = targetPosition;
+			return true;
+		}
+		startPlaybackFromSourceIndex(findSourceIndexForPosition(targetPosition));
+		return true;
+	}
+
+	private int findSourceIndexForPosition(final int position) {
+		for (int i = 0; i < mOriginalItems.size(); i++) {
+			final TTSItem item = mOriginalItems.get(i);
+			if (item != null && item.position == position) {
+				return i;
+			}
+		}
+		return 0;
+	}
+
 	private void cancelPlayback() {
+		cancelPlayback(true);
+	}
+
+	private void cancelPlayback(final boolean notify) {
 		++mPlaybackGeneration;
 		mCurrentSpeech = null;
 		mUpcomingSpeech = null;
@@ -570,7 +683,16 @@ public class NativeTTSManager {
 		mCompletedSpeech.clear();
 		mQueueStarted = false;
 		mIsSpeaking = false;
-		notifyListener();
+		if (notify) {
+			notifyListener();
+		}
+	}
+
+	private void clearPlaybackSource() {
+		mOriginalItems.clear();
+		mIsPaused = false;
+		mPausedPosition = -1;
+		mCurrentCommentPosition = -1;
 	}
 
 	/** Releases the isolated engine created by {@link #createForTesting}. */
@@ -607,5 +729,9 @@ public class NativeTTSManager {
 
 	public synchronized boolean isSpeaking() {
 		return mIsSpeaking;
+	}
+
+	public synchronized boolean isPaused() {
+		return mIsPaused;
 	}
 }

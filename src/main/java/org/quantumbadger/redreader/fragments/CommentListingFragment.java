@@ -17,9 +17,12 @@
 
 package org.quantumbadger.redreader.fragments;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -51,6 +54,7 @@ import org.quantumbadger.redreader.activities.OptionsMenuUtility;
 import org.quantumbadger.redreader.adapters.FilteredCommentListingManager;
 import org.quantumbadger.redreader.adapters.GroupedRecyclerViewAdapter;
 import org.quantumbadger.redreader.audio.NativeTTSManager;
+import org.quantumbadger.redreader.audio.NativeTTSPlaybackService;
 import org.quantumbadger.redreader.cache.downloadstrategy.DownloadStrategy;
 import org.quantumbadger.redreader.cache.downloadstrategy.DownloadStrategyAlways;
 import org.quantumbadger.redreader.cache.downloadstrategy.DownloadStrategyIfNotCached;
@@ -923,16 +927,57 @@ public class CommentListingFragment extends RRFragment
 		if (mTTSManager != null && mTTSListener != null) {
 			mTTSManager.clearListener(mTTSListener);
 		}
+		if (mListingView != null) {
+			NativeTTSPlaybackService.updatePlayback(mListingView.getContext(), false);
+		NativeTTSPlaybackService.updatePlayback(mListingView.getContext(), false);
+		}
 		mTTSListener = null;
 		mTTSManager = null;
 	}
 
 	private void toggleReadAloud(final ImageButton ttsButton) {
-		final NativeTTSManager tts = NativeTTSManager.getInstance(getContext());
+		toggleReadAloud(ttsButton, false);
+	}
+
+	private void toggleReadAloud(
+			final ImageButton ttsButton,
+			final boolean notificationPermissionChecked) {
+		final Context context = getContext();
+		if (context == null) {
+			return;
+		}
+		final NativeTTSManager tts = NativeTTSManager.getInstance(context);
+		if (!notificationPermissionChecked && !tts.isSpeaking() && !tts.isPaused()
+				&& Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+				&& context.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)
+				!= PackageManager.PERMISSION_GRANTED
+				&& getActivity() instanceof BaseActivity) {
+			((BaseActivity) getActivity()).requestPermissionWithCallback(
+					Manifest.permission.POST_NOTIFICATIONS,
+					new BaseActivity.PermissionCallback() {
+						@Override
+						public void onPermissionGranted() {
+							toggleReadAloud(ttsButton, true);
+						}
+
+						@Override
+						public void onPermissionDenied() {
+							if (getContext() != null) {
+								General.quickToast(getContext(), getString(
+										R.string.tts_notification_permission_denied));
+							}
+							toggleReadAloud(ttsButton, true);
+						}
+					});
+			return;
+		}
 		mTTSManager = tts;
+		final Context appContext = context.getApplicationContext();
 		mTTSListener = new NativeTTSManager.Listener() {
 			@Override
 			public void onTTSStateChanged(final boolean isSpeaking) {
+				NativeTTSPlaybackService.updatePlayback(
+						appContext, isSpeaking || tts.isPaused());
 				if (!ttsButton.isAttachedToWindow()) {
 					return;
 				}
@@ -970,6 +1015,8 @@ public class CommentListingFragment extends RRFragment
 
 		if (tts.isSpeaking()) {
 			tts.stop();
+		} else if (tts.isPaused()) {
+			tts.resume();
 		} else {
 			int startIndex = 0;
 			final LinearLayoutManager layoutManager

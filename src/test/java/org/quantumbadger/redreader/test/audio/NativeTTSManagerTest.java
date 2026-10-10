@@ -19,6 +19,7 @@ package org.quantumbadger.redreader.test.audio;
 
 import android.content.Context;
 import android.content.Intent;
+import android.app.Notification;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -40,11 +41,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.quantumbadger.redreader.R;
 import org.quantumbadger.redreader.audio.NativeTTSManager;
+import org.quantumbadger.redreader.audio.NativeTTSPlaybackService;
 import org.quantumbadger.redreader.audio.TTSEarconPlayer;
 import org.quantumbadger.redreader.common.General;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.Robolectric;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.Shadows;
+import org.robolectric.android.controller.ServiceController;
 import org.robolectric.annotation.Config;
 import org.robolectric.annotation.Implementation;
 import org.robolectric.annotation.Implements;
@@ -187,6 +191,78 @@ public class NativeTTSManagerTest {
 		Assert.assertTrue(TestTTS.spoken.isEmpty());
 		read("next");
 		Assert.assertEquals(Arrays.asList("next"), TestTTS.spoken);
+	}
+
+	@Test
+	public void pauseAndResumeRestartsCurrentComment() {
+		read("first", "second");
+		TestTTS.init(TextToSpeech.SUCCESS);
+		final String currentId = TestTTS.ids.get(0);
+		TestTTS.progress.onStart(currentId);
+		TestTTS.progress.onAudioAvailable(currentId, new byte[] {1});
+		idle();
+
+		manager.pause();
+		Assert.assertTrue(manager.isPaused());
+		Assert.assertFalse(manager.isSpeaking());
+		manager.resume();
+
+		Assert.assertFalse(manager.isPaused());
+		Assert.assertTrue(manager.isSpeaking());
+		Assert.assertEquals(Arrays.asList("first", "second", "first", "second"),
+				TestTTS.spoken);
+	}
+
+	@Test
+	public void commentNavigationRespectsQueueBoundaries() {
+		read("first", "second", "third");
+		TestTTS.init(TextToSpeech.SUCCESS);
+
+		Assert.assertFalse(manager.skipToPreviousComment());
+		Assert.assertTrue(manager.skipToNextComment());
+		Assert.assertEquals(Arrays.asList("first", "second", "second", "third"),
+				TestTTS.spoken);
+		Assert.assertTrue(manager.skipToPreviousComment());
+		Assert.assertEquals(Arrays.asList(
+				"first", "second", "second", "third", "first", "second"),
+				TestTTS.spoken);
+		Assert.assertTrue(manager.skipToNextComment());
+		Assert.assertTrue(manager.skipToNextComment());
+		Assert.assertFalse(manager.skipToNextComment());
+	}
+
+	@Test
+	public void mediaServicePublishesGenericNotificationAndRoutesActions() {
+		read("first", "second", "third");
+		TestTTS.init(TextToSpeech.SUCCESS);
+		final Context context = RuntimeEnvironment.getApplication();
+		final ServiceController<NativeTTSPlaybackService> controller =
+				Robolectric.buildService(NativeTTSPlaybackService.class).create();
+		controller.get().onStartCommand(new Intent(context, NativeTTSPlaybackService.class)
+				.setAction("org.quantumbadger.redreader.tts.UPDATE"), 0, 1);
+
+		final Notification notification = Shadows.shadowOf(controller.get())
+				.getLastForegroundNotification();
+		Assert.assertNotNull(notification);
+		Assert.assertEquals("Read aloud",
+				notification.extras.getString(Notification.EXTRA_TITLE));
+		Assert.assertEquals(4, notification.actions.length);
+
+		controller.get().onStartCommand(new Intent(context, NativeTTSPlaybackService.class)
+				.setAction("org.quantumbadger.redreader.tts.PLAY_PAUSE"), 0, 2);
+		Assert.assertTrue(manager.isPaused());
+		controller.get().onStartCommand(new Intent(context, NativeTTSPlaybackService.class)
+				.setAction("org.quantumbadger.redreader.tts.PLAY_PAUSE"), 0, 3);
+		Assert.assertTrue(manager.isSpeaking());
+		controller.get().onStartCommand(new Intent(context, NativeTTSPlaybackService.class)
+				.setAction("org.quantumbadger.redreader.tts.NEXT"), 0, 4);
+		Assert.assertEquals(Arrays.asList(
+				"first", "second", "first", "second", "second", "third"), TestTTS.spoken);
+		controller.get().onStartCommand(new Intent(context, NativeTTSPlaybackService.class)
+				.setAction("org.quantumbadger.redreader.tts.STOP"), 0, 5);
+		Assert.assertFalse(manager.isSpeaking());
+		Assert.assertFalse(manager.isPaused());
+		controller.destroy();
 	}
 
 	@Test

@@ -45,6 +45,11 @@ ordered audio events, not extra speech slots.
    another comment, and replace the session while a lookahead request is pending.
    Old speech/sounds must cease promptly; delayed callbacks must not move focus,
    restart reading, or show an error for deliberate cancellation.
+      Lock the device during playback and verify the lock-screen controls remain
+      available: pause/resume, previous/next comment, and stop. Resume restarts the
+      current comment from its beginning. Navigating away removes the notification;
+      denying notification permission leaves speech working but hides lock-screen
+      controls on Android 13 and later.
 8. Temporarily make Cedar unavailable using its own controls. A rejected request
    or synthesis failure must stop once and show the existing read-aloud error;
    later comments must not be rapidly skipped. Restore the server and retry.
