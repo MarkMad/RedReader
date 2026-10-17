@@ -84,6 +84,7 @@ public class NativeTTSManager {
 		private boolean mIsPaused;
 	private SpeechRequest mCurrentSpeech;
 	private SpeechRequest mUpcomingSpeech;
+	private SpeechRequest mNextSpeech;
 	private Listener mListener;
 
 	private static final class SpeechRequest {
@@ -296,6 +297,7 @@ public class NativeTTSManager {
 		}
 		mStartReceived.add(utteranceId);
 		maybeHighlight(utteranceId);
+		fillNextSpeech();
 	}
 
 	private synchronized void onAudioAvailableMain(final String utteranceId) {
@@ -313,6 +315,8 @@ public class NativeTTSManager {
 			started = mCurrentSpeech;
 		} else if (mUpcomingSpeech != null && mUpcomingSpeech.mId.equals(utteranceId)) {
 			started = mUpcomingSpeech;
+		} else if (mNextSpeech != null && mNextSpeech.mId.equals(utteranceId)) {
+			started = mNextSpeech;
 		} else {
 			started = null;
 		}
@@ -341,14 +345,16 @@ public class NativeTTSManager {
 		mAudioReceived.remove(utteranceId);
 		mAudioLogged.remove(utteranceId);
 		if (mCurrentSpeech == null || !mCurrentSpeech.mId.equals(utteranceId)) {
-			if (mUpcomingSpeech != null && mUpcomingSpeech.mId.equals(utteranceId)) {
+			if ((mUpcomingSpeech != null && mUpcomingSpeech.mId.equals(utteranceId))
+					|| (mNextSpeech != null && mNextSpeech.mId.equals(utteranceId))) {
 				mCompletedSpeech.add(utteranceId);
 			}
 			return;
 		}
 		do {
 			mCurrentSpeech = mUpcomingSpeech;
-			mUpcomingSpeech = null;
+			mUpcomingSpeech = mNextSpeech;
+			mNextSpeech = null;
 		} while (mCurrentSpeech != null && mCompletedSpeech.remove(mCurrentSpeech.mId));
 		updateCurrentCommentPosition();
 		fillSpeechQueue();
@@ -379,6 +385,7 @@ public class NativeTTSManager {
 	private boolean isActiveId(final String utteranceId) {
 		return utteranceId != null && (utteranceId.equals(speechId(mCurrentSpeech))
 				|| utteranceId.equals(speechId(mUpcomingSpeech))
+				|| utteranceId.equals(speechId(mNextSpeech))
 				|| mOutstandingEarcons.contains(utteranceId));
 	}
 
@@ -394,6 +401,8 @@ public class NativeTTSManager {
 			return mCurrentSpeech;
 		} else if (mUpcomingSpeech != null && mUpcomingSpeech.mId.equals(utteranceId)) {
 			return mUpcomingSpeech;
+		} else if (mNextSpeech != null && mNextSpeech.mId.equals(utteranceId)) {
+			return mNextSpeech;
 		} else {
 			return null;
 		}
@@ -513,6 +522,18 @@ public class NativeTTSManager {
 		}
 	}
 
+	/** Submits one more segment than the lookahead queue already holds; only
+	 * called while an utterance is confirmed to be playing, so engines get time
+	 * to synthesize it before it reaches the front of the playback queue. */
+	private void fillNextSpeech() {
+		if (mLookaheadEnabled && mNextSpeech == null && !mPendingItems.isEmpty()) {
+			mNextSpeech = submitSpeech(mPendingItems.poll());
+			if (mNextSpeech != null) {
+				logEvent(mNextSpeech.mId, "submitted", 0);
+			}
+		}
+	}
+
 	@Nullable
 	private SpeechRequest submitSpeech(final TTSItem item) {
 		String precedingEarconId = null;
@@ -565,7 +586,8 @@ public class NativeTTSManager {
 		final long timeMs = SystemClock.elapsedRealtime();
 		final int depth;
 		synchronized (this) {
-			depth = (mCurrentSpeech == null ? 0 : 1) + (mUpcomingSpeech == null ? 0 : 1);
+			depth = (mCurrentSpeech == null ? 0 : 1) + (mUpcomingSpeech == null ? 0 : 1)
+					+ (mNextSpeech == null ? 0 : 1);
 		}
 		Log.d(TAG, "id=" + id + " event=" + event + " time=" + timeMs
 				+ " depth=" + depth + " code=" + code);
@@ -674,6 +696,7 @@ public class NativeTTSManager {
 		++mPlaybackGeneration;
 		mCurrentSpeech = null;
 		mUpcomingSpeech = null;
+		mNextSpeech = null;
 		mPendingItems.clear();
 		mOutstandingEarcons.clear();
 		mStartedSpeech.clear();

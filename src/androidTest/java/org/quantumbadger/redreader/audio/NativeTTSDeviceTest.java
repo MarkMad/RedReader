@@ -283,7 +283,7 @@ public class NativeTTSDeviceTest {
 				final int firstEvent, final boolean lookahead) {
 			final List<Event> submissions = new ArrayList<>();
 			int maxDepth = 0;
-			final int depthLimit = lookahead ? 2 : 1;
+			final int depthLimit = lookahead ? 3 : 1;
 			for (int i = firstEvent; i < mEvents.size(); i++) {
 				final Event event = mEvents.get(i);
 				Assert.assertTrue(label(mEngine, lookahead,

@@ -497,10 +497,55 @@ public class NativeTTSManagerTest {
 	}
 
 	@Test
+	public void lookaheadRefillsThirdSlotWhenPlaybackStarts() {
+		read("one", "two", "three", "four");
+		TestTTS.init(TextToSpeech.SUCCESS);
+		Assert.assertEquals(Arrays.asList("one", "two"), TestTTS.spoken);
+		// Third segment queues while the first is still playing, not on completion.
+		TestTTS.progress.onStart(TestTTS.ids.get(0));
+		idle();
+		Assert.assertEquals(Arrays.asList("one", "two", "three"), TestTTS.spoken);
+		TestTTS.progress.onDone(TestTTS.ids.get(0));
+		idle();
+		TestTTS.progress.onStart(TestTTS.ids.get(1));
+		idle();
+		Assert.assertEquals(Arrays.asList(
+				"one", "two", "three", "four"), TestTTS.spoken);
+	}
+
+	@Test
+	public void lookaheadModeIgnoresRefillWhenPlaybackNeverConfirmsStart() {
+		read("one", "two", "three");
+		TestTTS.init(TextToSpeech.SUCCESS);
+		TestTTS.progress.onBeginSynthesis(TestTTS.ids.get(0), 24000, 2, 1);
+		idle();
+		Assert.assertEquals(Arrays.asList("one", "two"), TestTTS.spoken);
+	}
+
+	@Test
+	public void lookaheadThirdSlotErrorStopsPlaybackOnce() {
+		read("one", "two", "three");
+		TestTTS.init(TextToSpeech.SUCCESS);
+		TestTTS.progress.onStart(TestTTS.ids.get(0));
+		idle();
+		Assert.assertEquals(3, TestTTS.spoken.size());
+		TestTTS.progress.onError(TestTTS.ids.get(2), TextToSpeech.ERROR_SYNTHESIS);
+		idle();
+		Assert.assertFalse(manager.isSpeaking());
+		Assert.assertEquals(1, listener.errors);
+		TestTTS.progress.onError(TestTTS.ids.get(2), TextToSpeech.ERROR_SYNTHESIS);
+		idle();
+		Assert.assertEquals(1, listener.errors);
+	}
+
+	@Test
 	public void sequentialModeSubmitsOnlyAfterCompletion() {
 		setLookahead(false);
 		read("one", "two", "three");
 		TestTTS.init(TextToSpeech.SUCCESS);
+		Assert.assertEquals(Arrays.asList("one"), TestTTS.spoken);
+		TestTTS.progress.onStart(TestTTS.ids.get(0));
+		idle();
 		Assert.assertEquals(Arrays.asList("one"), TestTTS.spoken);
 		TestTTS.progress.onDone(TestTTS.ids.get(0));
 		idle();
