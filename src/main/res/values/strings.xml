@@ -2010,4 +2010,10 @@
 	<string name="tts_notification_next">Next comment</string>
 	<string name="tts_notification_stop">Stop</string>
 	<string name="tts_notification_permission_denied">Read aloud will continue, but lock-screen controls are unavailable without notification permission.</string>
+
+	<!-- 2026-10-10 -->
+	<string name="pref_appearance_navbar_opacity_key" translatable="false">pref_appearance_navbar_opacity</string>
+	<string name="pref_appearance_navbar_opacity_title">Navigation bar opacity</string>
+	<!-- Translators: navigation bar opacity option which picks an opacity based on the navigation bar colour -->
+	<string name="pref_appearance_navbar_opacity_option_auto">Automatic</string>
 </resources>
