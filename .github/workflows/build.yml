@@ -5,7 +5,11 @@ on:
     push:
     pull_request:
     schedule:
-        -   cron: '30 5 * * *'
+        -   cron: '30 5 * * 1'
+
+concurrency:
+    group: ci-${{ github.event_name }}-${{ github.ref }}
+    cancel-in-progress: true
 
 jobs:
     ci:
@@ -13,21 +17,41 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            -   id: skip_check
+                name: Skip scheduled run when there are no new commits
+                if: github.event_name == 'schedule'
+                env:
+                    GH_TOKEN: ${{ github.token }}
+                run: |
+                    LAST_SHA="$(gh run list --repo "$GITHUB_REPOSITORY" \
+                        --workflow=build.yml --event schedule --status success \
+                        --limit 1 --json headSha --jq '.[0].headSha // ""')"
+                    if [ -z "$LAST_SHA" ] || [ "$LAST_SHA" != "$(git rev-parse HEAD)" ]; then
+                        echo "New commits since the last successful scheduled run; running CI."
+                    else
+                        echo "No commits since the last successful scheduled run; skipping."
+                        echo "SKIP_CI=true" >> "$GITHUB_ENV"
+                    fi
+
             -   name: Set up Java 21
+                if: env.SKIP_CI != 'true'
                 uses: actions/setup-java@v5
                 with:
                     distribution: temurin
                     java-version: 21
 
             -   name: Validate Gradle wrapper
+                if: env.SKIP_CI != 'true'
                 uses: gradle/actions/wrapper-validation@v3
 
             -   name: Set up Gradle
+                if: env.SKIP_CI != 'true'
                 uses: gradle/actions/setup-gradle@v3
                 with:
                     cache-read-only: ${{ github.event_name == 'pull_request' }}
 
             -   name: Install NDK
+                if: env.SKIP_CI != 'true'
                 run: |
                     SDKMANAGER="${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager"
                     NDK_VERSION="$(yq .versions.ndk gradle/libs.versions.toml)"
@@ -35,25 +59,32 @@ jobs:
                     echo "y" | "$SDKMANAGER" "ndk;$NDK_VERSION" --sdk_root="${ANDROID_SDK_ROOT}"
 
             -   name: Run release build
+                if: env.SKIP_CI != 'true'
                 run: ./gradlew assembleRelease
 
             -   name: Run debug build
+                if: env.SKIP_CI != 'true'
                 run: ./gradlew assembleDebug
 
             -   name: Upload artifact to GitHub
+                if: env.SKIP_CI != 'true'
                 uses: actions/upload-artifact@v4
                 with:
                     name: RedReader-debug.apk
                     path: build/outputs/apk/debug/RedReader-debug.apk
 
             -   name: Run PMD
+                if: env.SKIP_CI != 'true'
                 run: ./gradlew pmd
 
             -   name: Run checkstyle
+                if: env.SKIP_CI != 'true'
                 run: ./gradlew checkstyle --stacktrace --info
 
             -   name: Android Lint
+                if: env.SKIP_CI != 'true'
                 run: ./gradlew lint
 
             -   name: Unit tests
+                if: env.SKIP_CI != 'true'
                 run: ./gradlew test
