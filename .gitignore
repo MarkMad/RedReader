@@ -88,3 +88,7 @@ keystore.properties
 /*.txt
 *.log
 *.har
+
+# Editor / agent tool folders
+.vscode/
+.codex/
