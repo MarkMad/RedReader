@@ -41,6 +41,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -59,7 +60,7 @@ public class NativeTTSManager {
 	private final Context mContext;
 	private final Handler mHandler = new Handler(Looper.getMainLooper());
 	private final Queue<TTSItem> mPendingItems = new ArrayDeque<>();
-		private final List<TTSItem> mOriginalItems = new java.util.ArrayList<>();
+	private final List<TTSItem> mOriginalItems = new ArrayList<>();
 	private final Set<String> mOutstandingEarcons = new HashSet<>();
 	private final Set<String> mStartedSpeech = new HashSet<>();
 	private final Set<String> mStartReceived = new HashSet<>();
@@ -79,9 +80,10 @@ public class NativeTTSManager {
 	private float mSpeechRate;
 	private boolean mSpeechRateSet;
 	private int mPreviousCommentIndent = NO_COMMENT_INDENT;
-		private int mCurrentCommentPosition = -1;
-		private int mPausedPosition = -1;
-		private boolean mIsPaused;
+	private int mCurrentCommentPosition = -1;
+	private int mPausedPosition = -1;
+	private boolean mIsPaused;
+	@Nullable private volatile String mLastAudioPostedId;
 	private SpeechRequest mCurrentSpeech;
 	private SpeechRequest mUpcomingSpeech;
 	private SpeechRequest mNextSpeech;
@@ -200,7 +202,11 @@ public class NativeTTSManager {
 
 			@Override
 			public void onAudioAvailable(final String utteranceId, final byte[] audio) {
-				mHandler.post(() -> onAudioAvailableMain(utteranceId));
+				// Engines call this for every buffer; only the first one per utterance matters.
+				if (utteranceId != null && !utteranceId.equals(mLastAudioPostedId)) {
+					mLastAudioPostedId = utteranceId;
+					mHandler.post(() -> onAudioAvailableMain(utteranceId));
+				}
 			}
 
 			@Override

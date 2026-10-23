@@ -929,7 +929,6 @@ public class CommentListingFragment extends RRFragment
 		}
 		if (mListingView != null) {
 			NativeTTSPlaybackService.updatePlayback(mListingView.getContext(), false);
-		NativeTTSPlaybackService.updatePlayback(mListingView.getContext(), false);
 		}
 		mTTSListener = null;
 		mTTSManager = null;
@@ -1006,8 +1005,9 @@ public class CommentListingFragment extends RRFragment
 
 			@Override
 			public void onTTSError() {
-				if (ttsButton.isAttachedToWindow()) {
-					General.quickToast(getContext(), getString(R.string.tts_error));
+				final Context errorContext = getContext();
+				if (errorContext != null && ttsButton.isAttachedToWindow()) {
+					General.quickToast(errorContext, getString(R.string.tts_error));
 				}
 			}
 		};
