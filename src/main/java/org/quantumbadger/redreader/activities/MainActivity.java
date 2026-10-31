@@ -42,7 +42,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.apache.commons.lang3.StringUtils;
 import org.quantumbadger.redreader.R;
-import org.quantumbadger.redreader.updates.UpdateChecks;
 import org.quantumbadger.redreader.RedReader;
 import org.quantumbadger.redreader.account.RedditAccount;
 import org.quantumbadger.redreader.account.RedditAccountChangeListener;
@@ -1043,7 +1042,6 @@ public class MainActivity extends RefreshableActivity
 	@Override
 	protected void onResume() {
 		super.onResume();
-		UpdateChecks.checkAutomatically(this);
 
 		if(mainMenuFragment != null) {
 			mainMenuFragment.onUpdateAnnouncement();
