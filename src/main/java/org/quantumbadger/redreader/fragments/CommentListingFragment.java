@@ -76,6 +76,8 @@ import org.quantumbadger.redreader.reddit.prepared.RedditChangeDataManager;
 import org.quantumbadger.redreader.reddit.prepared.RedditParsedComment;
 import org.quantumbadger.redreader.reddit.prepared.RedditPreparedPost;
 import org.quantumbadger.redreader.reddit.prepared.RedditRenderableComment;
+import org.quantumbadger.redreader.reddit.prepared.bodytext.BodyElement;
+import org.quantumbadger.redreader.reddit.prepared.bodytext.SpeechSegment;
 import org.quantumbadger.redreader.reddit.url.RedditURLParser;
 import org.quantumbadger.redreader.views.AccessibilityActionManager;
 import org.quantumbadger.redreader.views.RedditCommentView;
@@ -1056,10 +1058,12 @@ public class CommentListingFragment extends RRFragment
 				items.add(new NativeTTSManager.TTSItem(
 						LinkHandler.stripUrls(mPost.src.getTitle()), -1));
 			}
-			if (mPost.src.getRawSelfTextMarkdown() != null) {
-				items.add(new NativeTTSManager.TTSItem(
-						LinkHandler.stripUrls(mPost.src.getRawSelfTextMarkdown()), -1));
-			}
+			addSpeechItems(
+					items,
+					mPost.src.getSelfText(),
+					mPost.src.getRawSelfTextMarkdown(),
+					-1,
+					NativeTTSManager.NO_COMMENT_INDENT);
 		}
 
 		if (mCommentListingManager != null) {
@@ -1079,11 +1083,12 @@ public class CommentListingFragment extends RRFragment
 						if (parsed != null
 								&& parsed.getRawComment() != null
 								&& parsed.getRawComment().getBody() != null) {
-							final String body = parsed.getRawComment().getBody().getDecoded();
-							items.add(new NativeTTSManager.TTSItem(
-									LinkHandler.stripUrls(body),
+							addSpeechItems(
+									items,
+									parsed.getBody(),
+									parsed.getRawComment().getBody().getDecoded(),
 									i,
-									((RedditCommentListItem) item).getIndent()));
+									((RedditCommentListItem) item).getIndent());
 						}
 					}
 				}
@@ -1091,5 +1096,34 @@ public class CommentListingFragment extends RRFragment
 		}
 
 		return items;
+	}
+
+	/** Adds a body one sentence at a time, with only the first carrying the position and
+	 * indent. If the body has no displayed text, reads the raw text without a highlight. */
+	private static void addSpeechItems(
+			final List<NativeTTSManager.TTSItem> items,
+			@Nullable final BodyElement body,
+			@Nullable final String rawText,
+			final int position,
+			final int commentIndent) {
+		final List<SpeechSegment> segments = new ArrayList<>();
+		if (body != null) {
+			body.collectSpeechSegments(segments);
+		}
+		if (segments.isEmpty()) {
+			if (rawText != null) {
+				items.add(new NativeTTSManager.TTSItem(
+						LinkHandler.stripUrls(rawText), position, commentIndent));
+			}
+			return;
+		}
+		for (int i = 0; i < segments.size(); i++) {
+			final SpeechSegment segment = segments.get(i);
+			items.add(new NativeTTSManager.TTSItem(
+					segment.getText(),
+					i == 0 ? position : -1,
+					i == 0 ? commentIndent : NativeTTSManager.NO_COMMENT_INDENT,
+					segment));
+		}
 	}
 }

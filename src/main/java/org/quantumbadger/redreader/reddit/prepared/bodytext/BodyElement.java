@@ -24,6 +24,8 @@ import androidx.annotation.Nullable;
 
 import org.quantumbadger.redreader.activities.BaseActivity;
 
+import java.util.List;
+
 public abstract class BodyElement {
 
 	@NonNull private final BlockType mType;
@@ -42,4 +44,9 @@ public abstract class BodyElement {
 			@Nullable Integer textColor,
 			@Nullable Float textSize,
 			boolean showLinkButtons);
+
+	/** Adds the sentences of this element to read aloud, in display order. */
+	public void collectSpeechSegments(@NonNull final List<SpeechSegment> destination) {
+		// Elements have no speech by default
+	}
 }

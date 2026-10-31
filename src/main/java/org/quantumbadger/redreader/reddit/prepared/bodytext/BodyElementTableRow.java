@@ -27,6 +27,7 @@ import androidx.annotation.Nullable;
 import org.quantumbadger.redreader.activities.BaseActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BodyElementTableRow extends BodyElement {
 
@@ -35,6 +36,13 @@ public class BodyElementTableRow extends BodyElement {
 	public BodyElementTableRow(@NonNull final ArrayList<BodyElement> elements) {
 		super(BlockType.TABLE_ROW);
 		mElements = elements;
+	}
+
+	@Override
+	public void collectSpeechSegments(@NonNull final List<SpeechSegment> destination) {
+		for(final BodyElement element : mElements) {
+			element.collectSpeechSegments(destination);
+		}
 	}
 
 	@Override

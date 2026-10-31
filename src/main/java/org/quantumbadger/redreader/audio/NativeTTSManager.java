@@ -88,6 +88,7 @@ public class NativeTTSManager {
 	private SpeechRequest mUpcomingSpeech;
 	private SpeechRequest mNextSpeech;
 	private Listener mListener;
+	@Nullable private SpeechHighlight mActiveHighlight;
 
 	private static final class SpeechRequest {
 		private final TTSItem mItem;
@@ -108,16 +109,32 @@ public class NativeTTSManager {
 		public final String text;
 		public final int position;
 		public final int commentIndent;
+		@Nullable public final SpeechHighlight highlight;
 
 		public TTSItem(final String text, final int position) {
 			this(text, position, NO_COMMENT_INDENT);
 		}
 
 		public TTSItem(final String text, final int position, final int commentIndent) {
+			this(text, position, commentIndent, null);
+		}
+
+		public TTSItem(
+				final String text,
+				final int position,
+				final int commentIndent,
+				@Nullable final SpeechHighlight highlight) {
 			this.text = text;
 			this.position = position;
 			this.commentIndent = commentIndent;
+			this.highlight = highlight;
 		}
+	}
+
+	/** Shows which on-screen text is being spoken. Called on the main thread. */
+	public interface SpeechHighlight {
+		void show();
+		void hide();
 	}
 
 	public interface Listener {
@@ -335,6 +352,20 @@ public class NativeTTSManager {
 			if (mListener != null) {
 				mListener.onUtteranceStarted(started.mItem.position);
 			}
+			setActiveHighlight(started.mItem.highlight);
+		}
+	}
+
+	private void setActiveHighlight(@Nullable final SpeechHighlight highlight) {
+		if (mActiveHighlight == highlight) {
+			return;
+		}
+		if (mActiveHighlight != null) {
+			mActiveHighlight.hide();
+		}
+		mActiveHighlight = highlight;
+		if (highlight != null) {
+			highlight.show();
 		}
 	}
 
@@ -487,7 +518,8 @@ public class NativeTTSManager {
 				mPendingItems.add(new TTSItem(
 						item.text.substring(start, end),
 						start == 0 ? item.position : -1,
-						start == 0 ? item.commentIndent : NO_COMMENT_INDENT));
+						start == 0 ? item.commentIndent : NO_COMMENT_INDENT,
+						item.highlight));
 				start = end;
 			}
 		}
@@ -523,6 +555,7 @@ public class NativeTTSManager {
 		}
 		if (mCurrentSpeech == null && mPendingItems.isEmpty()) {
 			mIsSpeaking = false;
+			setActiveHighlight(null);
 			clearPlaybackSource();
 			notifyListener();
 		}
@@ -700,6 +733,7 @@ public class NativeTTSManager {
 
 	private void cancelPlayback(final boolean notify) {
 		++mPlaybackGeneration;
+		setActiveHighlight(null);
 		mCurrentSpeech = null;
 		mUpcomingSpeech = null;
 		mNextSpeech = null;

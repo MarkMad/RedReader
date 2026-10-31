@@ -84,8 +84,8 @@ android {
 		applicationId = "org.quantumbadger.redreader.fork"
 		minSdk = libs.versions.sdk.min.get().toInt()
 		targetSdk = libs.versions.sdk.target.get().toInt()
-		versionCode = 127
-		versionName = "1.28"
+		versionCode = 128
+		versionName = "1.28.2"
 
 		vectorDrawables.generatedDensities("mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi")
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

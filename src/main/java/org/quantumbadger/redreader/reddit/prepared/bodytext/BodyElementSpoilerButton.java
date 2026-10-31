@@ -33,6 +33,8 @@ import org.quantumbadger.redreader.R;
 import org.quantumbadger.redreader.activities.BaseActivity;
 import org.quantumbadger.redreader.common.General;
 
+import java.util.List;
+
 public class BodyElementSpoilerButton extends BodyElementBaseButton {
 
 	@NonNull private final BodyElement mSpoilerText;
@@ -43,6 +45,11 @@ public class BodyElementSpoilerButton extends BodyElementBaseButton {
 
 		super(activity.getApplicationContext().getString(R.string.spoiler), null, false);
 		mSpoilerText = spoilerText;
+	}
+
+	@Override
+	public void collectSpeechSegments(@NonNull final List<SpeechSegment> destination) {
+		mSpoilerText.collectSpeechSegments(destination);
 	}
 
 	@NonNull

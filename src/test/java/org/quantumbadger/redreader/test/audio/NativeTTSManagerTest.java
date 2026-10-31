@@ -767,6 +767,83 @@ public class NativeTTSManagerTest {
 		Assert.assertFalse(manager.isSpeaking());
 	}
 
+	private static NativeTTSManager.SpeechHighlight recordingHighlight(
+			final String name,
+			final List<String> events) {
+		return new NativeTTSManager.SpeechHighlight() {
+			@Override
+			public void show() {
+				events.add("show " + name);
+			}
+
+			@Override
+			public void hide() {
+				events.add("hide " + name);
+			}
+		};
+	}
+
+	private static void startPlaying(final int index) {
+		TestTTS.progress.onStart(TestTTS.ids.get(index));
+		TestTTS.progress.onAudioAvailable(TestTTS.ids.get(index), new byte[] {1});
+		idle();
+	}
+
+	@Test
+	public void highlightFollowsSpokenSentencesAndClearsAtEnd() {
+		final List<String> events = new ArrayList<>();
+		manager.readAloud(Arrays.asList(
+				new NativeTTSManager.TTSItem("one", 0, 0, recordingHighlight("a", events)),
+				new NativeTTSManager.TTSItem("two", -1, NativeTTSManager.NO_COMMENT_INDENT,
+						recordingHighlight("b", events))));
+		TestTTS.init(TextToSpeech.SUCCESS);
+		Assert.assertTrue(events.isEmpty());
+
+		startPlaying(0);
+		Assert.assertEquals(Arrays.asList("show a"), events);
+		Assert.assertEquals(Arrays.asList(0), listener.positions);
+
+		TestTTS.progress.onDone(TestTTS.ids.get(0));
+		idle();
+		startPlaying(1);
+		Assert.assertEquals(Arrays.asList("show a", "hide a", "show b"), events);
+
+		TestTTS.progress.onDone(TestTTS.ids.get(1));
+		idle();
+		Assert.assertEquals(Arrays.asList("show a", "hide a", "show b", "hide b"), events);
+		Assert.assertFalse(manager.isSpeaking());
+	}
+
+	@Test
+	public void stoppingClearsHighlight() {
+		final List<String> events = new ArrayList<>();
+		manager.readAloud(Arrays.asList(
+				new NativeTTSManager.TTSItem("one", 0, 0, recordingHighlight("a", events))));
+		TestTTS.init(TextToSpeech.SUCCESS);
+		startPlaying(0);
+
+		manager.stop();
+		Assert.assertEquals(Arrays.asList("show a", "hide a"), events);
+	}
+
+	@Test
+	public void pausingClearsHighlightAndResumeRestartsAtCommentStart() {
+		final List<String> events = new ArrayList<>();
+		manager.readAloud(Arrays.asList(
+				new NativeTTSManager.TTSItem("one", 0, 0, recordingHighlight("a", events)),
+				new NativeTTSManager.TTSItem("two", -1, NativeTTSManager.NO_COMMENT_INDENT,
+						recordingHighlight("b", events))));
+		TestTTS.init(TextToSpeech.SUCCESS);
+		startPlaying(0);
+
+		manager.pause();
+		Assert.assertEquals(Arrays.asList("show a", "hide a"), events);
+
+		final int spokenBefore = TestTTS.spoken.size();
+		manager.resume();
+		Assert.assertEquals("one", TestTTS.spoken.get(spokenBefore));
+	}
+
 	@Implements(value = SoundPool.class, callThroughByDefault = false)
 	public static class TestSoundPool {
 		static SoundPool.OnLoadCompleteListener loadListener;

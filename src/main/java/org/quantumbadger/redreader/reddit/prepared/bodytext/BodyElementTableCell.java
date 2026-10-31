@@ -27,6 +27,7 @@ import org.quantumbadger.redreader.activities.BaseActivity;
 import org.quantumbadger.redreader.common.General;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BodyElementTableCell extends BodyElement {
 
@@ -35,6 +36,13 @@ public class BodyElementTableCell extends BodyElement {
 	public BodyElementTableCell(@NonNull final ArrayList<BodyElement> elements) {
 		super(BlockType.TABLE_CELL);
 		mElements = elements;
+	}
+
+	@Override
+	public void collectSpeechSegments(@NonNull final List<SpeechSegment> destination) {
+		for(final BodyElement element : mElements) {
+			element.collectSpeechSegments(destination);
+		}
 	}
 
 	@Override

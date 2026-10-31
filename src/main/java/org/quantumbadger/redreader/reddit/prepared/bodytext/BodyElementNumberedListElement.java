@@ -28,6 +28,7 @@ import org.quantumbadger.redreader.activities.BaseActivity;
 import org.quantumbadger.redreader.common.General;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BodyElementNumberedListElement extends BodyElement {
 
@@ -41,6 +42,19 @@ public class BodyElementNumberedListElement extends BodyElement {
 		super(BlockType.LIST_ELEMENT);
 		mListIndex = listIndex;
 		mElements = elements;
+	}
+
+	@Override
+	public void collectSpeechSegments(@NonNull final List<SpeechSegment> destination) {
+		final int firstSegment = destination.size();
+		for(final BodyElement element : mElements) {
+			element.collectSpeechSegments(destination);
+		}
+		if(destination.size() > firstSegment) {
+			destination.set(
+					firstSegment,
+					destination.get(firstSegment).withPrefix(mListIndex + ". "));
+		}
 	}
 
 	@Override
