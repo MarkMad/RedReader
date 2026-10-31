@@ -139,6 +139,8 @@ public final class PrefsUtility {
 				|| key.equals(context.getString(R.string.pref_behaviour_postcount_key))
 				|| key.equals(context.getString(
 						R.string.pref_behaviour_mark_posts_as_read_on_scroll_key))
+				|| key.equals(context.getString(
+						R.string.pref_behaviour_hide_uncommented_posts_key))
 				|| key.equals(context.getString(R.string.pref_behaviour_comment_min_key))
 				|| key.equals(context.getString(
 						R.string.pref_behaviour_collapse_reaction_gifs_key))
@@ -1308,6 +1310,12 @@ public final class PrefsUtility {
 	public static boolean pref_behaviour_hide_read_posts() {
 		return getBoolean(
 				R.string.pref_behaviour_hide_read_posts_key,
+				false);
+	}
+
+	public static boolean pref_behaviour_hide_uncommented_posts() {
+		return getBoolean(
+				R.string.pref_behaviour_hide_uncommented_posts_key,
 				false);
 	}
 

@@ -805,6 +805,11 @@ public class PostListingFragment extends RRFragment
 									&& mPostListingURL.pathType()
 									!= RedditURLParser.USER_POST_LISTING_URL;
 
+							final boolean hideUncommentedPosts
+									= PrefsUtility.pref_behaviour_hide_uncommented_posts()
+									&& mPostListingURL.pathType()
+									!= RedditURLParser.USER_POST_LISTING_URL;
+
 							final boolean isConnectionWifi = General.isConnectionWifi(activity);
 
 							final boolean inlinePreviews
@@ -913,6 +918,7 @@ public class PostListingFragment extends RRFragment
 
 								if(!isPostBlocked
 										&& (!post.getOver_18() || isNsfwAllowed)
+										&& (!hideUncommentedPosts || post.getNum_comments() > 0)
 										&& mPostIds.add(post.getIdAlone())) {
 
 									final boolean downloadThisThumbnail = downloadThumbnails

@@ -1065,6 +1065,8 @@
 	<!-- 2018-09-11 -->
 	<string name="pref_behaviour_hide_read_posts_key" translatable="false">pref_behaviour_hide_read_posts</string>
 	<string name="pref_behaviour_hide_read_posts_title">Hide read posts</string>
+	<string name="pref_behaviour_hide_uncommented_posts_key" translatable="false">pref_behaviour_hide_uncommented_posts</string>
+	<string name="pref_behaviour_hide_uncommented_posts_title">Hide posts with no comments</string>
 
 	<!-- 2018-10-06 -->
 	<string name="pref_menus_mainmenu_shortcutitems_title">Shortcuts</string>
