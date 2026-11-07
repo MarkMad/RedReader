@@ -42,6 +42,7 @@ import org.quantumbadger.redreader.activities.PostListingActivity
 import org.quantumbadger.redreader.activities.WebViewActivity
 import org.quantumbadger.redreader.cache.CacheManager
 import org.quantumbadger.redreader.common.AndroidCommon
+import org.quantumbadger.redreader.common.CompactListDialog
 import org.quantumbadger.redreader.common.Constants
 import org.quantumbadger.redreader.common.FileUtils
 import org.quantumbadger.redreader.common.General
@@ -49,6 +50,7 @@ import org.quantumbadger.redreader.common.LinkHandler
 import org.quantumbadger.redreader.common.PrefsUtility
 import org.quantumbadger.redreader.common.PrefsUtility.PostFlingAction
 import org.quantumbadger.redreader.common.RRError
+import org.quantumbadger.redreader.common.TranslateHelper
 import org.quantumbadger.redreader.common.UriString
 import org.quantumbadger.redreader.common.time.TimestampUTC
 import org.quantumbadger.redreader.fragments.PostPropertiesDialog
@@ -101,6 +103,7 @@ object RedditPostActions {
 		SAVE_IMAGE(R.string.action_save_image),
 		COPY(R.string.action_copy_link),
 		COPY_SELFTEXT(R.string.action_copy_selftext),
+		TRANSLATE(R.string.action_translate),
 		SELFTEXT_LINKS(R.string.action_selftext_links),
 		BACK(R.string.action_back),
 		BLOCK(R.string.action_block_subreddit),
@@ -232,6 +235,11 @@ object RedditPostActions {
 					PostFlingAction.COPY -> ActionDescriptionPair(
 						Action.COPY,
 						R.string.action_copy_link
+					)
+
+					PostFlingAction.TRANSLATE -> ActionDescriptionPair(
+						Action.TRANSLATE,
+						R.string.action_translate
 					)
 
 					PostFlingAction.USER_PROFILE -> ActionDescriptionPair(
@@ -426,9 +434,12 @@ object RedditPostActions {
 					General.quickToast(activity, R.string.error_toast_no_urls_in_self)
 				} else {
 					val links = linksInComment.toList()
-					val linksArr = linksInComment.map { it.value }.toTypedArray()
-					val builder = MaterialAlertDialogBuilder(activity)
-					builder.setItems(linksArr) { dialog: DialogInterface, which: Int ->
+					val linksArr = linksInComment.map { it.value }.toTypedArray<CharSequence>()
+					CompactListDialog.show(
+						activity,
+						activity.getString(R.string.action_selftext_links),
+						linksArr
+					) { dialog: DialogInterface, which: Int ->
 						LinkHandler.onLinkClicked(
 							activity,
 							links.get(which),
@@ -437,10 +448,6 @@ object RedditPostActions {
 						)
 						dialog.dismiss()
 					}
-					val alert = builder.create()
-					alert.setTitle(R.string.action_selftext_links)
-					alert.setCanceledOnTouchOutside(true)
-					alert.show()
 				}
 			}
 
@@ -507,6 +514,18 @@ object RedditPostActions {
 					activity.applicationContext,
 					R.string.post_text_copied_to_clipboard
 				)
+			}
+
+			Action.TRANSLATE -> {
+				val title = post.src.title
+				val selfText = if (post.src.hasSelfText()) {
+					TranslateHelper.htmlToPlainText(post.src.src.selftext_html?.decoded)
+						.ifEmpty { post.src.unescapedSelfText }
+				} else {
+					""
+				}
+				val text = if (selfText.isNullOrBlank()) title else "$title\n\n$selfText"
+				TranslateHelper.translate(activity, text)
 			}
 
 			Action.GOTO_SUBREDDIT -> {
@@ -900,6 +919,9 @@ object RedditPostActions {
 				)
 			)
 		}
+		if (itemPref.contains(Action.TRANSLATE)) {
+			menu.add(RPVMenuItem(activity, R.string.action_translate, Action.TRANSLATE))
+		}
 		if (itemPref.contains(Action.USER_PROFILE)) {
 			menu.add(
 				RPVMenuItem(
@@ -925,22 +947,14 @@ object RedditPostActions {
 				)
 			)
 		}
-		val menuText = arrayOfNulls<String>(menu.size)
-		for (i in menuText.indices) {
-			menuText[i] = menu[i].title
-		}
-		val builder = MaterialAlertDialogBuilder(activity)
-		builder.setItems(menuText) { _: DialogInterface?, which: Int ->
+		val menuText = Array<CharSequence>(menu.size) { menu[it].title }
+		CompactListDialog.show(activity, null, menuText) { _: DialogInterface?, which: Int ->
 			onActionMenuItemSelected(
 				post,
 				activity,
 				menu[which].action
 			)
 		}
-
-		val alert = builder.create()
-		alert.setCanceledOnTouchOutside(true)
-		alert.show()
 	}
 
 	fun generateToolbar(

@@ -26,7 +26,6 @@ import android.net.Uri;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -37,10 +36,12 @@ import org.quantumbadger.redreader.account.RedditAccountManager;
 import org.quantumbadger.redreader.activities.CommentEditActivity;
 import org.quantumbadger.redreader.activities.CommentReplyActivity;
 import org.quantumbadger.redreader.cache.CacheManager;
+import org.quantumbadger.redreader.common.CompactListDialog;
 import org.quantumbadger.redreader.common.General;
 import org.quantumbadger.redreader.common.LinkHandler;
 import org.quantumbadger.redreader.common.PrefsUtility;
 import org.quantumbadger.redreader.common.RRError;
+import org.quantumbadger.redreader.common.TranslateHelper;
 import org.quantumbadger.redreader.common.UriString;
 import org.quantumbadger.redreader.common.time.TimestampUTC;
 import org.quantumbadger.redreader.fragments.CommentListingFragment;
@@ -70,6 +71,7 @@ public class RedditAPICommentAction {
 		REPORT,
 		SHARE,
 		COPY_TEXT,
+		TRANSLATE,
 		COPY_URL,
 		REPLY,
 		USER_PROFILE,
@@ -256,6 +258,13 @@ public class RedditAPICommentAction {
 					RedditCommentAction.COPY_TEXT));
 		}
 
+		if(itemPref.contains(RedditCommentAction.TRANSLATE)) {
+			menu.add(new RCVMenuItem(
+					activity,
+					R.string.action_translate,
+					RedditCommentAction.TRANSLATE));
+		}
+
 		if(itemPref.contains(RedditCommentAction.COPY_URL)) {
 			menu.add(new RCVMenuItem(
 					activity,
@@ -283,19 +292,14 @@ public class RedditAPICommentAction {
 			menuText[i] = menu.get(i).title;
 		}
 
-		final MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
-
-		builder.setItems(menuText, (dialog, which) -> onActionMenuItemSelected(
-				comment,
-				commentView,
-				activity,
-				commentListingFragment,
-				menu.get(which).action,
-				changeDataManager));
-
-		final AlertDialog alert = builder.create();
-		alert.setCanceledOnTouchOutside(true);
-		alert.show();
+		CompactListDialog.show(activity, null, menuText, (dialog, which) ->
+				onActionMenuItemSelected(
+						comment,
+						commentView,
+						activity,
+						commentListingFragment,
+						menu.get(which).action,
+						changeDataManager));
 	}
 
 	public static void onActionMenuItemSelected(
@@ -428,18 +432,17 @@ public class RedditAPICommentAction {
 					final String[] linksArr =
 							linksInComment.toArray(new String[0]);
 
-					final MaterialAlertDialogBuilder builder
-							= new MaterialAlertDialogBuilder(activity);
-
-					builder.setItems(linksArr, (dialog, which) -> {
-						LinkHandler.onLinkClicked(activity, new UriString(linksArr[which]), false);
-						dialog.dismiss();
-					});
-
-					final AlertDialog alert = builder.create();
-					alert.setTitle(R.string.action_comment_links);
-					alert.setCanceledOnTouchOutside(true);
-					alert.show();
+					CompactListDialog.show(
+							activity,
+							activity.getString(R.string.action_comment_links),
+							linksArr,
+							(dialog, which) -> {
+								LinkHandler.onLinkClicked(
+										activity,
+										new UriString(linksArr[which]),
+										false);
+								dialog.dismiss();
+							});
 				}
 
 				break;
@@ -484,6 +487,21 @@ public class RedditAPICommentAction {
 							activity.getApplicationContext(),
 							R.string.comment_text_copied_to_clipboard);
 				}
+				break;
+			}
+
+			case TRANSLATE: {
+				final String html = comment.getBody_html() != null
+						? comment.getBody_html().getDecoded()
+						: null;
+
+				String text = TranslateHelper.htmlToPlainText(html);
+
+				if(text.isEmpty() && comment.getBody() != null) {
+					text = comment.getBody().getDecoded();
+				}
+
+				TranslateHelper.translate(activity, text);
 				break;
 			}
 

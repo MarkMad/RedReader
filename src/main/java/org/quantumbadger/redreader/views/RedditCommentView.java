@@ -191,6 +191,11 @@ public class RedditCommentView extends FlingableItemView
 						R.string.action_copy_link
 				);
 
+			case TRANSLATE:
+				return new ActionDescriptionPair(
+						RedditAPICommentAction.RedditCommentAction.TRANSLATE,
+						R.string.action_translate);
+
 			case USER_PROFILE:
 				return new ActionDescriptionPair(
 						RedditAPICommentAction.RedditCommentAction.USER_PROFILE,
