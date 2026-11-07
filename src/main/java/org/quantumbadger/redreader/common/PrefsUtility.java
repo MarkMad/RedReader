@@ -1922,6 +1922,57 @@ public final class PrefsUtility {
 				true);
 	}
 
+	// Translucent, so that the text stays readable on both light and dark themes
+	public enum TTSHighlightColour {
+		BLUE(0x6642A5F5),
+		ORANGE(0x66FFB300),
+		GREEN(0x6666BB6A),
+		PURPLE(0x66AB47BC),
+		PINK(0x66F06292),
+		NONE(0);
+
+		public final int argb;
+
+		TTSHighlightColour(final int argb) {
+			this.argb = argb;
+		}
+	}
+
+	public static TTSHighlightColour pref_tts_highlight_colour() {
+		try {
+			return TTSHighlightColour.valueOf(StringUtils.asciiUppercase(getString(
+					R.string.pref_tts_highlight_colour_key,
+					"blue")));
+		} catch(final IllegalArgumentException e) {
+			return TTSHighlightColour.BLUE;
+		}
+	}
+
+	public enum TTSTextColour {
+		DEFAULT(0),
+		BLACK(0xFF000000),
+		WHITE(0xFFFFFFFF),
+		DARK_BLUE(0xFF0D47A1),
+		YELLOW(0xFFFFEB3B),
+		RED(0xFFD32F2F);
+
+		public final int argb;
+
+		TTSTextColour(final int argb) {
+			this.argb = argb;
+		}
+	}
+
+	public static TTSTextColour pref_tts_text_colour() {
+		try {
+			return TTSTextColour.valueOf(StringUtils.asciiUppercase(getString(
+					R.string.pref_tts_text_colour_key,
+					"default")));
+		} catch(final IllegalArgumentException e) {
+			return TTSTextColour.DEFAULT;
+		}
+	}
+
 	public enum BehaviourCollapseStickyComments {
 		ALWAYS, ONLY_BOTS, NEVER
 	}

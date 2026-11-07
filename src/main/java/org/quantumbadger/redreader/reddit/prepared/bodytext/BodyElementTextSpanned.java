@@ -22,6 +22,7 @@ import android.text.Layout;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.BackgroundColorSpan;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -34,6 +35,7 @@ import org.quantumbadger.redreader.common.PrefsUtility;
 import org.quantumbadger.redreader.views.LinkifiedTextView;
 
 import java.text.BreakIterator;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -42,9 +44,6 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 public class BodyElementTextSpanned extends BodyElement implements DynamicSpanned {
-
-	// Translucent, so that the text stays readable on both light and dark themes
-	private static final int SPEECH_HIGHLIGHT_COLOR = 0x66FFB300;
 
 	private static final Set<String> ABBREVIATIONS = new HashSet<>(Arrays.asList(
 			"mr", "mrs", "ms", "mx", "dr", "prof", "st", "mt", "rev", "hon", "sgt", "capt",
@@ -58,7 +57,7 @@ public class BodyElementTextSpanned extends BodyElement implements DynamicSpanne
 
 	private LinkifiedTextView mTextView;
 
-	@Nullable private BackgroundColorSpan mSpeechHighlight;
+	@NonNull private final ArrayList<Object> mSpeechHighlightSpans = new ArrayList<>();
 
 	public BodyElementTextSpanned(
 			@NonNull final BlockType blockType,
@@ -172,20 +171,42 @@ public class BodyElementTextSpanned extends BodyElement implements DynamicSpanne
 		AndroidCommon.runOnUiThread(() -> {
 			removeSpeechHighlight();
 
-			mSpeechHighlight = new BackgroundColorSpan(SPEECH_HIGHLIGHT_COLOR);
-			final int flags = Spannable.SPAN_EXCLUSIVE_EXCLUSIVE;
-			mSpanned.setSpan(mSpeechHighlight, start, end, flags);
+			final PrefsUtility.TTSHighlightColour colour = PrefsUtility.pref_tts_highlight_colour();
+			final PrefsUtility.TTSTextColour textColour = PrefsUtility.pref_tts_text_colour();
+
+			// Without either colour, still scroll to follow the sentence being read
+			if(colour != PrefsUtility.TTSHighlightColour.NONE) {
+				mSpeechHighlightSpans.add(new BackgroundColorSpan(colour.argb));
+			}
+
+			if(textColour != PrefsUtility.TTSTextColour.DEFAULT) {
+				mSpeechHighlightSpans.add(new ForegroundColorSpan(textColour.argb));
+			}
+
+			if(!mSpeechHighlightSpans.isEmpty()) {
+				final int flags = Spannable.SPAN_EXCLUSIVE_EXCLUSIVE;
+
+				for(final Object span : mSpeechHighlightSpans) {
+					mSpanned.setSpan(span, start, end, flags);
+				}
+
+				// The view holds its own copy of the text. Changing it in place avoids a
+				// relayout and a text change accessibility event for every sentence.
+				if(mTextView != null) {
+					if(mTextView.getText() instanceof Spannable) {
+						final Spannable viewText = (Spannable)mTextView.getText();
+
+						for(final Object span : mSpeechHighlightSpans) {
+							viewText.setSpan(span, start, end, flags);
+						}
+					} else {
+						mTextView.setText(mSpanned, LinkifiedTextView.BufferType.SPANNABLE);
+					}
+				}
+			}
 
 			if(mTextView == null) {
 				return;
-			}
-
-			// The view holds its own copy of the text. Changing it in place avoids a
-			// relayout and a text change accessibility event for every sentence.
-			if(mTextView.getText() instanceof Spannable) {
-				((Spannable)mTextView.getText()).setSpan(mSpeechHighlight, start, end, flags);
-			} else {
-				mTextView.setText(mSpanned, LinkifiedTextView.BufferType.SPANNABLE);
 			}
 
 			final Layout layout = mTextView.getLayout();
@@ -206,21 +227,27 @@ public class BodyElementTextSpanned extends BodyElement implements DynamicSpanne
 	}
 
 	private void removeSpeechHighlight() {
-		if(mSpeechHighlight == null) {
+		if(mSpeechHighlightSpans.isEmpty()) {
 			return;
 		}
 
-		mSpanned.removeSpan(mSpeechHighlight);
+		for(final Object span : mSpeechHighlightSpans) {
+			mSpanned.removeSpan(span);
+		}
 
 		if(mTextView != null) {
 			if(mTextView.getText() instanceof Spannable) {
-				((Spannable)mTextView.getText()).removeSpan(mSpeechHighlight);
+				final Spannable viewText = (Spannable)mTextView.getText();
+
+				for(final Object span : mSpeechHighlightSpans) {
+					viewText.removeSpan(span);
+				}
 			} else {
 				mTextView.setText(mSpanned, LinkifiedTextView.BufferType.SPANNABLE);
 			}
 		}
 
-		mSpeechHighlight = null;
+		mSpeechHighlightSpans.clear();
 	}
 
 	@Override

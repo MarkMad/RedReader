@@ -1385,4 +1385,42 @@
 		<item>@string/pref_behaviour_post_tap_action_title_comments</item>
 	</string-array>
 
+	<string-array name="pref_tts_highlight_colour_items">
+		<item>@string/pref_tts_highlight_colour_blue</item>
+		<item>@string/pref_tts_highlight_colour_orange</item>
+		<item>@string/pref_tts_highlight_colour_green</item>
+		<item>@string/pref_tts_highlight_colour_purple</item>
+		<item>@string/pref_tts_highlight_colour_pink</item>
+		<item>@string/pref_tts_highlight_colour_none</item>
+	</string-array>
+
+	<!-- Constants. Do not change. -->
+	<string-array name="pref_tts_highlight_colour_items_return">
+		<item>blue</item>
+		<item>orange</item>
+		<item>green</item>
+		<item>purple</item>
+		<item>pink</item>
+		<item>none</item>
+	</string-array>
+
+	<string-array name="pref_tts_text_colour_items">
+		<item>@string/pref_tts_text_colour_default</item>
+		<item>@string/pref_tts_text_colour_black</item>
+		<item>@string/pref_tts_text_colour_white</item>
+		<item>@string/pref_tts_text_colour_dark_blue</item>
+		<item>@string/pref_tts_text_colour_yellow</item>
+		<item>@string/pref_tts_text_colour_red</item>
+	</string-array>
+
+	<!-- Constants. Do not change. -->
+	<string-array name="pref_tts_text_colour_items_return">
+		<item>default</item>
+		<item>black</item>
+		<item>white</item>
+		<item>dark_blue</item>
+		<item>yellow</item>
+		<item>red</item>
+	</string-array>
+
 </resources>

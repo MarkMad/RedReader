@@ -1492,6 +1492,22 @@
 	<string name="pref_tts_lookahead_title">Read aloud lookahead</string>
 	<string name="pref_tts_lookahead_summary">Pre-queue upcoming speech segments to reduce pauses. Turn off to submit each segment only after the previous one finishes. Applies to the next reading session.</string>
 	<string name="action_stop_reading">Stop Reading</string>
+	<string name="pref_tts_highlight_colour_key" translatable="false">pref_tts_highlight_colour</string>
+	<string name="pref_tts_highlight_colour_title">Read aloud highlight colour</string>
+	<string name="pref_tts_highlight_colour_blue">Blue</string>
+	<string name="pref_tts_highlight_colour_orange">Orange</string>
+	<string name="pref_tts_highlight_colour_green">Green</string>
+	<string name="pref_tts_highlight_colour_purple">Purple</string>
+	<string name="pref_tts_highlight_colour_pink">Pink</string>
+	<string name="pref_tts_highlight_colour_none">No highlight</string>
+	<string name="pref_tts_text_colour_key" translatable="false">pref_tts_text_colour</string>
+	<string name="pref_tts_text_colour_title">Read aloud text colour</string>
+	<string name="pref_tts_text_colour_default">Unchanged</string>
+	<string name="pref_tts_text_colour_black">Black</string>
+	<string name="pref_tts_text_colour_white">White</string>
+	<string name="pref_tts_text_colour_dark_blue">Dark blue</string>
+	<string name="pref_tts_text_colour_yellow">Yellow</string>
+	<string name="pref_tts_text_colour_red">Red</string>
 
 	<string name="video_restart">Restart video</string>
 	<string name="video_rewind">Rewind</string>

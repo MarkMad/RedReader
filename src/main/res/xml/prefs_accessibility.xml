@@ -24,6 +24,18 @@
 						android:key="pref_tts_lookahead"
 						android:defaultValue="true"/>
 
+	<ListPreference android:title="@string/pref_tts_highlight_colour_title"
+					android:key="@string/pref_tts_highlight_colour_key"
+					android:entries="@array/pref_tts_highlight_colour_items"
+					android:entryValues="@array/pref_tts_highlight_colour_items_return"
+					android:defaultValue="blue"/>
+
+	<ListPreference android:title="@string/pref_tts_text_colour_title"
+					android:key="@string/pref_tts_text_colour_key"
+					android:entries="@array/pref_tts_text_colour_items"
+					android:entryValues="@array/pref_tts_text_colour_items_return"
+					android:defaultValue="default"/>
+
 	<CheckBoxPreference android:title="@string/pref_accessibility_separate_body_text_lines_title"
 						android:summary="@string/pref_accessibility_separate_body_text_lines_summary"
 						android:key="@string/pref_accessibility_separate_body_text_lines_key"

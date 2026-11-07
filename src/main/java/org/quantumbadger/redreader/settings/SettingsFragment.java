@@ -167,6 +167,8 @@ public final class SettingsFragment extends PreferenceFragmentCompat {
 		addPreferencesFromResource(resource);
 
 		final int[] listPrefsToUpdate = {
+				R.string.pref_tts_highlight_colour_key,
+				R.string.pref_tts_text_colour_key,
 				R.string.pref_appearance_twopane_key,
 				R.string.pref_behaviour_self_post_tap_actions_key,
 				R.string.pref_behaviour_fling_post_left_key,

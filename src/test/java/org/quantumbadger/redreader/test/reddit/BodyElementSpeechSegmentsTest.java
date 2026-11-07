@@ -19,10 +19,14 @@ package org.quantumbadger.redreader.test.reddit;
 
 import android.text.SpannableStringBuilder;
 import android.text.style.BackgroundColorSpan;
+import android.text.style.ForegroundColorSpan;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.quantumbadger.redreader.common.General;
+import org.quantumbadger.redreader.common.PrefsUtility;
 import org.quantumbadger.redreader.reddit.prepared.bodytext.BlockType;
 import org.quantumbadger.redreader.reddit.prepared.bodytext.BodyElement;
 import org.quantumbadger.redreader.reddit.prepared.bodytext.BodyElementNumberedListElement;
@@ -30,6 +34,7 @@ import org.quantumbadger.redreader.reddit.prepared.bodytext.BodyElementTextSpann
 import org.quantumbadger.redreader.reddit.prepared.bodytext.BodyElementVerticalSequence;
 import org.quantumbadger.redreader.reddit.prepared.bodytext.SpeechSegment;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 import java.util.ArrayList;
@@ -39,6 +44,98 @@ import java.util.List;
 @RunWith(RobolectricTestRunner.class)
 @Config(sdk = 35)
 public class BodyElementSpeechSegmentsTest {
+
+	private static final String HIGHLIGHT_COLOUR_KEY = "pref_tts_highlight_colour";
+
+	private static final String TEXT_COLOUR_KEY = "pref_tts_text_colour";
+
+	@After
+	public void resetHighlightColour() {
+		setHighlightColour(null);
+		General.getSharedPrefs(RuntimeEnvironment.getApplication()).edit()
+				.putString(TEXT_COLOUR_KEY, null).apply();
+	}
+
+	private static void setHighlightColour(final String value) {
+		General.getSharedPrefs(RuntimeEnvironment.getApplication()).edit()
+				.putString(HIGHLIGHT_COLOUR_KEY, value).apply();
+	}
+
+	private static int showFirstSentence(final SpannableStringBuilder text) {
+		final List<SpeechSegment> segments = new ArrayList<>();
+		textElement(text).collectSpeechSegments(segments);
+		segments.get(0).show();
+		final BackgroundColorSpan[] spans
+				= text.getSpans(0, text.length(), BackgroundColorSpan.class);
+		return spans.length == 0 ? 0 : spans[0].getBackgroundColor();
+	}
+
+	@Test
+	public void highlightIsBlueByDefault() {
+		Assert.assertEquals(
+				PrefsUtility.TTSHighlightColour.BLUE.argb,
+				showFirstSentence(new SpannableStringBuilder("One here.")));
+	}
+
+	@Test
+	public void highlightUsesChosenColour() {
+		setHighlightColour("orange");
+		Assert.assertEquals(
+				PrefsUtility.TTSHighlightColour.ORANGE.argb,
+				showFirstSentence(new SpannableStringBuilder("One here.")));
+	}
+
+	@Test
+	public void noHighlightOptionAddsNoSpan() {
+		setHighlightColour("none");
+		Assert.assertEquals(0, showFirstSentence(new SpannableStringBuilder("One here.")));
+	}
+
+	@Test
+	public void textColourIsUnchangedByDefault() {
+		final SpannableStringBuilder text = new SpannableStringBuilder("One here.");
+		showFirstSentence(text);
+		Assert.assertEquals(
+				0,
+				text.getSpans(0, text.length(), ForegroundColorSpan.class).length);
+	}
+
+	@Test
+	public void textColourIsAppliedAndRemovedWithTheHighlight() {
+		General.getSharedPrefs(RuntimeEnvironment.getApplication()).edit()
+				.putString(TEXT_COLOUR_KEY, "dark_blue").apply();
+		setHighlightColour("none");
+
+		final SpannableStringBuilder text = new SpannableStringBuilder("One here. Two here.");
+		final List<SpeechSegment> segments = new ArrayList<>();
+		textElement(text).collectSpeechSegments(segments);
+		segments.get(0).show();
+
+		final ForegroundColorSpan[] spans
+				= text.getSpans(0, text.length(), ForegroundColorSpan.class);
+		Assert.assertEquals(1, spans.length);
+		Assert.assertEquals(
+				PrefsUtility.TTSTextColour.DARK_BLUE.argb,
+				spans[0].getForegroundColor());
+		Assert.assertEquals("One here.", text.subSequence(
+				text.getSpanStart(spans[0]), text.getSpanEnd(spans[0])).toString());
+		Assert.assertEquals(
+				0,
+				text.getSpans(0, text.length(), BackgroundColorSpan.class).length);
+
+		segments.get(0).hide();
+		Assert.assertEquals(
+				0,
+				text.getSpans(0, text.length(), ForegroundColorSpan.class).length);
+	}
+
+	@Test
+	public void unknownColourFallsBackToBlue() {
+		setHighlightColour("not-a-colour");
+		Assert.assertEquals(
+				PrefsUtility.TTSHighlightColour.BLUE.argb,
+				showFirstSentence(new SpannableStringBuilder("One here.")));
+	}
 
 	private static BodyElementTextSpanned textElement(final SpannableStringBuilder text) {
 		return new BodyElementTextSpanned(BlockType.NORMAL_TEXT, text);
